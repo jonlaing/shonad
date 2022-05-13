@@ -8,6 +8,7 @@
     "/dist"
   ],
   "exports": {
+    ".": "./dist/index.js",
     "./base": "./dist/base/index.js",
     "./control": "./dist/control/index.js",
     "./data": "./dist/data/index.js",
@@ -15,6 +16,9 @@
   },
   "typesVersions": {
     "*": {
+      ".": [
+        "dist/index.d.ts"
+      ],
       "base": [
         "dist/base/index.d.ts"
       ],
