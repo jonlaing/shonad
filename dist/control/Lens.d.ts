@@ -22,4 +22,4 @@ export declare const optional: <A>(fallback: A) => Lens<Maybe.Maybe<A>, A>;
 export declare const head: Lens<any[], Maybe.Maybe<any>>;
 export declare const tail: Lens<any[], Maybe.Maybe<any[]>>;
 export declare const index: (i: number) => Lens<any[], Maybe.Maybe<any>>;
-export declare const prop: <A extends Record<string, any>, K extends keyof A>(k: K) => Lens<A, Maybe.Maybe<A[K]>>;
+export declare const prop: <A extends Record<string, any>, K extends keyof A = keyof A>(k: K) => Lens<A, Maybe.Maybe<A[K]>>;
