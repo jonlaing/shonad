@@ -1,1 +1,1 @@
-import * as redux from "./redux";
+export * as redux from "./redux";
