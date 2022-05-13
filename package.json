@@ -13,6 +13,22 @@
     "./data": "./dist/data/index.js",
     "./extensions": "./dist/data/index.js"
   },
+  "typesVersions": {
+    "*": {
+      "base": [
+        "dist/base/index.d.ts"
+      ],
+      "control": [
+        "dist/control/index.d.ts"
+      ],
+      "data": [
+        "dist/control/index.d.ts"
+      ],
+      "extensions": [
+        "dist/extensions/index.ts"
+      ]
+    }
+  },
   "license": "MIT",
   "devDependencies": {
     "typescript": "^4.6.4"
