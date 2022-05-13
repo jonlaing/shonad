@@ -25,7 +25,7 @@
         "dist/control/index.d.ts"
       ],
       "extensions": [
-        "dist/extensions/index.ts"
+        "dist/extensions/index.d.ts"
       ]
     }
   },
