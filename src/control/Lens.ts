@@ -1,4 +1,3 @@
-import { getParseTreeNode } from "typescript";
 import * as Fn from "../base/Function";
 import * as F from "../control/Functor";
 import * as Maybe from "../data/Maybe";
@@ -109,7 +108,10 @@ export const index = (i: number): Lens<any[], Maybe.Maybe<any>> => ({
     ),
 });
 
-export const prop = <A extends Record<string, any>, K extends keyof A>(
+export const prop = <
+  A extends Record<string, any>,
+  K extends keyof A = keyof A
+>(
   k: K
 ): Lens<A, Maybe.Maybe<A[K]>> => ({
   get: Dict.get(k),

@@ -18,25 +18,25 @@ export const pipe =
 
 export function set<
   S extends State,
-  V extends S[keyof S],
+  V extends S[keyof S] | Maybe.Maybe<S[keyof S]>,
   A extends PayloadAction<V> = PayloadAction<V>
 >(lens: L.Lens<S, V>): (state: S, action?: A) => S;
 
 export function set<
   S extends State,
-  V extends S[keyof S],
+  V extends S[keyof S] | Maybe.Maybe<S[keyof S]>,
   A extends PayloadAction<V> = PayloadAction<V>
 >(lens: L.Lens<S, V>, state: S): (action: A) => S;
 
 export function set<
   S extends State,
-  V extends S[keyof S],
+  V extends S[keyof S] | Maybe.Maybe<S[keyof S]>,
   A extends PayloadAction<V> = PayloadAction<V>
 >(lens: L.Lens<S, V>, state: S, action: A): S;
 
 export function set<
   S extends State,
-  V extends S[keyof S],
+  V extends S[keyof S] | Maybe.Maybe<S[keyof S]>,
   A extends PayloadAction<V> = PayloadAction<V>
 >(lens: L.Lens<S, V>, state?: S, action?: A): any {
   if (state === undefined)
@@ -46,25 +46,40 @@ export function set<
   return L.set(lens, action.payload, state);
 }
 
-export function over<S extends State, V extends S[keyof S]>(
+export function over<
+  S extends State,
+  V extends S[keyof S] | Maybe.Maybe<S[keyof S]>
+>(
   fn: (payload: any) => (a: V) => V
 ): (lens: L.Lens<S, V>, state?: S, action?: PayloadAction<any>) => S;
-export function over<S extends State, V extends S[keyof S]>(
+export function over<
+  S extends State,
+  V extends S[keyof S] | Maybe.Maybe<S[keyof S]>
+>(
   fn: (payload: any) => (a: V) => V,
   lens: L.Lens<S, V>
 ): (state: S, action?: PayloadAction<any>) => S;
-export function over<S extends State, V extends S[keyof S]>(
+export function over<
+  S extends State,
+  V extends S[keyof S] | Maybe.Maybe<S[keyof S]>
+>(
   fn: (payload: any) => (a: V) => V,
   lens: L.Lens<S, V>,
   state: S
 ): (action: PayloadAction<any>) => S;
-export function over<S extends State, V extends S[keyof S]>(
+export function over<
+  S extends State,
+  V extends S[keyof S] | Maybe.Maybe<S[keyof S]>
+>(
   fn: (payload: any) => (a: V) => V,
   lens: L.Lens<S, V>,
   state: S,
   action: PayloadAction<any>
 ): S;
-export function over<S extends State, V extends S[keyof S]>(
+export function over<
+  S extends State,
+  V extends S[keyof S] | Maybe.Maybe<S[keyof S]>
+>(
   fn: (payload: any) => (a: V) => V,
   lens?: L.Lens<S, V>,
   state?: S,
@@ -84,31 +99,31 @@ export function over<S extends State, V extends S[keyof S]>(
 
 export function always<
   S extends State,
-  V extends S[keyof S],
+  V extends S[keyof S] | Maybe.Maybe<S[keyof S]>,
   A extends PayloadAction<V> = PayloadAction<V>
 >(lens: L.Lens<S, V>): (val: V, state?: S, action?: A) => S;
 
 export function always<
   S extends State,
-  V extends S[keyof S],
+  V extends S[keyof S] | Maybe.Maybe<S[keyof S]>,
   A extends PayloadAction<V> = PayloadAction<V>
 >(lens: L.Lens<S, V>, val: V): (state: S, action?: A) => S;
 
 export function always<
   S extends State,
-  V extends S[keyof S],
+  V extends S[keyof S] | Maybe.Maybe<S[keyof S]>,
   A extends PayloadAction<V> = PayloadAction<V>
 >(lens: L.Lens<S, V>, val: V, state: S): (action: A) => S;
 
 export function always<
   S extends State,
-  V extends S[keyof S],
+  V extends S[keyof S] | Maybe.Maybe<S[keyof S]>,
   A extends PayloadAction<V> = PayloadAction<V>
 >(lens: L.Lens<S, V>, val: V, state: S, action: A): S;
 
 export function always<
   S extends State,
-  V extends S[keyof S],
+  V extends S[keyof S] | Maybe.Maybe<S[keyof S]>,
   A extends PayloadAction<V> = PayloadAction<V>
 >(lens: L.Lens<S, V>, val?: V, state?: S, action?: A): any {
   if (val === undefined)
