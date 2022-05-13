@@ -19,7 +19,9 @@ const makeApplicative = (name, x) => {
     return Object.assign(Object.assign({}, x), { __applicative: name, __functor: name });
 };
 exports.makeApplicative = makeApplicative;
-const apply = (f, x) => {
+function apply(f, x) {
+    if (x === undefined)
+        return (x) => apply(f, x);
     return implementations.get(x.__applicative).functions.apply(f, x);
-};
+}
 exports.apply = apply;

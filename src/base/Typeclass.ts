@@ -7,10 +7,12 @@ export class Implementations<T extends Typeclass<any>> {
 
   add(name: string, val: T) {
     this.list = { ...this.list, [name]: val };
+    console.log(this.list);
   }
 
   get(name: string): T {
-    return this.list[name];
+    const r = this.list[name];
+    return r;
   }
 
   remove(name: string) {

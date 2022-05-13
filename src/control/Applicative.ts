@@ -91,9 +91,22 @@ export const makeApplicative = <T, U extends Applicative<T, any>>(
   return { ...x, __applicative: name, __functor: name } as unknown as U;
 };
 
-export const apply = <T extends Applicative<(a: any) => any, any>>(
+export function apply<T extends Applicative<(a: any) => any, any>>(
+  f: T
+): (
+  x: Applicative<ExtractApplicativeParam<T>, ExtractApplicativeName<T>>
+) => Applicative<ExtractApplicativeReturn<T>, ExtractApplicativeName<T>>;
+export function apply<T extends Applicative<(a: any) => any, any>>(
   f: T,
   x: Applicative<ExtractApplicativeParam<T>, ExtractApplicativeName<T>>
-): Applicative<ExtractApplicativeReturn<T>, ExtractApplicativeName<T>> => {
+): Applicative<ExtractApplicativeReturn<T>, ExtractApplicativeName<T>>;
+export function apply<T extends Applicative<(a: any) => any, any>>(
+  f: T,
+  x?: Applicative<ExtractApplicativeParam<T>, ExtractApplicativeName<T>>
+): any {
+  if (x === undefined)
+    return (
+      x: Applicative<ExtractApplicativeParam<T>, ExtractApplicativeName<T>>
+    ) => apply(f, x);
   return implementations.get(x.__applicative).functions.apply(f, x);
-};
+}

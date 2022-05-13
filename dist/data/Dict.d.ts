@@ -4,3 +4,16 @@ export declare function get<A extends Record<string, any>, K extends keyof A>(ke
 export declare function set<A extends Record<string, any>, K extends keyof A>(key: K): (val: A[K], dict: A) => A;
 export declare function set<A extends Record<string, any>, K extends keyof A>(key: K, val: A[K]): (dict: A) => A;
 export declare function set<A extends Record<string, any>, K extends keyof A>(key: K, val: A[K], dict: A): A;
+export declare function unset<T extends Record<string, any>>(k: string): (dict: T) => Partial<T>;
+export declare function unset<T extends Record<string, any>>(k: string, dict: T): Partial<T>;
+export declare function eqProps<T extends Record<string, any>>(k: string): (d0: T, d1?: T) => boolean;
+export declare function eqProps<T extends Record<string, any>>(k: string, d0: T): (d1: T) => boolean;
+export declare function eqProps<T extends Record<string, any>>(k: string, d0: T, d1: T): boolean;
+export declare function map<T extends Record<string, any>>(f: (a: any) => any): (dict: T) => any;
+export declare function map<T extends Record<string, any>>(f: (a: any) => any, dict: T): any;
+export declare function mapi<T extends Record<string, any>>(f: (a: any, i: string) => any): (dict: T) => any;
+export declare function mapi<T extends Record<string, any>>(f: (a: any, i: string) => any, dict: T): any;
+export declare function evolve<T extends Record<string, any>>(e: Record<string, (a: any) => any>): (d: T) => Record<string, any>;
+export declare function evolve<T extends Record<string, any>>(e: Record<string, (a: any) => any>, d: T): Record<string, any>;
+export declare function has<T extends Record<string, any>>(k: string): (d: T) => boolean;
+export declare function has<T extends Record<string, any>>(k: string, d: T): boolean;

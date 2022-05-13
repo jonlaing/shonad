@@ -24,5 +24,6 @@ interface ImplementApplicativeArgs<T extends Applicative<any, any>> {
 }
 export declare const implementApplicativeClass: <T extends ApplicativeFactory<any, any, any, any>>(name: string, { fmap, pure, apply }: ImplementApplicativeArgs<ExtractApplicative<T>>) => void;
 export declare const makeApplicative: <T, U extends Applicative<T, any>>(name: string, x: T) => U;
-export declare const apply: <T extends Applicative<(a: any) => any, any>>(f: T, x: Applicative<ExtractApplicativeParam<T>, ExtractApplicativeName<T>>) => Applicative<ExtractApplicativeReturn<T>, ExtractApplicativeName<T>>;
+export declare function apply<T extends Applicative<(a: any) => any, any>>(f: T): (x: Applicative<ExtractApplicativeParam<T>, ExtractApplicativeName<T>>) => Applicative<ExtractApplicativeReturn<T>, ExtractApplicativeName<T>>;
+export declare function apply<T extends Applicative<(a: any) => any, any>>(f: T, x: Applicative<ExtractApplicativeParam<T>, ExtractApplicativeName<T>>): Applicative<ExtractApplicativeReturn<T>, ExtractApplicativeName<T>>;
 export {};
