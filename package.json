@@ -1,0 +1,20 @@
+{
+  "name": "shonad",
+  "version": "1.0.0",
+  "description": "Functoinal helper library to make Javascript and Typescript programs more predictable",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
+  "exports": {
+    "./base": "./dist/base/index.js",
+    "./control": "./dist/control/index.js",
+    "./data": "./dist/data/index.js",
+    "./extensions": "./dist/data/index.js"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.6.4"
+  }
+}
