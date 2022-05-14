@@ -5,9 +5,10 @@ import * as List from "../data/List";
 import * as Monad from "../control/Monad";
 import * as Dict from "../data/Dict";
 import * as Either from "../data/Either";
+import { Function } from "ts-toolbelt";
 
-export type GetterFn<A, B> = (a: A) => B;
-export type SetterFn<A, B> = (b: B, a: A) => A;
+export type GetterFn<A, B> = Function.Function<[A], B>;
+export type SetterFn<A, B> = Function.Function;
 export type Lens<A, B> = {
   get: GetterFn<A, B>;
   set: SetterFn<A, B>;
@@ -66,7 +67,10 @@ export function over<A, B>(lens: Lens<A, B>, f?: (b: B) => B, data?: A): any {
   return lens.set(f(lens.get(data)), data);
 }
 
-export const compose = <A, B>(l0: Lens<A, B>, l1: Lens<A, B>): Lens<A, B> => ({
+export const compose = (
+  l0: Lens<any, any>,
+  l1: Lens<any, any>
+): Lens<any, any> => ({
   get: Fn.compose(l1.get, l0.get),
   set: Fn.compose(l0.set, over(l1)),
 });
@@ -108,16 +112,13 @@ export const index = (i: number): Lens<any[], Maybe.Maybe<any>> => ({
     ),
 });
 
-export const prop = <
-  A extends Record<string, any>,
-  K extends keyof A = keyof A
->(
-  k: K
-): Lens<A, Maybe.Maybe<A[K]>> => ({
+export const prop = (
+  k: string
+): Lens<Record<string, any>, Maybe.Maybe<any>> => ({
   get: Dict.get(k),
-  set: (v: Maybe.Maybe<A[K]>, dict: A) =>
+  set: (v: Maybe.Maybe<any>, dict: Record<string, any>) =>
     Maybe.fromMaybe(
       dict,
-      F.fmap((x: A[K]) => Dict.set(k, x, dict), v)
+      F.fmap((x: any) => Dict.set(k, x, dict), v)
     ),
 });

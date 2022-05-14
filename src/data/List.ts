@@ -12,10 +12,7 @@ export const reverse = <A>(a: A[]): A[] => {
   return copy.reverse();
 };
 
-export const last: <A>(a: A[]) => Maybe.Maybe<A> = Fn.pipe(
-  Maybe.listToMaybe,
-  reverse
-);
+export const last = Fn.pipe(reverse, Maybe.listToMaybe);
 
 export const tail = <A>(a: A[]): Maybe.Maybe<A[]> =>
   a.length === 0 ? Maybe.nothing() : Maybe.just(a.slice(1));

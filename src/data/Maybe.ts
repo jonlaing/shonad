@@ -50,7 +50,7 @@ export function fromMaybe<A>(fallback: A, x?: Maybe<A>): any {
 export const maybeNil = <A>(a: A | undefined): Maybe<A> =>
   Util.isNil(a) ? nothing() : just(a);
 
-export const listToMaybe = <A>(a: A[]): Maybe<A> =>
+export const listToMaybe = (a: any[]): Maybe<any> =>
   a.length > 0 ? just(a) : nothing();
 
 export const maybeToList = <A>(x: Maybe<A>): A[] =>
