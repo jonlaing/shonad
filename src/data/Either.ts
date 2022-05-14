@@ -1,96 +1,81 @@
-import { ApplyFn, PureFn } from "../control/Applicative";
-import { FMapFn } from "../control/Functor";
-import * as M from "../control/Monad";
+import { A, C, Function } from "ts-toolbelt";
+import { Monad } from "../control/Monad";
+import * as Fn from "../base/Function";
 import * as Maybe from "./Maybe";
 import * as Util from "../base/Util";
 
-export type Left<A> = { __left: A } & M.Monad<A, "either">;
-export type Right<B> = { __right: B } & M.Monad<B, "either">;
+export abstract class Either<A, B> extends Monad<A | B> {
+  static pure(a: any) {
+    return new Right(a);
+  }
 
-export type Either<A, B> = Left<A> | Right<B>;
+  static return_ = Either.pure;
+}
 
-type EitherFmap<A, B> = FMapFn<B, any, Either<A, B>, Either<A, any>>;
-type EitherPure<A, B> = PureFn<Either<A, B>>;
-type EitherApply<A, B, C> = ApplyFn<
-  Either<A, (b: B) => C>,
-  Either<A, B>,
-  Either<A, C>
->;
-type EitherBind<A, B, C> = M.BindFn<B, C, Either<A, B>, Either<A, C>>;
+export class Left<A> extends Either<A, any> {
+  isLeft = Fn.always(true);
+  isRight = Fn.always(false);
 
-type EitherClass = M.MonadFactory<
-  Either<any, any>,
-  EitherFmap<any, any>,
-  EitherPure<any, any>,
-  EitherApply<any, any, any>,
-  EitherBind<any, any, any>
->;
+  fmap = <B>(f: (a: A) => B): Either<A, B> => this;
+  apply = (f: Either<any, any>) => this;
+  bind = (f: (a: any) => Either<A, any>): Either<A, any> => this;
+}
 
-export const left = <A>(a: A) =>
-  M.makeMonad<{ __left: A }, Left<A>>("either", { __left: a });
+export class Right<B> extends Either<any, B> {
+  isLeft = Fn.always(false);
+  isRight = Fn.always(true);
 
-export const right = <B>(b: B) =>
-  M.makeMonad<{ __right: B }, Right<B>>("either", { __right: b });
+  fmap = <C>(f: (b: B) => C): Either<any, C> => new Right(f(this.val));
+  apply = (f: Either<any, Function.Function>) => f.val(this.val);
+  bind = (f: (a: any) => Either<any, any>): Either<any, any> => f(this.val);
+}
 
-export const isLeft = (x: Either<any, any>) =>
-  (x as Left<any>).__left !== undefined;
-export const isRight = (x: Either<any, any>) =>
-  (x as Right<any>).__right !== undefined;
+export const left = <A>(a: A): Either<A, any> => new Left(a);
+export const right = <B>(b: B): Either<any, B> => new Right(b);
 
-export const either = <A, B, C>(
-  f0: (a: A) => C,
-  f1: (b: B) => C,
-  x: Either<A, B>
-): C => (isLeft(x) ? f0((x as Left<A>).__left) : f1((x as Right<B>).__right));
+export const isLeft = (x: Either<any, any>) => (x as Left<any>).isLeft();
+export const isRight = (x: Either<any, any>) => (x as Right<any>).isRight();
+
+export const either = Fn.curry(
+  <A, B, C>(f0: (a: A) => C, f1: (b: B) => C, x: Either<A, B>): C =>
+    isLeft(x) ? f0(x.val as A) : f1(x.val as B)
+);
 
 export const lefts = <A>(xs: Either<A, any>[]): A[] =>
-  xs.reduce(
-    (acc, x) => (isLeft(x) ? [...acc, (x as Left<A>).__left] : acc),
-    [] as A[]
-  );
+  xs.reduce((acc, x) => (isLeft(x) ? [...acc, x.val] : acc), [] as A[]);
 
 export const rights = <B>(xs: Either<any, B>[]): B[] =>
-  xs.reduce(
-    (acc, x) => (isRight(x) ? [...acc, (x as Right<B>).__right] : acc),
-    [] as B[]
-  );
+  xs.reduce((acc, x) => (isRight(x) ? [...acc, x.val] : acc), [] as B[]);
 
-export const fromLeft = <A>(fallback: A, x: Either<A, any>): A =>
-  isLeft(x) ? (x as Left<A>).__left : fallback;
+export const fromLeft = Fn.curry(
+  <A>(fallback: A, x: Either<A, any>): A => (isLeft(x) ? x.val : fallback)
+);
 
-export const fromRight = <B>(fallback: B, x: Either<any, B>): B =>
-  isRight(x) ? (x as Right<B>).__right : fallback;
+export const fromRight = Fn.curry(
+  <B>(fallback: B, x: Either<any, B>): B => (isRight(x) ? x.val : fallback)
+);
 
 export const partitionEithers = <A, B>(xs: Either<A, B>[]): [A[], B[]] =>
   xs.reduce(
     (acc: [A[], B[]], x) =>
-      isLeft(x)
-        ? [[...acc[0], (x as Left<A>).__left], acc[1]]
-        : [acc[0], [...acc[1], (x as Right<B>).__right]],
+      (isLeft(x)
+        ? [[...acc[0], x.val], acc[1]]
+        : [acc[0], [...acc[1], x.val]]) as [A[], B[]],
     [[], []]
   );
 
-export const fromMaybe = <A, B>(error: A, m: Maybe.Maybe<B>): Either<A, B> =>
-  Maybe.isNothing(m) ? left(error) : (M.bind(m, right) as Either<A, B>);
+export const fromMaybe = Fn.curry(
+  <A, B>(error: A, m: Maybe.Maybe<B>): Either<A, B> =>
+    Maybe.isNothing(m) ? left(error) : right(m.val)
+);
 
-export const eitherNil = <A, B>(error: A, x: B | undefined): Either<A, B> =>
-  Util.isNil(x) ? left(error) : right(x as B);
+export const eitherNil = Fn.curry(
+  <A, B>(error: A, x: B | undefined): Either<A, B> =>
+    Util.isNil(x) ? left(error) : right(x as B)
+);
 
-export const fmap = <A, B, C>(f: (b: B) => C, x: Either<A, B>): Either<A, C> =>
-  (isRight(x) ? right(f((x as Right<any>).__right)) : x) as Either<A, C>;
-
-export const pure = right;
-
-export const apply = <A, B, C, T extends Either<A, (b: B) => C>>(
-  x: T,
-  y: Either<any, B>
-): Either<A, C> =>
-  fmap((g: (b: B) => C) => g((y as Right<any>).__right), x) as Either<A, C>;
-
-export const bind = <A, B, C>(
-  x: Either<A, B>,
-  f: (b: B) => Either<A, C>
-): Either<A, C> =>
-  (isRight(x) ? f((x as Right<B>).__right) : x) as Either<A, C>;
-
-M.implementMonadClass<EitherClass>("either", { fmap, pure, apply, bind });
+export const fmap = Either.fmap;
+export const pure = Either.pure;
+export const apply = Either.apply;
+export const apply_ = Fn.flip(apply);
+export const bind = Either.bind;

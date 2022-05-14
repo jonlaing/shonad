@@ -23,45 +23,67 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.maybeRecord = exports.bind = exports.apply = exports.pure = exports.fmap = exports.mapMaybe = exports.catMaybes = exports.maybeToList = exports.listToMaybe = exports.maybeNil = exports.fromMaybe = exports.isNothing = exports.isJust = exports.maybe = exports.nothing = exports.just = void 0;
+exports.maybeRecord = exports.mapMaybe = exports.catMaybes = exports.maybeToList = exports.listToMaybe = exports.maybeNil = exports.fromMaybe = exports.maybe = exports.isNothing = exports.isJust = exports.nothing = exports.just = exports.Nothing = exports.Just = exports.return_ = exports.pure = exports.bind = exports.apply = exports.fmap = exports.Maybe = void 0;
 const Monad_1 = require("../control/Monad");
+const Fn = __importStar(require("../base/Function"));
 const Util = __importStar(require("../base/Util"));
-const just = (a) => (0, Monad_1.makeMonad)("maybe", { __val: a });
-exports.just = just;
-const nothing = (a) => (0, Monad_1.makeMonad)("maybe", {});
-exports.nothing = nothing;
-const maybe = (fallback, f, x) => (0, exports.isJust)(x) ? f(x.__val) : fallback;
-exports.maybe = maybe;
-const isJust = (x) => x.__val !== undefined;
-exports.isJust = isJust;
-const isNothing = (x) => !(0, exports.isJust)(x);
-exports.isNothing = isNothing;
-function fromMaybe(fallback, x) {
-    if (x === undefined)
-        return (x) => fromMaybe(fallback, x);
-    return (0, exports.isJust)(x) ? x.__val : fallback;
+class Maybe extends Monad_1.Monad {
+    static pure(a) {
+        return new Just(a);
+    }
 }
-exports.fromMaybe = fromMaybe;
-const maybeNil = (a) => Util.isNil(a) ? (0, exports.nothing)() : (0, exports.just)(a);
+exports.Maybe = Maybe;
+Maybe.return_ = Maybe.pure;
+exports.fmap = Maybe.fmap;
+exports.apply = Maybe.apply;
+exports.bind = Maybe.bind;
+exports.pure = Maybe.pure;
+exports.return_ = Maybe.return_;
+class Just extends Maybe {
+    constructor() {
+        super(...arguments);
+        this.isJust = Fn.always(true);
+        this.isNothing = Fn.always(false);
+        this.fmap = (f) => new Just(f(this.val));
+        this.apply = (f) => {
+            return ((0, exports.isJust)(f) ? (0, exports.fmap)(f.val, this) : (0, exports.nothing)());
+        };
+        this.bind = (f) => f(this.val);
+    }
+}
+exports.Just = Just;
+class Nothing extends Maybe {
+    constructor() {
+        super(...arguments);
+        this.isJust = Fn.always(false);
+        this.isNothing = Fn.always(true);
+        this.fmap = (f) => new Nothing(this.val);
+        this.apply = (f) => this;
+        this.bind = (f) => this;
+    }
+}
+exports.Nothing = Nothing;
+const just = (x) => new Just(x);
+exports.just = just;
+const nothing = (x) => new Nothing(x);
+exports.nothing = nothing;
+const isJust = (x) => x.isJust();
+exports.isJust = isJust;
+const isNothing = (x) => x.isNothing();
+exports.isNothing = isNothing;
+exports.maybe = Fn.curry((fallback, f, x) => (0, exports.isJust)(x) ? f(x.val) : fallback);
+exports.fromMaybe = Fn.curry((fallback, x) => ((0, exports.isJust)(x) ? x.val : fallback));
+const maybeNil = (a) => Util.isNil(a) ? (0, exports.nothing)(a) : (0, exports.just)(a);
 exports.maybeNil = maybeNil;
-const listToMaybe = (a) => a.length > 0 ? (0, exports.just)(a) : (0, exports.nothing)();
+const listToMaybe = (a) => a.length > 0 ? (0, exports.just)(a[0]) : (0, exports.nothing)();
 exports.listToMaybe = listToMaybe;
-const maybeToList = (x) => fromMaybe([], (0, exports.fmap)((a) => [a], x));
+const maybeToList = (x) => (0, exports.fromMaybe)([], Maybe.fmap((a) => [a], x));
 exports.maybeToList = maybeToList;
-const catMaybes = (xs) => xs.reduce((acc, x) => ((0, exports.isJust)(x) ? [...acc, x.__val] : acc), []);
+const catMaybes = (xs) => xs.reduce((acc, x) => ((0, exports.isJust)(x) ? [...acc, x.val] : acc), []);
 exports.catMaybes = catMaybes;
-const mapMaybe = (f, as) => as.reduce((acc, a) => {
+exports.mapMaybe = Fn.curry((f, as) => as.reduce((acc, a) => {
     const res = f(a);
-    return (0, exports.isJust)(res) ? [...acc, res.__val] : acc;
-}, []);
-exports.mapMaybe = mapMaybe;
-const fmap = (f, x) => ((0, exports.isJust)(x) ? (0, exports.just)(f(x.__val)) : (0, exports.nothing)());
-exports.fmap = fmap;
-exports.pure = exports.just;
-const apply = (x, y) => (0, exports.fmap)((g) => g(y.__val), x);
-exports.apply = apply;
-const bind = (x, f) => ((0, exports.isJust)(x) ? f(x.__val) : (0, exports.nothing)());
-exports.bind = bind;
-(0, Monad_1.implementMonadClass)("maybe", { fmap: exports.fmap, pure: exports.pure, apply: exports.apply, bind: exports.bind });
+    return (0, exports.isJust)(res) ? [...acc, res.val] : acc;
+}, []));
 const maybeRecord = (x) => Object.keys(x).reduce((acc, k) => (Object.assign(Object.assign({}, acc), { [k]: (0, exports.maybeNil)(x[k]) })), {});
 exports.maybeRecord = maybeRecord;

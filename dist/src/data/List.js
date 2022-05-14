@@ -25,9 +25,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.update = exports.adjust = exports.splitAt = exports.takeLast = exports.take = exports.nth = exports.find = exports.intercalate = exports.intersperse = exports.length = exports.isEmpty = exports.singleton = exports.uncons = exports.init = exports.tail = exports.last = exports.reverse = exports.head = exports.concat = void 0;
 const Fn = __importStar(require("../base/Function"));
-const Functor_1 = require("../control/Functor");
 const Maybe = __importStar(require("./Maybe"));
-const Monad_1 = require("../control/Monad");
 const concat = (as) => as.reduce((acc, a) => [...acc, ...a], []);
 exports.concat = concat;
 exports.head = Maybe.listToMaybe;
@@ -36,12 +34,12 @@ const reverse = (a) => {
     return copy.reverse();
 };
 exports.reverse = reverse;
-exports.last = Fn.pipe(Maybe.listToMaybe, exports.reverse);
+exports.last = Fn.pipe(exports.reverse, Maybe.listToMaybe);
 const tail = (a) => a.length === 0 ? Maybe.nothing() : Maybe.just(a.slice(1));
 exports.tail = tail;
 const init = (a) => a.length === 0 ? Maybe.nothing() : Maybe.just(a.slice(0, -1));
 exports.init = init;
-const uncons = (as) => (0, Monad_1.bind)((0, exports.head)(as), (a) => (0, Functor_1.fmap)((b) => [a, b], (0, exports.tail)(as)));
+const uncons = (as) => Maybe.bind((0, exports.head)(as), (a) => Maybe.fmap((b) => [a, b], (0, exports.tail)(as)));
 exports.uncons = uncons;
 const singleton = (a) => [a];
 exports.singleton = singleton;

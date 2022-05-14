@@ -2,7 +2,6 @@ import * as D from "../../src/data/Dict";
 import * as maybe from "../../src/data/Maybe";
 import * as N from "../../src/base/Number";
 import * as Fn from "../../src/base/Function";
-import * as Util from "../../src/base/Util";
 import * as Lg from "../../src/base/Logic";
 
 describe("Dict", () => {

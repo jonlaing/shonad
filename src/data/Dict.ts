@@ -3,7 +3,6 @@ import * as Maybe from "./Maybe";
 import * as Fn from "../base/Function";
 import * as Ap from "../control/Applicative";
 import * as Util from "../base/Util";
-import * as F from "../control/Functor";
 
 export const get = Fn.curry(
   (key: string, dict: Record<string, any>): Maybe.Maybe<any> =>
@@ -56,11 +55,12 @@ export const evolve = Fn.curry(
     d: Record<string, any>
   ): Record<string, any> =>
     mapi(
-      (v: any, k: string) => Maybe.fromMaybe(v, Ap.apply(get(k, e), get(k, d))),
+      (v: any, k: string) =>
+        Maybe.fromMaybe(v, Maybe.apply(get(k, e), get(k, d))),
       d
     )
 );
 
 export const has = Fn.curry((k: string, d: Record<string, any>): boolean =>
-  Maybe.fromMaybe(false, F.fmap(Fn.true_, get(k, d)))
+  Maybe.fromMaybe(false, Maybe.fmap(Fn.true_, get(k, d)))
 );

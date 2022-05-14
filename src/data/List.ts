@@ -1,7 +1,5 @@
 import * as Fn from "../base/Function";
-import { fmap } from "../control/Functor";
 import * as Maybe from "./Maybe";
-import { bind } from "../control/Monad";
 
 export const concat = <A>(as: A[][]): A[] =>
   as.reduce((acc, a) => [...acc, ...a], []);
@@ -21,7 +19,7 @@ export const init = <A>(a: A[]): Maybe.Maybe<A[]> =>
   a.length === 0 ? Maybe.nothing() : Maybe.just(a.slice(0, -1));
 
 export const uncons = <A>(as: A[]): Maybe.Maybe<[A, A[]]> =>
-  bind(head(as), (a: A) => fmap((b: A[]) => [a, b], tail(as)));
+  Maybe.bind(head(as), (a: A) => Maybe.fmap((b: A[]) => [a, b], tail(as)));
 
 export const singleton = <A>(a: A): A[] => [a];
 

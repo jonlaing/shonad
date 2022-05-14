@@ -25,10 +25,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.prop = exports.index = exports.tail = exports.head = exports.optional = exports.pipe = exports.compose = exports.over = exports.set = exports.viewE = exports.view = exports.lens = void 0;
 const Fn = __importStar(require("../base/Function"));
-const F = __importStar(require("../control/Functor"));
 const Maybe = __importStar(require("../data/Maybe"));
 const List = __importStar(require("../data/List"));
-const Monad = __importStar(require("../control/Monad"));
 const Dict = __importStar(require("../data/Dict"));
 const Either = __importStar(require("../data/Either"));
 const lens = (getter, setter) => ({
@@ -74,19 +72,19 @@ const optional = (fallback) => ({
 exports.optional = optional;
 exports.head = {
     get: List.head,
-    set: (v, xs) => Maybe.fromMaybe(xs, Monad.bind(v, (a) => F.fmap((tl) => [a, ...tl], List.tail(xs)))),
+    set: (v, xs) => Maybe.fromMaybe(xs, Maybe.bind(v, (a) => Maybe.fmap((tl) => [a, ...tl], List.tail(xs)))),
 };
 exports.tail = {
     get: List.tail,
-    set: (vs, xs) => Maybe.fromMaybe(xs, Monad.bind(vs, (as) => F.fmap((hd) => [hd, ...as], List.head(xs)))),
+    set: (vs, xs) => Maybe.fromMaybe(xs, Maybe.bind(vs, (as) => Maybe.fmap((hd) => [hd, ...as], List.head(xs)))),
 };
 const index = (i) => ({
     get: List.nth(i),
-    set: (x, xs) => Maybe.fromMaybe([], F.fmap((x) => List.update(x, i, xs), x)),
+    set: (x, xs) => Maybe.fromMaybe([], Maybe.fmap((x) => List.update(x, i, xs), x)),
 });
 exports.index = index;
 const prop = (k) => ({
     get: Dict.get(k),
-    set: (v, dict) => Maybe.fromMaybe(dict, F.fmap((x) => Dict.set(k, x, dict), v)),
+    set: (v, dict) => Maybe.fromMaybe(dict, Maybe.fmap((x) => Dict.set(k, x, dict), v)),
 });
 exports.prop = prop;

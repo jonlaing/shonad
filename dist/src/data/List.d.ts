@@ -1,8 +1,8 @@
 import * as Maybe from "./Maybe";
 export declare const concat: <A>(as: A[][]) => A[];
-export declare const head: <A>(a: A[]) => Maybe.Maybe<A>;
+export declare const head: (a: any[]) => Maybe.Maybe<any>;
 export declare const reverse: <A>(a: A[]) => A[];
-export declare const last: <A>(a: A[]) => Maybe.Maybe<A>;
+export declare const last: import("ts-toolbelt/out/Function/Function").Function<[a: unknown[]], Maybe.Maybe<any>>;
 export declare const tail: <A>(a: A[]) => Maybe.Maybe<A[]>;
 export declare const init: <A>(a: A[]) => Maybe.Maybe<A[]>;
 export declare const uncons: <A>(as: A[]) => Maybe.Maybe<[A, A[]]>;

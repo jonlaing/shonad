@@ -1,8 +1,6 @@
 import * as Fn from "../base/Function";
-import * as F from "../control/Functor";
 import * as Maybe from "../data/Maybe";
 import * as List from "../data/List";
-import * as Monad from "../control/Monad";
 import * as Dict from "../data/Dict";
 import * as Either from "../data/Either";
 import { Function } from "ts-toolbelt";
@@ -79,7 +77,7 @@ export const pipe = <A, B>(l0: Lens<A, B>, l1: Lens<A, B>): Lens<A, B> =>
   compose(l1, l0);
 
 export const optional = <A>(fallback: A): Lens<Maybe.Maybe<A>, A> => ({
-  get: (a: Maybe.Maybe<A>) => Maybe.fromMaybe(fallback, a),
+  get: (a: Maybe.Maybe<A>) => Maybe.fromMaybe(fallback, a) as A,
   set: (v: A, data: Maybe.Maybe<A>) => Maybe.just(v),
 });
 
@@ -88,7 +86,7 @@ export const head: Lens<any[], Maybe.Maybe<any>> = {
   set: (v: Maybe.Maybe<any>, xs: any[]) =>
     Maybe.fromMaybe(
       xs,
-      Monad.bind(v, (a) => F.fmap((tl: any[]) => [a, ...tl], List.tail(xs)))
+      Maybe.bind(v, (a) => Maybe.fmap((tl: any[]) => [a, ...tl], List.tail(xs)))
     ),
 };
 
@@ -97,18 +95,18 @@ export const tail: Lens<any[], Maybe.Maybe<any[]>> = {
   set: (vs: Maybe.Maybe<any[]>, xs: any[]) =>
     Maybe.fromMaybe(
       xs,
-      Monad.bind(vs, (as: any[]) =>
-        F.fmap((hd: any) => [hd, ...as], List.head(xs))
+      Maybe.bind(vs, (as: any[]) =>
+        Maybe.fmap((hd: any) => [hd, ...as], List.head(xs))
       )
     ),
 };
 
 export const index = (i: number): Lens<any[], Maybe.Maybe<any>> => ({
   get: List.nth(i),
-  set: (x, xs) =>
+  set: (x: Maybe.Maybe<any>, xs) =>
     Maybe.fromMaybe(
       [],
-      F.fmap((x: any) => List.update(x, i, xs), x)
+      Maybe.fmap((x: any) => List.update(x, i, xs), x)
     ),
 });
 
@@ -119,6 +117,6 @@ export const prop = (
   set: (v: Maybe.Maybe<any>, dict: Record<string, any>) =>
     Maybe.fromMaybe(
       dict,
-      F.fmap((x: any) => Dict.set(k, x, dict), v)
+      Maybe.fmap((x: any) => Dict.set(k, x, dict), v)
     ),
 });

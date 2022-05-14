@@ -23,21 +23,10 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.fmap = exports.makeFunctor = exports.implementFunctorClass = void 0;
-const Typeclass_1 = require("../base/Typeclass");
+exports.Functor = void 0;
 const Fn = __importStar(require("../base/Function"));
-const implementations = new Typeclass_1.Implementations();
-const implementFunctorClass = (name, fmap) => {
-    const _class = {
-        functions: {
-            fmap,
-        },
-    };
-    implementations.add(name, _class);
-};
-exports.implementFunctorClass = implementFunctorClass;
-const makeFunctor = (name, x) => {
-    return Object.assign(Object.assign({}, x), { __functor: name });
-};
-exports.makeFunctor = makeFunctor;
-exports.fmap = Fn.curry((f, x) => implementations.get(x.__functor).functions.fmap(f, x));
+const Typeclass_1 = require("./Typeclass");
+class Functor extends Typeclass_1.Typeclass {
+}
+exports.Functor = Functor;
+Functor.fmap = Fn.curry((f, x) => x.fmap(f));

@@ -1,94 +1,79 @@
-import { ApplyFn, PureFn } from "../control/Applicative";
-import { FMapFn } from "../control/Functor";
-import {
-  BindFn,
-  implementMonadClass,
-  makeMonad,
-  Monad,
-  MonadFactory,
-} from "../control/Monad";
+import { Function } from "ts-toolbelt";
+import { Monad } from "../control/Monad";
+import * as Fn from "../base/Function";
 import * as Util from "../base/Util";
 
-export type Just<A> = { __val: A } & Monad<A, "maybe">;
-
-export type Nothing<A> = {} & Monad<A, "maybe">;
-
-export type Maybe<A> = Just<A> | Nothing<A>;
-
-type MaybeFmap<A> = FMapFn<A, any, Maybe<A>, Maybe<any>>;
-type MaybePure<A> = PureFn<Maybe<A>>;
-type MaybeApply<A, B> = ApplyFn<Maybe<(a: A) => B>, Maybe<A>, Maybe<B>>;
-type MaybeBind<A, B> = BindFn<A, B, Maybe<A>, Maybe<B>>;
-
-type MaybeClass = MonadFactory<
-  Maybe<any>,
-  MaybeFmap<any>,
-  MaybePure<any>,
-  MaybeApply<any, any>,
-  MaybeBind<any, any>
->;
-
-export const just = <A>(a: A) =>
-  makeMonad<{ __val: A }, Just<A>>("maybe", { __val: a });
-
-export const nothing = <A>(a?: undefined) =>
-  makeMonad<{}, Nothing<A>>("maybe", {});
-
-export const maybe = <A, B>(fallback: B, f: (a: A) => B, x: Maybe<A>): B =>
-  isJust(x) ? f((x as Just<A>).__val) : fallback;
-
-export const isJust = (x: Maybe<any>) => (x as Just<any>).__val !== undefined;
-export const isNothing = (x: Maybe<any>) => !isJust(x);
-
-export function fromMaybe<A>(fallback: A): (x: Maybe<A>) => A;
-export function fromMaybe<A>(fallback: A, x: Maybe<A>): A;
-export function fromMaybe<A>(fallback: A, x?: Maybe<A>): any {
-  if (x === undefined) return (x: Maybe<A>) => fromMaybe(fallback, x);
-  return isJust(x) ? (x as Just<A>).__val : fallback;
+export abstract class Maybe<A> extends Monad<A> {
+  static pure(a: any) {
+    return new Just(a);
+  }
+  static return_ = Maybe.pure;
 }
 
+export const fmap = Maybe.fmap;
+export const apply = Maybe.apply;
+export const bind = Maybe.bind;
+export const pure = Maybe.pure;
+export const return_ = Maybe.return_;
+
+export class Just<A> extends Maybe<A> {
+  isJust = Fn.always(true);
+  isNothing = Fn.always(false);
+
+  fmap = <B>(f: (a: A) => B): Maybe<B> => new Just(f(this.val));
+  apply = (f: Maybe<Function.Function>): Maybe<any> => {
+    return (isJust(f) ? fmap(f.val, this) : nothing()) as Maybe<any>;
+  };
+  bind = (f: (a: any) => Maybe<any>): Maybe<any> => f(this.val);
+}
+
+export class Nothing<A> extends Maybe<A> {
+  isJust = Fn.always(false);
+  isNothing = Fn.always(true);
+
+  fmap = <B>(f: (a: A) => any): Maybe<B> =>
+    new Nothing(this.val as unknown as B);
+  apply = (f: Maybe<Function.Function>): Maybe<any> => this;
+  bind = (f: (a: any) => Maybe<any>) => this;
+}
+
+export const just = <A>(x: A) => new Just<A>(x);
+export const nothing = <A>(x?: A) => new Nothing<A>(x as A);
+
+export const isJust = (x: Maybe<any>) => (x as Just<any>).isJust();
+export const isNothing = (x: Maybe<any>) => (x as Nothing<any>).isNothing();
+
+export const maybe = Fn.curry(
+  (fallback: any, f: (a: any) => any, x: Maybe<any>) =>
+    isJust(x) ? f(x.val) : fallback
+);
+
+export const fromMaybe = Fn.curry(
+  <A>(fallback: A, x: Maybe<A>): A => (isJust(x) ? x.val : fallback)
+);
+
 export const maybeNil = <A>(a: A | undefined): Maybe<A> =>
-  Util.isNil(a) ? nothing() : just(a);
+  Util.isNil(a) ? nothing(a) : just(a as A);
 
 export const listToMaybe = (a: any[]): Maybe<any> =>
-  a.length > 0 ? just(a) : nothing();
+  a.length > 0 ? just(a[0]) : nothing();
 
 export const maybeToList = <A>(x: Maybe<A>): A[] =>
   fromMaybe(
     [],
-    fmap((a) => [a], x)
+    Maybe.fmap((a) => [a], x)
   );
 
 export const catMaybes = <A>(xs: Maybe<A>[]): A[] =>
-  xs.reduce(
-    (acc, x) => (isJust(x) ? [...acc, (x as Just<A>).__val] : acc),
-    [] as A[]
-  );
+  xs.reduce((acc: A[], x) => (isJust(x) ? [...acc, x.val] : acc), [] as A[]);
 
-export const mapMaybe = <A, B>(f: (a: A) => Maybe<B>, as: A[]): B[] =>
-  as.reduce((acc, a) => {
-    const res = f(a);
-    return isJust(res) ? [...acc, (res as Just<B>).__val] : acc;
-  }, [] as B[]);
-
-export const fmap = <A, B>(f: (a: A) => B, x: Maybe<A>) =>
-  (isJust(x) ? just(f((x as Just<any>).__val)) : nothing()) as Maybe<B>;
-
-export const pure = just;
-
-export const apply: MaybeApply<any, any> = <
-  A,
-  B,
-  T extends Maybe<(a: A) => B> = Maybe<(a: A) => B>
->(
-  x: T,
-  y: Maybe<A>
-): Maybe<B> => fmap((g: (a: A) => B) => g((y as Just<A>).__val), x);
-
-export const bind = <A, B>(x: Maybe<A>, f: (a: A) => Maybe<B>): Maybe<B> =>
-  (isJust(x) ? f((x as Just<A>).__val) : nothing()) as Maybe<B>;
-
-implementMonadClass<MaybeClass>("maybe", { fmap, pure, apply, bind });
+export const mapMaybe = Fn.curry(
+  (f: (a: any) => Maybe<any>, as: any[]): any[] =>
+    as.reduce((acc, a) => {
+      const res = f(a);
+      return isJust(res) ? [...acc, res.val] : acc;
+    }, [])
+);
 
 export type MaybeRecord<T extends Record<string, any>> = {
   [k in keyof T]: Maybe<T[k]>;

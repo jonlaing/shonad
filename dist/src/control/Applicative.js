@@ -23,25 +23,12 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.apply_ = exports.apply = exports.makeApplicative = exports.implementApplicativeClass = void 0;
-const Functor_1 = require("./Functor");
-const Typeclass_1 = require("../base/Typeclass");
+exports.apply_ = exports.apply = exports.Applicative = void 0;
 const Fn = __importStar(require("../base/Function"));
-const implementations = new Typeclass_1.Implementations();
-const implementApplicativeClass = (name, { fmap, pure, apply }) => {
-    const _class = {
-        functions: {
-            pure,
-            apply,
-        },
-    };
-    implementations.add(name, _class);
-    (0, Functor_1.implementFunctorClass)(name, fmap);
-};
-exports.implementApplicativeClass = implementApplicativeClass;
-const makeApplicative = (name, x) => {
-    return Object.assign(Object.assign({}, x), { __applicative: name, __functor: name });
-};
-exports.makeApplicative = makeApplicative;
-exports.apply = Fn.curry((f, x) => implementations.get(x.__applicative).functions.apply(f, x));
+const Functor_1 = require("./Functor");
+class Applicative extends Functor_1.Functor {
+}
+exports.Applicative = Applicative;
+Applicative.apply = Fn.curry((f, x) => x.apply(f));
+exports.apply = Applicative.apply;
 exports.apply_ = Fn.flip(exports.apply);
