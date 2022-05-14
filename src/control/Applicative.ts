@@ -1,3 +1,4 @@
+import { Function } from "ts-toolbelt";
 import {
   FMapFn,
   Functor,
@@ -5,6 +6,7 @@ import {
   implementFunctorClass,
 } from "./Functor";
 import { Implementations } from "../base/Typeclass";
+import * as Fn from "../base/Function";
 
 export type ExtractApplicativeVal<T> = T extends Applicative<infer X, any>
   ? X
@@ -91,22 +93,9 @@ export const makeApplicative = <T, U extends Applicative<T, any>>(
   return { ...x, __applicative: name, __functor: name } as unknown as U;
 };
 
-export function apply<T extends Applicative<(a: any) => any, any>>(
-  f: T
-): (
-  x: Applicative<ExtractApplicativeParam<T>, ExtractApplicativeName<T>>
-) => Applicative<ExtractApplicativeReturn<T>, ExtractApplicativeName<T>>;
-export function apply<T extends Applicative<(a: any) => any, any>>(
-  f: T,
-  x: Applicative<ExtractApplicativeParam<T>, ExtractApplicativeName<T>>
-): Applicative<ExtractApplicativeReturn<T>, ExtractApplicativeName<T>>;
-export function apply<T extends Applicative<(a: any) => any, any>>(
-  f: T,
-  x?: Applicative<ExtractApplicativeParam<T>, ExtractApplicativeName<T>>
-): any {
-  if (x === undefined)
-    return (
-      x: Applicative<ExtractApplicativeParam<T>, ExtractApplicativeName<T>>
-    ) => apply(f, x);
-  return implementations.get(x.__applicative).functions.apply(f, x);
-}
+export const apply = Fn.curry(
+  (f: Applicative<Function.Function, any>, x: Applicative<any, any>): any =>
+    implementations.get(x.__applicative).functions.apply(f, x)
+);
+
+export const apply_ = Fn.flip(apply);

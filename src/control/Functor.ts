@@ -1,4 +1,6 @@
+import { Function } from "ts-toolbelt";
 import { Implementations, Typeclass } from "../base/Typeclass";
+import * as Fn from "../base/Function";
 
 export type ExtractFunctorVal<T> = T extends Functor<infer X, any> ? X : never;
 export type ExtractFunctor<T> = T extends FunctorFactory<infer X, any>
@@ -47,26 +49,7 @@ export const makeFunctor = <T, U extends Functor<T, any>>(
   return { ...x, __functor: name } as unknown as U;
 };
 
-export function fmap<
-  A,
-  B,
-  T extends Functor<A, any>,
-  U extends Functor<B, any>
->(f: (a: A) => B): (x: T) => U;
-export function fmap<
-  A,
-  B,
-  T extends Functor<A, any>,
-  U extends Functor<B, any>
->(f: (a: A) => B, x: T): U;
-export function fmap<
-  A,
-  B,
-  T extends Functor<A, any>,
-  U extends Functor<B, any>
->(f: (a: A) => B, x?: T): any {
-  if (x === undefined) {
-    return (x0: T) => fmap(f, x0) as U;
-  }
-  return implementations.get(x.__functor).functions.fmap(f, x) as U;
-}
+export const fmap = Fn.curry(
+  (f: Function.Function, x: Functor<any, any>): Functor<any, any> =>
+    implementations.get(x.__functor).functions.fmap(f, x)
+);

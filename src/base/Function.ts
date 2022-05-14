@@ -1,14 +1,38 @@
-export function compose(...funcs: ((...x: any) => any)[]): (z: any) => any {
-  return (x: any) => funcs.reduce((acc: any, f: (y: any) => any) => f(acc), x);
-}
+import { Function } from "ts-toolbelt";
 
-export function pipe(...funcs: ((x: any) => any)[]): (z: any) => any {
+export type MaybeCurried<F extends Function.Function> = F | Function.Curry<F>;
+
+const _curryN = (
+  n: number,
+  args: any[],
+  f: Function.Function
+): Function.Function | any => {
+  if (n <= 0) return f(...args);
+
+  return function () {
+    return _curryN(n - arguments.length, [...args, ...arguments], f);
+  };
+};
+export const curryN = <Fn extends Function.Function>(
+  n: number,
+  f: Fn
+): Function.Curry<Fn> => _curryN(n, [], f);
+
+export const curry = <Fn extends Function.Function>(
+  f: Fn
+): Function.Curry<Fn> => curryN(f.length, f);
+
+export const compose: Function.Compose = (...funcs: Function.Function[]) => {
   return (x: any) =>
-    funcs.reduceRight((acc: any, f: (y: any) => any) => f(acc), x);
-}
+    funcs.reduceRight((acc: any, f: Function.Function) => f(acc), x);
+};
+
+export const pipe: Function.Pipe = (...funcs: Function.Function[]) => {
+  return (x: any) => funcs.reduce((acc: any, f: (y: any) => any) => f(acc), x);
+};
 
 export const always =
-  <A>(x: A): (() => A) =>
+  <A>(x: A): ((a?: any) => A) =>
   () =>
     x;
 
@@ -18,25 +42,13 @@ export const true_ = always(true);
 
 export const identity = <A>(x: A) => x;
 
-export function flip<F extends (b: B, a: A) => any, A, B>(
-  f: F
-): (a: A, b?: B) => ReturnType<F>;
-export function flip<F extends (b: B, a: A) => any, A, B>(
-  f: F,
-  a: A
-): (b: B) => ReturnType<F>;
-export function flip<F extends (b: B, a: A) => any, A, B>(
-  f: F,
-  a: A,
-  b: B
-): ReturnType<F>;
-export function flip<F extends (b: B, a: A) => any, A, B>(
-  f: F,
-  a?: A,
-  b?: B
-): any {
-  if (a === undefined) return (a: A, b: B) => flip(f, a, b);
-  if (b === undefined) return (b: B) => flip(f, a, b);
-
-  return f(b, a);
-}
+export const flip = curry(
+  <F extends Function.Function>(
+    f: F,
+    a: Parameters<F>[1],
+    b: Parameters<F>[0],
+    ...args: any[]
+  ) => {
+    return f(b, a, ...args);
+  }
+);

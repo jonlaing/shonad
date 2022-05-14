@@ -1,145 +1,66 @@
+import { Function } from "ts-toolbelt";
 import * as Maybe from "./Maybe";
 import * as Fn from "../base/Function";
 import * as Ap from "../control/Applicative";
 import * as Util from "../base/Util";
 import * as F from "../control/Functor";
 
-export function get<A extends Record<string, any>, K extends keyof A>(
-  key: K
-): (dict: A) => Maybe.Maybe<A[K]>;
-export function get<A extends Record<string, any>, K extends keyof A>(
-  key: K,
-  dict: A
-): Maybe.Maybe<A[K]>;
-export function get<A extends Record<string, any>, K extends keyof A>(
-  key: K,
-  dict?: A
-): any {
-  if (dict === undefined) return (dict: A) => get(key, dict);
+export const get = Fn.curry(
+  (key: string, dict: Record<string, any>): Maybe.Maybe<any> =>
+    Maybe.maybeNil(dict[key])
+);
 
-  return Maybe.maybeNil(dict[key]);
-}
+export const set = Fn.curry(
+  (key: string, val: any, dict: Record<string, any>): Record<string, any> => ({
+    ...dict,
+    [key]: val,
+  })
+);
 
-export function set<A extends Record<string, any>, K extends keyof A>(
-  key: K
-): (val: A[K], dict: A) => A;
-export function set<A extends Record<string, any>, K extends keyof A>(
-  key: K,
-  val: A[K]
-): (dict: A) => A;
-export function set<A extends Record<string, any>, K extends keyof A>(
-  key: K,
-  val: A[K],
-  dict: A
-): A;
-export function set<A extends Record<string, any>, K extends keyof A>(
-  key: K,
-  val?: A[K],
-  dict?: A
-): any {
-  if (val === undefined) return (val: A[K], dict: A) => set(key, val, dict);
-  if (dict === undefined) return (dict: A) => set(key, val, dict);
+export const unset = Fn.curry(
+  (k: string, dict: Record<string, any>): Record<string, any> =>
+    Object.keys(dict).reduce(
+      (acc, _k) => (k === _k ? acc : { [_k]: dict[_k] }),
+      {}
+    )
+);
 
-  return { ...dict, [key]: val };
-}
+export const eqProps = Fn.curry(
+  (k: string, d0: Record<string, any>, d1: Record<string, any>): any =>
+    Fn.pipe(
+      Ap.apply_(get(k, d0)),
+      Ap.apply_(get(k, d1)),
+      Maybe.fromMaybe(false)
+    )(Maybe.just(Util.eq))
+);
 
-export function unset<T extends Record<string, any>>(
-  k: string
-): (dict: T) => Partial<T>;
-export function unset<T extends Record<string, any>>(
-  k: string,
-  dict: T
-): Partial<T>;
-export function unset<T extends Record<string, any>>(k: string, dict?: T): any {
-  if (dict === undefined) return (dict: T) => unset(k, dict);
+export const map = Fn.curry(
+  (f: Function.Function, dict: Record<string, any>): Record<string, any> =>
+    Object.keys(dict).reduce(
+      (acc, k: string) => ({ ...acc, [k]: f(dict[k]) }),
+      {}
+    )
+);
 
-  return Object.keys(dict).reduce(
-    (acc, _k) => (k === _k ? acc : { [_k]: dict[_k] }),
-    {}
-  );
-}
+export const mapi = Fn.curry(
+  (f: Function.Function, dict: Record<string, any>): Record<string, any> =>
+    Object.keys(dict).reduce(
+      (acc: Record<string, any>, k: string) => ({ ...acc, [k]: f(dict[k], k) }),
+      {}
+    )
+);
 
-export function eqProps<T extends Record<string, any>>(
-  k: string
-): (d0: T, d1?: T) => boolean;
-export function eqProps<T extends Record<string, any>>(
-  k: string,
-  d0: T
-): (d1: T) => boolean;
-export function eqProps<T extends Record<string, any>>(
-  k: string,
-  d0: T,
-  d1: T
-): boolean;
-export function eqProps<T extends Record<string, any>>(
-  k: string,
-  d0?: T,
-  d1?: T
-): any {
-  if (d0 === undefined) return (d0: T, d1: T) => eqProps(k, d0, d1);
-  if (d1 === undefined) return (d1: T) => eqProps(k, d0, d1);
+export const evolve = Fn.curry(
+  (
+    e: Record<string, Function.Function>,
+    d: Record<string, any>
+  ): Record<string, any> =>
+    mapi(
+      (v: any, k: string) => Maybe.fromMaybe(v, Ap.apply(get(k, e), get(k, d))),
+      d
+    )
+);
 
-  return Fn.pipe(
-    Ap.apply(get(k, d0)),
-    Ap.apply(get(k, d1)),
-    Maybe.fromMaybe(false)
-  )(Maybe.just(Util.eq));
-}
-
-export function map<T extends Record<string, any>>(
-  f: (a: any) => any
-): (dict: T) => any;
-export function map<T extends Record<string, any>>(
-  f: (a: any) => any,
-  dict: T
-): any;
-export function map<T extends Record<string, any>>(
-  f: (a: any) => any,
-  dict?: T
-): any {
-  if (dict === undefined) return (dict: T) => map(f, dict);
-
-  Object.keys(dict).map((k: string) => ({ [k]: f(dict[k]) }));
-}
-
-export function mapi<T extends Record<string, any>>(
-  f: (a: any, i: string) => any
-): (dict: T) => any;
-export function mapi<T extends Record<string, any>>(
-  f: (a: any, i: string) => any,
-  dict: T
-): any;
-export function mapi<T extends Record<string, any>>(
-  f: (a: any, i: string) => any,
-  dict?: T
-): any {
-  if (dict === undefined) return (dict: T) => mapi(f, dict);
-
-  Object.keys(dict).map((k: string) => ({ [k]: f(dict[k], k) }));
-}
-
-export function evolve<T extends Record<string, any>>(
-  e: Record<string, (a: any) => any>
-): (d: T) => Record<string, any>;
-export function evolve<T extends Record<string, any>>(
-  e: Record<string, (a: any) => any>,
-  d: T
-): Record<string, any>;
-export function evolve<T extends Record<string, any>>(
-  e: Record<string, (a: any) => any>,
-  d?: T
-): any {
-  if (d === undefined) return (d: T) => evolve(e, d);
-
-  return mapi((v, k) => Maybe.fromMaybe(v, F.fmap(e[k], get(k, d))));
-}
-
-export function has<T extends Record<string, any>>(
-  k: string
-): (d: T) => boolean;
-export function has<T extends Record<string, any>>(k: string, d: T): boolean;
-export function has<T extends Record<string, any>>(k: string, d?: T): any {
-  if (d === undefined) return (d: T) => has(k, d);
-
-  return Maybe.fromMaybe(false, F.fmap(Fn.true_, get(k, d)));
-}
+export const has = Fn.curry((k: string, d: Record<string, any>): boolean =>
+  Maybe.fromMaybe(false, F.fmap(Fn.true_, get(k, d)))
+);

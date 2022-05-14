@@ -1,0 +1,10 @@
+import { Function } from "ts-toolbelt";
+import * as Maybe from "./Maybe";
+export declare const get: Function.Curry<(key: string, dict: Record<string, any>) => Maybe.Maybe<any>>;
+export declare const set: Function.Curry<(key: string, val: any, dict: Record<string, any>) => Record<string, any>>;
+export declare const unset: Function.Curry<(k: string, dict: Record<string, any>) => Record<string, any>>;
+export declare const eqProps: Function.Curry<(k: string, d0: Record<string, any>, d1: Record<string, any>) => any>;
+export declare const map: Function.Curry<(f: Function.Function, dict: Record<string, any>) => Record<string, any>>;
+export declare const mapi: Function.Curry<(f: Function.Function, dict: Record<string, any>) => Record<string, any>>;
+export declare const evolve: Function.Curry<(e: Record<string, Function.Function>, d: Record<string, any>) => Record<string, any>>;
+export declare const has: Function.Curry<(k: string, d: Record<string, any>) => boolean>;
