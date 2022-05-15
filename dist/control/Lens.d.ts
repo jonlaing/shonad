@@ -28,6 +28,6 @@ export declare const compose: <A, B>(...lenses: Lens<any, any>[]) => Lens<A, B>;
 export declare const optional: <A>(fallback: A) => Lens<Maybe.Maybe<A>, A>;
 export declare const head: Lens<any[], Maybe.Maybe<any>>;
 export declare const tail: Lens<any[], Maybe.Maybe<any[]>>;
-export declare const index: (i: number) => Lens<any[], Maybe.Maybe<any>>;
-export declare const prop: (k: string) => Lens<Record<string, any>, Maybe.Maybe<any>>;
+export declare const index: <A>(i: number) => Lens<A[], Maybe.Maybe<A>>;
+export declare const prop: <A>(k: string) => Lens<Record<string, A>, Maybe.Maybe<A>>;
 export {};

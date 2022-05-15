@@ -147,13 +147,13 @@ describe("Lens", () => {
     describe("over", () => {
       it("maps over element at index", () => {
         expect(
-          L.over(L.index(1), Maybe.fmap(Num.add(1)), [1, 2, 3])
+          L.over(L.index<number>(1), Maybe.fmap(Num.add(1)), [1, 2, 3])
         ).toStrictEqual([1, 3, 3]);
       });
 
       it("returns same list when index not found", () => {
         expect(
-          L.over(L.index(3), Maybe.fmap(Num.add(1)), [1, 2, 3])
+          L.over(L.index<number>(3), Maybe.fmap(Num.add(1)), [1, 2, 3])
         ).toStrictEqual([1, 2, 3]);
       });
     });
@@ -186,13 +186,21 @@ describe("Lens", () => {
 
     it("maps over key", () => {
       expect(
-        L.over(L.prop("a"), Maybe.fmap(Num.add(1)), { a: 1, b: 2, c: 3 })
+        L.over(L.prop<number>("a"), Maybe.fmap(Num.add(1)), {
+          a: 1,
+          b: 2,
+          c: 3,
+        })
       ).toStrictEqual({ a: 2, b: 2, c: 3 });
     });
 
     it("ignores mapping if key not found", () => {
       expect(
-        L.over(L.prop("d"), Maybe.fmap(Num.add(1)), { a: 1, b: 2, c: 3 })
+        L.over(L.prop<number>("d"), Maybe.fmap(Num.add(1)), {
+          a: 1,
+          b: 2,
+          c: 3,
+        })
       ).toStrictEqual({ a: 1, b: 2, c: 3 });
     });
   });

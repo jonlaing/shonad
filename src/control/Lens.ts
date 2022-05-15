@@ -105,18 +105,18 @@ export const tail: Lens<any[], Maybe.Maybe<any[]>> = {
     ),
 };
 
-export const index = (i: number): Lens<any[], Maybe.Maybe<any>> => ({
+export const index = <A>(i: number): Lens<A[], Maybe.Maybe<A>> => ({
   get: List.nth(i),
-  set: (x: Maybe.Maybe<any>, xs) =>
+  set: (x: Maybe.Maybe<A>, xs) =>
     Maybe.fromMaybe(
       xs,
-      Maybe.fmap((x: any) => List.update(x, i, xs), x)
+      Maybe.fmap((x: A) => List.update(x, i, xs), x)
     ),
 });
 
-export const prop = (
+export const prop = <A>(
   k: string
-): Lens<Record<string, any>, Maybe.Maybe<any>> => ({
+): Lens<Record<string, A>, Maybe.Maybe<A>> => ({
   get: Dict.get(k),
   set: (v: Maybe.Maybe<any>, dict: Record<string, any>) =>
     Maybe.fromMaybe(
