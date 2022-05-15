@@ -1,7 +1,7 @@
 {
   "name": "shonad",
   "version": "1.0.0",
-  "description": "Functoinal helper library to make Javascript and Typescript programs more predictable",
+  "description": "Functional helper library to make Javascript and Typescript programs more predictable",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -44,6 +44,7 @@
     "typescript": "^4.6.4"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "tsc -p tsconfig.build.json"
   }
 }

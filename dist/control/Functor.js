@@ -25,7 +25,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Functor = void 0;
 const Fn = __importStar(require("../base/Function"));
-const Typeclass_1 = require("./Typeclass");
+const Typeclass_1 = require("../base/Typeclass");
 class Functor extends Typeclass_1.Typeclass {
 }
 exports.Functor = Functor;

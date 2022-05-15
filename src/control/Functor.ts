@@ -1,6 +1,6 @@
 import { Function } from "ts-toolbelt";
 import * as Fn from "../base/Function";
-import { Typeclass } from "./Typeclass";
+import { Typeclass } from "../base/Typeclass";
 
 export type Mapper = Function.Function<[any], any>;
 export type StaticFMap<T extends Functor<any>> = Function.Curry<

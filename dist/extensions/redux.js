@@ -24,35 +24,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.always = exports.over = exports.set = exports.pipe = void 0;
+const Fn = __importStar(require("../base/Function"));
 const L = __importStar(require("../control/Lens"));
 const pipe = (...funcs) => (state, action) => funcs.reduce((s, f) => f(s, action), state);
 exports.pipe = pipe;
-function set(lens, state, action) {
-    if (state === undefined)
-        return (state, action) => set(lens, state, action);
-    if (action === undefined)
-        return (action) => set(lens, state, action);
-    return L.set(lens, action.payload, state);
-}
-exports.set = set;
-function over(fn, lens, state, action) {
-    if (lens === undefined)
-        return (lens, state, action) => over(fn, lens, state, action);
-    if (state === undefined)
-        return (state, action) => over(fn, lens, state, action);
-    if (action === undefined)
-        return (action) => over(fn, lens, state, action);
-    return L.over(lens, fn(action.payload), state);
-}
-exports.over = over;
-function always(lens, val, state, action) {
-    if (val === undefined)
-        return (val, state, action) => always(lens, val, state, action);
-    if (state === undefined)
-        return (state, action) => always(lens, val, state, action);
-    if (action === undefined)
-        return (action) => always(lens, val, state, action);
-    return L.set(lens, val, state);
-}
-exports.always = always;
+exports.set = Fn.curry((lens, state, action) => L.set(lens, action.payload, state));
+exports.over = Fn.curry((fn, lens, state, action) => L.over(lens, fn(action.payload), state));
+exports.always = Fn.curry((lens, val, state, action) => L.set(lens, val, state));
 //# sourceMappingURL=redux.js.map
