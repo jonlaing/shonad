@@ -28,3 +28,4 @@ exports.applicative = __importStar(require("./Applicative"));
 exports.functor = __importStar(require("./Functor"));
 exports.lens = __importStar(require("./Lens"));
 exports.monad = __importStar(require("./Monad"));
+//# sourceMappingURL=index.js.map

@@ -28,3 +28,4 @@ exports.dict = __importStar(require("./Dict"));
 exports.either = __importStar(require("./Either"));
 exports.list = __importStar(require("./List"));
 exports.maybe = __importStar(require("./Maybe"));
+//# sourceMappingURL=index.js.map

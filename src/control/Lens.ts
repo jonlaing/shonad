@@ -3,7 +3,7 @@ import * as Maybe from "../data/Maybe";
 import * as List from "../data/List";
 import * as Dict from "../data/Dict";
 import * as Either from "../data/Either";
-import { Function } from "ts-toolbelt";
+import { A, B, F, Function, I } from "ts-toolbelt";
 
 export type GetterFn<A, B> = Function.Function<[A], B>;
 export type SetterFn<A, B> = Function.Function;
@@ -20,61 +20,65 @@ export const lens = <A, B>(
   set: setter,
 });
 
-export function view<A, B>(lens: Lens<A, B>): (data: A) => B;
-export function view<A, B>(lens: Lens<A, B>, data: A): B;
-export function view<A, B>(lens: Lens<A, B>, data?: A): any {
-  if (data === undefined) return (data: A) => view(lens, data);
+declare function _view<A, B>(lens: Lens<A, B>): (data: A) => B;
+declare function _view<A, B>(lens: Lens<A, B>, data: A): B;
 
-  return lens.get(data);
-}
+export const view: typeof _view = Fn.curry(
+  <A, B>(lens: Lens<A, B>, data: A): B => lens.get(data)
+);
 
-export function viewE<A, B>(
+declare function _viewE<A, B>(
   lens: Lens<A, Maybe.Maybe<B>>
 ): (error: string, data?: A) => Either.Either<string, B>;
-export function viewE<A, B>(
+declare function _viewE<A, B>(
   lens: Lens<A, Maybe.Maybe<B>>,
   error: string
 ): (data: A) => Either.Either<string, B>;
-export function viewE<A, B>(
+declare function _viewE<A, B>(
   lens: Lens<A, Maybe.Maybe<B>>,
   error: string,
   data: A
 ): Either.Either<string, B>;
-export function viewE<A, B>(
-  lens: Lens<A, Maybe.Maybe<B>>,
-  error?: string,
-  data?: A
-): any {
-  if (error === undefined)
-    return (error: string, data: A) => viewE(lens, error, data);
-  if (data === undefined) return (data: A) => viewE(lens, error, data);
 
-  return Either.fromMaybe(error, view(lens, data));
-}
+export const viewE: typeof _viewE = Fn.curry(
+  <A, B>(
+    lens: Lens<A, Maybe.Maybe<B>>,
+    error: string,
+    data: A
+  ): Either.Either<string, B> => Either.fromMaybe(error, view(lens, data))
+);
 
-export const set = <A, B>(lens: Lens<A, B>, val: B, data: A) =>
-  lens.set(val, data);
+declare function _set<A, B>(lens: Lens<A, B>): (val: B, data: A) => A;
+declare function _set<A, B>(lens: Lens<A, B>, val: B): (data: A) => A;
+declare function _set<A, B>(lens: Lens<A, B>, val: B, data: A): A;
 
-export function over<A, B>(lens: Lens<A, B>): (f: (b: B) => B, data?: A) => A;
-export function over<A, B>(lens: Lens<A, B>, f: (b: B) => B): (data: A) => A;
-export function over<A, B>(lens: Lens<A, B>, f: (b: B) => B, data: A): A;
-export function over<A, B>(lens: Lens<A, B>, f?: (b: B) => B, data?: A): any {
-  if (f === undefined) return (f: (b: B) => B, data: A) => over(lens, f, data);
-  if (data === undefined) return (data: A) => over(lens, f, data);
+export const set: typeof _set = Fn.curry(
+  <A, B>(lens: Lens<A, B>, val: B, data: A): B => lens.set(val, data)
+);
 
-  return lens.set(f(lens.get(data)), data);
-}
+declare function _over<A, B>(lens: Lens<A, B>): (f: (b: B) => B, data: A) => A;
+declare function _over<A, B>(lens: Lens<A, B>, f: (b: B) => B): (data: A) => A;
+declare function _over<A, B>(lens: Lens<A, B>, f: (b: B) => B, data: A): A;
 
-export const compose = (
-  l0: Lens<any, any>,
-  l1: Lens<any, any>
-): Lens<any, any> => ({
-  get: Fn.compose(l1.get, l0.get),
-  set: Fn.compose(l0.set, over(l1)),
-});
+export const over: typeof _over = Fn.curry(
+  <A, B>(lens: Lens<A, B>, f: (b: B) => B, data: A): A =>
+    lens.set(f(lens.get(data)), data)
+);
 
-export const pipe = <A, B>(l0: Lens<A, B>, l1: Lens<A, B>): Lens<A, B> =>
-  compose(l1, l0);
+export const pipe = <A, B>(...lenses: Lens<any, any>[]): Lens<A, B> => {
+  if (lenses.length === 1) return lenses[0];
+
+  const [l0, l1, ...rest] = lenses;
+  const newLens = {
+    get: Fn.compose(l0.get, l1.get),
+    set: (a: A, x: any) => l1.set(l0.set(a, l1.get(x)), x),
+  };
+
+  return pipe(newLens, ...rest);
+};
+
+export const compose = <A, B>(...lenses: Lens<any, any>[]): Lens<A, B> =>
+  pipe(...List.reverse(lenses));
 
 export const optional = <A>(fallback: A): Lens<Maybe.Maybe<A>, A> => ({
   get: (a: Maybe.Maybe<A>) => Maybe.fromMaybe(fallback, a) as A,
@@ -105,7 +109,7 @@ export const index = (i: number): Lens<any[], Maybe.Maybe<any>> => ({
   get: List.nth(i),
   set: (x: Maybe.Maybe<any>, xs) =>
     Maybe.fromMaybe(
-      [],
+      xs,
       Maybe.fmap((x: any) => List.update(x, i, xs), x)
     ),
 });

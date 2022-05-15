@@ -1,0 +1,16 @@
+declare function _gt(a: number): (b: number) => boolean;
+declare function _gt(a: number, b: number): boolean;
+export declare const gt: typeof _gt;
+declare function _gte(a: number): (b: number) => boolean;
+declare function _gte(a: number, b: number): boolean;
+export declare const gte: typeof _gte;
+declare function _lt(a: number): (b: number) => boolean;
+declare function _lt(a: number, b: number): boolean;
+export declare const lt: typeof _lt;
+declare function _lte(a: number): (b: number) => boolean;
+declare function _lte(a: number, b: number): boolean;
+export declare const lte: typeof _lte;
+declare function _add(a: number): (b: number) => number;
+declare function _add(a: number, b: number): number;
+export declare const add: typeof _add;
+export {};

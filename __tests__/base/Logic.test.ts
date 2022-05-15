@@ -22,7 +22,11 @@ describe("Logic", () => {
     it("returns false for only one false statement", () => {
       expect(
         Lg.allPass(
-          [Util.eq(4), Util.eq(5), Util.eqBy((x: number) => x % 2 === 0, 2)],
+          [
+            Util.eq(4),
+            Util.eq(5),
+            Util.eqBy<number>((x: number) => x % 2 === 0, 2),
+          ],
           4
         )
       ).toBe(false);

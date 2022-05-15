@@ -27,3 +27,4 @@ exports.util = exports.typeclass = exports.functions = void 0;
 exports.functions = __importStar(require("./Function"));
 exports.typeclass = __importStar(require("./Typeclass"));
 exports.util = __importStar(require("./Util"));
+//# sourceMappingURL=index.js.map

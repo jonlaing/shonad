@@ -1,6 +1,6 @@
 import { Function } from "ts-toolbelt";
 
-export type MaybeCurried<F extends Function.Function> = F | Function.Curry<F>;
+export type Predicate<A> = (a: A) => boolean;
 
 const _curryN = (
   n: number,
@@ -22,12 +22,14 @@ export const curry = <Fn extends Function.Function>(
   f: Fn
 ): Function.Curry<Fn> => curryN(f.length, f);
 
-export const compose: Function.Compose = (...funcs: Function.Function[]) => {
+declare function _compose<A, B>(...funcs: Function.Function[]): Function<A, B>;
+
+export const compose: typeof _compose = (...funcs: Function.Function[]) => {
   return (x: any) =>
     funcs.reduceRight((acc: any, f: Function.Function) => f(acc), x);
 };
 
-export const pipe: Function.Pipe = (...funcs: Function.Function[]) => {
+export const pipe: typeof _compose = (...funcs: Function.Function[]) => {
   return (x: any) => funcs.reduce((acc: any, f: (y: any) => any) => f(acc), x);
 };
 
@@ -42,13 +44,41 @@ export const true_ = always(true);
 
 export const identity = <A>(x: A) => x;
 
+// declare function _flip<F extends Function.Function>(
+//   f: F
+// ): (a: Parameters<F>[1], b: Parameters<F>[0]) => Function.Return<F>;
+// declare function _flip<F extends Function.Function>(
+//   f: F,
+//   a: Parameters<F>[1]
+// ): (b: Parameters<F>[0]) => Function.Return<F>;
+// declare function _flip<F extends Function.Function>(
+//   f: F,
+//   a: Parameters<F>[1],
+//   b: Parameters<F>[0],
+//   ...args: any[]
+// ): Function.Return<F>;
+
 export const flip = curry(
   <F extends Function.Function>(
     f: F,
     a: Parameters<F>[1],
-    b: Parameters<F>[0],
-    ...args: any[]
+    b: Parameters<F>[0]
   ) => {
-    return f(b, a, ...args);
+    return f(b, a);
   }
+);
+
+export type Function<A, B> = Function.Function<[A], B>;
+
+declare function _fmap<A, B, C>(
+  f: Function<B, C>
+): (x: Function<A, B>) => Function<A, C>;
+declare function _fmap<A, B, C>(
+  f: Function<B, C>,
+  x: Function<A, B>
+): Function<A, C>;
+
+export const fmap: typeof _fmap = curry(
+  <A, B, C>(f: Function<B, C>, x: Function<A, B>): Function<A, C> =>
+    compose(f, x)
 );

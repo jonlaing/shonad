@@ -1,4 +1,4 @@
-import { Function } from "ts-toolbelt";
+import { A, Function } from "ts-toolbelt";
 import { Monad } from "../control/Monad";
 import * as Fn from "../base/Function";
 import * as Util from "../base/Util";
@@ -10,9 +10,45 @@ export abstract class Maybe<A> extends Monad<A> {
   static return_ = Maybe.pure;
 }
 
-export const fmap = Maybe.fmap;
-export const apply = Maybe.apply;
-export const bind = Maybe.bind;
+declare function _fmap<F extends Function.Function>(
+  f: F
+): (x: Maybe<Function.Parameters<F>[0]>) => Maybe<Function.Return<F>>;
+declare function _fmap<F extends Function.Function>(
+  f: F,
+  x: Maybe<Function.Parameters<F>[0]>
+): Maybe<Function.Return<F>>;
+
+export const fmap: typeof _fmap = Maybe.fmap;
+
+declare function _apply<F extends Function.Function>(
+  f: Maybe<F>
+): (x: Maybe<Function.Parameters<F>[0]>) => Maybe<Function.Return<F>>;
+declare function _apply<F extends Function.Function>(
+  f: Maybe<F>,
+  x: Maybe<Function.Parameters<F>[0]>
+): Maybe<Function.Return<F>>;
+
+export const apply: typeof _apply = Maybe.apply;
+
+declare function _apply_<A, B>(
+  x: Maybe<A>
+): (f: Maybe<Function.Function<[A], B>>) => Maybe<B>;
+declare function _apply_<A, B>(
+  x: Maybe<A>,
+  f: Maybe<Function.Function<[A], B>>
+): Maybe<B>;
+
+export const apply_: typeof _apply_ = Fn.flip(Maybe.apply);
+
+declare function _bind<A, B>(
+  x: Maybe<A>
+): (f: Function.Function<[A], Maybe<B>>) => Maybe<B>;
+declare function _bind<A, B>(
+  x: Maybe<A>,
+  f: Function.Function<[A], Maybe<B>>
+): Maybe<B>;
+
+export const bind: typeof _bind = Maybe.bind;
 export const pure = Maybe.pure;
 export const return_ = Maybe.return_;
 
@@ -43,12 +79,28 @@ export const nothing = <A>(x?: A) => new Nothing<A>(x as A);
 export const isJust = (x: Maybe<any>) => (x as Just<any>).isJust();
 export const isNothing = (x: Maybe<any>) => (x as Nothing<any>).isNothing();
 
-export const maybe = Fn.curry(
-  (fallback: any, f: (a: any) => any, x: Maybe<any>) =>
+declare function _maybe<A, B>(
+  fallback: B
+): (f: Function.Function<[A], B>, x: Maybe<A>) => B;
+declare function _maybe<A, B>(
+  fallback: B,
+  f: Function.Function<[A], B>
+): (x: Maybe<A>) => B;
+declare function _maybe<A, B>(
+  fallback: B,
+  f: Function.Function<[A], B>,
+  x: Maybe<A>
+): B;
+
+export const maybe: typeof _maybe = Fn.curry(
+  <A, B>(fallback: B, f: Function.Function<[A], B>, x: Maybe<A>): B =>
     isJust(x) ? f(x.val) : fallback
 );
 
-export const fromMaybe = Fn.curry(
+declare function _fromMaybe<A>(fallback: A): (x: Maybe<A>) => A;
+declare function _fromMaybe<A>(fallback: A, x: Maybe<A>): A;
+
+export const fromMaybe: typeof _fromMaybe = Fn.curry(
   <A>(fallback: A, x: Maybe<A>): A => (isJust(x) ? x.val : fallback)
 );
 
@@ -67,12 +119,20 @@ export const maybeToList = <A>(x: Maybe<A>): A[] =>
 export const catMaybes = <A>(xs: Maybe<A>[]): A[] =>
   xs.reduce((acc: A[], x) => (isJust(x) ? [...acc, x.val] : acc), [] as A[]);
 
-export const mapMaybe = Fn.curry(
-  (f: (a: any) => Maybe<any>, as: any[]): any[] =>
+declare function _mapMaybe<A, B>(
+  f: Function.Function<[A], Maybe<B>>
+): (as: A[]) => B[];
+declare function _mapMaybe<A, B>(
+  f: Function.Function<[A], Maybe<B>>,
+  as: A[]
+): B[];
+
+export const mapMaybe: typeof _mapMaybe = Fn.curry(
+  <A, B>(f: (a: A) => Maybe<B>, as: A[]): B[] =>
     as.reduce((acc, a) => {
       const res = f(a);
       return isJust(res) ? [...acc, res.val] : acc;
-    }, [])
+    }, [] as B[])
 );
 
 export type MaybeRecord<T extends Record<string, any>> = {

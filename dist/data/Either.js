@@ -23,41 +23,64 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.bind = exports.apply = exports.pure = exports.fmap = exports.eitherNil = exports.fromMaybe = exports.partitionEithers = exports.fromRight = exports.fromLeft = exports.rights = exports.lefts = exports.either = exports.isRight = exports.isLeft = exports.right = exports.left = void 0;
-const M = __importStar(require("../control/Monad"));
+exports.bind = exports.apply_ = exports.apply = exports.pure = exports.fmap = exports.eitherNil = exports.fromMaybe = exports.partitionEithers = exports.fromRight = exports.fromLeft = exports.rights = exports.lefts = exports.either = exports.isRight = exports.isLeft = exports.right = exports.left = exports.Right = exports.Left = exports.Either = void 0;
+const Monad_1 = require("../control/Monad");
+const Fn = __importStar(require("../base/Function"));
 const Maybe = __importStar(require("./Maybe"));
 const Util = __importStar(require("../base/Util"));
-const left = (a) => M.makeMonad("either", { __left: a });
+class Either extends Monad_1.Monad {
+    static pure(a) {
+        return new Right(a);
+    }
+}
+exports.Either = Either;
+Either.return_ = Either.pure;
+class Left extends Either {
+    constructor() {
+        super(...arguments);
+        this.isLeft = Fn.always(true);
+        this.isRight = Fn.always(false);
+        this.fmap = (f) => this;
+        this.apply = (f) => this;
+        this.bind = (f) => this;
+    }
+}
+exports.Left = Left;
+class Right extends Either {
+    constructor() {
+        super(...arguments);
+        this.isLeft = Fn.always(false);
+        this.isRight = Fn.always(true);
+        this.fmap = (f) => new Right(f(this.val));
+        this.apply = (f) => f.val(this.val);
+        this.bind = (f) => f(this.val);
+    }
+}
+exports.Right = Right;
+const left = (a) => new Left(a);
 exports.left = left;
-const right = (b) => M.makeMonad("either", { __right: b });
+const right = (b) => new Right(b);
 exports.right = right;
-const isLeft = (x) => x.__left !== undefined;
+const isLeft = (x) => x.isLeft();
 exports.isLeft = isLeft;
-const isRight = (x) => x.__right !== undefined;
+const isRight = (x) => x.isRight();
 exports.isRight = isRight;
-const either = (f0, f1, x) => ((0, exports.isLeft)(x) ? f0(x.__left) : f1(x.__right));
-exports.either = either;
-const lefts = (xs) => xs.reduce((acc, x) => ((0, exports.isLeft)(x) ? [...acc, x.__left] : acc), []);
+exports.either = Fn.curry((f0, f1, x) => (0, exports.isLeft)(x) ? f0(x.val) : f1(x.val));
+const lefts = (xs) => xs.reduce((acc, x) => ((0, exports.isLeft)(x) ? [...acc, x.val] : acc), []);
 exports.lefts = lefts;
-const rights = (xs) => xs.reduce((acc, x) => ((0, exports.isRight)(x) ? [...acc, x.__right] : acc), []);
+const rights = (xs) => xs.reduce((acc, x) => ((0, exports.isRight)(x) ? [...acc, x.val] : acc), []);
 exports.rights = rights;
-const fromLeft = (fallback, x) => (0, exports.isLeft)(x) ? x.__left : fallback;
-exports.fromLeft = fromLeft;
-const fromRight = (fallback, x) => (0, exports.isRight)(x) ? x.__right : fallback;
-exports.fromRight = fromRight;
-const partitionEithers = (xs) => xs.reduce((acc, x) => (0, exports.isLeft)(x)
-    ? [[...acc[0], x.__left], acc[1]]
-    : [acc[0], [...acc[1], x.__right]], [[], []]);
+exports.fromLeft = Fn.curry((fallback, x) => ((0, exports.isLeft)(x) ? x.val : fallback));
+exports.fromRight = Fn.curry((fallback, x) => ((0, exports.isRight)(x) ? x.val : fallback));
+const partitionEithers = (xs) => xs.reduce((acc, x) => ((0, exports.isLeft)(x)
+    ? [[...acc[0], x.val], acc[1]]
+    : [acc[0], [...acc[1], x.val]]), [[], []]);
 exports.partitionEithers = partitionEithers;
-const fromMaybe = (error, m) => Maybe.isNothing(m) ? (0, exports.left)(error) : M.bind(m, exports.right);
-exports.fromMaybe = fromMaybe;
-const eitherNil = (error, x) => Util.isNil(x) ? (0, exports.left)(error) : (0, exports.right)(x);
-exports.eitherNil = eitherNil;
-const fmap = (f, x) => ((0, exports.isRight)(x) ? (0, exports.right)(f(x.__right)) : x);
-exports.fmap = fmap;
-exports.pure = exports.right;
-const apply = (x, y) => (0, exports.fmap)((g) => g(y.__right), x);
-exports.apply = apply;
-const bind = (x, f) => ((0, exports.isRight)(x) ? f(x.__right) : x);
-exports.bind = bind;
-M.implementMonadClass("either", { fmap: exports.fmap, pure: exports.pure, apply: exports.apply, bind: exports.bind });
+exports.fromMaybe = Fn.curry((error, m) => Maybe.isNothing(m) ? (0, exports.left)(error) : (0, exports.right)(m.val));
+exports.eitherNil = Fn.curry((error, x) => Util.isNil(x) ? (0, exports.left)(error) : (0, exports.right)(x));
+exports.fmap = Either.fmap;
+exports.pure = Either.pure;
+exports.apply = Either.apply;
+exports.apply_ = Fn.flip(exports.apply);
+exports.bind = Either.bind;
+//# sourceMappingURL=Either.js.map

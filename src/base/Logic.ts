@@ -1,8 +1,17 @@
 import * as Fn from "./Function";
 import { Function } from "ts-toolbelt";
 
-export const allPass = Fn.curry((fs: Function.Function[], x: any): boolean =>
-  fs.reduce((acc: boolean, f) => (acc ? f(x) : acc), true)
+declare function _allPass<A>(
+  fs: Function.Function<[A], boolean>[]
+): (x: A) => boolean;
+declare function _allPass<A>(
+  fs: Function.Function<[A], boolean>[],
+  x: A
+): boolean;
+
+export const allPass: typeof _allPass = Fn.curry(
+  (fs: Function.Function[], x: any): boolean =>
+    fs.reduce((acc: boolean, f) => (acc ? f(x) : acc), true)
 );
 
 export const and = Fn.curry((a: boolean, b: boolean): boolean => a && b);

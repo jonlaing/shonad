@@ -23,12 +23,10 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.prop = exports.index = exports.tail = exports.head = exports.optional = exports.pipe = exports.compose = exports.over = exports.set = exports.viewE = exports.view = exports.lens = void 0;
+exports.prop = exports.index = exports.tail = exports.head = exports.optional = exports.compose = exports.pipe = exports.over = exports.set = exports.viewE = exports.view = exports.lens = void 0;
 const Fn = __importStar(require("../base/Function"));
-const F = __importStar(require("../control/Functor"));
 const Maybe = __importStar(require("../data/Maybe"));
 const List = __importStar(require("../data/List"));
-const Monad = __importStar(require("../control/Monad"));
 const Dict = __importStar(require("../data/Dict"));
 const Either = __importStar(require("../data/Either"));
 const lens = (getter, setter) => ({
@@ -36,37 +34,23 @@ const lens = (getter, setter) => ({
     set: setter,
 });
 exports.lens = lens;
-function view(lens, data) {
-    if (data === undefined)
-        return (data) => view(lens, data);
-    return lens.get(data);
-}
-exports.view = view;
-function viewE(lens, error, data) {
-    if (error === undefined)
-        return (error, data) => viewE(lens, error, data);
-    if (data === undefined)
-        return (data) => viewE(lens, error, data);
-    return Either.fromMaybe(error, view(lens, data));
-}
-exports.viewE = viewE;
-const set = (lens, val, data) => lens.set(val, data);
-exports.set = set;
-function over(lens, f, data) {
-    if (f === undefined)
-        return (f, data) => over(lens, f, data);
-    if (data === undefined)
-        return (data) => over(lens, f, data);
-    return lens.set(f(lens.get(data)), data);
-}
-exports.over = over;
-const compose = (l0, l1) => ({
-    get: Fn.compose(l1.get, l0.get),
-    set: Fn.compose(l0.set, over(l1)),
-});
-exports.compose = compose;
-const pipe = (l0, l1) => (0, exports.compose)(l1, l0);
+exports.view = Fn.curry((lens, data) => lens.get(data));
+exports.viewE = Fn.curry((lens, error, data) => Either.fromMaybe(error, (0, exports.view)(lens, data)));
+exports.set = Fn.curry((lens, val, data) => lens.set(val, data));
+exports.over = Fn.curry((lens, f, data) => lens.set(f(lens.get(data)), data));
+const pipe = (...lenses) => {
+    if (lenses.length === 1)
+        return lenses[0];
+    const [l0, l1, ...rest] = lenses;
+    const newLens = {
+        get: Fn.compose(l0.get, l1.get),
+        set: (a, x) => l1.set(l0.set(a, l1.get(x)), x),
+    };
+    return (0, exports.pipe)(newLens, ...rest);
+};
 exports.pipe = pipe;
+const compose = (...lenses) => (0, exports.pipe)(...List.reverse(lenses));
+exports.compose = compose;
 const optional = (fallback) => ({
     get: (a) => Maybe.fromMaybe(fallback, a),
     set: (v, data) => Maybe.just(v),
@@ -74,19 +58,20 @@ const optional = (fallback) => ({
 exports.optional = optional;
 exports.head = {
     get: List.head,
-    set: (v, xs) => Maybe.fromMaybe(xs, Monad.bind(v, (a) => F.fmap((tl) => [a, ...tl], List.tail(xs)))),
+    set: (v, xs) => Maybe.fromMaybe(xs, Maybe.bind(v, (a) => Maybe.fmap((tl) => [a, ...tl], List.tail(xs)))),
 };
 exports.tail = {
     get: List.tail,
-    set: (vs, xs) => Maybe.fromMaybe(xs, Monad.bind(vs, (as) => F.fmap((hd) => [hd, ...as], List.head(xs)))),
+    set: (vs, xs) => Maybe.fromMaybe(xs, Maybe.bind(vs, (as) => Maybe.fmap((hd) => [hd, ...as], List.head(xs)))),
 };
 const index = (i) => ({
     get: List.nth(i),
-    set: (x, xs) => Maybe.fromMaybe([], F.fmap((x) => List.update(x, i, xs), x)),
+    set: (x, xs) => Maybe.fromMaybe(xs, Maybe.fmap((x) => List.update(x, i, xs), x)),
 });
 exports.index = index;
 const prop = (k) => ({
     get: Dict.get(k),
-    set: (v, dict) => Maybe.fromMaybe(dict, F.fmap((x) => Dict.set(k, x, dict), v)),
+    set: (v, dict) => Maybe.fromMaybe(dict, Maybe.fmap((x) => Dict.set(k, x, dict), v)),
 });
 exports.prop = prop;
+//# sourceMappingURL=Lens.js.map

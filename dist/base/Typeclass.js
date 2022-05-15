@@ -7,14 +7,13 @@ class Implementations {
     }
     add(name, val) {
         this.list = Object.assign(Object.assign({}, this.list), { [name]: val });
-        console.log(this.list);
     }
     get(name) {
-        const r = this.list[name];
-        return r;
+        return this.list[name];
     }
     remove(name) {
         delete this.list[name];
     }
 }
 exports.Implementations = Implementations;
+//# sourceMappingURL=Typeclass.js.map

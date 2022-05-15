@@ -1,6 +1,10 @@
+import { Function } from "ts-toolbelt";
 export declare const isNil: (a: any) => boolean;
-export declare function eq<T>(a: T): (b: T) => boolean;
-export declare function eq<T>(a: T, b: T): boolean;
-export declare function eqBy<T, U>(f: (x: T) => U): (a: T, b: T) => boolean;
-export declare function eqBy<T, U>(f: (x: T) => U, a: T): (b: T) => boolean;
-export declare function eqBy<T, U>(f: (x: T) => U, a: T, b: T): boolean;
+declare function _eq<A>(a: A): (b: A) => boolean;
+declare function _eq<A>(a: A, b: A): boolean;
+export declare const eq: typeof _eq;
+declare function _eqBy<A>(f: Function.Function<[A], any>): (a: A, b: A) => boolean;
+declare function _eqBy<A>(f: Function.Function<[A], any>, a: A): (b: A) => boolean;
+declare function _eqBy<A>(f: Function.Function<[A], any>, a: A, b: A): boolean;
+export declare const eqBy: typeof _eqBy;
+export {};

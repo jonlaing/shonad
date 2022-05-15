@@ -57,12 +57,6 @@ describe("Function", () => {
       const flip = Fn.flip(f);
       expect(flip(3, 7)).toEqual(f(7, 3));
     });
-
-    it("flips only first two paramteers", () => {
-      const f = (a: number, b: number, c: number) => a - b + c;
-      const flip = Fn.flip(f);
-      expect(flip(3, 7, 9)).toEqual(f(7, 3, 9));
-    });
   });
 
   describe("curryN", () => {
@@ -100,6 +94,24 @@ describe("Function", () => {
 
       const comp = Fn.compose(f2(1), g2(2));
       expect(comp(3)).toEqual(f(1, g(2, 3)));
+    });
+  });
+
+  describe("fmap", () => {
+    it("obeys functor laws", () => {
+      const f = (a: number) => a + 1;
+      const g = (a: number) => a * 2;
+      const h = (a: number) => a - 3;
+
+      expect(Fn.fmap(Fn.identity, f));
+      expect(
+        Fn.fmap<number, number, number>(Fn.compose<number, number>(g, h))(f)(7)
+      ).toBe(
+        Fn.compose<Fn.Function<number, number>, Fn.Function<number, number>>(
+          Fn.fmap(g),
+          Fn.fmap(h)
+        )(f)(7)
+      );
     });
   });
 });

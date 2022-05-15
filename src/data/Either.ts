@@ -36,7 +36,20 @@ export const right = <B>(b: B): Either<any, B> => new Right(b);
 export const isLeft = (x: Either<any, any>) => (x as Left<any>).isLeft();
 export const isRight = (x: Either<any, any>) => (x as Right<any>).isRight();
 
-export const either = Fn.curry(
+declare function _either<A, B, C>(
+  f0: (a: A) => C
+): (f1: (b: B) => C, x: Either<A, B>) => C;
+declare function _either<A, B, C>(
+  f0: (a: A) => C,
+  f1: (b: B) => C
+): (x: Either<A, B>) => C;
+declare function _either<A, B, C>(
+  f0: (a: A) => C,
+  f1: (b: B) => C,
+  x: Either<A, B>
+): C;
+
+export const either: typeof _either = Fn.curry(
   <A, B, C>(f0: (a: A) => C, f1: (b: B) => C, x: Either<A, B>): C =>
     isLeft(x) ? f0(x.val as A) : f1(x.val as B)
 );
@@ -47,11 +60,17 @@ export const lefts = <A>(xs: Either<A, any>[]): A[] =>
 export const rights = <B>(xs: Either<any, B>[]): B[] =>
   xs.reduce((acc, x) => (isRight(x) ? [...acc, x.val] : acc), [] as B[]);
 
-export const fromLeft = Fn.curry(
+declare function _fromLeft<A>(fallback: A): (x: Either<A, any>) => A;
+declare function _fromLeft<A>(fallback: A, x: Either<A, any>): A;
+
+export const fromLeft: typeof _fromLeft = Fn.curry(
   <A>(fallback: A, x: Either<A, any>): A => (isLeft(x) ? x.val : fallback)
 );
 
-export const fromRight = Fn.curry(
+declare function _fromRight<B>(fallback: B): (x: Either<any, B>) => B;
+declare function _fromRight<B>(fallback: B, x: Either<any, B>): B;
+
+export const fromRight: typeof _fromRight = Fn.curry(
   <B>(fallback: B, x: Either<any, B>): B => (isRight(x) ? x.val : fallback)
 );
 

@@ -1,25 +1,33 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.fmap = exports.makeFunctor = exports.implementFunctorClass = void 0;
-const Typeclass_1 = require("../base/Typeclass");
-const implementations = new Typeclass_1.Implementations();
-const implementFunctorClass = (name, fmap) => {
-    const _class = {
-        functions: {
-            fmap,
-        },
-    };
-    implementations.add(name, _class);
-};
-exports.implementFunctorClass = implementFunctorClass;
-const makeFunctor = (name, x) => {
-    return Object.assign(Object.assign({}, x), { __functor: name });
-};
-exports.makeFunctor = makeFunctor;
-function fmap(f, x) {
-    if (x === undefined) {
-        return (x0) => fmap(f, x0);
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
     }
-    return implementations.get(x.__functor).functions.fmap(f, x);
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Functor = void 0;
+const Fn = __importStar(require("../base/Function"));
+const Typeclass_1 = require("./Typeclass");
+class Functor extends Typeclass_1.Typeclass {
 }
-exports.fmap = fmap;
+exports.Functor = Functor;
+Functor.fmap = Fn.curry((f, x) => x.fmap(f));
+//# sourceMappingURL=Functor.js.map

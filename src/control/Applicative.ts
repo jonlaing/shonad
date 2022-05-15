@@ -20,6 +20,3 @@ export abstract class Applicative<A> extends Functor<A> {
 
   abstract apply: (f: any) => Applicative<any>;
 }
-
-export const apply = Applicative.apply;
-export const apply_ = Fn.flip(apply);
