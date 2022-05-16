@@ -18,107 +18,102 @@ export const pipe =
 
 declare function _set<
   S extends State,
-  V extends S[keyof S] | Maybe.Maybe<S[keyof S]>,
+  V extends S[keyof S],
   A extends PayloadAction<V> = PayloadAction<V>
->(lens: L.Lens<S, V>): (state: S, action: A) => S;
+>(lens: L.Lens<S, Maybe.Maybe<V>>): (state: S, action: A) => S;
 
 declare function _set<
   S extends State,
-  V extends S[keyof S] | Maybe.Maybe<S[keyof S]>,
+  V extends S[keyof S],
   A extends PayloadAction<V> = PayloadAction<V>
->(lens: L.Lens<S, V>, state: S): (action: A) => S;
+>(lens: L.Lens<S, Maybe.Maybe<V>>, state: S): (action: A) => S;
 
 declare function _set<
   S extends State,
-  V extends S[keyof S] | Maybe.Maybe<S[keyof S]>,
+  V extends S[keyof S],
   A extends PayloadAction<V> = PayloadAction<V>
->(lens: L.Lens<S, V>, state: S, action: A): S;
+>(lens: L.Lens<S, Maybe.Maybe<V>>, state: S, action: A): S;
 
 export const set: typeof _set = Fn.curry(
   <
     S extends State,
-    V extends S[keyof S] | Maybe.Maybe<S[keyof S]>,
+    V extends S[keyof S],
     A extends PayloadAction<V> = PayloadAction<V>
   >(
-    lens: L.Lens<S, V>,
+    lens: L.Lens<S, Maybe.Maybe<V>>,
     state: S,
     action: A
-  ): S => L.set(lens, action.payload, state)
+  ): S => L.set(lens, Maybe.just(action.payload), state)
 );
 
-declare function _over<
-  S extends State,
-  V extends S[keyof S] | Maybe.Maybe<S[keyof S]>
->(
-  fn: (payload: any) => (a: V) => V
-): (lens: L.Lens<S, V>, state: S, action: PayloadAction<any>) => S;
-declare function _over<
-  S extends State,
-  V extends S[keyof S] | Maybe.Maybe<S[keyof S]>
->(
+declare function _over<S extends State, V extends S[keyof S]>(
+  lens: L.Lens<S, Maybe.Maybe<V>>
+): (
   fn: (payload: any) => (a: V) => V,
-  lens: L.Lens<S, V>
+  state: S,
+  action: PayloadAction<any>
+) => S;
+declare function _over<S extends State, V extends S[keyof S]>(
+  lens: L.Lens<S, Maybe.Maybe<V>>,
+  fn: (payload: any) => (a: V) => V
 ): (state: S, action: PayloadAction<any>) => S;
 declare function _over<
   S extends State,
   V extends S[keyof S] | Maybe.Maybe<S[keyof S]>
 >(
+  lens: L.Lens<S, Maybe.Maybe<V>>,
   fn: (payload: any) => (a: V) => V,
-  lens: L.Lens<S, V>,
   state: S
 ): (action: PayloadAction<any>) => S;
-declare function _over<
-  S extends State,
-  V extends S[keyof S] | Maybe.Maybe<S[keyof S]>
->(
+declare function _over<S extends State, V extends S[keyof S]>(
+  lens: L.Lens<S, Maybe.Maybe<V>>,
   fn: (payload: any) => (a: V) => V,
-  lens: L.Lens<S, V>,
   state: S,
   action: PayloadAction<any>
 ): S;
 
 export const over: typeof _over = Fn.curry(
-  <S extends State, V extends S[keyof S] | Maybe.Maybe<S[keyof S]>>(
+  <S extends State, V extends S[keyof S]>(
+    lens: L.Lens<S, Maybe.Maybe<V>>,
     fn: (payload: any) => (a: V) => V,
-    lens: L.Lens<S, V>,
     state: S,
     action: PayloadAction<any>
-  ): S => L.over(lens, fn(action.payload), state)
+  ): S => L.over(lens, Maybe.fmap(fn(action.payload)), state)
 );
 
 declare function _always<
   S extends State,
-  V extends S[keyof S] | Maybe.Maybe<S[keyof S]>,
+  V extends S[keyof S],
   A extends PayloadAction<V> = PayloadAction<V>
->(lens: L.Lens<S, V>): (val: V, state: S, action: A) => S;
+>(lens: L.Lens<S, Maybe.Maybe<V>>): (val: V, state: S, action: A) => S;
 
 declare function _always<
   S extends State,
-  V extends S[keyof S] | Maybe.Maybe<S[keyof S]>,
+  V extends S[keyof S],
   A extends PayloadAction<V> = PayloadAction<V>
->(lens: L.Lens<S, V>, val: V): (state: S, action: A) => S;
+>(lens: L.Lens<S, Maybe.Maybe<V>>, val: V): (state: S, action: A) => S;
 
 declare function _always<
   S extends State,
-  V extends S[keyof S] | Maybe.Maybe<S[keyof S]>,
+  V extends S[keyof S],
   A extends PayloadAction<V> = PayloadAction<V>
->(lens: L.Lens<S, V>, val: V, state: S): (action: A) => S;
+>(lens: L.Lens<S, Maybe.Maybe<V>>, val: V, state: S): (action: A) => S;
 
 declare function _always<
   S extends State,
-  V extends S[keyof S] | Maybe.Maybe<S[keyof S]>,
+  V extends S[keyof S],
   A extends PayloadAction<V> = PayloadAction<V>
->(lens: L.Lens<S, V>, val: V, state: S, action: A): S;
+>(lens: L.Lens<S, Maybe.Maybe<V>>, val: V, state: S, action: A): S;
 
 export const always: typeof _always = Fn.curry(
   <
     S extends State,
-    V extends S[keyof S] | Maybe.Maybe<S[keyof S]>,
+    V extends S[keyof S],
     A extends PayloadAction<V> = PayloadAction<V>
   >(
-    lens: L.Lens<S, V>,
+    lens: L.Lens<S, Maybe.Maybe<V>>,
     val: V,
     state: S,
     action: A
-  ): S => L.set(lens, val, state)
+  ): S => L.set(lens, Maybe.just(val), state)
 );

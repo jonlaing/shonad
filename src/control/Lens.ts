@@ -116,7 +116,7 @@ export const index = <A>(i: number): Lens<A[], Maybe.Maybe<A>> => ({
 
 export const prop = <A>(
   k: string
-): Lens<Record<string, A>, Maybe.Maybe<A>> => ({
+): Lens<Record<string, any>, Maybe.Maybe<A>> => ({
   get: Dict.get(k),
   set: (v: Maybe.Maybe<any>, dict: Record<string, any>) =>
     Maybe.fromMaybe(

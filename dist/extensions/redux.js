@@ -26,9 +26,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.always = exports.over = exports.set = exports.pipe = void 0;
 const Fn = __importStar(require("../base/Function"));
 const L = __importStar(require("../control/Lens"));
+const Maybe = __importStar(require("../data/Maybe"));
 const pipe = (...funcs) => (state, action) => funcs.reduce((s, f) => f(s, action), state);
 exports.pipe = pipe;
-exports.set = Fn.curry((lens, state, action) => L.set(lens, action.payload, state));
-exports.over = Fn.curry((fn, lens, state, action) => L.over(lens, fn(action.payload), state));
-exports.always = Fn.curry((lens, val, state, action) => L.set(lens, val, state));
+exports.set = Fn.curry((lens, state, action) => L.set(lens, Maybe.just(action.payload), state));
+exports.over = Fn.curry((lens, fn, state, action) => L.over(lens, Maybe.fmap(fn(action.payload)), state));
+exports.always = Fn.curry((lens, val, state, action) => L.set(lens, Maybe.just(val), state));
 //# sourceMappingURL=redux.js.map

@@ -1,4 +1,4 @@
-import { Function } from "ts-toolbelt";
+import { A, Function } from "ts-toolbelt";
 import * as Fn from "../base/Function";
 import { Typeclass } from "../base/Typeclass";
 
@@ -6,6 +6,9 @@ export type Mapper = Function.Function<[any], any>;
 export type StaticFMap<T extends Functor<any>> = Function.Curry<
   Function.Function<[Mapper, T], T>
 >;
+
+declare function _fmap<A, B>(f: (a: A) => B): (x: Functor<A>) => Functor<A>;
+declare function _fmap<A, B>(f: (a: A) => B, x: Functor<A>): Functor<A>;
 
 export abstract class Functor<T> extends Typeclass<T> {
   static fmap: StaticFMap<Functor<any>> = Fn.curry(
