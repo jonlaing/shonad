@@ -30,7 +30,7 @@ export declare const optional: <A>(fallback: A) => Lens<Maybe.Maybe<A>, A>;
 export declare const head: Lens<any[], Maybe.Maybe<any>>;
 export declare const tail: Lens<any[], Maybe.Maybe<any[]>>;
 export declare const index: <A>(i: number) => Lens<A[], Maybe.Maybe<A>>;
-export declare const prop: <A>(k: string) => Lens<Record<string, any>, Maybe.Maybe<A>>;
+export declare const prop: <A>(k: string) => Lens<any, Maybe.Maybe<A>>;
 export declare const or: <A, B, C>(l1: Lens<A, Maybe.Maybe<C>>, l0: Lens<A, Maybe.Maybe<B>>) => Lens<A, Maybe.Maybe<C> | Maybe.Maybe<B>>;
 export declare const nonEmptyString: Lens<string, Maybe.Maybe<string>>;
 export declare const nonEmptyList: Lens<any[], Maybe.Maybe<any[]>>;
