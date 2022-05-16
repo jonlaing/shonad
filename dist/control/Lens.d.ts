@@ -1,4 +1,5 @@
 import * as Maybe from "../data/Maybe";
+import * as Dict from "../data/Dict";
 import * as Either from "../data/Either";
 import { Function } from "ts-toolbelt";
 export declare type GetterFn<A, B> = Function.Function<[A], B>;
@@ -31,4 +32,7 @@ export declare const tail: Lens<any[], Maybe.Maybe<any[]>>;
 export declare const index: <A>(i: number) => Lens<A[], Maybe.Maybe<A>>;
 export declare const prop: <A>(k: string) => Lens<Record<string, A>, Maybe.Maybe<A>>;
 export declare const or: <A, B, C>(l1: Lens<A, Maybe.Maybe<C>>, l0: Lens<A, Maybe.Maybe<B>>) => Lens<A, Maybe.Maybe<C> | Maybe.Maybe<B>>;
+export declare const nonEmptyString: Lens<string, Maybe.Maybe<string>>;
+export declare const nonEmptyList: Lens<any[], Maybe.Maybe<any[]>>;
+export declare const nonEmptyDict: Lens<Dict.Dict<any>, Maybe.Maybe<Dict.Dict<any>>>;
 export {};

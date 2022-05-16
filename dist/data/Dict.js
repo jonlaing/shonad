@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.has = exports.evolve = exports.mapi = exports.map = exports.eqProps = exports.unset = exports.set = exports.get = void 0;
+exports.isEmpty = exports.has = exports.evolve = exports.mapi = exports.map = exports.eqProps = exports.unset = exports.set = exports.get = void 0;
 const Maybe = __importStar(require("./Maybe"));
 const Fn = __importStar(require("../base/Function"));
 const Util = __importStar(require("../base/Util"));
@@ -35,4 +35,6 @@ exports.map = Fn.curry((f, dict) => Object.keys(dict).reduce((acc, k) => (Object
 exports.mapi = Fn.curry((f, dict) => Object.keys(dict).reduce((acc, k) => (Object.assign(Object.assign({}, acc), { [k]: f(dict[k], k) })), {}));
 exports.evolve = Fn.curry((e, d) => (0, exports.mapi)((v, k) => Maybe.fromMaybe(v, Maybe.apply((0, exports.get)(k, e), (0, exports.get)(k, d))), d));
 exports.has = Fn.curry((k, d) => Maybe.fromMaybe(false, Maybe.fmap(Fn.true_, (0, exports.get)(k, d))));
+const isEmpty = (a) => Object.keys(a).length === 0;
+exports.isEmpty = isEmpty;
 //# sourceMappingURL=Dict.js.map

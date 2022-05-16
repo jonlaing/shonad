@@ -1,5 +1,6 @@
 import { Function } from "ts-toolbelt";
 import * as Maybe from "./Maybe";
+export declare type Dict<A> = Record<string, A>;
 declare function _get(key: string): (dict: Record<string, any>) => Maybe.Maybe<any>;
 declare function _get(key: string, dict: Record<string, any>): Maybe.Maybe<any>;
 export declare const get: typeof _get;
@@ -26,4 +27,5 @@ export declare const evolve: typeof _evolve;
 declare function _has(k: string): (d: Record<string, any>) => boolean;
 declare function _has(k: string, d: Record<string, any>): boolean;
 export declare const has: typeof _has;
+export declare const isEmpty: (a: Record<string, any>) => boolean;
 export {};

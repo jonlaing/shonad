@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.or = exports.prop = exports.index = exports.tail = exports.head = exports.optional = exports.compose = exports.pipe = exports.over = exports.set = exports.viewE = exports.view = exports.lens = void 0;
+exports.nonEmptyDict = exports.nonEmptyList = exports.nonEmptyString = exports.or = exports.prop = exports.index = exports.tail = exports.head = exports.optional = exports.compose = exports.pipe = exports.over = exports.set = exports.viewE = exports.view = exports.lens = void 0;
 const Fn = __importStar(require("../base/Function"));
 const Maybe = __importStar(require("../data/Maybe"));
 const List = __importStar(require("../data/List"));
@@ -78,4 +78,7 @@ exports.prop = prop;
 // currying and partial application
 const or = (l1, l0) => (0, exports.lens)((a) => Maybe.or(() => l1.get(a), () => l0.get(a)), (mv, a) => Maybe.fromMaybe(l1.set(mv, a), Maybe.fmap((_) => l0.set(mv, a), l0.get(a))));
 exports.or = or;
+exports.nonEmptyString = (0, exports.lens)((a) => (a === "" ? Maybe.nothing() : Maybe.just(a)), (mv, a) => Maybe.fromMaybe("", mv));
+exports.nonEmptyList = (0, exports.lens)((a) => (List.isEmpty(a) ? Maybe.nothing() : Maybe.just(a)), (mv, a) => Maybe.fromMaybe([], mv));
+exports.nonEmptyDict = (0, exports.lens)((a) => (Dict.isEmpty(a) ? Maybe.nothing() : Maybe.just(a)), (mv, a) => Maybe.fromMaybe({}, mv));
 //# sourceMappingURL=Lens.js.map

@@ -143,3 +143,18 @@ export const or = <A, B, C>(
         Maybe.fmap((_: B) => l0.set(mv, a), l0.get(a))
       )
   );
+
+export const nonEmptyString = lens<string, Maybe.Maybe<string>>(
+  (a) => (a === "" ? Maybe.nothing<string>() : Maybe.just(a)),
+  (mv, a) => Maybe.fromMaybe("", mv)
+);
+
+export const nonEmptyList = lens<any[], Maybe.Maybe<any[]>>(
+  (a) => (List.isEmpty(a) ? Maybe.nothing<any[]>() : Maybe.just(a)),
+  (mv, a) => Maybe.fromMaybe([], mv)
+);
+
+export const nonEmptyDict = lens<Dict.Dict<any>, Maybe.Maybe<Dict.Dict<any>>>(
+  (a) => (Dict.isEmpty(a) ? Maybe.nothing<Dict.Dict<any>>() : Maybe.just(a)),
+  (mv, a) => Maybe.fromMaybe({}, mv)
+);

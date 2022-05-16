@@ -3,6 +3,8 @@ import * as Maybe from "./Maybe";
 import * as Fn from "../base/Function";
 import * as Util from "../base/Util";
 
+export type Dict<A> = Record<string, A>;
+
 declare function _get(
   key: string
 ): (dict: Record<string, any>) => Maybe.Maybe<any>;
@@ -130,3 +132,6 @@ export const has: typeof _has = Fn.curry(
   (k: string, d: Record<string, any>): boolean =>
     Maybe.fromMaybe(false, Maybe.fmap(Fn.true_, get(k, d)))
 );
+
+export const isEmpty = (a: Record<string, any>): boolean =>
+  Object.keys(a).length === 0;
