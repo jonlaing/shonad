@@ -49,7 +49,7 @@ export type CaseReducer<S = any, A extends PayloadAction = PayloadAction> = (
 export const pipe =
   <S extends State, A extends PayloadAction<any>>(
     ...funcs: CaseReducer<S, A>[]
-  ) =>
+  ): CaseReducer<S, A> =>
   (state: Draft<S>, action: A): S =>
     funcs.reduce((s, f) => f(s, action) as Draft<S>, state) as S;
 
