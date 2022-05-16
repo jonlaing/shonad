@@ -16,7 +16,7 @@ declare type WritableDraft<T> = {
 };
 declare type Draft<T> = T extends PrimitiveType ? T : T extends AtomicObject ? T : T extends IfAvailable<ReadonlyMap<infer K, infer V>> ? Map<Draft<K>, Draft<V>> : T extends IfAvailable<ReadonlySet<infer V>> ? Set<Draft<V>> : T extends WeakReferences ? T : T extends object ? WritableDraft<T> : T;
 export declare type CaseReducer<S = any, A extends PayloadAction = PayloadAction> = (state: Draft<S>, action: A) => S | void | Draft<S>;
-export declare const pipe: <S extends State, A extends PayloadAction<any, string>>(...funcs: ((s: S, a: A) => S)[]) => (state: S, action: A) => S;
+export declare const pipe: <S extends State, A extends PayloadAction<any, string>>(...funcs: CaseReducer<S, A>[]) => (state: Draft<S>, action: A) => S;
 declare function _set<S extends State, V extends S[keyof S], A extends PayloadAction<V> = PayloadAction<V>>(lens: L.Lens<S, Maybe.Maybe<V>>): CaseReducer<S, A>;
 declare function _set<S extends State, V extends S[keyof S], A extends PayloadAction<V> = PayloadAction<V>>(lens: L.Lens<S, Maybe.Maybe<V>>, state: S): (action: A) => S;
 declare function _set<S extends State, V extends S[keyof S], A extends PayloadAction<V> = PayloadAction<V>>(lens: L.Lens<S, Maybe.Maybe<V>>, state: S, action: A): S;

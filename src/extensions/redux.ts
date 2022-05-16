@@ -1,3 +1,4 @@
+import { S } from "ts-toolbelt";
 import * as Fn from "../base/Function";
 import * as L from "../control/Lens";
 import * as Maybe from "../data/Maybe";
@@ -47,10 +48,10 @@ export type CaseReducer<S = any, A extends PayloadAction = PayloadAction> = (
 
 export const pipe =
   <S extends State, A extends PayloadAction<any>>(
-    ...funcs: ((s: S, a: A) => S)[]
+    ...funcs: CaseReducer<S, A>[]
   ) =>
-  (state: S, action: A): S =>
-    funcs.reduce((s, f) => f(s, action), state);
+  (state: Draft<S>, action: A): S =>
+    funcs.reduce((s, f) => f(s, action) as Draft<S>, state) as S;
 
 declare function _set<
   S extends State,
