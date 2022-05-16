@@ -146,3 +146,16 @@ export const maybeRecord = <T extends Record<string, any>>(
     (acc, k) => ({ ...acc, [k]: maybeNil(x[k]) }),
     {} as MaybeRecord<T>
   );
+
+export const equals = Fn.curry(<A>(a: A, mx: Maybe<A>): boolean =>
+  fromMaybe(false, fmap(Util.eq(a), mx))
+);
+
+// first f is the fallback, reverse of what you might expect to
+// support currying
+export const or = Fn.curry(
+  <A, B>(f1: () => Maybe<B>, f0: () => Maybe<A>): Maybe<A> | Maybe<B> => {
+    const ma = f0();
+    return isJust(ma) ? ma : f1();
+  }
+);

@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.bind = exports.apply_ = exports.apply = exports.pure = exports.fmap = exports.eitherNil = exports.fromMaybe = exports.partitionEithers = exports.fromRight = exports.fromLeft = exports.rights = exports.lefts = exports.either = exports.isRight = exports.isLeft = exports.right = exports.left = exports.Right = exports.Left = exports.Either = void 0;
+exports.bind = exports.apply_ = exports.apply = exports.pure = exports.fmap = exports.equals = exports.eitherNil = exports.fromMaybe = exports.partitionEithers = exports.fromRight = exports.fromLeft = exports.rights = exports.lefts = exports.either = exports.isRight = exports.isLeft = exports.right = exports.left = exports.Right = exports.Left = exports.Either = void 0;
 const Monad_1 = require("../control/Monad");
 const Fn = __importStar(require("../base/Function"));
 const Maybe = __importStar(require("./Maybe"));
@@ -78,6 +78,7 @@ const partitionEithers = (xs) => xs.reduce((acc, x) => ((0, exports.isLeft)(x)
 exports.partitionEithers = partitionEithers;
 exports.fromMaybe = Fn.curry((error, m) => Maybe.isNothing(m) ? (0, exports.left)(error) : (0, exports.right)(m.val));
 exports.eitherNil = Fn.curry((error, x) => Util.isNil(x) ? (0, exports.left)(error) : (0, exports.right)(x));
+exports.equals = Fn.curry((a, mx) => (0, exports.fromRight)(false, (0, exports.fmap)(Util.eq(a), mx)));
 exports.fmap = Either.fmap;
 exports.pure = Either.pure;
 exports.apply = Either.apply;

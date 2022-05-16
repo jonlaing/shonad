@@ -93,6 +93,10 @@ export const eitherNil = Fn.curry(
     Util.isNil(x) ? left(error) : right(x as B)
 );
 
+export const equals = Fn.curry(<A>(a: A, mx: Either<any, A>): boolean =>
+  fromRight(false, fmap(Util.eq(a), mx))
+);
+
 export const fmap = Either.fmap;
 export const pure = Either.pure;
 export const apply = Either.apply;

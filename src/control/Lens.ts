@@ -124,3 +124,22 @@ export const prop = <A>(
       Maybe.fmap((x: any) => Dict.set(k, x, dict), v)
     ),
 });
+
+// this is backward from how you might expect 'or' to work to support
+// currying and partial application
+export const or = <A, B, C>(
+  l1: Lens<A, Maybe.Maybe<C>>,
+  l0: Lens<A, Maybe.Maybe<B>>
+): Lens<A, Maybe.Maybe<B> | Maybe.Maybe<C>> =>
+  lens(
+    (a: A): Maybe.Maybe<B> | Maybe.Maybe<C> =>
+      Maybe.or(
+        () => l1.get(a),
+        () => l0.get(a)
+      ),
+    (mv: Maybe.Maybe<B | C>, a: A) =>
+      Maybe.fromMaybe(
+        l1.set(mv, a),
+        Maybe.fmap((_: B) => l0.set(mv, a), l0.get(a))
+      )
+  );

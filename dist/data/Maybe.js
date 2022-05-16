@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.maybeRecord = exports.mapMaybe = exports.catMaybes = exports.maybeToList = exports.listToMaybe = exports.maybeNil = exports.fromMaybe = exports.maybe = exports.isNothing = exports.isJust = exports.nothing = exports.just = exports.Nothing = exports.Just = exports.return_ = exports.pure = exports.bind = exports.apply_ = exports.apply = exports.fmap = exports.Maybe = void 0;
+exports.or = exports.equals = exports.maybeRecord = exports.mapMaybe = exports.catMaybes = exports.maybeToList = exports.listToMaybe = exports.maybeNil = exports.fromMaybe = exports.maybe = exports.isNothing = exports.isJust = exports.nothing = exports.just = exports.Nothing = exports.Just = exports.return_ = exports.pure = exports.bind = exports.apply_ = exports.apply = exports.fmap = exports.Maybe = void 0;
 const Monad_1 = require("../control/Monad");
 const Fn = __importStar(require("../base/Function"));
 const Util = __importStar(require("../base/Util"));
@@ -88,4 +88,11 @@ exports.mapMaybe = Fn.curry((f, as) => as.reduce((acc, a) => {
 }, []));
 const maybeRecord = (x) => Object.keys(x).reduce((acc, k) => (Object.assign(Object.assign({}, acc), { [k]: (0, exports.maybeNil)(x[k]) })), {});
 exports.maybeRecord = maybeRecord;
+exports.equals = Fn.curry((a, mx) => (0, exports.fromMaybe)(false, (0, exports.fmap)(Util.eq(a), mx)));
+// first f is the fallback, reverse of what you might expect to
+// support currying
+exports.or = Fn.curry((f1, f0) => {
+    const ma = f0();
+    return (0, exports.isJust)(ma) ? ma : f1();
+});
 //# sourceMappingURL=Maybe.js.map

@@ -54,4 +54,6 @@ export declare type MaybeRecord<T extends Record<string, any>> = {
     [k in keyof T]: Maybe<T[k]>;
 };
 export declare const maybeRecord: <T extends Record<string, any>>(x: T) => MaybeRecord<T>;
+export declare const equals: Function.Curry<(<A>(a: A, mx: Maybe<A>) => boolean)>;
+export declare const or: Function.Curry<(<A, B>(f1: () => Maybe<B>, f0: () => Maybe<A>) => Maybe<A> | Maybe<B>)>;
 export {};

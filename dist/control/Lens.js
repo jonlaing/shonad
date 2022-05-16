@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.prop = exports.index = exports.tail = exports.head = exports.optional = exports.compose = exports.pipe = exports.over = exports.set = exports.viewE = exports.view = exports.lens = void 0;
+exports.or = exports.prop = exports.index = exports.tail = exports.head = exports.optional = exports.compose = exports.pipe = exports.over = exports.set = exports.viewE = exports.view = exports.lens = void 0;
 const Fn = __importStar(require("../base/Function"));
 const Maybe = __importStar(require("../data/Maybe"));
 const List = __importStar(require("../data/List"));
@@ -74,4 +74,8 @@ const prop = (k) => ({
     set: (v, dict) => Maybe.fromMaybe(dict, Maybe.fmap((x) => Dict.set(k, x, dict), v)),
 });
 exports.prop = prop;
+// this is backward from how you might expect 'or' to work to support
+// currying and partial application
+const or = (l1, l0) => (0, exports.lens)((a) => Maybe.or(() => l1.get(a), () => l0.get(a)), (mv, a) => Maybe.fromMaybe(l1.set(mv, a), Maybe.fmap((_) => l0.set(mv, a), l0.get(a))));
+exports.or = or;
 //# sourceMappingURL=Lens.js.map

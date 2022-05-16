@@ -38,6 +38,7 @@ export declare const fromRight: typeof _fromRight;
 export declare const partitionEithers: <A, B>(xs: Either<A, B>[]) => [A[], B[]];
 export declare const fromMaybe: Function.Curry<(<A, B>(error: A, m: Maybe.Maybe<B>) => Either<A, B>)>;
 export declare const eitherNil: Function.Curry<(<A, B>(error: A, x: B | undefined) => Either<A, B>)>;
+export declare const equals: Function.Curry<(<A>(a: A, mx: Either<any, A>) => boolean)>;
 export declare const fmap: import("../control/Functor").StaticFMap<import("../control/Functor").Functor<any>>;
 export declare const pure: typeof Either.pure;
 export declare const apply: import("../control/Applicative").StaticApplyFn<Monad<Function.Function<any, any>>, Monad<any>>;

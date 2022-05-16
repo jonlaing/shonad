@@ -228,4 +228,39 @@ describe("Lens", () => {
       });
     });
   });
+
+  describe("or", () => {
+    const l = L.or(L.prop<number>("b"), L.prop<number>("a"));
+    it("returns second maybe", () => {
+      expect(Maybe.fromMaybe(0, L.view(l, { a: 1, b: 2 }))).toEqual(1);
+    });
+
+    it("returns first maybe when second isnt set", () => {
+      expect(Maybe.fromMaybe(0, L.view(l, { b: 2 }))).toEqual(2);
+    });
+
+    it("sets second maybe", () => {
+      expect(L.set(l, Maybe.just(3), { a: 1, b: 2 })).toStrictEqual({
+        a: 3,
+        b: 2,
+      });
+    });
+
+    it("sets the second maybe when first isnt present", () => {
+      expect(L.set(l, Maybe.just(3), { b: 2 })).toStrictEqual({ b: 3 });
+    });
+
+    it("maps over second maybe", () => {
+      expect(L.over(l, Maybe.fmap(Num.add(1)), { a: 1, b: 2 })).toStrictEqual({
+        a: 2,
+        b: 2,
+      });
+    });
+
+    it("maps over first maybe when second isnt present", () => {
+      expect(L.over(l, Maybe.fmap(Num.add(1)), { b: 2 })).toStrictEqual({
+        b: 3,
+      });
+    });
+  });
 });
