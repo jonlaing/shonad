@@ -15,3 +15,24 @@ export abstract class Monad<A> extends Applicative<A> {
 
   abstract bind: (f: (a: any) => Monad<any>) => Monad<any>;
 }
+
+const fixYield = <A>(val: any): A => val as unknown as A;
+
+export type DoFuncReturn<T> = Generator<T, any, T | undefined>;
+
+export const makeDo =
+  <T>(
+    pure: Fn.Function<any, T>,
+    bind: Function.Function<[T, Fn.Function<any, T>], T>
+  ) =>
+  (f: (fix: typeof fixYield) => DoFuncReturn<T>): T => {
+    const gen = f(fixYield);
+    const doNext = (input?: T): T => {
+      const { value, done } = gen.next(input);
+      if (done) return pure(value);
+
+      return bind(value, doNext);
+    };
+
+    return doNext();
+  };

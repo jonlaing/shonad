@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.unwrap = exports.or = exports.equals = exports.maybeRecord = exports.mapMaybe = exports.catMaybes = exports.maybeToList = exports.listToMaybe = exports.maybeNil = exports.fromMaybe = exports.maybe = exports.isNothing = exports.isJust = exports.nothing = exports.just = exports.Nothing = exports.Just = exports.return_ = exports.pure = exports.bind = exports.apply_ = exports.apply = exports.fmap = exports.Maybe = void 0;
+exports._do = exports.unwrap = exports.or = exports.equals = exports.maybeRecord = exports.mapMaybe = exports.catMaybes = exports.maybeToList = exports.listToMaybe = exports.maybeNil = exports.fromMaybe = exports.maybe = exports.isNothing = exports.isJust = exports.nothing = exports.just = exports.Nothing = exports.Just = exports.return_ = exports.pure = exports.bind = exports.apply_ = exports.apply = exports.fmap = exports.Maybe = void 0;
 const Monad_1 = require("../control/Monad");
 const Fn = __importStar(require("../base/Function"));
 const Util = __importStar(require("../base/Util"));
@@ -46,11 +46,14 @@ class Just extends Maybe {
         this.isJust = Fn.always(true);
         this.isNothing = Fn.always(false);
         this.fmap = (f) => new Just(f(this.val));
-        this.apply = (f) => {
-            return ((0, exports.isJust)(f) ? (0, exports.fmap)(f.val, this) : (0, exports.nothing)());
+        this.apply = (ma) => {
+            return ((0, exports.isJust)(ma)
+                ? ma.fmap(this.val)
+                : (0, exports.nothing)());
         };
         this.bind = (f) => f(this.val);
         this.unwrap = (fallback) => this.val;
+        this.equals = (a) => this.fmap(Util.eq(a)).unwrap(false);
     }
 }
 exports.Just = Just;
@@ -63,6 +66,7 @@ class Nothing extends Maybe {
         this.apply = (f) => this;
         this.bind = (f) => this;
         this.unwrap = (fallback) => fallback;
+        this.equals = Fn.always(false);
     }
 }
 exports.Nothing = Nothing;
@@ -96,4 +100,5 @@ exports.or = Fn.curry((f1, f0) => {
     return (0, exports.isJust)(ma) ? ma : f1();
 });
 exports.unwrap = Fn.curry((fallback, mx) => mx.unwrap(fallback));
+exports._do = (0, Monad_1.makeDo)(exports.pure, exports.bind);
 //# sourceMappingURL=Maybe.js.map

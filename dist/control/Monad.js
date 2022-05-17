@@ -23,11 +23,23 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Monad = void 0;
+exports.makeDo = exports.Monad = void 0;
 const Applicative_1 = require("./Applicative");
 const Fn = __importStar(require("../base/Function"));
 class Monad extends Applicative_1.Applicative {
 }
 exports.Monad = Monad;
 Monad.bind = Fn.curry((x, f) => x.bind(f));
+const fixYield = (val) => val;
+const makeDo = (pure, bind) => (f) => {
+    const gen = f(fixYield);
+    const doNext = (input) => {
+        const { value, done } = gen.next(input);
+        if (done)
+            return pure(value);
+        return bind(value, doNext);
+    };
+    return doNext();
+};
+exports.makeDo = makeDo;
 //# sourceMappingURL=Monad.js.map

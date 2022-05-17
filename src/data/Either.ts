@@ -1,5 +1,5 @@
 import { A, C, Function } from "ts-toolbelt";
-import { Monad } from "../control/Monad";
+import { makeDo, Monad } from "../control/Monad";
 import * as Fn from "../base/Function";
 import * as Maybe from "./Maybe";
 import * as Util from "../base/Util";
@@ -20,16 +20,25 @@ export class Left<A> extends Either<A, any> {
   apply = (f: Either<any, any>) => this;
   bind = (f: (a: any) => Either<A, any>): Either<A, any> => this;
   unwrap = (fallback: any) => fallback;
+
+  equals = Fn.always(false);
 }
 
 export class Right<B> extends Either<any, B> {
   isLeft = Fn.always(false);
   isRight = Fn.always(true);
 
-  fmap = <C>(f: (b: B) => C): Either<any, C> => new Right(f(this.val));
-  apply = (f: Either<any, Function.Function>) => f.val(this.val);
+  fmap = <C>(f: (b: B) => C): Either<any, C> =>
+    new Right(f(this.val)) as unknown as Either<any, C>;
+  apply = (ma: Either<any, any>) =>
+    ma.fmap((this as unknown as Either<any, Function.Function>).val) as Either<
+      any,
+      any
+    >;
   bind = (f: (a: any) => Either<any, any>): Either<any, any> => f(this.val);
   unwrap = (fallback: B) => this.val;
+
+  equals = (b: B) => this.fmap(Util.eq(b)).unwrap(false);
 }
 
 export const left = <A>(a: A): Either<A, any> => new Left(a);
@@ -114,3 +123,5 @@ export const pure = Either.pure;
 export const apply = Either.apply;
 export const apply_ = Fn.flip(apply);
 export const bind = Either.bind;
+
+export const _do = makeDo<Either<any, any>>(pure, bind);

@@ -15,7 +15,7 @@ export abstract class Applicative<A> extends Functor<A> {
     (
       f: Applicative<Function.Function>,
       x: Applicative<any>
-    ): Applicative<any> => x.apply(f)
+    ): Applicative<any> => f.apply(x)
   );
 
   abstract apply: (f: any) => Applicative<any>;

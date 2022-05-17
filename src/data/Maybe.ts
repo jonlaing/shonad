@@ -1,5 +1,5 @@
-import { A, Function } from "ts-toolbelt";
-import { Monad } from "../control/Monad";
+import { Function } from "ts-toolbelt";
+import { makeDo, Monad } from "../control/Monad";
 import * as Fn from "../base/Function";
 import * as Util from "../base/Util";
 
@@ -57,11 +57,17 @@ export class Just<A> extends Maybe<A> {
   isNothing = Fn.always(false);
 
   fmap = <B>(f: (a: A) => B): Maybe<B> => new Just(f(this.val)) as Maybe<B>;
-  apply = (f: Maybe<Function.Function>): Maybe<any> => {
-    return (isJust(f) ? fmap(f.val, this) : nothing()) as Maybe<any>;
+  apply = (ma: Maybe<any>): Maybe<any> => {
+    return (
+      isJust(ma)
+        ? ma.fmap((this as unknown as Just<Function.Function>).val)
+        : nothing()
+    ) as Maybe<any>;
   };
   bind = (f: (a: any) => Maybe<any>): Maybe<any> => f(this.val);
   unwrap = (fallback: A) => this.val;
+
+  equals = (a: A) => this.fmap(Util.eq(a)).unwrap(false);
 }
 
 export class Nothing<A> extends Maybe<A> {
@@ -70,9 +76,11 @@ export class Nothing<A> extends Maybe<A> {
 
   fmap = <B>(f: (a: A) => any): Maybe<B> =>
     new Nothing(this.val as unknown as B);
-  apply = (f: Maybe<Function.Function>): Maybe<any> => this;
+  apply = (f: Maybe<any>): Maybe<any> => this;
   bind = (f: (a: any) => Maybe<any>) => this;
+
   unwrap = (fallback: A) => fallback;
+  equals = Fn.always(false);
 }
 
 export const just = <A>(x: A) => new Just<A>(x);
@@ -174,3 +182,5 @@ declare function _unwrap<A>(fallback: A, c: Maybe<A>): A;
 export const unwrap: typeof _unwrap = Fn.curry(
   <A>(fallback: A, mx: Maybe<A>): A => mx.unwrap(fallback)
 );
+
+export const _do = makeDo<Maybe<any>>(pure, bind);

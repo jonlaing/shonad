@@ -133,15 +133,15 @@ describe("Lens", () => {
     });
 
     it("sets element at index", () => {
-      expect(L.set(L.index(1), Maybe.just(5), [1, 2, 3])).toStrictEqual([
-        1, 5, 3,
-      ]);
+      expect(L.set(L.index<number>(1), Maybe.just(5), [1, 2, 3])).toStrictEqual(
+        [1, 5, 3]
+      );
     });
 
     it("returns same list when index not found", () => {
-      expect(L.set(L.index(3), Maybe.just(5), [1, 2, 3])).toStrictEqual([
-        1, 2, 3,
-      ]);
+      expect(L.set(L.index<number>(3), Maybe.just(5), [1, 2, 3])).toStrictEqual(
+        [1, 2, 3]
+      );
     });
 
     describe("over", () => {
@@ -174,13 +174,13 @@ describe("Lens", () => {
 
     it("overwrites key", () => {
       expect(
-        L.set(L.prop("a"), Maybe.just(2), { a: 1, b: 2, c: 3 })
+        L.set(L.prop<number>("a"), Maybe.just(2), { a: 1, b: 2, c: 3 })
       ).toStrictEqual({ a: 2, b: 2, c: 3 });
     });
 
     it("adds key if not found", () => {
       expect(
-        L.set(L.prop("d"), Maybe.just(5), { a: 1, b: 2, c: 3 })
+        L.set(L.prop<number>("d"), Maybe.just(5), { a: 1, b: 2, c: 3 })
       ).toStrictEqual({ a: 1, b: 2, c: 3, d: 5 });
     });
 

@@ -12,14 +12,16 @@ export declare class Left<A> extends Either<A, any> {
     apply: (f: Either<any, any>) => this;
     bind: (f: (a: any) => Either<A, any>) => Either<A, any>;
     unwrap: (fallback: any) => any;
+    equals: (a?: any) => boolean;
 }
 export declare class Right<B> extends Either<any, B> {
     isLeft: (a?: any) => boolean;
     isRight: (a?: any) => boolean;
     fmap: <C>(f: (b: B) => C) => Either<any, C>;
-    apply: (f: Either<any, Function.Function>) => any;
+    apply: (ma: Either<any, any>) => Either<any, any>;
     bind: (f: (a: any) => Either<any, any>) => Either<any, any>;
     unwrap: (fallback: B) => any;
+    equals: (b: B) => any;
 }
 export declare const left: <A>(a: A) => Either<A, any>;
 export declare const right: <B>(b: B) => Either<any, B>;
@@ -51,4 +53,5 @@ export declare const pure: typeof Either.pure;
 export declare const apply: import("../control/Applicative").StaticApplyFn<Monad<Function.Function<any, any>>, Monad<any>>;
 export declare const apply_: Function.Curry<(a: any, b: any) => any>;
 export declare const bind: Function.Curry<(x: Monad<any>, f: (a: any) => Monad<any>) => Monad<any>>;
+export declare const _do: (f: (fix: <A>(val: any) => A) => import("../control/Monad").DoFuncReturn<Either<any, any>>) => Either<any, any>;
 export {};

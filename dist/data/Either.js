@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.bind = exports.apply_ = exports.apply = exports.pure = exports.fmap = exports.unwrap = exports.equals = exports.eitherNil = exports.fromMaybe = exports.partitionEithers = exports.fromRight = exports.fromLeft = exports.rights = exports.lefts = exports.either = exports.isRight = exports.isLeft = exports.right = exports.left = exports.Right = exports.Left = exports.Either = void 0;
+exports._do = exports.bind = exports.apply_ = exports.apply = exports.pure = exports.fmap = exports.unwrap = exports.equals = exports.eitherNil = exports.fromMaybe = exports.partitionEithers = exports.fromRight = exports.fromLeft = exports.rights = exports.lefts = exports.either = exports.isRight = exports.isLeft = exports.right = exports.left = exports.Right = exports.Left = exports.Either = void 0;
 const Monad_1 = require("../control/Monad");
 const Fn = __importStar(require("../base/Function"));
 const Maybe = __importStar(require("./Maybe"));
@@ -44,6 +44,7 @@ class Left extends Either {
         this.apply = (f) => this;
         this.bind = (f) => this;
         this.unwrap = (fallback) => fallback;
+        this.equals = Fn.always(false);
     }
 }
 exports.Left = Left;
@@ -53,9 +54,10 @@ class Right extends Either {
         this.isLeft = Fn.always(false);
         this.isRight = Fn.always(true);
         this.fmap = (f) => new Right(f(this.val));
-        this.apply = (f) => f.val(this.val);
+        this.apply = (ma) => ma.fmap(this.val);
         this.bind = (f) => f(this.val);
         this.unwrap = (fallback) => this.val;
+        this.equals = (b) => this.fmap(Util.eq(b)).unwrap(false);
     }
 }
 exports.Right = Right;
@@ -87,4 +89,5 @@ exports.pure = Either.pure;
 exports.apply = Either.apply;
 exports.apply_ = Fn.flip(exports.apply);
 exports.bind = Either.bind;
+exports._do = (0, Monad_1.makeDo)(exports.pure, exports.bind);
 //# sourceMappingURL=Either.js.map

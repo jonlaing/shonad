@@ -29,5 +29,5 @@ const Functor_1 = require("./Functor");
 class Applicative extends Functor_1.Functor {
 }
 exports.Applicative = Applicative;
-Applicative.apply = Fn.curry((f, x) => x.apply(f));
+Applicative.apply = Fn.curry((f, x) => f.apply(x));
 //# sourceMappingURL=Applicative.js.map

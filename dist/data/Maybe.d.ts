@@ -22,17 +22,19 @@ export declare class Just<A> extends Maybe<A> {
     isJust: (a?: any) => boolean;
     isNothing: (a?: any) => boolean;
     fmap: <B>(f: (a: A) => B) => Maybe<B>;
-    apply: (f: Maybe<Function.Function>) => Maybe<any>;
+    apply: (ma: Maybe<any>) => Maybe<any>;
     bind: (f: (a: any) => Maybe<any>) => Maybe<any>;
     unwrap: (fallback: A) => A;
+    equals: (a: A) => boolean;
 }
 export declare class Nothing<A> extends Maybe<A> {
     isJust: (a?: any) => boolean;
     isNothing: (a?: any) => boolean;
     fmap: <B>(f: (a: A) => any) => Maybe<B>;
-    apply: (f: Maybe<Function.Function>) => Maybe<any>;
+    apply: (f: Maybe<any>) => Maybe<any>;
     bind: (f: (a: any) => Maybe<any>) => this;
     unwrap: (fallback: A) => A;
+    equals: (a?: any) => boolean;
 }
 export declare const just: <A>(x: A) => Just<A>;
 export declare const nothing: <A>(x?: A | undefined) => Nothing<A>;
@@ -63,4 +65,5 @@ export declare const or: typeof _or;
 declare function _unwrap<A>(fallback: A): (c: Maybe<A>) => A;
 declare function _unwrap<A>(fallback: A, c: Maybe<A>): A;
 export declare const unwrap: typeof _unwrap;
+export declare const _do: (f: (fix: <A>(val: any) => A) => import("../control/Monad").DoFuncReturn<Maybe<any>>) => Maybe<any>;
 export {};
