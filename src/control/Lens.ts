@@ -3,7 +3,7 @@ import * as Maybe from "../data/Maybe";
 import * as List from "../data/List";
 import * as Dict from "../data/Dict";
 import * as Either from "../data/Either";
-import { A, B, F, Function, I } from "ts-toolbelt";
+import { Function } from "ts-toolbelt";
 
 export type GetterFn<A, B> = Function.Function<[A], B>;
 export type SetterFn<A, B> = Function.Function;

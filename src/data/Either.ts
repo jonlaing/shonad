@@ -16,9 +16,10 @@ export class Left<A> extends Either<A, any> {
   isLeft = Fn.always(true);
   isRight = Fn.always(false);
 
-  fmap = <B>(f: (a: A) => B): Either<A, B> => this;
+  fmap = <B>(f: (a: A) => B): Either<A, B> => this as Either<A, B>;
   apply = (f: Either<any, any>) => this;
   bind = (f: (a: any) => Either<A, any>): Either<A, any> => this;
+  unwrap = (fallback: any) => fallback;
 }
 
 export class Right<B> extends Either<any, B> {
@@ -28,6 +29,7 @@ export class Right<B> extends Either<any, B> {
   fmap = <C>(f: (b: B) => C): Either<any, C> => new Right(f(this.val));
   apply = (f: Either<any, Function.Function>) => f.val(this.val);
   bind = (f: (a: any) => Either<any, any>): Either<any, any> => f(this.val);
+  unwrap = (fallback: B) => this.val;
 }
 
 export const left = <A>(a: A): Either<A, any> => new Left(a);
@@ -83,7 +85,11 @@ export const partitionEithers = <A, B>(xs: Either<A, B>[]): [A[], B[]] =>
     [[], []]
   );
 
-export const fromMaybe = Fn.curry(
+declare function _fromMaybe<A, B>(
+  error: A
+): (m: Maybe.Maybe<B>) => Either<A, B>;
+declare function _fromMaybe<A, B>(error: A, m: Maybe.Maybe<B>): Either<A, B>;
+export const fromMaybe: typeof _fromMaybe = Fn.curry(
   <A, B>(error: A, m: Maybe.Maybe<B>): Either<A, B> =>
     Maybe.isNothing(m) ? left(error) : right(m.val)
 );
@@ -96,6 +102,9 @@ export const eitherNil = Fn.curry(
 export const equals = Fn.curry(<A>(a: A, mx: Either<any, A>): boolean =>
   fromRight(false, fmap(Util.eq(a), mx))
 );
+
+export const unwrap = <A, B>(fallback: B, e: Either<A, B>): B =>
+  e.unwrap(fallback) as B;
 
 export const fmap = Either.fmap;
 export const pure = Either.pure;

@@ -1,1 +1,1 @@
-{"version":3,"file":"Typeclass.js","sourceRoot":"","sources":["../../src/base/Typeclass.ts"],"names":[],"mappings":";;;AAAA,MAAa,SAAS;IAGpB,YAAY,GAAM;QAChB,IAAI,CAAC,GAAG,GAAG,GAAmB,CAAC;IACjC,CAAC;CACF;AAND,8BAMC"}
+{"version":3,"file":"Typeclass.js","sourceRoot":"","sources":["../../src/base/Typeclass.ts"],"names":[],"mappings":";;;AAAA,MAAsB,SAAS;IAG7B,YAAY,GAAM;QAChB,IAAI,CAAC,GAAG,GAAG,GAAmB,CAAC;IACjC,CAAC;CAGF;AARD,8BAQC"}

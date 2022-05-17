@@ -11,6 +11,7 @@ export declare class Left<A> extends Either<A, any> {
     fmap: <B>(f: (a: A) => B) => Either<A, B>;
     apply: (f: Either<any, any>) => this;
     bind: (f: (a: any) => Either<A, any>) => Either<A, any>;
+    unwrap: (fallback: any) => any;
 }
 export declare class Right<B> extends Either<any, B> {
     isLeft: (a?: any) => boolean;
@@ -18,6 +19,7 @@ export declare class Right<B> extends Either<any, B> {
     fmap: <C>(f: (b: B) => C) => Either<any, C>;
     apply: (f: Either<any, Function.Function>) => any;
     bind: (f: (a: any) => Either<any, any>) => Either<any, any>;
+    unwrap: (fallback: B) => any;
 }
 export declare const left: <A>(a: A) => Either<A, any>;
 export declare const right: <B>(b: B) => Either<any, B>;
@@ -36,9 +38,12 @@ declare function _fromRight<B>(fallback: B): (x: Either<any, B>) => B;
 declare function _fromRight<B>(fallback: B, x: Either<any, B>): B;
 export declare const fromRight: typeof _fromRight;
 export declare const partitionEithers: <A, B>(xs: Either<A, B>[]) => [A[], B[]];
-export declare const fromMaybe: Function.Curry<(<A, B>(error: A, m: Maybe.Maybe<B>) => Either<A, B>)>;
+declare function _fromMaybe<A, B>(error: A): (m: Maybe.Maybe<B>) => Either<A, B>;
+declare function _fromMaybe<A, B>(error: A, m: Maybe.Maybe<B>): Either<A, B>;
+export declare const fromMaybe: typeof _fromMaybe;
 export declare const eitherNil: Function.Curry<(<A, B>(error: A, x: B | undefined) => Either<A, B>)>;
 export declare const equals: Function.Curry<(<A>(a: A, mx: Either<any, A>) => boolean)>;
+export declare const unwrap: <A, B>(fallback: B, e: Either<A, B>) => B;
 export declare const fmap: import("../control/Functor").StaticFMap<import("../control/Functor").Functor<any>>;
 export declare const pure: typeof Either.pure;
 export declare const apply: import("../control/Applicative").StaticApplyFn<Monad<Function.Function<any, any>>, Monad<any>>;

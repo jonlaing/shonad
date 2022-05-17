@@ -56,11 +56,12 @@ export class Just<A> extends Maybe<A> {
   isJust = Fn.always(true);
   isNothing = Fn.always(false);
 
-  fmap = <B>(f: (a: A) => B): Maybe<B> => new Just(f(this.val));
+  fmap = <B>(f: (a: A) => B): Maybe<B> => new Just(f(this.val)) as Maybe<B>;
   apply = (f: Maybe<Function.Function>): Maybe<any> => {
     return (isJust(f) ? fmap(f.val, this) : nothing()) as Maybe<any>;
   };
   bind = (f: (a: any) => Maybe<any>): Maybe<any> => f(this.val);
+  unwrap = (fallback: A) => this.val;
 }
 
 export class Nothing<A> extends Maybe<A> {
@@ -71,6 +72,7 @@ export class Nothing<A> extends Maybe<A> {
     new Nothing(this.val as unknown as B);
   apply = (f: Maybe<Function.Function>): Maybe<any> => this;
   bind = (f: (a: any) => Maybe<any>) => this;
+  unwrap = (fallback: A) => fallback;
 }
 
 export const just = <A>(x: A) => new Just<A>(x);
@@ -153,9 +155,18 @@ export const equals = Fn.curry(<A>(a: A, mx: Maybe<A>): boolean =>
 
 // first f is the fallback, reverse of what you might expect to
 // support currying
-export const or = Fn.curry(
+declare function _or<A, B>(
+  f1: () => Maybe<B>
+): (f0: () => Maybe<A>) => Maybe<A> | Maybe<B>;
+declare function _or<A, B>(
+  f1: () => Maybe<B>,
+  f0: () => Maybe<A>
+): Maybe<A> | Maybe<B>;
+export const or: typeof _or = Fn.curry(
   <A, B>(f1: () => Maybe<B>, f0: () => Maybe<A>): Maybe<A> | Maybe<B> => {
     const ma = f0();
     return isJust(ma) ? ma : f1();
   }
 );
+
+export const unwrap = <A>(fallback: A, mx: Maybe<A>): A => mx.unwrap(fallback);
