@@ -60,5 +60,7 @@ export declare const equals: Function.Curry<(<A>(a: A, mx: Maybe<A>) => boolean)
 declare function _or<A, B>(f1: () => Maybe<B>): (f0: () => Maybe<A>) => Maybe<A> | Maybe<B>;
 declare function _or<A, B>(f1: () => Maybe<B>, f0: () => Maybe<A>): Maybe<A> | Maybe<B>;
 export declare const or: typeof _or;
-export declare const unwrap: <A>(fallback: A, mx: Maybe<A>) => A;
+declare function _unwrap<A>(fallback: A): (c: Maybe<A>) => A;
+declare function _unwrap<A>(fallback: A, c: Maybe<A>): A;
+export declare const unwrap: typeof _unwrap;
 export {};

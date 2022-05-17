@@ -4,5 +4,8 @@ export declare class Const<A, B> extends Functor<A> {
     unwrap: (fallback?: any) => A;
 }
 export declare const fmap: import("../control/Functor").StaticFMap<Functor<any>>;
-export declare const unwrap: <A>(fallback: A, c: Const<A, any>) => A;
+declare function _unwrap<A>(fallback: A): (c: Const<A, any>) => A;
+declare function _unwrap<A>(fallback: A, c: Const<A, any>): A;
+export declare const unwrap: typeof _unwrap;
 export declare const makeConst: <A>(a: A) => Const<A, unknown>;
+export {};

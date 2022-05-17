@@ -95,6 +95,5 @@ exports.or = Fn.curry((f1, f0) => {
     const ma = f0();
     return (0, exports.isJust)(ma) ? ma : f1();
 });
-const unwrap = (fallback, mx) => mx.unwrap(fallback);
-exports.unwrap = unwrap;
+exports.unwrap = Fn.curry((fallback, mx) => mx.unwrap(fallback));
 //# sourceMappingURL=Maybe.js.map

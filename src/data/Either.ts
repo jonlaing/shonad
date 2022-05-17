@@ -103,8 +103,11 @@ export const equals = Fn.curry(<A>(a: A, mx: Either<any, A>): boolean =>
   fromRight(false, fmap(Util.eq(a), mx))
 );
 
-export const unwrap = <A, B>(fallback: B, e: Either<A, B>): B =>
-  e.unwrap(fallback) as B;
+declare function _unwrap<B>(fallback: B): (c: Either<any, B>) => B;
+declare function _unwrap<B>(fallback: B, c: Either<any, B>): B;
+export const unwrap: typeof _unwrap = Fn.curry(
+  <B>(fallback: B, e: Either<any, B>): B => e.unwrap(fallback) as B
+);
 
 export const fmap = Either.fmap;
 export const pure = Either.pure;

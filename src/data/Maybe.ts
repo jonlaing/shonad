@@ -169,4 +169,8 @@ export const or: typeof _or = Fn.curry(
   }
 );
 
-export const unwrap = <A>(fallback: A, mx: Maybe<A>): A => mx.unwrap(fallback);
+declare function _unwrap<A>(fallback: A): (c: Maybe<A>) => A;
+declare function _unwrap<A>(fallback: A, c: Maybe<A>): A;
+export const unwrap: typeof _unwrap = Fn.curry(
+  <A>(fallback: A, mx: Maybe<A>): A => mx.unwrap(fallback)
+);

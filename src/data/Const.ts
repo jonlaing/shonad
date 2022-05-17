@@ -1,4 +1,4 @@
-import { A } from "ts-toolbelt";
+import * as Fn from "../base/Function";
 import { Functor } from "../control/Functor";
 
 export class Const<A, B> extends Functor<A> {
@@ -8,6 +8,10 @@ export class Const<A, B> extends Functor<A> {
 
 export const fmap = Const.fmap;
 
-export const unwrap = <A>(fallback: A, c: Const<A, any>): A => c.val;
+declare function _unwrap<A>(fallback: A): (c: Const<A, any>) => A;
+declare function _unwrap<A>(fallback: A, c: Const<A, any>): A;
+export const unwrap: typeof _unwrap = Fn.curry(
+  <A>(fallback: A, c: Const<A, any>): A => c.val
+);
 
 export const makeConst = <A>(a: A) => new Const(a);
