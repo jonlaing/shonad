@@ -57,7 +57,7 @@
 
 #### Defined in
 
-[src/base/Typeclass.ts:4](https://github.com/jonlaing/shonad/blob/b266169/src/base/Typeclass.ts#L4)
+[src/base/Typeclass.ts:4](https://github.com/jonlaing/shonad/blob/0ae3fab/src/base/Typeclass.ts#L4)
 
 ## Properties
 
@@ -81,17 +81,17 @@
 
 #### Defined in
 
-[src/control/Applicative.ts:21](https://github.com/jonlaing/shonad/blob/b266169/src/control/Applicative.ts#L21)
+[src/control/Applicative.ts:22](https://github.com/jonlaing/shonad/blob/0ae3fab/src/control/Applicative.ts#L22)
 
 ___
 
 ### fmap
 
-• `Abstract` **fmap**: (`f`: (`a`: `A`) => `any`) => [`Functor`](control.functor.Functor.md)<`any`\>
+• `Abstract` **fmap**: (`f`: (`a`: `A`) => `any`) => [`Applicative`](control.applicative.Applicative.md)<`any`\>
 
 #### Type declaration
 
-▸ (`f`): [`Functor`](control.functor.Functor.md)<`any`\>
+▸ (`f`): [`Applicative`](control.applicative.Applicative.md)<`any`\>
 
 ##### Parameters
 
@@ -101,15 +101,15 @@ ___
 
 ##### Returns
 
-[`Functor`](control.functor.Functor.md)<`any`\>
+[`Applicative`](control.applicative.Applicative.md)<`any`\>
 
-#### Inherited from
+#### Overrides
 
 [Functor](control.functor.Functor.md).[fmap](control.functor.Functor.md#fmap)
 
 #### Defined in
 
-[src/control/Functor.ts:7](https://github.com/jonlaing/shonad/blob/b266169/src/control/Functor.ts#L7)
+[src/control/Applicative.ts:21](https://github.com/jonlaing/shonad/blob/0ae3fab/src/control/Applicative.ts#L21)
 
 ___
 
@@ -137,7 +137,7 @@ ___
 
 #### Defined in
 
-[src/base/Typeclass.ts:8](https://github.com/jonlaing/shonad/blob/b266169/src/base/Typeclass.ts#L8)
+[src/base/Typeclass.ts:8](https://github.com/jonlaing/shonad/blob/0ae3fab/src/base/Typeclass.ts#L8)
 
 ___
 
@@ -151,7 +151,7 @@ ___
 
 #### Defined in
 
-[src/base/Typeclass.ts:2](https://github.com/jonlaing/shonad/blob/b266169/src/base/Typeclass.ts#L2)
+[src/base/Typeclass.ts:2](https://github.com/jonlaing/shonad/blob/0ae3fab/src/base/Typeclass.ts#L2)
 
 ___
 
@@ -161,7 +161,7 @@ ___
 
 #### Defined in
 
-[src/control/Applicative.ts:11](https://github.com/jonlaing/shonad/blob/b266169/src/control/Applicative.ts#L11)
+[src/control/Applicative.ts:11](https://github.com/jonlaing/shonad/blob/0ae3fab/src/control/Applicative.ts#L11)
 
 ___
 
@@ -175,4 +175,4 @@ ___
 
 #### Defined in
 
-[src/control/Functor.ts:5](https://github.com/jonlaing/shonad/blob/b266169/src/control/Functor.ts#L5)
+[src/control/Functor.ts:5](https://github.com/jonlaing/shonad/blob/0ae3fab/src/control/Functor.ts#L5)

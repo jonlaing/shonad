@@ -1,3 +1,4 @@
+import * as Fn from "../base/Function";
 import * as Maybe from "../data/Maybe";
 import * as Dict from "../data/Dict";
 import * as Either from "../data/Either";
@@ -45,6 +46,7 @@ export declare const prop: <A>(k: string) => Lens<any, Maybe.Maybe<A>>;
  * @returns  a Lens of `Maybe b` or `Maybe c`
  */
 export declare const or: <A, B, C>(l1: Lens<A, Maybe.Maybe<C>>, l0: Lens<A, Maybe.Maybe<B>>) => Lens<A, Maybe.Maybe<C> | Maybe.Maybe<B>>;
+export declare const when: <A>(pred: Fn.Predicate<A>) => Lens<A[], Maybe.Maybe<A>>;
 export declare const nonEmptyString: Lens<string, Maybe.Maybe<string>>;
 export declare const nonEmptyList: Lens<any[], Maybe.Maybe<any[]>>;
 export declare const nonEmptyDict: Lens<Dict.Dict<any>, Maybe.Maybe<Dict.Dict<any>>>;

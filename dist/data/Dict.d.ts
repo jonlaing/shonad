@@ -4,7 +4,7 @@ export declare type Dict<A> = Record<string, A>;
 declare function _get(key: string): (dict: Record<string, any>) => Maybe.Maybe<any>;
 declare function _get(key: string, dict: Record<string, any>): Maybe.Maybe<any>;
 export declare const get: typeof _get;
-declare function _set(key: string): (val: any, dict: Record<string, any>) => Record<string, any>;
+declare function _set(key: string): (val: any, dict?: Record<string, any>) => Record<string, any>;
 declare function _set(key: string, val: any): (dict: Record<string, any>) => Record<string, any>;
 declare function _set(key: string, val: any, dict: Record<string, any>): Record<string, any>;
 export declare const set: typeof _set;

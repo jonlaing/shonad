@@ -87,40 +87,37 @@ export const optional = <A>(fallback: A): Lens<Maybe.Maybe<A>, A> => ({
 
 export const head: Lens<any[], Maybe.Maybe<any>> = {
   get: List.head,
-  set: (v: Maybe.Maybe<any>, xs: any[]) =>
-    Maybe.fromMaybe(
-      xs,
-      Maybe.bind(v, (a) => Maybe.fmap((tl: any[]) => [a, ...tl], List.tail(xs)))
-    ),
+  set: (mx: Maybe.Maybe<any>, xs: any[]) =>
+    Maybe._do(function* (_) {
+      const head: any = _(yield mx);
+      const tail: any[] = _(yield List.tail(xs));
+      return [head, ...tail];
+    }).unwrap(xs),
 };
 
 export const tail: Lens<any[], Maybe.Maybe<any[]>> = {
   get: List.tail,
-  set: (vs: Maybe.Maybe<any[]>, xs: any[]) =>
-    Maybe.fromMaybe(
-      xs,
-      Maybe.bind(vs, (as: any[]) =>
-        Maybe.fmap((hd: any) => [hd, ...as], List.head(xs))
-      )
-    ),
+  set: (mxs: Maybe.Maybe<any[]>, xs: any[]) =>
+    Maybe._do(function* (_) {
+      const tail: any[] = _(yield mxs);
+      const head: any = _(yield List.head(xs));
+      return [head, ...tail];
+    }).unwrap(xs),
 };
 
 export const index = <A>(i: number): Lens<A[], Maybe.Maybe<A>> => ({
   get: List.nth(i),
-  set: (x: Maybe.Maybe<A>, xs) =>
-    Maybe.fromMaybe(
-      xs,
-      Maybe.fmap((x: A) => List.update(x, i, xs), x)
-    ),
+  set: (mx: Maybe.Maybe<A>, xs) =>
+    mx
+      .fmap((x) => List.update(x, i))
+      .apply(Maybe.pure(xs))
+      .unwrap(xs),
 });
 
 export const prop = <A>(k: string): Lens<any, Maybe.Maybe<A>> => ({
   get: Dict.get(k),
-  set: (v: Maybe.Maybe<any>, dict: Record<string, any>) =>
-    Maybe.fromMaybe(
-      dict,
-      Maybe.fmap((x: any) => Dict.set(k, x, dict), v)
-    ),
+  set: (mv: Maybe.Maybe<any>, dict: Record<string, any>) =>
+    mv.fmap(Dict.set(k)).apply(Maybe.pure(dict)).unwrap(dict),
 });
 
 /**
@@ -147,23 +144,28 @@ export const or = <A, B, C>(
         () => l0.get(a)
       ),
     (mv: Maybe.Maybe<B | C>, a: A) =>
-      Maybe.fromMaybe(
-        l1.set(mv, a),
-        Maybe.fmap((_: B) => l0.set(mv, a), l0.get(a))
-      )
+      l0
+        .get(a)
+        .fmap((_) => l0.set(mv, a))
+        .unwrap(l1.set(mv, a))
+  );
+
+export const when = <A>(pred: Fn.Predicate<A>) =>
+  lens(List.find<A>(pred), (mv: Maybe.Maybe<A>, xs: A[]) =>
+    mv.fmap(List.updateWhen(pred)).apply(Maybe.pure(xs)).unwrap(xs)
   );
 
 export const nonEmptyString = lens<string, Maybe.Maybe<string>>(
   (a) => (a === "" ? Maybe.nothing<string>() : Maybe.just(a)),
-  (mv, a) => Maybe.fromMaybe("", mv)
+  (mv: Maybe.Maybe<string>, a) => mv.unwrap("")
 );
 
 export const nonEmptyList = lens<any[], Maybe.Maybe<any[]>>(
   (a) => (List.isEmpty(a) ? Maybe.nothing<any[]>() : Maybe.just(a)),
-  (mv, a) => Maybe.fromMaybe([], mv)
+  (mv: Maybe.Maybe<any[]>, a) => mv.unwrap([])
 );
 
 export const nonEmptyDict = lens<Dict.Dict<any>, Maybe.Maybe<Dict.Dict<any>>>(
   (a) => (Dict.isEmpty(a) ? Maybe.nothing<Dict.Dict<any>>() : Maybe.just(a)),
-  (mv, a) => Maybe.fromMaybe({}, mv)
+  (mv: Maybe.Maybe<Dict.Dict<any>>, a) => mv.unwrap({})
 );

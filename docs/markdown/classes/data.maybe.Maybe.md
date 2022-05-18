@@ -65,91 +65,97 @@
 
 #### Defined in
 
-[src/base/Typeclass.ts:4](https://github.com/jonlaing/shonad/blob/b266169/src/base/Typeclass.ts#L4)
+[src/base/Typeclass.ts:4](https://github.com/jonlaing/shonad/blob/0ae3fab/src/base/Typeclass.ts#L4)
 
 ## Properties
 
 ### apply
 
-• `Abstract` **apply**: (`f`: `any`) => [`Applicative`](control.applicative.Applicative.md)<`any`\>
+• `Abstract` **apply**: (`ma`: [`Maybe`](data.maybe.Maybe.md)<`any`\>) => [`Maybe`](data.maybe.Maybe.md)<`any`\>
 
 #### Type declaration
 
-▸ (`f`): [`Applicative`](control.applicative.Applicative.md)<`any`\>
+▸ (`ma`): [`Maybe`](data.maybe.Maybe.md)<`any`\>
 
 ##### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `f` | `any` |
+| `ma` | [`Maybe`](data.maybe.Maybe.md)<`any`\> |
 
 ##### Returns
 
-[`Applicative`](control.applicative.Applicative.md)<`any`\>
+[`Maybe`](data.maybe.Maybe.md)<`any`\>
 
-#### Inherited from
+#### Overrides
 
 [Monad](control.monad.Monad.md).[apply](control.monad.Monad.md#apply)
 
 #### Defined in
 
-[src/control/Applicative.ts:21](https://github.com/jonlaing/shonad/blob/b266169/src/control/Applicative.ts#L21)
+[src/data/Maybe.ts:12](https://github.com/jonlaing/shonad/blob/0ae3fab/src/data/Maybe.ts#L12)
 
 ___
 
 ### bind
 
-• `Abstract` **bind**: (`f`: [`Function`](../modules/base.functions.md#function)<`any`, [`Monad`](control.monad.Monad.md)<`any`\>\>) => [`Monad`](control.monad.Monad.md)<`any`\>
+• `Abstract` **bind**: (`f`: [`Function`](../modules/base.functions.md#function)<`any`, [`Maybe`](data.maybe.Maybe.md)<`any`\>\>) => [`Maybe`](data.maybe.Maybe.md)<`any`\>
 
 #### Type declaration
 
-▸ (`f`): [`Monad`](control.monad.Monad.md)<`any`\>
+▸ (`f`): [`Maybe`](data.maybe.Maybe.md)<`any`\>
 
 ##### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `f` | [`Function`](../modules/base.functions.md#function)<`any`, [`Monad`](control.monad.Monad.md)<`any`\>\> |
+| `f` | [`Function`](../modules/base.functions.md#function)<`any`, [`Maybe`](data.maybe.Maybe.md)<`any`\>\> |
 
 ##### Returns
 
-[`Monad`](control.monad.Monad.md)<`any`\>
+[`Maybe`](data.maybe.Maybe.md)<`any`\>
 
-#### Inherited from
+#### Overrides
 
 [Monad](control.monad.Monad.md).[bind](control.monad.Monad.md#bind)
 
 #### Defined in
 
-[src/control/Monad.ts:59](https://github.com/jonlaing/shonad/blob/b266169/src/control/Monad.ts#L59)
+[src/data/Maybe.ts:13](https://github.com/jonlaing/shonad/blob/0ae3fab/src/data/Maybe.ts#L13)
 
 ___
 
 ### fmap
 
-• `Abstract` **fmap**: (`f`: (`a`: `A`) => `any`) => [`Functor`](control.functor.Functor.md)<`any`\>
+• `Abstract` **fmap**: <B\>(`f`: (`a`: `A`) => `B`) => [`Maybe`](data.maybe.Maybe.md)<`B`\>
 
 #### Type declaration
 
-▸ (`f`): [`Functor`](control.functor.Functor.md)<`any`\>
+▸ <`B`\>(`f`): [`Maybe`](data.maybe.Maybe.md)<`B`\>
+
+##### Type parameters
+
+| Name |
+| :------ |
+| `B` |
 
 ##### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `f` | (`a`: `A`) => `any` |
+| `f` | (`a`: `A`) => `B` |
 
 ##### Returns
 
-[`Functor`](control.functor.Functor.md)<`any`\>
+[`Maybe`](data.maybe.Maybe.md)<`B`\>
 
-#### Inherited from
+#### Overrides
 
 [Monad](control.monad.Monad.md).[fmap](control.monad.Monad.md#fmap)
 
 #### Defined in
 
-[src/control/Functor.ts:7](https://github.com/jonlaing/shonad/blob/b266169/src/control/Functor.ts#L7)
+[src/data/Maybe.ts:11](https://github.com/jonlaing/shonad/blob/0ae3fab/src/data/Maybe.ts#L11)
 
 ___
 
@@ -177,7 +183,7 @@ ___
 
 #### Defined in
 
-[src/base/Typeclass.ts:8](https://github.com/jonlaing/shonad/blob/b266169/src/base/Typeclass.ts#L8)
+[src/base/Typeclass.ts:8](https://github.com/jonlaing/shonad/blob/0ae3fab/src/base/Typeclass.ts#L8)
 
 ___
 
@@ -191,7 +197,7 @@ ___
 
 #### Defined in
 
-[src/base/Typeclass.ts:2](https://github.com/jonlaing/shonad/blob/b266169/src/base/Typeclass.ts#L2)
+[src/base/Typeclass.ts:2](https://github.com/jonlaing/shonad/blob/0ae3fab/src/base/Typeclass.ts#L2)
 
 ___
 
@@ -205,7 +211,7 @@ ___
 
 #### Defined in
 
-[src/control/Monad.ts:57](https://github.com/jonlaing/shonad/blob/b266169/src/control/Monad.ts#L57)
+[src/control/Monad.ts:57](https://github.com/jonlaing/shonad/blob/0ae3fab/src/control/Monad.ts#L57)
 
 ___
 
@@ -219,7 +225,7 @@ ___
 
 #### Defined in
 
-[src/control/Monad.ts:54](https://github.com/jonlaing/shonad/blob/b266169/src/control/Monad.ts#L54)
+[src/control/Monad.ts:54](https://github.com/jonlaing/shonad/blob/0ae3fab/src/control/Monad.ts#L54)
 
 ___
 
@@ -233,7 +239,7 @@ ___
 
 #### Defined in
 
-[src/control/Functor.ts:5](https://github.com/jonlaing/shonad/blob/b266169/src/control/Functor.ts#L5)
+[src/control/Functor.ts:5](https://github.com/jonlaing/shonad/blob/0ae3fab/src/control/Functor.ts#L5)
 
 ## Methods
 
@@ -253,4 +259,4 @@ ___
 
 #### Defined in
 
-[src/data/Maybe.ts:7](https://github.com/jonlaing/shonad/blob/b266169/src/data/Maybe.ts#L7)
+[src/data/Maybe.ts:7](https://github.com/jonlaing/shonad/blob/0ae3fab/src/data/Maybe.ts#L7)

@@ -51,6 +51,8 @@ import * as Fn from "../base/Function";
 export declare abstract class Monad<A> extends Applicative<A> {
     static bind: Function.Curry<(x: Monad<any>, f: (a: any) => Monad<any>) => Monad<any>>;
     static apply: StaticApplyFn<Monad<Function.Function>, Monad<any>>;
+    abstract fmap: (f: (a: A) => any) => Monad<any>;
+    abstract apply: (f: any) => Monad<any>;
     abstract bind: (f: Fn.Function<any, Monad<any>>) => Monad<any>;
 }
 declare const fixYield: <A>(val: any) => A;

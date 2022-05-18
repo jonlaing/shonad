@@ -56,6 +56,8 @@ export abstract class Monad<A> extends Applicative<A> {
   );
   declare static apply: StaticApplyFn<Monad<Function.Function>, Monad<any>>;
 
+  abstract fmap: (f: (a: A) => any) => Monad<any>;
+  abstract apply: (f: any) => Monad<any>;
   abstract bind: (f: Fn.Function<any, Monad<any>>) => Monad<any>;
 }
 

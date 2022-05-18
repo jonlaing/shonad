@@ -32,7 +32,7 @@
 
 #### Defined in
 
-[src/extensions/redux.ts:11](https://github.com/jonlaing/shonad/blob/b266169/src/extensions/redux.ts#L11)
+[src/extensions/redux.ts:11](https://github.com/jonlaing/shonad/blob/0ae3fab/src/extensions/redux.ts#L11)
 
 ___
 
@@ -42,4 +42,4 @@ ___
 
 #### Defined in
 
-[src/extensions/redux.ts:12](https://github.com/jonlaing/shonad/blob/b266169/src/extensions/redux.ts#L12)
+[src/extensions/redux.ts:12](https://github.com/jonlaing/shonad/blob/0ae3fab/src/extensions/redux.ts#L12)

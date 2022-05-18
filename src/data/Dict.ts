@@ -17,7 +17,7 @@ export const get: typeof _get = Fn.curry(
 
 declare function _set(
   key: string
-): (val: any, dict: Record<string, any>) => Record<string, any>;
+): (val: any, dict?: Record<string, any>) => Record<string, any>;
 declare function _set(
   key: string,
   val: any

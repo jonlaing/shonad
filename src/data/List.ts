@@ -162,7 +162,7 @@ export const update: typeof _update = Fn.curry(
   <A>(x: A, i: number, xs: A[]): A[] => adjust(Fn.always(x), i, xs)
 );
 
-declare function _updateWhen<A>(pred: Fn.Predicate<A>): (x: A, xs: A[]) => A[];
+declare function _updateWhen<A>(pred: Fn.Predicate<A>): (x: A, xs?: A[]) => A[];
 declare function _updateWhen<A>(pred: Fn.Predicate<A>, x: A): (xs: A[]) => A[];
 declare function _updateWhen<A>(pred: Fn.Predicate<A>, x: A, xs: A[]): A[];
 

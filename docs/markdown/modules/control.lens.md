@@ -33,6 +33,7 @@
 - [set](control.lens.md#set)
 - [view](control.lens.md#view)
 - [viewE](control.lens.md#viewe)
+- [when](control.lens.md#when)
 
 ## Type aliases
 
@@ -49,7 +50,7 @@
 
 #### Defined in
 
-[src/control/Lens.ts:8](https://github.com/jonlaing/shonad/blob/b266169/src/control/Lens.ts#L8)
+[src/control/Lens.ts:8](https://github.com/jonlaing/shonad/blob/0ae3fab/src/control/Lens.ts#L8)
 
 ___
 
@@ -73,7 +74,7 @@ ___
 
 #### Defined in
 
-[src/control/Lens.ts:10](https://github.com/jonlaing/shonad/blob/b266169/src/control/Lens.ts#L10)
+[src/control/Lens.ts:10](https://github.com/jonlaing/shonad/blob/0ae3fab/src/control/Lens.ts#L10)
 
 ___
 
@@ -90,7 +91,7 @@ ___
 
 #### Defined in
 
-[src/control/Lens.ts:9](https://github.com/jonlaing/shonad/blob/b266169/src/control/Lens.ts#L9)
+[src/control/Lens.ts:9](https://github.com/jonlaing/shonad/blob/0ae3fab/src/control/Lens.ts#L9)
 
 ## Variables
 
@@ -100,7 +101,7 @@ ___
 
 #### Defined in
 
-[src/control/Lens.ts:88](https://github.com/jonlaing/shonad/blob/b266169/src/control/Lens.ts#L88)
+[src/control/Lens.ts:88](https://github.com/jonlaing/shonad/blob/0ae3fab/src/control/Lens.ts#L88)
 
 ___
 
@@ -110,7 +111,7 @@ ___
 
 #### Defined in
 
-[src/control/Lens.ts:166](https://github.com/jonlaing/shonad/blob/b266169/src/control/Lens.ts#L166)
+[src/control/Lens.ts:168](https://github.com/jonlaing/shonad/blob/0ae3fab/src/control/Lens.ts#L168)
 
 ___
 
@@ -120,7 +121,7 @@ ___
 
 #### Defined in
 
-[src/control/Lens.ts:161](https://github.com/jonlaing/shonad/blob/b266169/src/control/Lens.ts#L161)
+[src/control/Lens.ts:163](https://github.com/jonlaing/shonad/blob/0ae3fab/src/control/Lens.ts#L163)
 
 ___
 
@@ -130,7 +131,7 @@ ___
 
 #### Defined in
 
-[src/control/Lens.ts:156](https://github.com/jonlaing/shonad/blob/b266169/src/control/Lens.ts#L156)
+[src/control/Lens.ts:158](https://github.com/jonlaing/shonad/blob/0ae3fab/src/control/Lens.ts#L158)
 
 ___
 
@@ -140,7 +141,7 @@ ___
 
 #### Defined in
 
-[src/control/Lens.ts:97](https://github.com/jonlaing/shonad/blob/b266169/src/control/Lens.ts#L97)
+[src/control/Lens.ts:98](https://github.com/jonlaing/shonad/blob/0ae3fab/src/control/Lens.ts#L98)
 
 ## Functions
 
@@ -167,7 +168,7 @@ ___
 
 #### Defined in
 
-[src/control/Lens.ts:80](https://github.com/jonlaing/shonad/blob/b266169/src/control/Lens.ts#L80)
+[src/control/Lens.ts:80](https://github.com/jonlaing/shonad/blob/0ae3fab/src/control/Lens.ts#L80)
 
 ___
 
@@ -193,7 +194,7 @@ ___
 
 #### Defined in
 
-[src/control/Lens.ts:108](https://github.com/jonlaing/shonad/blob/b266169/src/control/Lens.ts#L108)
+[src/control/Lens.ts:108](https://github.com/jonlaing/shonad/blob/0ae3fab/src/control/Lens.ts#L108)
 
 ___
 
@@ -221,7 +222,7 @@ ___
 
 #### Defined in
 
-[src/control/Lens.ts:15](https://github.com/jonlaing/shonad/blob/b266169/src/control/Lens.ts#L15)
+[src/control/Lens.ts:15](https://github.com/jonlaing/shonad/blob/0ae3fab/src/control/Lens.ts#L15)
 
 ___
 
@@ -247,7 +248,7 @@ ___
 
 #### Defined in
 
-[src/control/Lens.ts:83](https://github.com/jonlaing/shonad/blob/b266169/src/control/Lens.ts#L83)
+[src/control/Lens.ts:83](https://github.com/jonlaing/shonad/blob/0ae3fab/src/control/Lens.ts#L83)
 
 ___
 
@@ -286,7 +287,7 @@ a Lens of `Maybe b` or `Maybe c`
 
 #### Defined in
 
-[src/control/Lens.ts:139](https://github.com/jonlaing/shonad/blob/b266169/src/control/Lens.ts#L139)
+[src/control/Lens.ts:136](https://github.com/jonlaing/shonad/blob/0ae3fab/src/control/Lens.ts#L136)
 
 ___
 
@@ -326,7 +327,7 @@ ___
 
 #### Defined in
 
-[src/control/Lens.ts:63](https://github.com/jonlaing/shonad/blob/b266169/src/control/Lens.ts#L63)
+[src/control/Lens.ts:63](https://github.com/jonlaing/shonad/blob/0ae3fab/src/control/Lens.ts#L63)
 
 ▸ **over**<`A`, `B`\>(`lens`, `f`): (`data`: `A`) => `A`
 
@@ -362,7 +363,7 @@ ___
 
 #### Defined in
 
-[src/control/Lens.ts:63](https://github.com/jonlaing/shonad/blob/b266169/src/control/Lens.ts#L63)
+[src/control/Lens.ts:63](https://github.com/jonlaing/shonad/blob/0ae3fab/src/control/Lens.ts#L63)
 
 ▸ **over**<`A`, `B`\>(`lens`, `f`, `data`): `A`
 
@@ -387,7 +388,7 @@ ___
 
 #### Defined in
 
-[src/control/Lens.ts:63](https://github.com/jonlaing/shonad/blob/b266169/src/control/Lens.ts#L63)
+[src/control/Lens.ts:63](https://github.com/jonlaing/shonad/blob/0ae3fab/src/control/Lens.ts#L63)
 
 ___
 
@@ -414,7 +415,7 @@ ___
 
 #### Defined in
 
-[src/control/Lens.ts:68](https://github.com/jonlaing/shonad/blob/b266169/src/control/Lens.ts#L68)
+[src/control/Lens.ts:68](https://github.com/jonlaing/shonad/blob/0ae3fab/src/control/Lens.ts#L68)
 
 ___
 
@@ -440,7 +441,7 @@ ___
 
 #### Defined in
 
-[src/control/Lens.ts:117](https://github.com/jonlaing/shonad/blob/b266169/src/control/Lens.ts#L117)
+[src/control/Lens.ts:117](https://github.com/jonlaing/shonad/blob/0ae3fab/src/control/Lens.ts#L117)
 
 ___
 
@@ -480,7 +481,7 @@ ___
 
 #### Defined in
 
-[src/control/Lens.ts:55](https://github.com/jonlaing/shonad/blob/b266169/src/control/Lens.ts#L55)
+[src/control/Lens.ts:55](https://github.com/jonlaing/shonad/blob/0ae3fab/src/control/Lens.ts#L55)
 
 ▸ **set**<`A`, `B`\>(`lens`, `val`): (`data`: `A`) => `A`
 
@@ -516,7 +517,7 @@ ___
 
 #### Defined in
 
-[src/control/Lens.ts:55](https://github.com/jonlaing/shonad/blob/b266169/src/control/Lens.ts#L55)
+[src/control/Lens.ts:55](https://github.com/jonlaing/shonad/blob/0ae3fab/src/control/Lens.ts#L55)
 
 ▸ **set**<`A`, `B`\>(`lens`, `val`, `data`): `A`
 
@@ -541,7 +542,7 @@ ___
 
 #### Defined in
 
-[src/control/Lens.ts:55](https://github.com/jonlaing/shonad/blob/b266169/src/control/Lens.ts#L55)
+[src/control/Lens.ts:55](https://github.com/jonlaing/shonad/blob/0ae3fab/src/control/Lens.ts#L55)
 
 ___
 
@@ -580,7 +581,7 @@ ___
 
 #### Defined in
 
-[src/control/Lens.ts:26](https://github.com/jonlaing/shonad/blob/b266169/src/control/Lens.ts#L26)
+[src/control/Lens.ts:26](https://github.com/jonlaing/shonad/blob/0ae3fab/src/control/Lens.ts#L26)
 
 ▸ **view**<`A`, `B`\>(`lens`, `data`): `B`
 
@@ -604,7 +605,7 @@ ___
 
 #### Defined in
 
-[src/control/Lens.ts:26](https://github.com/jonlaing/shonad/blob/b266169/src/control/Lens.ts#L26)
+[src/control/Lens.ts:26](https://github.com/jonlaing/shonad/blob/0ae3fab/src/control/Lens.ts#L26)
 
 ___
 
@@ -644,7 +645,7 @@ ___
 
 #### Defined in
 
-[src/control/Lens.ts:43](https://github.com/jonlaing/shonad/blob/b266169/src/control/Lens.ts#L43)
+[src/control/Lens.ts:43](https://github.com/jonlaing/shonad/blob/0ae3fab/src/control/Lens.ts#L43)
 
 ▸ **viewE**<`A`, `B`\>(`lens`, `error`): (`data`: `A`) => [`Either`](../classes/data.either.Either.md)<`string`, `B`\>
 
@@ -680,7 +681,7 @@ ___
 
 #### Defined in
 
-[src/control/Lens.ts:43](https://github.com/jonlaing/shonad/blob/b266169/src/control/Lens.ts#L43)
+[src/control/Lens.ts:43](https://github.com/jonlaing/shonad/blob/0ae3fab/src/control/Lens.ts#L43)
 
 ▸ **viewE**<`A`, `B`\>(`lens`, `error`, `data`): [`Either`](../classes/data.either.Either.md)<`string`, `B`\>
 
@@ -705,4 +706,30 @@ ___
 
 #### Defined in
 
-[src/control/Lens.ts:43](https://github.com/jonlaing/shonad/blob/b266169/src/control/Lens.ts#L43)
+[src/control/Lens.ts:43](https://github.com/jonlaing/shonad/blob/0ae3fab/src/control/Lens.ts#L43)
+
+___
+
+### when
+
+▸ **when**<`A`\>(`pred`): [`Lens`](control.lens.md#lens)<`A`[], [`Maybe`](../classes/data.maybe.Maybe.md)<`A`\>\>
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `A` |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `pred` | [`Predicate`](base.functions.md#predicate)<`A`\> |
+
+#### Returns
+
+[`Lens`](control.lens.md#lens)<`A`[], [`Maybe`](../classes/data.maybe.Maybe.md)<`A`\>\>
+
+#### Defined in
+
+[src/control/Lens.ts:153](https://github.com/jonlaing/shonad/blob/0ae3fab/src/control/Lens.ts#L153)

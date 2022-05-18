@@ -34,7 +34,7 @@ declare function _update<A>(x: A): (i: number, xs?: A[]) => A[];
 declare function _update<A>(x: A, i: number): (xs: A[]) => A[];
 declare function _update<A>(x: A, i: number, xs: A[]): A[];
 export declare const update: typeof _update;
-declare function _updateWhen<A>(pred: Fn.Predicate<A>): (x: A, xs: A[]) => A[];
+declare function _updateWhen<A>(pred: Fn.Predicate<A>): (x: A, xs?: A[]) => A[];
 declare function _updateWhen<A>(pred: Fn.Predicate<A>, x: A): (xs: A[]) => A[];
 declare function _updateWhen<A>(pred: Fn.Predicate<A>, x: A, xs: A[]): A[];
 export declare const updateWhen: typeof _updateWhen;

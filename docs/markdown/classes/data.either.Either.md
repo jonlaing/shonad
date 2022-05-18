@@ -67,17 +67,17 @@
 
 #### Defined in
 
-[src/base/Typeclass.ts:4](https://github.com/jonlaing/shonad/blob/b266169/src/base/Typeclass.ts#L4)
+[src/base/Typeclass.ts:4](https://github.com/jonlaing/shonad/blob/0ae3fab/src/base/Typeclass.ts#L4)
 
 ## Properties
 
 ### apply
 
-• `Abstract` **apply**: (`f`: `any`) => [`Applicative`](control.applicative.Applicative.md)<`any`\>
+• `Abstract` **apply**: (`f`: `any`) => [`Monad`](control.monad.Monad.md)<`any`\>
 
 #### Type declaration
 
-▸ (`f`): [`Applicative`](control.applicative.Applicative.md)<`any`\>
+▸ (`f`): [`Monad`](control.monad.Monad.md)<`any`\>
 
 ##### Parameters
 
@@ -87,7 +87,7 @@
 
 ##### Returns
 
-[`Applicative`](control.applicative.Applicative.md)<`any`\>
+[`Monad`](control.monad.Monad.md)<`any`\>
 
 #### Inherited from
 
@@ -95,7 +95,7 @@
 
 #### Defined in
 
-[src/control/Applicative.ts:21](https://github.com/jonlaing/shonad/blob/b266169/src/control/Applicative.ts#L21)
+[src/control/Monad.ts:60](https://github.com/jonlaing/shonad/blob/0ae3fab/src/control/Monad.ts#L60)
 
 ___
 
@@ -123,17 +123,17 @@ ___
 
 #### Defined in
 
-[src/control/Monad.ts:59](https://github.com/jonlaing/shonad/blob/b266169/src/control/Monad.ts#L59)
+[src/control/Monad.ts:61](https://github.com/jonlaing/shonad/blob/0ae3fab/src/control/Monad.ts#L61)
 
 ___
 
 ### fmap
 
-• `Abstract` **fmap**: (`f`: (`a`: `A` \| `B`) => `any`) => [`Functor`](control.functor.Functor.md)<`any`\>
+• `Abstract` **fmap**: (`f`: (`a`: `A` \| `B`) => `any`) => [`Monad`](control.monad.Monad.md)<`any`\>
 
 #### Type declaration
 
-▸ (`f`): [`Functor`](control.functor.Functor.md)<`any`\>
+▸ (`f`): [`Monad`](control.monad.Monad.md)<`any`\>
 
 ##### Parameters
 
@@ -143,7 +143,7 @@ ___
 
 ##### Returns
 
-[`Functor`](control.functor.Functor.md)<`any`\>
+[`Monad`](control.monad.Monad.md)<`any`\>
 
 #### Inherited from
 
@@ -151,7 +151,7 @@ ___
 
 #### Defined in
 
-[src/control/Functor.ts:7](https://github.com/jonlaing/shonad/blob/b266169/src/control/Functor.ts#L7)
+[src/control/Monad.ts:59](https://github.com/jonlaing/shonad/blob/0ae3fab/src/control/Monad.ts#L59)
 
 ___
 
@@ -179,7 +179,7 @@ ___
 
 #### Defined in
 
-[src/base/Typeclass.ts:8](https://github.com/jonlaing/shonad/blob/b266169/src/base/Typeclass.ts#L8)
+[src/base/Typeclass.ts:8](https://github.com/jonlaing/shonad/blob/0ae3fab/src/base/Typeclass.ts#L8)
 
 ___
 
@@ -193,7 +193,7 @@ ___
 
 #### Defined in
 
-[src/base/Typeclass.ts:2](https://github.com/jonlaing/shonad/blob/b266169/src/base/Typeclass.ts#L2)
+[src/base/Typeclass.ts:2](https://github.com/jonlaing/shonad/blob/0ae3fab/src/base/Typeclass.ts#L2)
 
 ___
 
@@ -207,7 +207,7 @@ ___
 
 #### Defined in
 
-[src/control/Monad.ts:57](https://github.com/jonlaing/shonad/blob/b266169/src/control/Monad.ts#L57)
+[src/control/Monad.ts:57](https://github.com/jonlaing/shonad/blob/0ae3fab/src/control/Monad.ts#L57)
 
 ___
 
@@ -221,7 +221,7 @@ ___
 
 #### Defined in
 
-[src/control/Monad.ts:54](https://github.com/jonlaing/shonad/blob/b266169/src/control/Monad.ts#L54)
+[src/control/Monad.ts:54](https://github.com/jonlaing/shonad/blob/0ae3fab/src/control/Monad.ts#L54)
 
 ___
 
@@ -235,7 +235,7 @@ ___
 
 #### Defined in
 
-[src/control/Functor.ts:5](https://github.com/jonlaing/shonad/blob/b266169/src/control/Functor.ts#L5)
+[src/control/Functor.ts:5](https://github.com/jonlaing/shonad/blob/0ae3fab/src/control/Functor.ts#L5)
 
 ## Methods
 
@@ -255,4 +255,4 @@ ___
 
 #### Defined in
 
-[src/data/Either.ts:8](https://github.com/jonlaing/shonad/blob/b266169/src/data/Either.ts#L8)
+[src/data/Either.ts:8](https://github.com/jonlaing/shonad/blob/0ae3fab/src/data/Either.ts#L8)

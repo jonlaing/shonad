@@ -7,6 +7,10 @@ export abstract class Maybe<A> extends Monad<A> {
   static pure(a: any) {
     return new Just(a);
   }
+
+  abstract fmap: <B>(f: (a: A) => B) => Maybe<B>;
+  abstract apply: (ma: Maybe<any>) => Maybe<any>;
+  abstract bind: (f: Fn.Function<any, Maybe<any>>) => Maybe<any>;
 }
 
 declare function _fmap<F extends Function.Function>(
@@ -48,7 +52,7 @@ declare function _bind<A, B>(
 ): Maybe<B>;
 
 export const bind: typeof _bind = Maybe.bind;
-export const pure: (a: any) => Maybe<any> = Maybe.pure;
+export const pure = Maybe.pure;
 
 export class Just<A> extends Maybe<A> {
   isJust = Fn.always(true);
