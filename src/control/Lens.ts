@@ -108,10 +108,7 @@ export const tail: Lens<any[], Maybe.Maybe<any[]>> = {
 export const index = <A>(i: number): Lens<A[], Maybe.Maybe<A>> => ({
   get: List.nth(i),
   set: (mx: Maybe.Maybe<A>, xs) =>
-    mx
-      .fmap((x) => List.update(x, i))
-      .apply(Maybe.pure(xs))
-      .unwrap(xs),
+    mx.fmap((x) => List.update(x, i, xs)).unwrap(xs),
 });
 
 export const prop = <A>(k: string): Lens<any, Maybe.Maybe<A>> => ({

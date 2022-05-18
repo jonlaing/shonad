@@ -53,7 +53,7 @@
 
 #### Defined in
 
-[src/data/Either.ts:154](https://github.com/jonlaing/shonad/blob/0ae3fab/src/data/Either.ts#L154)
+[src/data/Either.ts:154](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Either.ts#L154)
 
 ___
 
@@ -93,7 +93,7 @@ ___
 
 #### Defined in
 
-[src/data/Either.ts:150](https://github.com/jonlaing/shonad/blob/0ae3fab/src/data/Either.ts#L150)
+[src/data/Either.ts:150](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Either.ts#L150)
 
 ▸ **apply**<`A`, `B`, `C`\>(`f`, `mx`): [`Either`](../classes/data.either.Either.md)<`A`, `C`\>
 
@@ -118,7 +118,7 @@ ___
 
 #### Defined in
 
-[src/data/Either.ts:150](https://github.com/jonlaing/shonad/blob/0ae3fab/src/data/Either.ts#L150)
+[src/data/Either.ts:150](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Either.ts#L150)
 
 ___
 
@@ -158,7 +158,7 @@ ___
 
 #### Defined in
 
-[src/data/Either.ts:151](https://github.com/jonlaing/shonad/blob/0ae3fab/src/data/Either.ts#L151)
+[src/data/Either.ts:151](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Either.ts#L151)
 
 ▸ **apply_**<`A`, `B`, `C`\>(`f`, `mx`): [`Either`](../classes/data.either.Either.md)<`A`, `C`\>
 
@@ -183,7 +183,7 @@ ___
 
 #### Defined in
 
-[src/data/Either.ts:151](https://github.com/jonlaing/shonad/blob/0ae3fab/src/data/Either.ts#L151)
+[src/data/Either.ts:151](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Either.ts#L151)
 
 ___
 
@@ -223,7 +223,7 @@ ___
 
 #### Defined in
 
-[src/data/Either.ts:152](https://github.com/jonlaing/shonad/blob/0ae3fab/src/data/Either.ts#L152)
+[src/data/Either.ts:152](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Either.ts#L152)
 
 ▸ **bind**<`A`, `B`, `C`\>(`mx`, `f`): [`Either`](../classes/data.either.Either.md)<`A`, `C`\>
 
@@ -248,7 +248,7 @@ ___
 
 #### Defined in
 
-[src/data/Either.ts:152](https://github.com/jonlaing/shonad/blob/0ae3fab/src/data/Either.ts#L152)
+[src/data/Either.ts:152](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Either.ts#L152)
 
 ___
 
@@ -289,7 +289,7 @@ ___
 
 #### Defined in
 
-[src/data/Either.ts:61](https://github.com/jonlaing/shonad/blob/0ae3fab/src/data/Either.ts#L61)
+[src/data/Either.ts:61](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Either.ts#L61)
 
 ▸ **either**<`A`, `B`, `C`\>(`f0`, `f1`): (`x`: [`Either`](../classes/data.either.Either.md)<`A`, `B`\>) => `C`
 
@@ -326,7 +326,7 @@ ___
 
 #### Defined in
 
-[src/data/Either.ts:61](https://github.com/jonlaing/shonad/blob/0ae3fab/src/data/Either.ts#L61)
+[src/data/Either.ts:61](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Either.ts#L61)
 
 ▸ **either**<`A`, `B`, `C`\>(`f0`, `f1`, `x`): `C`
 
@@ -352,7 +352,7 @@ ___
 
 #### Defined in
 
-[src/data/Either.ts:61](https://github.com/jonlaing/shonad/blob/0ae3fab/src/data/Either.ts#L61)
+[src/data/Either.ts:61](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Either.ts#L61)
 
 ___
 
@@ -380,7 +380,7 @@ ___
 
 #### Defined in
 
-[src/data/Either.ts:104](https://github.com/jonlaing/shonad/blob/0ae3fab/src/data/Either.ts#L104)
+[src/data/Either.ts:104](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Either.ts#L104)
 
 ___
 
@@ -408,7 +408,7 @@ ___
 
 #### Defined in
 
-[src/data/Either.ts:109](https://github.com/jonlaing/shonad/blob/0ae3fab/src/data/Either.ts#L109)
+[src/data/Either.ts:109](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Either.ts#L109)
 
 ___
 
@@ -448,7 +448,7 @@ ___
 
 #### Defined in
 
-[src/data/Either.ts:148](https://github.com/jonlaing/shonad/blob/0ae3fab/src/data/Either.ts#L148)
+[src/data/Either.ts:148](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Either.ts#L148)
 
 ▸ **fmap**<`A`, `B`, `C`\>(`f`, `mx`): [`Either`](../classes/data.either.Either.md)<`A`, `C`\>
 
@@ -473,7 +473,7 @@ ___
 
 #### Defined in
 
-[src/data/Either.ts:148](https://github.com/jonlaing/shonad/blob/0ae3fab/src/data/Either.ts#L148)
+[src/data/Either.ts:148](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Either.ts#L148)
 
 ___
 
@@ -511,7 +511,7 @@ ___
 
 #### Defined in
 
-[src/data/Either.ts:75](https://github.com/jonlaing/shonad/blob/0ae3fab/src/data/Either.ts#L75)
+[src/data/Either.ts:75](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Either.ts#L75)
 
 ▸ **fromLeft**<`A`\>(`fallback`, `x`): `A`
 
@@ -534,7 +534,7 @@ ___
 
 #### Defined in
 
-[src/data/Either.ts:75](https://github.com/jonlaing/shonad/blob/0ae3fab/src/data/Either.ts#L75)
+[src/data/Either.ts:75](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Either.ts#L75)
 
 ___
 
@@ -573,7 +573,7 @@ ___
 
 #### Defined in
 
-[src/data/Either.ts:99](https://github.com/jonlaing/shonad/blob/0ae3fab/src/data/Either.ts#L99)
+[src/data/Either.ts:99](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Either.ts#L99)
 
 ▸ **fromMaybe**<`A`, `B`\>(`error`, `m`): [`Either`](../classes/data.either.Either.md)<`A`, `B`\>
 
@@ -597,7 +597,7 @@ ___
 
 #### Defined in
 
-[src/data/Either.ts:99](https://github.com/jonlaing/shonad/blob/0ae3fab/src/data/Either.ts#L99)
+[src/data/Either.ts:99](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Either.ts#L99)
 
 ___
 
@@ -635,7 +635,7 @@ ___
 
 #### Defined in
 
-[src/data/Either.ts:82](https://github.com/jonlaing/shonad/blob/0ae3fab/src/data/Either.ts#L82)
+[src/data/Either.ts:82](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Either.ts#L82)
 
 ▸ **fromRight**<`B`\>(`fallback`, `x`): `B`
 
@@ -658,7 +658,7 @@ ___
 
 #### Defined in
 
-[src/data/Either.ts:82](https://github.com/jonlaing/shonad/blob/0ae3fab/src/data/Either.ts#L82)
+[src/data/Either.ts:82](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Either.ts#L82)
 
 ___
 
@@ -678,7 +678,7 @@ ___
 
 #### Defined in
 
-[src/data/Either.ts:45](https://github.com/jonlaing/shonad/blob/0ae3fab/src/data/Either.ts#L45)
+[src/data/Either.ts:45](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Either.ts#L45)
 
 ___
 
@@ -698,7 +698,7 @@ ___
 
 #### Defined in
 
-[src/data/Either.ts:46](https://github.com/jonlaing/shonad/blob/0ae3fab/src/data/Either.ts#L46)
+[src/data/Either.ts:46](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Either.ts#L46)
 
 ___
 
@@ -724,7 +724,7 @@ ___
 
 #### Defined in
 
-[src/data/Either.ts:42](https://github.com/jonlaing/shonad/blob/0ae3fab/src/data/Either.ts#L42)
+[src/data/Either.ts:42](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Either.ts#L42)
 
 ___
 
@@ -750,7 +750,7 @@ ___
 
 #### Defined in
 
-[src/data/Either.ts:66](https://github.com/jonlaing/shonad/blob/0ae3fab/src/data/Either.ts#L66)
+[src/data/Either.ts:66](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Either.ts#L66)
 
 ___
 
@@ -777,7 +777,7 @@ ___
 
 #### Defined in
 
-[src/data/Either.ts:86](https://github.com/jonlaing/shonad/blob/0ae3fab/src/data/Either.ts#L86)
+[src/data/Either.ts:86](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Either.ts#L86)
 
 ___
 
@@ -797,7 +797,7 @@ ___
 
 #### Defined in
 
-[src/data/Either.ts:149](https://github.com/jonlaing/shonad/blob/0ae3fab/src/data/Either.ts#L149)
+[src/data/Either.ts:149](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Either.ts#L149)
 
 ___
 
@@ -823,7 +823,7 @@ ___
 
 #### Defined in
 
-[src/data/Either.ts:43](https://github.com/jonlaing/shonad/blob/0ae3fab/src/data/Either.ts#L43)
+[src/data/Either.ts:43](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Either.ts#L43)
 
 ___
 
@@ -849,7 +849,7 @@ ___
 
 #### Defined in
 
-[src/data/Either.ts:69](https://github.com/jonlaing/shonad/blob/0ae3fab/src/data/Either.ts#L69)
+[src/data/Either.ts:69](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Either.ts#L69)
 
 ___
 
@@ -887,7 +887,7 @@ ___
 
 #### Defined in
 
-[src/data/Either.ts:115](https://github.com/jonlaing/shonad/blob/0ae3fab/src/data/Either.ts#L115)
+[src/data/Either.ts:115](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Either.ts#L115)
 
 ▸ **unwrap**<`B`\>(`fallback`, `c`): `B`
 
@@ -910,4 +910,4 @@ ___
 
 #### Defined in
 
-[src/data/Either.ts:115](https://github.com/jonlaing/shonad/blob/0ae3fab/src/data/Either.ts#L115)
+[src/data/Either.ts:115](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Either.ts#L115)
