@@ -44,4 +44,4 @@ Utility function meant to be used in tests to ensure your Functor obeys the func
 
 #### Defined in
 
-[src/control/Functor.ts:18](https://github.com/jonlaing/shonad/blob/ab8e58b/src/control/Functor.ts#L18)
+[src/control/Functor.ts:18](https://github.com/jonlaing/shonad/blob/9b2b224/src/control/Functor.ts#L18)

@@ -23,11 +23,25 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Functor = void 0;
+exports.obeysFunctorLaws = exports.Functor = void 0;
 const Fn = __importStar(require("../base/Function"));
 const Typeclass_1 = require("../base/Typeclass");
 class Functor extends Typeclass_1.Typeclass {
 }
 exports.Functor = Functor;
 Functor.fmap = Fn.curry((f, x) => x.fmap(f));
+/**
+ * Utility function meant to be used in tests to ensure your Functor obeys the functor laws
+ *
+ * @param mx - M x
+ * @param f - x => y
+ * @param g - y => z
+ * @returns `true` or `false`
+ */
+function obeysFunctorLaws(mx, f, g) {
+    return (mx.fmap(Fn.identity).unwrap({}) === Fn.identity(mx).unwrap({}) &&
+        mx.fmap(Fn.compose(g, f)).unwrap({}) ===
+            Fn.compose(Functor.fmap(g), Functor.fmap(f))(mx).unwrap({}));
+}
+exports.obeysFunctorLaws = obeysFunctorLaws;
 //# sourceMappingURL=Functor.js.map

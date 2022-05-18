@@ -31,6 +31,19 @@ export declare const head: Lens<any[], Maybe.Maybe<any>>;
 export declare const tail: Lens<any[], Maybe.Maybe<any[]>>;
 export declare const index: <A>(i: number) => Lens<A[], Maybe.Maybe<A>>;
 export declare const prop: <A>(k: string) => Lens<any, Maybe.Maybe<A>>;
+/**
+ * Forks a lens. If the second lens returns `Nothing` then it will use
+ * the first lens.
+ *
+ * @remarks
+ *
+ * This is backward from how you might expect `or' to work. This is to
+ * support currying and partial application
+ *
+ * @param l1 - Lens that returns a `Maybe c`
+ * @param l0 - Lens that returns a `Maybe b`
+ * @returns  a Lens of `Maybe b` or `Maybe c`
+ */
 export declare const or: <A, B, C>(l1: Lens<A, Maybe.Maybe<C>>, l0: Lens<A, Maybe.Maybe<B>>) => Lens<A, Maybe.Maybe<C> | Maybe.Maybe<B>>;
 export declare const nonEmptyString: Lens<string, Maybe.Maybe<string>>;
 export declare const nonEmptyList: Lens<any[], Maybe.Maybe<any[]>>;

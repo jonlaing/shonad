@@ -82,7 +82,7 @@ const maybeNil = (a) => Util.isNil(a) ? (0, exports.nothing)(a) : (0, exports.ju
 exports.maybeNil = maybeNil;
 const listToMaybe = (a) => a.length > 0 ? (0, exports.just)(a[0]) : (0, exports.nothing)();
 exports.listToMaybe = listToMaybe;
-const maybeToList = (x) => (0, exports.fromMaybe)([], Maybe.fmap((a) => [a], x));
+const maybeToList = (ma) => ma.fmap((a) => [a]).unwrap([]);
 exports.maybeToList = maybeToList;
 const catMaybes = (xs) => xs.reduce((acc, x) => ((0, exports.isJust)(x) ? [...acc, x.val] : acc), []);
 exports.catMaybes = catMaybes;

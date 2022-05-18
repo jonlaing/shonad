@@ -26,6 +26,53 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.obeysMonadLaws = exports.makeDo = exports.Monad = void 0;
 const Applicative_1 = require("./Applicative");
 const Fn = __importStar(require("../base/Function"));
+/**
+ * Abstract Monad class. See `Maybe` and `Either` for detailed usage.
+ *
+ * @example
+ *
+ * export abstract class Maybe<A> extends Monad<A> {
+ *  static pure(a: any) {
+ *    return new Just(a);
+ *  }
+ * }
+ *
+ * export class Just<A> extends Maybe<A> {
+ *  isJust = Fn.always(true);
+ *  isNothing = Fn.always(false);
+ *
+ *  fmap = <B>(f: (a: A) => B): Maybe<B> => new Just(f(this.val)) as Maybe<B>;
+ *  apply = (ma: Maybe<any>): Maybe<any> => {
+ *    return (
+ *      isJust(ma)
+ *        ? ma.fmap((this as unknown as Just<Function.Function>).val)
+ *        : nothing()
+ *    ) as Maybe<any>;
+ *  };
+ *  bind = (f: (a: any) => Maybe<any>): Maybe<any> => f(this.val);
+ *  unwrap = (fallback: A) => this.val;
+ *  equals = (a: A) => this.fmap(Util.eq(a)).unwrap(false);
+ * }
+ *
+ * export class Nothing<A> extends Maybe<A> {
+ *  isJust = Fn.always(false);
+ *  isNothing = Fn.always(true);
+ *
+ *  fmap = <B>(f: (a: A) => any): Maybe<B> =>
+ *    new Nothing(this.val as unknown as B);
+ *  apply = (f: Maybe<any>): Maybe<any> => this;
+ *  bind = (f: (a: any) => Maybe<any>) => this;
+ *
+ *  unwrap = (fallback: A) => fallback;
+ *  equals = Fn.always(false);
+ * }
+ *
+ * @see Functor
+ * @see Applicative
+ * @see Maybe
+ * @see Either
+ *
+ */
 class Monad extends Applicative_1.Applicative {
 }
 exports.Monad = Monad;
@@ -70,13 +117,19 @@ exports.makeDo = makeDo;
 /**
  * Utility function meant to be used in tests to ensure your Monad obeys the monad laws
  *
+ * @remarks
+
+ * Since all Monads are Functors and Applicatives, you should also use
+ * {@link obeysFunctorLaws} and {@link obeysApplicativeLaws} in your tests.
+ *
  * @param mx - M x
  * @param g - x => Monad y
  * @param h - y => Monad z
  * @returns `true` or `false`
  */
 function obeysMonadLaws(mx, g, h) {
-    return mx.bind(g).bind(h) === mx.bind((x) => g(x).bind(h));
+    return (mx.bind(g).bind(h).unwrap({}) ===
+        mx.bind((x) => g(x).bind(h)).unwrap({}));
 }
 exports.obeysMonadLaws = obeysMonadLaws;
 //# sourceMappingURL=Monad.js.map

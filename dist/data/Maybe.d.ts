@@ -47,7 +47,7 @@ declare function _fromMaybe<A>(fallback: A, x: Maybe<A>): A;
 export declare const fromMaybe: typeof _fromMaybe;
 export declare const maybeNil: <A>(a: A | undefined) => Maybe<A>;
 export declare const listToMaybe: (a: any[]) => Maybe<any>;
-export declare const maybeToList: <A>(x: Maybe<A>) => A[];
+export declare const maybeToList: <A>(ma: Maybe<A>) => A[];
 export declare const catMaybes: <A>(xs: Maybe<A>[]) => A[];
 declare function _mapMaybe<A, B>(f: Function.Function<[A], Maybe<B>>): (as: A[]) => B[];
 declare function _mapMaybe<A, B>(f: Function.Function<[A], Maybe<B>>, as: A[]): B[];

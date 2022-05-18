@@ -58,7 +58,7 @@ a slog.
 
 #### Defined in
 
-[src/base/Function.ts:8](https://github.com/jonlaing/shonad/blob/ab8e58b/src/base/Function.ts#L8)
+[src/base/Function.ts:8](https://github.com/jonlaing/shonad/blob/9b2b224/src/base/Function.ts#L8)
 
 ___
 
@@ -91,7 +91,7 @@ a slog
 
 #### Defined in
 
-[src/base/Function.ts:13](https://github.com/jonlaing/shonad/blob/ab8e58b/src/base/Function.ts#L13)
+[src/base/Function.ts:13](https://github.com/jonlaing/shonad/blob/9b2b224/src/base/Function.ts#L13)
 
 ## Functions
 
@@ -138,7 +138,7 @@ const true_ = always(true)
 
 #### Defined in
 
-[src/base/Function.ts:185](https://github.com/jonlaing/shonad/blob/ab8e58b/src/base/Function.ts#L185)
+[src/base/Function.ts:185](https://github.com/jonlaing/shonad/blob/9b2b224/src/base/Function.ts#L185)
 
 ___
 
@@ -175,7 +175,7 @@ A right-to-left composition of the supplied functions
 
 #### Defined in
 
-[src/base/Function.ts:82](https://github.com/jonlaing/shonad/blob/ab8e58b/src/base/Function.ts#L82)
+[src/base/Function.ts:82](https://github.com/jonlaing/shonad/blob/9b2b224/src/base/Function.ts#L82)
 
 ___
 
@@ -219,7 +219,7 @@ right-to-left composition of supplied function
 
 #### Defined in
 
-[src/base/Function.ts:112](https://github.com/jonlaing/shonad/blob/ab8e58b/src/base/Function.ts#L112)
+[src/base/Function.ts:112](https://github.com/jonlaing/shonad/blob/9b2b224/src/base/Function.ts#L112)
 
 ___
 
@@ -259,7 +259,7 @@ A curried function
 
 #### Defined in
 
-[src/base/Function.ts:64](https://github.com/jonlaing/shonad/blob/ab8e58b/src/base/Function.ts#L64)
+[src/base/Function.ts:64](https://github.com/jonlaing/shonad/blob/9b2b224/src/base/Function.ts#L64)
 
 ___
 
@@ -300,7 +300,7 @@ A curried function
 
 #### Defined in
 
-[src/base/Function.ts:43](https://github.com/jonlaing/shonad/blob/ab8e58b/src/base/Function.ts#L43)
+[src/base/Function.ts:43](https://github.com/jonlaing/shonad/blob/9b2b224/src/base/Function.ts#L43)
 
 ___
 
@@ -320,7 +320,7 @@ ___
 
 #### Defined in
 
-[src/base/Function.ts:190](https://github.com/jonlaing/shonad/blob/ab8e58b/src/base/Function.ts#L190)
+[src/base/Function.ts:190](https://github.com/jonlaing/shonad/blob/9b2b224/src/base/Function.ts#L190)
 
 ___
 
@@ -359,7 +359,7 @@ f(a, b)
 
 #### Defined in
 
-[src/base/Function.ts:211](https://github.com/jonlaing/shonad/blob/ab8e58b/src/base/Function.ts#L211)
+[src/base/Function.ts:211](https://github.com/jonlaing/shonad/blob/9b2b224/src/base/Function.ts#L211)
 
 ___
 
@@ -404,7 +404,7 @@ a => c
 
 #### Defined in
 
-[src/base/Function.ts:237](https://github.com/jonlaing/shonad/blob/ab8e58b/src/base/Function.ts#L237)
+[src/base/Function.ts:237](https://github.com/jonlaing/shonad/blob/9b2b224/src/base/Function.ts#L237)
 
 ▸ **fmap**<`A`, `B`, `C`\>(`f`, `x`): [`Function`](base.functions.md#function)<`A`, `C`\>
 
@@ -434,7 +434,7 @@ a => c
 
 #### Defined in
 
-[src/base/Function.ts:237](https://github.com/jonlaing/shonad/blob/ab8e58b/src/base/Function.ts#L237)
+[src/base/Function.ts:237](https://github.com/jonlaing/shonad/blob/9b2b224/src/base/Function.ts#L237)
 
 ___
 
@@ -460,7 +460,7 @@ ___
 
 #### Defined in
 
-[src/base/Function.ts:194](https://github.com/jonlaing/shonad/blob/ab8e58b/src/base/Function.ts#L194)
+[src/base/Function.ts:194](https://github.com/jonlaing/shonad/blob/9b2b224/src/base/Function.ts#L194)
 
 ___
 
@@ -497,7 +497,7 @@ A left-to-right composition of the supplied functions
 
 #### Defined in
 
-[src/base/Function.ts:170](https://github.com/jonlaing/shonad/blob/ab8e58b/src/base/Function.ts#L170)
+[src/base/Function.ts:170](https://github.com/jonlaing/shonad/blob/9b2b224/src/base/Function.ts#L170)
 
 ___
 
@@ -541,7 +541,7 @@ left-to-right composition of supplied function
 
 #### Defined in
 
-[src/base/Function.ts:145](https://github.com/jonlaing/shonad/blob/ab8e58b/src/base/Function.ts#L145)
+[src/base/Function.ts:145](https://github.com/jonlaing/shonad/blob/9b2b224/src/base/Function.ts#L145)
 
 ___
 
@@ -561,4 +561,4 @@ ___
 
 #### Defined in
 
-[src/base/Function.ts:192](https://github.com/jonlaing/shonad/blob/ab8e58b/src/base/Function.ts#L192)
+[src/base/Function.ts:192](https://github.com/jonlaing/shonad/blob/9b2b224/src/base/Function.ts#L192)

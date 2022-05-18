@@ -74,8 +74,19 @@ const prop = (k) => ({
     set: (v, dict) => Maybe.fromMaybe(dict, Maybe.fmap((x) => Dict.set(k, x, dict), v)),
 });
 exports.prop = prop;
-// this is backward from how you might expect 'or' to work to support
-// currying and partial application
+/**
+ * Forks a lens. If the second lens returns `Nothing` then it will use
+ * the first lens.
+ *
+ * @remarks
+ *
+ * This is backward from how you might expect `or' to work. This is to
+ * support currying and partial application
+ *
+ * @param l1 - Lens that returns a `Maybe c`
+ * @param l0 - Lens that returns a `Maybe b`
+ * @returns  a Lens of `Maybe b` or `Maybe c`
+ */
 const or = (l1, l0) => (0, exports.lens)((a) => Maybe.or(() => l1.get(a), () => l0.get(a)), (mv, a) => Maybe.fromMaybe(l1.set(mv, a), Maybe.fmap((_) => l0.set(mv, a), l0.get(a))));
 exports.or = or;
 exports.nonEmptyString = (0, exports.lens)((a) => (a === "" ? Maybe.nothing() : Maybe.just(a)), (mv, a) => Maybe.fromMaybe("", mv));

@@ -23,11 +23,34 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Applicative = void 0;
+exports.obeysApplicativeLaws = exports.Applicative = void 0;
 const Fn = __importStar(require("../base/Function"));
 const Functor_1 = require("./Functor");
 class Applicative extends Functor_1.Functor {
 }
 exports.Applicative = Applicative;
 Applicative.apply = Fn.curry((f, x) => f.apply(x));
+/**
+ * Utility function meant to be used in tests to ensure your Applicative
+ * obeys the applicative laws
+ *
+ * @remarks
+ *
+ * Since all Applicatives are Functors, you should also
+ * use {@link obeysFunctorLaws} in your tests.
+ *
+ * @param pure - x => M x
+ * @param f - x => y
+ * @param u - M (x => y => z)
+ * @param v - M x
+ * @param w - M y
+ * @returns `true` or `false`
+ */
+function obeysApplicativeLaws(pure, x, f, u, v, w) {
+    return (pure(Fn.identity).apply(v).unwrap({}) === v.unwrap({}) &&
+        pure(f).apply(pure(x)).unwrap({}) === pure(f(x)).unwrap({}) &&
+        pure(Fn.compose).apply(u).apply(v).apply(w).unwrap({}) ===
+            u.apply(v).apply(w).unwrap({}));
+}
+exports.obeysApplicativeLaws = obeysApplicativeLaws;
 //# sourceMappingURL=Applicative.js.map

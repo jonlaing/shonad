@@ -56,7 +56,7 @@
 
 #### Defined in
 
-[src/base/Typeclass.ts:4](https://github.com/jonlaing/shonad/blob/ab8e58b/src/base/Typeclass.ts#L4)
+[src/base/Typeclass.ts:4](https://github.com/jonlaing/shonad/blob/9b2b224/src/base/Typeclass.ts#L4)
 
 ## Properties
 
@@ -70,7 +70,7 @@
 
 #### Defined in
 
-[src/base/Typeclass.ts:2](https://github.com/jonlaing/shonad/blob/ab8e58b/src/base/Typeclass.ts#L2)
+[src/base/Typeclass.ts:2](https://github.com/jonlaing/shonad/blob/9b2b224/src/base/Typeclass.ts#L2)
 
 ___
 
@@ -84,7 +84,7 @@ ___
 
 #### Defined in
 
-[src/control/Functor.ts:5](https://github.com/jonlaing/shonad/blob/ab8e58b/src/control/Functor.ts#L5)
+[src/control/Functor.ts:5](https://github.com/jonlaing/shonad/blob/9b2b224/src/control/Functor.ts#L5)
 
 ## Methods
 
@@ -114,7 +114,7 @@ Functor.fmap
 
 #### Defined in
 
-[src/data/Identity.ts:5](https://github.com/jonlaing/shonad/blob/ab8e58b/src/data/Identity.ts#L5)
+[src/data/Identity.ts:5](https://github.com/jonlaing/shonad/blob/9b2b224/src/data/Identity.ts#L5)
 
 ___
 
@@ -138,4 +138,4 @@ Functor.unwrap
 
 #### Defined in
 
-[src/data/Identity.ts:6](https://github.com/jonlaing/shonad/blob/ab8e58b/src/data/Identity.ts#L6)
+[src/data/Identity.ts:6](https://github.com/jonlaing/shonad/blob/9b2b224/src/data/Identity.ts#L6)

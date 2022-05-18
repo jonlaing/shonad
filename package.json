@@ -54,6 +54,7 @@
     "prepare": "husky install",
     "test": "jest",
     "test:watch": "jest --watch",
-    "build": "tsc -p tsconfig.build.json"
+    "build": "tsc -p tsconfig.build.json",
+    "build:docs": "typedoc --options typedoc.json"
   }
 }

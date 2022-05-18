@@ -1,6 +1,53 @@
 import { Function } from "ts-toolbelt";
 import { Applicative, StaticApplyFn } from "./Applicative";
 import * as Fn from "../base/Function";
+/**
+ * Abstract Monad class. See `Maybe` and `Either` for detailed usage.
+ *
+ * @example
+ *
+ * export abstract class Maybe<A> extends Monad<A> {
+ *  static pure(a: any) {
+ *    return new Just(a);
+ *  }
+ * }
+ *
+ * export class Just<A> extends Maybe<A> {
+ *  isJust = Fn.always(true);
+ *  isNothing = Fn.always(false);
+ *
+ *  fmap = <B>(f: (a: A) => B): Maybe<B> => new Just(f(this.val)) as Maybe<B>;
+ *  apply = (ma: Maybe<any>): Maybe<any> => {
+ *    return (
+ *      isJust(ma)
+ *        ? ma.fmap((this as unknown as Just<Function.Function>).val)
+ *        : nothing()
+ *    ) as Maybe<any>;
+ *  };
+ *  bind = (f: (a: any) => Maybe<any>): Maybe<any> => f(this.val);
+ *  unwrap = (fallback: A) => this.val;
+ *  equals = (a: A) => this.fmap(Util.eq(a)).unwrap(false);
+ * }
+ *
+ * export class Nothing<A> extends Maybe<A> {
+ *  isJust = Fn.always(false);
+ *  isNothing = Fn.always(true);
+ *
+ *  fmap = <B>(f: (a: A) => any): Maybe<B> =>
+ *    new Nothing(this.val as unknown as B);
+ *  apply = (f: Maybe<any>): Maybe<any> => this;
+ *  bind = (f: (a: any) => Maybe<any>) => this;
+ *
+ *  unwrap = (fallback: A) => fallback;
+ *  equals = Fn.always(false);
+ * }
+ *
+ * @see Functor
+ * @see Applicative
+ * @see Maybe
+ * @see Either
+ *
+ */
 export declare abstract class Monad<A> extends Applicative<A> {
     static bind: Function.Curry<(x: Monad<any>, f: (a: any) => Monad<any>) => Monad<any>>;
     static apply: StaticApplyFn<Monad<Function.Function>, Monad<any>>;
@@ -36,6 +83,11 @@ export declare type DoFuncReturn<T> = Generator<T, any, T | undefined>;
 export declare const makeDo: <T extends Monad<any>>(pure: Fn.Function<any, T>, bind: Function.Function<[T, Fn.Function<any, T>], T>) => (f: (fix: typeof fixYield) => DoFuncReturn<T>) => T;
 /**
  * Utility function meant to be used in tests to ensure your Monad obeys the monad laws
+ *
+ * @remarks
+
+ * Since all Monads are Functors and Applicatives, you should also use
+ * {@link obeysFunctorLaws} and {@link obeysApplicativeLaws} in your tests.
  *
  * @param mx - M x
  * @param g - x => Monad y
