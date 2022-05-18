@@ -1,5 +1,4 @@
 import { Function } from "ts-toolbelt";
-import * as Maybe from "../data/Maybe";
 
 /**
  * Helper type to make writing higher order functions less of
@@ -29,11 +28,13 @@ const _curryN = (
  *
  * @example
  *
+ * ```typescript
  * const add = (a: number, b: number) => number
  * const addC = curryN(1, add)
  * const add3 = addC(3)
  *
  * add3(4) // -> 7
+ * ```
  *
  * @see curry
  *
@@ -49,12 +50,13 @@ export const curryN = <Fn extends Function.Function>(
  * Curries all arguments for the supplied function.
  *
  * @example
- *
+ * ```typescript
  * const add = (a: number, b: number) => number
  * const addC = curry(add)
  * const add3 = addC(3)
  *
  * add3(4) // -> 7
+ * ```
  *
  * @see curryN
  *
@@ -72,7 +74,9 @@ declare function _compose<A, B>(...funcs: Function.Function[]): Function<A, B>;
  *
  * @example
  *
+ * ```typescript
  * compose(f, g, h)(x) === f(g(h(x)))
+ * ```
  *
  * @see pipe
  *
@@ -95,11 +99,13 @@ declare function _composeK<C extends Chainable<any> = Chainable<any>>(
  *
  * @example
  *
+ * ```typescript
  * composeK(
  *  maybe.fmap(num.add(4)),
  *  dict.get('b),
  *  dict.get('a'),
  * )({ a: { b: 3 }}) // -> 7
+ * ```
  *
  * @see pipeK
  * @see compose
@@ -128,11 +134,13 @@ export const composeK: typeof _composeK = <
  *
  * @example
  *
+ * ```typescript
  * composeK(
  *  dict.get('a'),
  *  dict.get('b),
  *  maybe.fmap(num.add(4)),
  * )({ a: { b: 3 }}) // -> 7
+ * ```
  *
  * @see composeK
  * @see compose
@@ -160,7 +168,9 @@ export const pipeK: typeof _composeK = <
  *
  * @example
  *
+ * ```typescript
  * pipe(f, g, h)(x) === h(g(f(x)))
+ * ```
  *
  * @see compose
  *
@@ -177,7 +187,9 @@ export const pipe: typeof _compose = (...funcs: Function.Function[]) => {
  *
  * @example
  *
+ * ```typescript
  * const true_ = always(true)
+ * ```
  *
  * @param x - value to always return
  * @returns (a?: any) => x
@@ -200,8 +212,10 @@ export const identity = <A>(x: A) => x;
  *
  * @example
  *
+ * ```typescript
  * const lessThan = (a: number, b: number) => a < b
  * const greaterThan = flip(lessThan)
+ * ```
  *
  * @param f - (a: A, b: B) => C
  * @param [b] B
@@ -227,7 +241,7 @@ declare function _fmap<A, B, C>(
 ): Function<A, C>;
 
 /**
- * Implementing Functor for Function Arrows. This is synonymous
+ * Implementing {@link Functor} for Function Arrows. This is synonymous
  * with {@link compose}.
  *
  * @param f - b => c

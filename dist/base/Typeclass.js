@@ -1,10 +1,2 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Typeclass = void 0;
-class Typeclass {
-    constructor(val) {
-        this.val = val;
-    }
-}
-exports.Typeclass = Typeclass;
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.Typeclass=void 0;class Typeclass{constructor(val){this.val=val}}exports.Typeclass=Typeclass;
 //# sourceMappingURL=Typeclass.js.map

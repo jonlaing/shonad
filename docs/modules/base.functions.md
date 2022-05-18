@@ -58,7 +58,7 @@ a slog.
 
 #### Defined in
 
-[src/base/Function.ts:8](https://github.com/jonlaing/shonad/blob/9b2b224/src/base/Function.ts#L8)
+[src/base/Function.ts:7](https://github.com/jonlaing/shonad/blob/cb2cd2b/src/base/Function.ts#L7)
 
 ___
 
@@ -91,7 +91,7 @@ a slog
 
 #### Defined in
 
-[src/base/Function.ts:13](https://github.com/jonlaing/shonad/blob/9b2b224/src/base/Function.ts#L13)
+[src/base/Function.ts:12](https://github.com/jonlaing/shonad/blob/cb2cd2b/src/base/Function.ts#L12)
 
 ## Functions
 
@@ -104,7 +104,9 @@ of the input.
 
 **`example`**
 
+```typescript
 const true_ = always(true)
+```
 
 #### Type parameters
 
@@ -138,7 +140,7 @@ const true_ = always(true)
 
 #### Defined in
 
-[src/base/Function.ts:185](https://github.com/jonlaing/shonad/blob/9b2b224/src/base/Function.ts#L185)
+[src/base/Function.ts:197](https://github.com/jonlaing/shonad/blob/cb2cd2b/src/base/Function.ts#L197)
 
 ___
 
@@ -150,7 +152,9 @@ Composes functions together, right-to-left.
 
 **`example`**
 
+```typescript
 compose(f, g, h)(x) === f(g(h(x)))
+```
 
 **`see`** pipe
 
@@ -175,7 +179,7 @@ A right-to-left composition of the supplied functions
 
 #### Defined in
 
-[src/base/Function.ts:82](https://github.com/jonlaing/shonad/blob/9b2b224/src/base/Function.ts#L82)
+[src/base/Function.ts:86](https://github.com/jonlaing/shonad/blob/cb2cd2b/src/base/Function.ts#L86)
 
 ___
 
@@ -187,11 +191,13 @@ Returns right-to-left Kleisi composition of supplied functions.
 
 **`example`**
 
+```typescript
 composeK(
  maybe.fmap(num.add(4)),
  dict.get('b),
  dict.get('a'),
 )({ a: { b: 3 }}) // -> 7
+```
 
 **`see`** pipeK
 
@@ -219,7 +225,7 @@ right-to-left composition of supplied function
 
 #### Defined in
 
-[src/base/Function.ts:112](https://github.com/jonlaing/shonad/blob/9b2b224/src/base/Function.ts#L112)
+[src/base/Function.ts:118](https://github.com/jonlaing/shonad/blob/cb2cd2b/src/base/Function.ts#L118)
 
 ___
 
@@ -230,12 +236,13 @@ ___
 Curries all arguments for the supplied function.
 
 **`example`**
-
+```typescript
 const add = (a: number, b: number) => number
 const addC = curry(add)
 const add3 = addC(3)
 
 add3(4) // -> 7
+```
 
 **`see`** curryN
 
@@ -259,7 +266,7 @@ A curried function
 
 #### Defined in
 
-[src/base/Function.ts:64](https://github.com/jonlaing/shonad/blob/9b2b224/src/base/Function.ts#L64)
+[src/base/Function.ts:66](https://github.com/jonlaing/shonad/blob/cb2cd2b/src/base/Function.ts#L66)
 
 ___
 
@@ -271,11 +278,13 @@ Curries N arguments for the supplied function.
 
 **`example`**
 
+```typescript
 const add = (a: number, b: number) => number
 const addC = curryN(1, add)
 const add3 = addC(3)
 
 add3(4) // -> 7
+```
 
 **`see`** curry
 
@@ -300,7 +309,7 @@ A curried function
 
 #### Defined in
 
-[src/base/Function.ts:43](https://github.com/jonlaing/shonad/blob/9b2b224/src/base/Function.ts#L43)
+[src/base/Function.ts:44](https://github.com/jonlaing/shonad/blob/cb2cd2b/src/base/Function.ts#L44)
 
 ___
 
@@ -320,7 +329,7 @@ ___
 
 #### Defined in
 
-[src/base/Function.ts:190](https://github.com/jonlaing/shonad/blob/9b2b224/src/base/Function.ts#L190)
+[src/base/Function.ts:202](https://github.com/jonlaing/shonad/blob/cb2cd2b/src/base/Function.ts#L202)
 
 ___
 
@@ -334,8 +343,10 @@ Flips the first two paramters of a function.
 
 **`example`**
 
+```typescript
 const lessThan = (a: number, b: number) => a < b
 const greaterThan = flip(lessThan)
+```
 
 #### Type parameters
 
@@ -359,7 +370,7 @@ f(a, b)
 
 #### Defined in
 
-[src/base/Function.ts:211](https://github.com/jonlaing/shonad/blob/9b2b224/src/base/Function.ts#L211)
+[src/base/Function.ts:225](https://github.com/jonlaing/shonad/blob/cb2cd2b/src/base/Function.ts#L225)
 
 ___
 
@@ -367,7 +378,7 @@ ___
 
 ▸ **fmap**<`A`, `B`, `C`\>(`f`): (`x`: [`Function`](base.functions.md#function)<`A`, `B`\>) => [`Function`](base.functions.md#function)<`A`, `C`\>
 
-Implementing Functor for Function Arrows. This is synonymous
+Implementing [Functor](../classes/control.functor.Functor.md) for Function Arrows. This is synonymous
 with [compose](base.functions.md#compose).
 
 #### Type parameters
@@ -404,11 +415,11 @@ a => c
 
 #### Defined in
 
-[src/base/Function.ts:237](https://github.com/jonlaing/shonad/blob/9b2b224/src/base/Function.ts#L237)
+[src/base/Function.ts:251](https://github.com/jonlaing/shonad/blob/cb2cd2b/src/base/Function.ts#L251)
 
 ▸ **fmap**<`A`, `B`, `C`\>(`f`, `x`): [`Function`](base.functions.md#function)<`A`, `C`\>
 
-Implementing Functor for Function Arrows. This is synonymous
+Implementing [Functor](../classes/control.functor.Functor.md) for Function Arrows. This is synonymous
 with [compose](base.functions.md#compose).
 
 #### Type parameters
@@ -434,7 +445,7 @@ a => c
 
 #### Defined in
 
-[src/base/Function.ts:237](https://github.com/jonlaing/shonad/blob/9b2b224/src/base/Function.ts#L237)
+[src/base/Function.ts:251](https://github.com/jonlaing/shonad/blob/cb2cd2b/src/base/Function.ts#L251)
 
 ___
 
@@ -460,7 +471,7 @@ ___
 
 #### Defined in
 
-[src/base/Function.ts:194](https://github.com/jonlaing/shonad/blob/9b2b224/src/base/Function.ts#L194)
+[src/base/Function.ts:206](https://github.com/jonlaing/shonad/blob/cb2cd2b/src/base/Function.ts#L206)
 
 ___
 
@@ -472,7 +483,9 @@ Composes functions together, left-to-right.
 
 **`example`**
 
+```typescript
 pipe(f, g, h)(x) === h(g(f(x)))
+```
 
 **`see`** compose
 
@@ -497,7 +510,7 @@ A left-to-right composition of the supplied functions
 
 #### Defined in
 
-[src/base/Function.ts:170](https://github.com/jonlaing/shonad/blob/9b2b224/src/base/Function.ts#L170)
+[src/base/Function.ts:180](https://github.com/jonlaing/shonad/blob/cb2cd2b/src/base/Function.ts#L180)
 
 ___
 
@@ -509,11 +522,13 @@ Returns left-to-right Kleisi composition of supplied functions.
 
 **`example`**
 
+```typescript
 composeK(
  dict.get('a'),
  dict.get('b),
  maybe.fmap(num.add(4)),
 )({ a: { b: 3 }}) // -> 7
+```
 
 **`see`** composeK
 
@@ -541,7 +556,7 @@ left-to-right composition of supplied function
 
 #### Defined in
 
-[src/base/Function.ts:145](https://github.com/jonlaing/shonad/blob/9b2b224/src/base/Function.ts#L145)
+[src/base/Function.ts:153](https://github.com/jonlaing/shonad/blob/cb2cd2b/src/base/Function.ts#L153)
 
 ___
 
@@ -561,4 +576,4 @@ ___
 
 #### Defined in
 
-[src/base/Function.ts:192](https://github.com/jonlaing/shonad/blob/9b2b224/src/base/Function.ts#L192)
+[src/base/Function.ts:204](https://github.com/jonlaing/shonad/blob/cb2cd2b/src/base/Function.ts#L204)

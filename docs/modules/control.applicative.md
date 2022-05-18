@@ -33,7 +33,7 @@
 
 #### Defined in
 
-[src/control/Applicative.ts:5](https://github.com/jonlaing/shonad/blob/9b2b224/src/control/Applicative.ts#L5)
+[src/control/Applicative.ts:5](https://github.com/jonlaing/shonad/blob/cb2cd2b/src/control/Applicative.ts#L5)
 
 ## Functions
 
@@ -74,4 +74,4 @@ use [obeysFunctorLaws](control.functor.md#obeysfunctorlaws) in your tests.
 
 #### Defined in
 
-[src/control/Applicative.ts:40](https://github.com/jonlaing/shonad/blob/9b2b224/src/control/Applicative.ts#L40)
+[src/control/Applicative.ts:40](https://github.com/jonlaing/shonad/blob/cb2cd2b/src/control/Applicative.ts#L40)
