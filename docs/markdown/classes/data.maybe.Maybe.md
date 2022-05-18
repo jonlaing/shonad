@@ -65,7 +65,7 @@
 
 #### Defined in
 
-[src/base/Typeclass.ts:4](https://github.com/jonlaing/shonad/blob/3645ebf/src/base/Typeclass.ts#L4)
+[src/base/Typeclass.ts:4](https://github.com/jonlaing/shonad/blob/4c55f96/src/base/Typeclass.ts#L4)
 
 ## Properties
 
@@ -93,7 +93,7 @@
 
 #### Defined in
 
-[src/data/Maybe.ts:13](https://github.com/jonlaing/shonad/blob/3645ebf/src/data/Maybe.ts#L13)
+[src/data/Maybe.ts:13](https://github.com/jonlaing/shonad/blob/4c55f96/src/data/Maybe.ts#L13)
 
 ___
 
@@ -121,7 +121,7 @@ ___
 
 #### Defined in
 
-[src/data/Maybe.ts:14](https://github.com/jonlaing/shonad/blob/3645ebf/src/data/Maybe.ts#L14)
+[src/data/Maybe.ts:14](https://github.com/jonlaing/shonad/blob/4c55f96/src/data/Maybe.ts#L14)
 
 ___
 
@@ -155,7 +155,7 @@ ___
 
 #### Defined in
 
-[src/data/Maybe.ts:12](https://github.com/jonlaing/shonad/blob/3645ebf/src/data/Maybe.ts#L12)
+[src/data/Maybe.ts:12](https://github.com/jonlaing/shonad/blob/4c55f96/src/data/Maybe.ts#L12)
 
 ___
 
@@ -183,7 +183,7 @@ ___
 
 #### Defined in
 
-[src/base/Typeclass.ts:8](https://github.com/jonlaing/shonad/blob/3645ebf/src/base/Typeclass.ts#L8)
+[src/base/Typeclass.ts:8](https://github.com/jonlaing/shonad/blob/4c55f96/src/base/Typeclass.ts#L8)
 
 ___
 
@@ -197,7 +197,7 @@ ___
 
 #### Defined in
 
-[src/base/Typeclass.ts:2](https://github.com/jonlaing/shonad/blob/3645ebf/src/base/Typeclass.ts#L2)
+[src/base/Typeclass.ts:2](https://github.com/jonlaing/shonad/blob/4c55f96/src/base/Typeclass.ts#L2)
 
 ___
 
@@ -211,7 +211,7 @@ ___
 
 #### Defined in
 
-[src/control/Monad.ts:57](https://github.com/jonlaing/shonad/blob/3645ebf/src/control/Monad.ts#L57)
+[src/control/Monad.ts:57](https://github.com/jonlaing/shonad/blob/4c55f96/src/control/Monad.ts#L57)
 
 ___
 
@@ -225,7 +225,7 @@ ___
 
 #### Defined in
 
-[src/control/Monad.ts:54](https://github.com/jonlaing/shonad/blob/3645ebf/src/control/Monad.ts#L54)
+[src/control/Monad.ts:54](https://github.com/jonlaing/shonad/blob/4c55f96/src/control/Monad.ts#L54)
 
 ___
 
@@ -239,7 +239,7 @@ ___
 
 #### Defined in
 
-[src/control/Functor.ts:5](https://github.com/jonlaing/shonad/blob/3645ebf/src/control/Functor.ts#L5)
+[src/control/Functor.ts:5](https://github.com/jonlaing/shonad/blob/4c55f96/src/control/Functor.ts#L5)
 
 ## Methods
 
@@ -259,4 +259,4 @@ ___
 
 #### Defined in
 
-[src/data/Maybe.ts:8](https://github.com/jonlaing/shonad/blob/3645ebf/src/data/Maybe.ts#L8)
+[src/data/Maybe.ts:8](https://github.com/jonlaing/shonad/blob/4c55f96/src/data/Maybe.ts#L8)

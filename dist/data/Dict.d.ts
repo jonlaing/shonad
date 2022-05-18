@@ -32,4 +32,7 @@ declare function _propEq<A extends Dict<any>>(k: string): (val: any, dict?: A) =
 declare function _propEq<A extends Dict<any>>(k: string, val: any): (dict: A) => boolean;
 declare function _propEq<A extends Dict<any>>(k: string, val: any, dict: A): boolean;
 export declare const propEq: typeof _propEq;
+declare function _merge<A extends Dict<A>>(a: Partial<A>): (dict: A) => A;
+declare function _merge<A extends Dict<A>>(a: Partial<A>, dict: A): A;
+export declare const merge: typeof _merge;
 export {};

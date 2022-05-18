@@ -142,3 +142,13 @@ export const propEq: typeof _propEq = Fn.curry(
   <A extends Dict<A>>(key: string, val: any, dict: A): boolean =>
     get(key, dict).fmap(Util.eq(val)).unwrap(false)
 );
+
+declare function _merge<A extends Dict<A>>(a: Partial<A>): (dict: A) => A;
+declare function _merge<A extends Dict<A>>(a: Partial<A>, dict: A): A;
+
+export const merge: typeof _merge = Fn.curry(
+  <A extends Dict<A>>(a: Partial<A>, dict: A): A => ({
+    ...dict,
+    ...a,
+  })
+);
