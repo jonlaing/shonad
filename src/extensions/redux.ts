@@ -1,9 +1,9 @@
-import { S } from "ts-toolbelt";
 import * as Fn from "../base/Function";
 import * as L from "../control/Lens";
+import { Dict } from "../data/Dict";
 import * as Maybe from "../data/Maybe";
 
-export type State = Record<string, any>;
+export interface State extends Dict<any> {}
 
 export interface Action<T = any> {}
 export interface PayloadAction<P = void, T extends string = string>

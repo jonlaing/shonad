@@ -1,6 +1,8 @@
 import * as L from "../control/Lens";
+import { Dict } from "../data/Dict";
 import * as Maybe from "../data/Maybe";
-export declare type State = Record<string, any>;
+export interface State extends Dict<any> {
+}
 export interface Action<T = any> {
 }
 export interface PayloadAction<P = void, T extends string = string> extends Action<T> {

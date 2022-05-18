@@ -2,6 +2,7 @@ import { Function } from "ts-toolbelt";
 import { makeDo, Monad } from "../control/Monad";
 import * as Fn from "../base/Function";
 import * as Util from "../base/Util";
+import { Dict } from "./Dict";
 
 export abstract class Maybe<A> extends Monad<A> {
   static pure(a: any) {
@@ -144,13 +145,11 @@ export const mapMaybe: typeof _mapMaybe = Fn.curry(
     }, [] as B[])
 );
 
-export type MaybeRecord<T extends Record<string, any>> = {
+export type MaybeRecord<T extends Dict<any>> = {
   [k in keyof T]: Maybe<T[k]>;
 };
 
-export const maybeRecord = <T extends Record<string, any>>(
-  x: T
-): MaybeRecord<T> =>
+export const maybeRecord = <T extends Dict<any>>(x: T): MaybeRecord<T> =>
   Object.keys(x).reduce(
     (acc, k) => ({ ...acc, [k]: maybeNil(x[k]) }),
     {} as MaybeRecord<T>

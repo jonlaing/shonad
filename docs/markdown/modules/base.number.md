@@ -48,7 +48,7 @@
 
 #### Defined in
 
-[src/base/Number.ts:33](https://github.com/jonlaing/shonad/blob/22dd501/src/base/Number.ts#L33)
+[src/base/Number.ts:33](https://github.com/jonlaing/shonad/blob/3645ebf/src/base/Number.ts#L33)
 
 ▸ **add**(`a`, `b`): `number`
 
@@ -65,7 +65,7 @@
 
 #### Defined in
 
-[src/base/Number.ts:33](https://github.com/jonlaing/shonad/blob/22dd501/src/base/Number.ts#L33)
+[src/base/Number.ts:33](https://github.com/jonlaing/shonad/blob/3645ebf/src/base/Number.ts#L33)
 
 ___
 
@@ -97,7 +97,7 @@ ___
 
 #### Defined in
 
-[src/base/Number.ts:6](https://github.com/jonlaing/shonad/blob/22dd501/src/base/Number.ts#L6)
+[src/base/Number.ts:6](https://github.com/jonlaing/shonad/blob/3645ebf/src/base/Number.ts#L6)
 
 ▸ **gt**(`a`, `b`): `boolean`
 
@@ -114,7 +114,7 @@ ___
 
 #### Defined in
 
-[src/base/Number.ts:6](https://github.com/jonlaing/shonad/blob/22dd501/src/base/Number.ts#L6)
+[src/base/Number.ts:6](https://github.com/jonlaing/shonad/blob/3645ebf/src/base/Number.ts#L6)
 
 ___
 
@@ -146,7 +146,7 @@ ___
 
 #### Defined in
 
-[src/base/Number.ts:10](https://github.com/jonlaing/shonad/blob/22dd501/src/base/Number.ts#L10)
+[src/base/Number.ts:10](https://github.com/jonlaing/shonad/blob/3645ebf/src/base/Number.ts#L10)
 
 ▸ **gt_**(`a`, `b`): `boolean`
 
@@ -163,7 +163,7 @@ ___
 
 #### Defined in
 
-[src/base/Number.ts:10](https://github.com/jonlaing/shonad/blob/22dd501/src/base/Number.ts#L10)
+[src/base/Number.ts:10](https://github.com/jonlaing/shonad/blob/3645ebf/src/base/Number.ts#L10)
 
 ___
 
@@ -195,7 +195,7 @@ ___
 
 #### Defined in
 
-[src/base/Number.ts:12](https://github.com/jonlaing/shonad/blob/22dd501/src/base/Number.ts#L12)
+[src/base/Number.ts:12](https://github.com/jonlaing/shonad/blob/3645ebf/src/base/Number.ts#L12)
 
 ▸ **gte**(`a`, `b`): `boolean`
 
@@ -212,7 +212,7 @@ ___
 
 #### Defined in
 
-[src/base/Number.ts:12](https://github.com/jonlaing/shonad/blob/22dd501/src/base/Number.ts#L12)
+[src/base/Number.ts:12](https://github.com/jonlaing/shonad/blob/3645ebf/src/base/Number.ts#L12)
 
 ___
 
@@ -244,7 +244,7 @@ ___
 
 #### Defined in
 
-[src/base/Number.ts:16](https://github.com/jonlaing/shonad/blob/22dd501/src/base/Number.ts#L16)
+[src/base/Number.ts:16](https://github.com/jonlaing/shonad/blob/3645ebf/src/base/Number.ts#L16)
 
 ▸ **gte_**(`a`, `b`): `boolean`
 
@@ -261,7 +261,7 @@ ___
 
 #### Defined in
 
-[src/base/Number.ts:16](https://github.com/jonlaing/shonad/blob/22dd501/src/base/Number.ts#L16)
+[src/base/Number.ts:16](https://github.com/jonlaing/shonad/blob/3645ebf/src/base/Number.ts#L16)
 
 ___
 
@@ -293,7 +293,7 @@ ___
 
 #### Defined in
 
-[src/base/Number.ts:18](https://github.com/jonlaing/shonad/blob/22dd501/src/base/Number.ts#L18)
+[src/base/Number.ts:18](https://github.com/jonlaing/shonad/blob/3645ebf/src/base/Number.ts#L18)
 
 ▸ **lt**(`a`, `b`): `boolean`
 
@@ -310,7 +310,7 @@ ___
 
 #### Defined in
 
-[src/base/Number.ts:18](https://github.com/jonlaing/shonad/blob/22dd501/src/base/Number.ts#L18)
+[src/base/Number.ts:18](https://github.com/jonlaing/shonad/blob/3645ebf/src/base/Number.ts#L18)
 
 ___
 
@@ -342,7 +342,7 @@ ___
 
 #### Defined in
 
-[src/base/Number.ts:22](https://github.com/jonlaing/shonad/blob/22dd501/src/base/Number.ts#L22)
+[src/base/Number.ts:22](https://github.com/jonlaing/shonad/blob/3645ebf/src/base/Number.ts#L22)
 
 ▸ **lt_**(`a`, `b`): `boolean`
 
@@ -359,7 +359,7 @@ ___
 
 #### Defined in
 
-[src/base/Number.ts:22](https://github.com/jonlaing/shonad/blob/22dd501/src/base/Number.ts#L22)
+[src/base/Number.ts:22](https://github.com/jonlaing/shonad/blob/3645ebf/src/base/Number.ts#L22)
 
 ___
 
@@ -391,7 +391,7 @@ ___
 
 #### Defined in
 
-[src/base/Number.ts:24](https://github.com/jonlaing/shonad/blob/22dd501/src/base/Number.ts#L24)
+[src/base/Number.ts:24](https://github.com/jonlaing/shonad/blob/3645ebf/src/base/Number.ts#L24)
 
 ▸ **lte**(`a`, `b`): `boolean`
 
@@ -408,7 +408,7 @@ ___
 
 #### Defined in
 
-[src/base/Number.ts:24](https://github.com/jonlaing/shonad/blob/22dd501/src/base/Number.ts#L24)
+[src/base/Number.ts:24](https://github.com/jonlaing/shonad/blob/3645ebf/src/base/Number.ts#L24)
 
 ___
 
@@ -440,7 +440,7 @@ ___
 
 #### Defined in
 
-[src/base/Number.ts:28](https://github.com/jonlaing/shonad/blob/22dd501/src/base/Number.ts#L28)
+[src/base/Number.ts:28](https://github.com/jonlaing/shonad/blob/3645ebf/src/base/Number.ts#L28)
 
 ▸ **lte_**(`a`, `b`): `boolean`
 
@@ -457,4 +457,4 @@ ___
 
 #### Defined in
 
-[src/base/Number.ts:28](https://github.com/jonlaing/shonad/blob/22dd501/src/base/Number.ts#L28)
+[src/base/Number.ts:28](https://github.com/jonlaing/shonad/blob/3645ebf/src/base/Number.ts#L28)

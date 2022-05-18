@@ -64,7 +64,7 @@
 
 #### Defined in
 
-[src/base/Typeclass.ts:4](https://github.com/jonlaing/shonad/blob/22dd501/src/base/Typeclass.ts#L4)
+[src/base/Typeclass.ts:4](https://github.com/jonlaing/shonad/blob/3645ebf/src/base/Typeclass.ts#L4)
 
 ## Properties
 
@@ -88,7 +88,7 @@
 
 #### Defined in
 
-[src/data/Maybe.ts:85](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Maybe.ts#L85)
+[src/data/Maybe.ts:86](https://github.com/jonlaing/shonad/blob/3645ebf/src/data/Maybe.ts#L86)
 
 ___
 
@@ -112,7 +112,7 @@ ___
 
 #### Defined in
 
-[src/data/Maybe.ts:76](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Maybe.ts#L76)
+[src/data/Maybe.ts:77](https://github.com/jonlaing/shonad/blob/3645ebf/src/data/Maybe.ts#L77)
 
 ___
 
@@ -136,7 +136,7 @@ ___
 
 #### Defined in
 
-[src/data/Maybe.ts:77](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Maybe.ts#L77)
+[src/data/Maybe.ts:78](https://github.com/jonlaing/shonad/blob/3645ebf/src/data/Maybe.ts#L78)
 
 ___
 
@@ -150,7 +150,7 @@ ___
 
 #### Defined in
 
-[src/base/Typeclass.ts:2](https://github.com/jonlaing/shonad/blob/22dd501/src/base/Typeclass.ts#L2)
+[src/base/Typeclass.ts:2](https://github.com/jonlaing/shonad/blob/3645ebf/src/base/Typeclass.ts#L2)
 
 ___
 
@@ -164,7 +164,7 @@ ___
 
 #### Defined in
 
-[src/control/Monad.ts:57](https://github.com/jonlaing/shonad/blob/22dd501/src/control/Monad.ts#L57)
+[src/control/Monad.ts:57](https://github.com/jonlaing/shonad/blob/3645ebf/src/control/Monad.ts#L57)
 
 ___
 
@@ -178,7 +178,7 @@ ___
 
 #### Defined in
 
-[src/control/Monad.ts:54](https://github.com/jonlaing/shonad/blob/22dd501/src/control/Monad.ts#L54)
+[src/control/Monad.ts:54](https://github.com/jonlaing/shonad/blob/3645ebf/src/control/Monad.ts#L54)
 
 ___
 
@@ -192,7 +192,7 @@ ___
 
 #### Defined in
 
-[src/control/Functor.ts:5](https://github.com/jonlaing/shonad/blob/22dd501/src/control/Functor.ts#L5)
+[src/control/Functor.ts:5](https://github.com/jonlaing/shonad/blob/3645ebf/src/control/Functor.ts#L5)
 
 ## Methods
 
@@ -216,7 +216,7 @@ Maybe.apply
 
 #### Defined in
 
-[src/data/Maybe.ts:81](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Maybe.ts#L81)
+[src/data/Maybe.ts:82](https://github.com/jonlaing/shonad/blob/3645ebf/src/data/Maybe.ts#L82)
 
 ___
 
@@ -240,7 +240,7 @@ Maybe.bind
 
 #### Defined in
 
-[src/data/Maybe.ts:82](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Maybe.ts#L82)
+[src/data/Maybe.ts:83](https://github.com/jonlaing/shonad/blob/3645ebf/src/data/Maybe.ts#L83)
 
 ___
 
@@ -270,7 +270,7 @@ Maybe.fmap
 
 #### Defined in
 
-[src/data/Maybe.ts:79](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Maybe.ts#L79)
+[src/data/Maybe.ts:80](https://github.com/jonlaing/shonad/blob/3645ebf/src/data/Maybe.ts#L80)
 
 ___
 
@@ -294,7 +294,7 @@ Maybe.unwrap
 
 #### Defined in
 
-[src/data/Maybe.ts:84](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Maybe.ts#L84)
+[src/data/Maybe.ts:85](https://github.com/jonlaing/shonad/blob/3645ebf/src/data/Maybe.ts#L85)
 
 ___
 
@@ -318,4 +318,4 @@ ___
 
 #### Defined in
 
-[src/data/Maybe.ts:7](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Maybe.ts#L7)
+[src/data/Maybe.ts:8](https://github.com/jonlaing/shonad/blob/3645ebf/src/data/Maybe.ts#L8)

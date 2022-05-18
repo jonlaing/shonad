@@ -5,67 +5,63 @@ import * as Util from "../base/Util";
 
 export type Dict<A> = Record<string, A>;
 
-declare function _get(
+declare function _get<A extends Dict<any>>(
   key: string
-): (dict: Record<string, any>) => Maybe.Maybe<any>;
-declare function _get(key: string, dict: Record<string, any>): Maybe.Maybe<any>;
+): (dict: A) => Maybe.Maybe<any>;
+declare function _get<A extends Dict<any>>(
+  key: string,
+  dict: A
+): Maybe.Maybe<any>;
 
 export const get: typeof _get = Fn.curry(
-  (key: string, dict: Record<string, any>): Maybe.Maybe<any> =>
+  <A extends Dict<any>>(key: string, dict: A): Maybe.Maybe<any> =>
     Maybe.maybeNil(dict[key])
 );
 
-declare function _set(
+declare function _set<A extends Dict<any>>(
   key: string
-): (val: any, dict?: Record<string, any>) => Record<string, any>;
-declare function _set(
+): (val: any, dict?: A) => A;
+declare function _set<A extends Dict<any>>(
   key: string,
   val: any
-): (dict: Record<string, any>) => Record<string, any>;
-declare function _set(
-  key: string,
-  val: any,
-  dict: Record<string, any>
-): Record<string, any>;
+): (dict: A) => A;
+declare function _set<A extends Dict<any>>(key: string, val: any, dict: A): A;
 
 export const set: typeof _set = Fn.curry(
-  (key: string, val: any, dict: Record<string, any>): Record<string, any> => ({
+  <A extends Dict<any>>(key: string, val: any, dict: A): A => ({
     ...dict,
     [key]: val,
   })
 );
 
-declare function _unset<A extends Record<string, any>>(
+declare function _unset<A extends Dict<any>>(
   k: string
 ): (dict: A) => Partial<A>;
-declare function _unset<A extends Record<string, any>>(
-  k: string,
-  dict: A
-): Partial<A>;
+declare function _unset<A extends Dict<any>>(k: string, dict: A): Partial<A>;
 
 export const unset: typeof _unset = Fn.curry(
-  (k: string, dict: Record<string, any>): Record<string, any> =>
+  <A extends Dict<any>>(k: string, dict: A): Partial<A> =>
     Object.keys(dict).reduce(
       (acc, _k) => (k === _k ? acc : { [_k]: dict[_k] }),
       {}
     )
 );
 
-declare function _eqProps(
+declare function _eqProps<A extends Dict<any>>(
   k: string
-): (d0: Record<string, any>, d1: Record<string, any>) => boolean;
-declare function _eqProps(
+): (d0: A, d1: A) => boolean;
+declare function _eqProps<A extends Dict<any>>(
   k: string,
-  d0: Record<string, any>
-): (d1: Record<string, any>) => boolean;
-declare function _eqProps(
+  d0: A
+): (d1: A) => boolean;
+declare function _eqProps<A extends Dict<any>>(
   k: string,
-  d0: Record<string, any>,
-  d1: Record<string, any>
+  d0: A,
+  d1: A
 ): boolean;
 
 export const eqProps: typeof _eqProps = Fn.curry(
-  (k: string, d0: Record<string, any>, d1: Record<string, any>): boolean =>
+  <A extends Dict<any>>(k: string, d0: A, d1: A): boolean =>
     Fn.pipe<Maybe.Maybe<any>, boolean>(
       Maybe.apply_<any, any>(get(k, d0)),
       Maybe.apply_<any, any>(get(k, d1)),
@@ -73,51 +69,45 @@ export const eqProps: typeof _eqProps = Fn.curry(
     )(Maybe.just(Util.eq))
 );
 
-declare function _map(
+declare function _map<A extends Dict<any>>(
   f: Function.Function
-): (dict: Record<string, any>) => Record<string, any>;
-declare function _map(
-  f: Function.Function,
-  dict: Record<string, any>
-): Record<string, any>;
+): (dict: A) => A;
+declare function _map<A extends Dict<any>>(f: Function.Function, dict: A): A;
 
 export const map: typeof _map = Fn.curry(
-  (f: Function.Function, dict: Record<string, any>): Record<string, any> =>
-    Object.keys(dict).reduce(
+  <A extends Dict<any>>(f: Function.Function, dict: A): A =>
+    Object.keys(dict).reduce<A>(
       (acc, k: string) => ({ ...acc, [k]: f(dict[k]) }),
-      {}
+      {} as A
     )
 );
 
-declare function _mapi(
+declare function _mapi<A extends Dict<any>>(
   f: (value: any, key: string) => any
-): (dict: Record<string, any>) => Record<string, any>;
-declare function _mapi(
+): (dict: A) => A;
+declare function _mapi<A extends Dict<any>>(
   f: (value: any, key: string) => any,
-  dict: Record<string, any>
-): Record<string, any>;
+  dict: A
+): A;
 
 export const mapi: typeof _mapi = Fn.curry(
-  (f: Function.Function, dict: Record<string, any>): Record<string, any> =>
-    Object.keys(dict).reduce(
-      (acc: Record<string, any>, k: string) => ({ ...acc, [k]: f(dict[k], k) }),
-      {}
+  <A extends Dict<any>>(f: Function.Function, dict: A): A =>
+    Object.keys(dict).reduce<A>(
+      (acc: A, k: string) => ({ ...acc, [k]: f(dict[k], k) } as A),
+      {} as A
     )
 );
 
-declare function _evolve(
+declare function _evolve<A extends Dict<any>>(
   e: Record<string, Function.Function>
-): (d: Record<string, any>) => Record<string, any>;
-declare function _evolve(
+): (d: A) => A;
+declare function _evolve<A extends Dict<any>>(
   e: Record<string, Function.Function>,
-  d: Record<string, any>
-): Record<string, any>;
+  d: A
+): A;
 
 export const evolve: typeof _evolve = Fn.curry(
-  (
-    e: Record<string, Function.Function>,
-    d: Record<string, any>
-  ): Record<string, any> =>
+  <A extends Dict<any>>(e: Record<string, Function.Function>, d: A): A =>
     mapi(
       (v: any, k: string) =>
         Maybe.fromMaybe(v, Maybe.apply(get(k, e), get(k, d))),
@@ -125,13 +115,30 @@ export const evolve: typeof _evolve = Fn.curry(
     )
 );
 
-declare function _has(k: string): (d: Record<string, any>) => boolean;
-declare function _has(k: string, d: Record<string, any>): boolean;
+declare function _has<A extends Dict<any>>(k: string): (d: A) => boolean;
+declare function _has<A extends Dict<any>>(k: string, d: A): boolean;
 
 export const has: typeof _has = Fn.curry(
-  (k: string, d: Record<string, any>): boolean =>
+  <A extends Dict<any>>(k: string, d: A): boolean =>
     Maybe.fromMaybe(false, Maybe.fmap(Fn.true_, get(k, d)))
 );
 
-export const isEmpty = (a: Record<string, any>): boolean =>
+export const isEmpty = <A extends Dict<any>>(a: A): boolean =>
   Object.keys(a).length === 0;
+
+declare function _propEq<A extends Dict<any>>(
+  k: string
+): (val: any, dict?: A) => boolean;
+declare function _propEq<A extends Dict<any>>(
+  k: string,
+  val: any
+): (dict: A) => boolean;
+declare function _propEq<A extends Dict<any>>(
+  k: string,
+  val: any,
+  dict: A
+): boolean;
+export const propEq: typeof _propEq = Fn.curry(
+  <A extends Dict<A>>(key: string, val: any, dict: A): boolean =>
+    get(key, dict).fmap(Util.eq(val)).unwrap(false)
+);

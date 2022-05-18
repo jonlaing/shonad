@@ -113,7 +113,7 @@ export const index = <A>(i: number): Lens<A[], Maybe.Maybe<A>> => ({
 
 export const prop = <A>(k: string): Lens<any, Maybe.Maybe<A>> => ({
   get: Dict.get(k),
-  set: (mv: Maybe.Maybe<any>, dict: Record<string, any>) =>
+  set: (mv: Maybe.Maybe<any>, dict: any) =>
     mv.fmap(Dict.set(k)).apply(Maybe.pure(dict)).unwrap(dict),
 });
 

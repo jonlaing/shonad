@@ -1,6 +1,7 @@
 import { Function } from "ts-toolbelt";
 import { Monad } from "../control/Monad";
 import * as Fn from "../base/Function";
+import { Dict } from "./Dict";
 export declare abstract class Maybe<A> extends Monad<A> {
     static pure(a: any): Just<any>;
     abstract fmap: <B>(f: (a: A) => B) => Maybe<B>;
@@ -56,10 +57,10 @@ export declare const catMaybes: <A>(xs: Maybe<A>[]) => A[];
 declare function _mapMaybe<A, B>(f: Function.Function<[A], Maybe<B>>): (as: A[]) => B[];
 declare function _mapMaybe<A, B>(f: Function.Function<[A], Maybe<B>>, as: A[]): B[];
 export declare const mapMaybe: typeof _mapMaybe;
-export declare type MaybeRecord<T extends Record<string, any>> = {
+export declare type MaybeRecord<T extends Dict<any>> = {
     [k in keyof T]: Maybe<T[k]>;
 };
-export declare const maybeRecord: <T extends Record<string, any>>(x: T) => MaybeRecord<T>;
+export declare const maybeRecord: <T extends Dict<any>>(x: T) => MaybeRecord<T>;
 export declare const equals: Function.Curry<(<A>(a: A, mx: Maybe<A>) => boolean)>;
 declare function _or<A, B>(f1: () => Maybe<B>): (f0: () => Maybe<A>) => Maybe<A> | Maybe<B>;
 declare function _or<A, B>(f1: () => Maybe<B>, f0: () => Maybe<A>): Maybe<A> | Maybe<B>;

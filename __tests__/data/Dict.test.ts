@@ -47,11 +47,11 @@ describe("Dict", () => {
 
   describe("eqProps", () => {
     it("returns true when props are equal", () => {
-      expect(D.eqProps("a", dict, { a: 1 })).toBe(true);
+      expect(D.eqProps("a", dict, { a: 1 } as typeof dict)).toBe(true);
     });
 
     it("returns false when props arent equal", () => {
-      expect(D.eqProps("a", dict, { a: 2 }));
+      expect(D.eqProps("a", dict, { a: 2 } as typeof dict));
     });
   });
 

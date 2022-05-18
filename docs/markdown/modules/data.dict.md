@@ -19,6 +19,7 @@
 - [isEmpty](data.dict.md#isempty)
 - [map](data.dict.md#map)
 - [mapi](data.dict.md#mapi)
+- [propEq](data.dict.md#propeq)
 - [set](data.dict.md#set)
 - [unset](data.dict.md#unset)
 
@@ -36,13 +37,19 @@
 
 #### Defined in
 
-[src/data/Dict.ts:6](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Dict.ts#L6)
+[src/data/Dict.ts:6](https://github.com/jonlaing/shonad/blob/3645ebf/src/data/Dict.ts#L6)
 
 ## Functions
 
 ### eqProps
 
-▸ **eqProps**(`k`): (`d0`: `Record`<`string`, `any`\>, `d1`: `Record`<`string`, `any`\>) => `boolean`
+▸ **eqProps**<`A`\>(`k`): (`d0`: `A`, `d1`: `A`) => `boolean`
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `A` | extends [`Dict`](data.dict.md#dict)<`any`\> |
 
 #### Parameters
 
@@ -60,8 +67,8 @@
 
 | Name | Type |
 | :------ | :------ |
-| `d0` | `Record`<`string`, `any`\> |
-| `d1` | `Record`<`string`, `any`\> |
+| `d0` | `A` |
+| `d1` | `A` |
 
 ##### Returns
 
@@ -69,16 +76,22 @@
 
 #### Defined in
 
-[src/data/Dict.ts:67](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Dict.ts#L67)
+[src/data/Dict.ts:63](https://github.com/jonlaing/shonad/blob/3645ebf/src/data/Dict.ts#L63)
 
-▸ **eqProps**(`k`, `d0`): (`d1`: `Record`<`string`, `any`\>) => `boolean`
+▸ **eqProps**<`A`\>(`k`, `d0`): (`d1`: `A`) => `boolean`
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `A` | extends [`Dict`](data.dict.md#dict)<`any`\> |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `k` | `string` |
-| `d0` | `Record`<`string`, `any`\> |
+| `d0` | `A` |
 
 #### Returns
 
@@ -90,7 +103,7 @@
 
 | Name | Type |
 | :------ | :------ |
-| `d1` | `Record`<`string`, `any`\> |
+| `d1` | `A` |
 
 ##### Returns
 
@@ -98,17 +111,23 @@
 
 #### Defined in
 
-[src/data/Dict.ts:67](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Dict.ts#L67)
+[src/data/Dict.ts:63](https://github.com/jonlaing/shonad/blob/3645ebf/src/data/Dict.ts#L63)
 
-▸ **eqProps**(`k`, `d0`, `d1`): `boolean`
+▸ **eqProps**<`A`\>(`k`, `d0`, `d1`): `boolean`
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `A` | extends [`Dict`](data.dict.md#dict)<`any`\> |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `k` | `string` |
-| `d0` | `Record`<`string`, `any`\> |
-| `d1` | `Record`<`string`, `any`\> |
+| `d0` | `A` |
+| `d1` | `A` |
 
 #### Returns
 
@@ -116,13 +135,19 @@
 
 #### Defined in
 
-[src/data/Dict.ts:67](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Dict.ts#L67)
+[src/data/Dict.ts:63](https://github.com/jonlaing/shonad/blob/3645ebf/src/data/Dict.ts#L63)
 
 ___
 
 ### evolve
 
-▸ **evolve**(`e`): (`d`: `Record`<`string`, `any`\>) => `Record`<`string`, `any`\>
+▸ **evolve**<`A`\>(`e`): (`d`: `A`) => `A`
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `A` | extends [`Dict`](data.dict.md#dict)<`any`\> |
 
 #### Parameters
 
@@ -134,44 +159,56 @@ ___
 
 `fn`
 
-▸ (`d`): `Record`<`string`, `any`\>
+▸ (`d`): `A`
 
 ##### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `d` | `Record`<`string`, `any`\> |
+| `d` | `A` |
 
 ##### Returns
 
-`Record`<`string`, `any`\>
+`A`
 
 #### Defined in
 
-[src/data/Dict.ts:116](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Dict.ts#L116)
+[src/data/Dict.ts:109](https://github.com/jonlaing/shonad/blob/3645ebf/src/data/Dict.ts#L109)
 
-▸ **evolve**(`e`, `d`): `Record`<`string`, `any`\>
+▸ **evolve**<`A`\>(`e`, `d`): `A`
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `A` | extends [`Dict`](data.dict.md#dict)<`any`\> |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `e` | `Record`<`string`, `Function`<`any`, `any`\>\> |
-| `d` | `Record`<`string`, `any`\> |
+| `d` | `A` |
 
 #### Returns
 
-`Record`<`string`, `any`\>
+`A`
 
 #### Defined in
 
-[src/data/Dict.ts:116](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Dict.ts#L116)
+[src/data/Dict.ts:109](https://github.com/jonlaing/shonad/blob/3645ebf/src/data/Dict.ts#L109)
 
 ___
 
 ### get
 
-▸ **get**(`key`): (`dict`: `Record`<`string`, `any`\>) => [`Maybe`](../classes/data.maybe.Maybe.md)<`any`\>
+▸ **get**<`A`\>(`key`): (`dict`: `A`) => [`Maybe`](../classes/data.maybe.Maybe.md)<`any`\>
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `A` | extends [`Dict`](data.dict.md#dict)<`any`\> |
 
 #### Parameters
 
@@ -189,7 +226,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `dict` | `Record`<`string`, `any`\> |
+| `dict` | `A` |
 
 ##### Returns
 
@@ -197,16 +234,22 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:13](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Dict.ts#L13)
+[src/data/Dict.ts:16](https://github.com/jonlaing/shonad/blob/3645ebf/src/data/Dict.ts#L16)
 
-▸ **get**(`key`, `dict`): [`Maybe`](../classes/data.maybe.Maybe.md)<`any`\>
+▸ **get**<`A`\>(`key`, `dict`): [`Maybe`](../classes/data.maybe.Maybe.md)<`any`\>
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `A` | extends [`Dict`](data.dict.md#dict)<`any`\> |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `key` | `string` |
-| `dict` | `Record`<`string`, `any`\> |
+| `dict` | `A` |
 
 #### Returns
 
@@ -214,13 +257,19 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:13](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Dict.ts#L13)
+[src/data/Dict.ts:16](https://github.com/jonlaing/shonad/blob/3645ebf/src/data/Dict.ts#L16)
 
 ___
 
 ### has
 
-▸ **has**(`k`): (`d`: `Record`<`string`, `any`\>) => `boolean`
+▸ **has**<`A`\>(`k`): (`d`: `A`) => `boolean`
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `A` | extends [`Dict`](data.dict.md#dict)<`any`\> |
 
 #### Parameters
 
@@ -238,7 +287,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `d` | `Record`<`string`, `any`\> |
+| `d` | `A` |
 
 ##### Returns
 
@@ -246,16 +295,22 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:131](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Dict.ts#L131)
+[src/data/Dict.ts:121](https://github.com/jonlaing/shonad/blob/3645ebf/src/data/Dict.ts#L121)
 
-▸ **has**(`k`, `d`): `boolean`
+▸ **has**<`A`\>(`k`, `d`): `boolean`
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `A` | extends [`Dict`](data.dict.md#dict)<`any`\> |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `k` | `string` |
-| `d` | `Record`<`string`, `any`\> |
+| `d` | `A` |
 
 #### Returns
 
@@ -263,19 +318,25 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:131](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Dict.ts#L131)
+[src/data/Dict.ts:121](https://github.com/jonlaing/shonad/blob/3645ebf/src/data/Dict.ts#L121)
 
 ___
 
 ### isEmpty
 
-▸ **isEmpty**(`a`): `boolean`
+▸ **isEmpty**<`A`\>(`a`): `boolean`
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `A` | extends [`Dict`](data.dict.md#dict)<`any`\> |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `a` | `Record`<`string`, `any`\> |
+| `a` | `A` |
 
 #### Returns
 
@@ -283,13 +344,19 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:136](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Dict.ts#L136)
+[src/data/Dict.ts:126](https://github.com/jonlaing/shonad/blob/3645ebf/src/data/Dict.ts#L126)
 
 ___
 
 ### map
 
-▸ **map**(`f`): (`dict`: `Record`<`string`, `any`\>) => `Record`<`string`, `any`\>
+▸ **map**<`A`\>(`f`): (`dict`: `A`) => `A`
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `A` | extends [`Dict`](data.dict.md#dict)<`any`\> |
 
 #### Parameters
 
@@ -301,44 +368,56 @@ ___
 
 `fn`
 
-▸ (`dict`): `Record`<`string`, `any`\>
+▸ (`dict`): `A`
 
 ##### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `dict` | `Record`<`string`, `any`\> |
+| `dict` | `A` |
 
 ##### Returns
 
-`Record`<`string`, `any`\>
+`A`
 
 #### Defined in
 
-[src/data/Dict.ts:84](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Dict.ts#L84)
+[src/data/Dict.ts:77](https://github.com/jonlaing/shonad/blob/3645ebf/src/data/Dict.ts#L77)
 
-▸ **map**(`f`, `dict`): `Record`<`string`, `any`\>
+▸ **map**<`A`\>(`f`, `dict`): `A`
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `A` | extends [`Dict`](data.dict.md#dict)<`any`\> |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `f` | `Function`<`any`, `any`\> |
-| `dict` | `Record`<`string`, `any`\> |
+| `dict` | `A` |
 
 #### Returns
 
-`Record`<`string`, `any`\>
+`A`
 
 #### Defined in
 
-[src/data/Dict.ts:84](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Dict.ts#L84)
+[src/data/Dict.ts:77](https://github.com/jonlaing/shonad/blob/3645ebf/src/data/Dict.ts#L77)
 
 ___
 
 ### mapi
 
-▸ **mapi**(`f`): (`dict`: `Record`<`string`, `any`\>) => `Record`<`string`, `any`\>
+▸ **mapi**<`A`\>(`f`): (`dict`: `A`) => `A`
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `A` | extends [`Dict`](data.dict.md#dict)<`any`\> |
 
 #### Parameters
 
@@ -350,44 +429,154 @@ ___
 
 `fn`
 
-▸ (`dict`): `Record`<`string`, `any`\>
+▸ (`dict`): `A`
 
 ##### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `dict` | `Record`<`string`, `any`\> |
+| `dict` | `A` |
 
 ##### Returns
 
-`Record`<`string`, `any`\>
+`A`
 
 #### Defined in
 
-[src/data/Dict.ts:100](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Dict.ts#L100)
+[src/data/Dict.ts:93](https://github.com/jonlaing/shonad/blob/3645ebf/src/data/Dict.ts#L93)
 
-▸ **mapi**(`f`, `dict`): `Record`<`string`, `any`\>
+▸ **mapi**<`A`\>(`f`, `dict`): `A`
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `A` | extends [`Dict`](data.dict.md#dict)<`any`\> |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `f` | (`value`: `any`, `key`: `string`) => `any` |
-| `dict` | `Record`<`string`, `any`\> |
+| `dict` | `A` |
 
 #### Returns
 
-`Record`<`string`, `any`\>
+`A`
 
 #### Defined in
 
-[src/data/Dict.ts:100](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Dict.ts#L100)
+[src/data/Dict.ts:93](https://github.com/jonlaing/shonad/blob/3645ebf/src/data/Dict.ts#L93)
+
+___
+
+### propEq
+
+▸ **propEq**<`A`\>(`k`): (`val`: `any`, `dict?`: `A`) => `boolean`
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `A` | extends [`Dict`](data.dict.md#dict)<`any`\> |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `k` | `string` |
+
+#### Returns
+
+`fn`
+
+▸ (`val`, `dict?`): `boolean`
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `val` | `any` |
+| `dict?` | `A` |
+
+##### Returns
+
+`boolean`
+
+#### Defined in
+
+[src/data/Dict.ts:141](https://github.com/jonlaing/shonad/blob/3645ebf/src/data/Dict.ts#L141)
+
+▸ **propEq**<`A`\>(`k`, `val`): (`dict`: `A`) => `boolean`
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `A` | extends [`Dict`](data.dict.md#dict)<`any`\> |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `k` | `string` |
+| `val` | `any` |
+
+#### Returns
+
+`fn`
+
+▸ (`dict`): `boolean`
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `dict` | `A` |
+
+##### Returns
+
+`boolean`
+
+#### Defined in
+
+[src/data/Dict.ts:141](https://github.com/jonlaing/shonad/blob/3645ebf/src/data/Dict.ts#L141)
+
+▸ **propEq**<`A`\>(`k`, `val`, `dict`): `boolean`
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `A` | extends [`Dict`](data.dict.md#dict)<`any`\> |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `k` | `string` |
+| `val` | `any` |
+| `dict` | `A` |
+
+#### Returns
+
+`boolean`
+
+#### Defined in
+
+[src/data/Dict.ts:141](https://github.com/jonlaing/shonad/blob/3645ebf/src/data/Dict.ts#L141)
 
 ___
 
 ### set
 
-▸ **set**(`key`): (`val`: `any`, `dict?`: `Record`<`string`, `any`\>) => `Record`<`string`, `any`\>
+▸ **set**<`A`\>(`key`): (`val`: `any`, `dict?`: `A`) => `A`
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `A` | extends [`Dict`](data.dict.md#dict)<`any`\> |
 
 #### Parameters
 
@@ -399,24 +588,30 @@ ___
 
 `fn`
 
-▸ (`val`, `dict?`): `Record`<`string`, `any`\>
+▸ (`val`, `dict?`): `A`
 
 ##### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `val` | `any` |
-| `dict?` | `Record`<`string`, `any`\> |
+| `dict?` | `A` |
 
 ##### Returns
 
-`Record`<`string`, `any`\>
+`A`
 
 #### Defined in
 
-[src/data/Dict.ts:31](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Dict.ts#L31)
+[src/data/Dict.ts:30](https://github.com/jonlaing/shonad/blob/3645ebf/src/data/Dict.ts#L30)
 
-▸ **set**(`key`, `val`): (`dict`: `Record`<`string`, `any`\>) => `Record`<`string`, `any`\>
+▸ **set**<`A`\>(`key`, `val`): (`dict`: `A`) => `A`
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `A` | extends [`Dict`](data.dict.md#dict)<`any`\> |
 
 #### Parameters
 
@@ -429,23 +624,29 @@ ___
 
 `fn`
 
-▸ (`dict`): `Record`<`string`, `any`\>
+▸ (`dict`): `A`
 
 ##### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `dict` | `Record`<`string`, `any`\> |
+| `dict` | `A` |
 
 ##### Returns
 
-`Record`<`string`, `any`\>
+`A`
 
 #### Defined in
 
-[src/data/Dict.ts:31](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Dict.ts#L31)
+[src/data/Dict.ts:30](https://github.com/jonlaing/shonad/blob/3645ebf/src/data/Dict.ts#L30)
 
-▸ **set**(`key`, `val`, `dict`): `Record`<`string`, `any`\>
+▸ **set**<`A`\>(`key`, `val`, `dict`): `A`
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `A` | extends [`Dict`](data.dict.md#dict)<`any`\> |
 
 #### Parameters
 
@@ -453,15 +654,15 @@ ___
 | :------ | :------ |
 | `key` | `string` |
 | `val` | `any` |
-| `dict` | `Record`<`string`, `any`\> |
+| `dict` | `A` |
 
 #### Returns
 
-`Record`<`string`, `any`\>
+`A`
 
 #### Defined in
 
-[src/data/Dict.ts:31](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Dict.ts#L31)
+[src/data/Dict.ts:30](https://github.com/jonlaing/shonad/blob/3645ebf/src/data/Dict.ts#L30)
 
 ___
 
@@ -473,7 +674,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `A` | extends `Record`<`string`, `any`\> |
+| `A` | extends [`Dict`](data.dict.md#dict)<`any`\> |
 
 #### Parameters
 
@@ -499,7 +700,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:46](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Dict.ts#L46)
+[src/data/Dict.ts:42](https://github.com/jonlaing/shonad/blob/3645ebf/src/data/Dict.ts#L42)
 
 ▸ **unset**<`A`\>(`k`, `dict`): `Partial`<`A`\>
 
@@ -507,7 +708,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `A` | extends `Record`<`string`, `any`\> |
+| `A` | extends [`Dict`](data.dict.md#dict)<`any`\> |
 
 #### Parameters
 
@@ -522,4 +723,4 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:46](https://github.com/jonlaing/shonad/blob/22dd501/src/data/Dict.ts#L46)
+[src/data/Dict.ts:42](https://github.com/jonlaing/shonad/blob/3645ebf/src/data/Dict.ts#L42)
