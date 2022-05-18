@@ -56,7 +56,8 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "build": "tsc -p tsconfig.build.json",
-    "build:docs": "typedoc --options typedoc.json",
+    "build:docs:md": "typedoc --options typedoc.md.json",
+    "build:docs:html": "typedoc --options typedoc.html.json",
     "uglify": "find ./dist/  -iname '*.js' -exec uglifyjs --compress --comments /sourceMappingURL/ -o {} -- {} \\;"
   }
 }

@@ -3,6 +3,6 @@
 
 pnpm test
 pnpm build
-pnpm build:docs
+pnpm build:docs:md
 pnpm uglify
 git add .
