@@ -123,8 +123,19 @@ export const prop = <A>(k: string): Lens<any, Maybe.Maybe<A>> => ({
     ),
 });
 
-// this is backward from how you might expect 'or' to work to support
-// currying and partial application
+/**
+ * Forks a lens. If the second lens returns `Nothing` then it will use
+ * the first lens.
+ *
+ * @remarks
+ *
+ * This is backward from how you might expect `or' to work. This is to
+ * support currying and partial application
+ *
+ * @param l1 - Lens that returns a `Maybe c`
+ * @param l0 - Lens that returns a `Maybe b`
+ * @returns  a Lens of `Maybe b` or `Maybe c`
+ */
 export const or = <A, B, C>(
   l1: Lens<A, Maybe.Maybe<C>>,
   l0: Lens<A, Maybe.Maybe<B>>

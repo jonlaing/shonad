@@ -34,14 +34,13 @@ class Either extends Monad_1.Monad {
     }
 }
 exports.Either = Either;
-Either.return_ = Either.pure;
 class Left extends Either {
     constructor() {
         super(...arguments);
         this.isLeft = Fn.always(true);
         this.isRight = Fn.always(false);
         this.fmap = (f) => this;
-        this.apply = (f) => this;
+        this.apply = (ma) => this;
         this.bind = (f) => this;
         this.unwrap = (fallback) => fallback;
         this.equals = Fn.always(false);

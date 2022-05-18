@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports._do = exports.unwrap = exports.or = exports.equals = exports.maybeRecord = exports.mapMaybe = exports.catMaybes = exports.maybeToList = exports.listToMaybe = exports.maybeNil = exports.fromMaybe = exports.maybe = exports.isNothing = exports.isJust = exports.nothing = exports.just = exports.Nothing = exports.Just = exports.return_ = exports.pure = exports.bind = exports.apply_ = exports.apply = exports.fmap = exports.Maybe = void 0;
+exports._do = exports.unwrap = exports.or = exports.equals = exports.maybeRecord = exports.mapMaybe = exports.catMaybes = exports.maybeToList = exports.listToMaybe = exports.maybeNil = exports.fromMaybe = exports.maybe = exports.isNothing = exports.isJust = exports.nothing = exports.just = exports.Nothing = exports.Just = exports.pure = exports.bind = exports.apply_ = exports.apply = exports.fmap = exports.Maybe = void 0;
 const Monad_1 = require("../control/Monad");
 const Fn = __importStar(require("../base/Function"));
 const Util = __importStar(require("../base/Util"));
@@ -33,13 +33,11 @@ class Maybe extends Monad_1.Monad {
     }
 }
 exports.Maybe = Maybe;
-Maybe.return_ = Maybe.pure;
 exports.fmap = Maybe.fmap;
 exports.apply = Maybe.apply;
 exports.apply_ = Fn.flip(Maybe.apply);
 exports.bind = Maybe.bind;
 exports.pure = Maybe.pure;
-exports.return_ = Maybe.return_;
 class Just extends Maybe {
     constructor() {
         super(...arguments);

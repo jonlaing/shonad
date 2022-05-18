@@ -23,11 +23,15 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.add = exports.lte = exports.lt = exports.gte = exports.gt = void 0;
+exports.add = exports.lte_ = exports.lte = exports.lt_ = exports.lt = exports.gte_ = exports.gte = exports.gt_ = exports.gt = void 0;
 const Fn = __importStar(require("./Function"));
 exports.gt = Fn.curry((a, b) => a > b);
+exports.gt_ = Fn.flip(exports.gt);
 exports.gte = Fn.curry((a, b) => a >= b);
+exports.gte_ = Fn.flip(exports.gte);
 exports.lt = Fn.curry((a, b) => a < b);
+exports.lt_ = Fn.flip(exports.lt);
 exports.lte = Fn.curry((a, b) => a <= b);
+exports.lte_ = Fn.flip(exports.lte);
 exports.add = Fn.curry((a, b) => a + b);
 //# sourceMappingURL=Number.js.map

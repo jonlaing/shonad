@@ -1,16 +1,16 @@
 import { Function } from "ts-toolbelt";
 import { Monad } from "../control/Monad";
+import * as Fn from "../base/Function";
 import * as Maybe from "./Maybe";
 export declare abstract class Either<A, B> extends Monad<A | B> {
     static pure(a: any): Right<unknown>;
-    static return_: typeof Either.pure;
 }
 export declare class Left<A> extends Either<A, any> {
     isLeft: (a?: any) => boolean;
     isRight: (a?: any) => boolean;
-    fmap: <B>(f: (a: A) => B) => Either<A, B>;
-    apply: (f: Either<any, any>) => this;
-    bind: (f: (a: any) => Either<A, any>) => Either<A, any>;
+    fmap: <C>(f: (b: any) => C) => Either<A, C>;
+    apply: (ma: Either<any, any>) => this;
+    bind: <C>(f: (a: any) => Either<A, any>) => Either<A, any>;
     unwrap: (fallback: any) => any;
     equals: (a?: any) => boolean;
 }
@@ -19,7 +19,7 @@ export declare class Right<B> extends Either<any, B> {
     isRight: (a?: any) => boolean;
     fmap: <C>(f: (b: B) => C) => Either<any, C>;
     apply: (ma: Either<any, any>) => Either<any, any>;
-    bind: (f: (a: any) => Either<any, any>) => Either<any, any>;
+    bind: <C>(f: (b: B) => Either<any, C>) => Either<any, C>;
     unwrap: (fallback: B) => any;
     equals: (b: B) => any;
 }
@@ -48,10 +48,18 @@ export declare const equals: Function.Curry<(<A>(a: A, mx: Either<any, A>) => bo
 declare function _unwrap<B>(fallback: B): (c: Either<any, B>) => B;
 declare function _unwrap<B>(fallback: B, c: Either<any, B>): B;
 export declare const unwrap: typeof _unwrap;
-export declare const fmap: import("../control/Functor").StaticFMap<import("../control/Functor").Functor<any>>;
-export declare const pure: typeof Either.pure;
-export declare const apply: import("../control/Applicative").StaticApplyFn<Monad<Function.Function<any, any>>, Monad<any>>;
-export declare const apply_: Function.Curry<(a: any, b: any) => any>;
-export declare const bind: Function.Curry<(x: Monad<any>, f: (a: any) => Monad<any>) => Monad<any>>;
+declare function _fmap<A, B, C>(f: (b: B) => C): (mx: Either<A, B>) => Either<A, C>;
+declare function _fmap<A, B, C>(f: (b: B) => C, mx: Either<A, B>): Either<A, C>;
+declare function _apply<A, B, C>(f: Either<A, Fn.Function<B, C>>): (mx: Either<A, B>) => Either<A, C>;
+declare function _apply<A, B, C>(f: Either<A, Fn.Function<B, C>>, mx: Either<A, B>): Either<A, C>;
+declare function _apply_<A, B, C>(f: Either<A, Fn.Function<B, C>>): (mx: Either<A, B>) => Either<A, C>;
+declare function _apply_<A, B, C>(f: Either<A, Fn.Function<B, C>>, mx: Either<A, B>): Either<A, C>;
+declare function _bind<A, B, C>(mx: Either<A, B>): (f: (b: B) => Either<A, C>) => Either<A, C>;
+declare function _bind<A, B, C>(mx: Either<A, B>, f: (b: B) => Either<A, C>): Either<A, C>;
+export declare const fmap: typeof _fmap;
+export declare const pure: (a: any) => Either<any, any>;
+export declare const apply: typeof _apply;
+export declare const apply_: typeof _apply_;
+export declare const bind: typeof _bind;
 export declare const _do: (f: (fix: <A>(val: any) => A) => import("../control/Monad").DoFuncReturn<Either<any, any>>) => Either<any, any>;
 export {};

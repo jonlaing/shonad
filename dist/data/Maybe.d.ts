@@ -2,7 +2,6 @@ import { Function } from "ts-toolbelt";
 import { Monad } from "../control/Monad";
 export declare abstract class Maybe<A> extends Monad<A> {
     static pure(a: any): Just<any>;
-    static return_: typeof Maybe.pure;
 }
 declare function _fmap<F extends Function.Function>(f: F): (x: Maybe<Function.Parameters<F>[0]>) => Maybe<Function.Return<F>>;
 declare function _fmap<F extends Function.Function>(f: F, x: Maybe<Function.Parameters<F>[0]>): Maybe<Function.Return<F>>;
@@ -16,8 +15,7 @@ export declare const apply_: typeof _apply_;
 declare function _bind<A, B>(x: Maybe<A>): (f: Function.Function<[A], Maybe<B>>) => Maybe<B>;
 declare function _bind<A, B>(x: Maybe<A>, f: Function.Function<[A], Maybe<B>>): Maybe<B>;
 export declare const bind: typeof _bind;
-export declare const pure: typeof Maybe.pure;
-export declare const return_: typeof Maybe.pure;
+export declare const pure: (a: any) => Maybe<any>;
 export declare class Just<A> extends Maybe<A> {
     isJust: (a?: any) => boolean;
     isNothing: (a?: any) => boolean;

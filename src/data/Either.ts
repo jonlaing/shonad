@@ -1,4 +1,4 @@
-import { A, C, Function } from "ts-toolbelt";
+import { Function } from "ts-toolbelt";
 import { makeDo, Monad } from "../control/Monad";
 import * as Fn from "../base/Function";
 import * as Maybe from "./Maybe";
@@ -8,17 +8,15 @@ export abstract class Either<A, B> extends Monad<A | B> {
   static pure(a: any) {
     return new Right(a);
   }
-
-  static return_ = Either.pure;
 }
 
 export class Left<A> extends Either<A, any> {
   isLeft = Fn.always(true);
   isRight = Fn.always(false);
 
-  fmap = <B>(f: (a: A) => B): Either<A, B> => this as Either<A, B>;
-  apply = (f: Either<any, any>) => this;
-  bind = (f: (a: any) => Either<A, any>): Either<A, any> => this;
+  fmap = <C>(f: (b: any) => C): Either<A, C> => this as Either<A, C>;
+  apply = (ma: Either<any, any>) => this;
+  bind = <C>(f: (a: any) => Either<A, any>): Either<A, any> => this;
   unwrap = (fallback: any) => fallback;
 
   equals = Fn.always(false);
@@ -35,7 +33,7 @@ export class Right<B> extends Either<any, B> {
       any,
       any
     >;
-  bind = (f: (a: any) => Either<any, any>): Either<any, any> => f(this.val);
+  bind = <C>(f: (b: B) => Either<any, C>): Either<any, C> => f(this.val);
   unwrap = (fallback: B) => this.val;
 
   equals = (b: B) => this.fmap(Util.eq(b)).unwrap(false);
@@ -118,10 +116,39 @@ export const unwrap: typeof _unwrap = Fn.curry(
   <B>(fallback: B, e: Either<any, B>): B => e.unwrap(fallback) as B
 );
 
-export const fmap = Either.fmap;
-export const pure = Either.pure;
-export const apply = Either.apply;
-export const apply_ = Fn.flip(apply);
-export const bind = Either.bind;
+declare function _fmap<A, B, C>(
+  f: (b: B) => C
+): (mx: Either<A, B>) => Either<A, C>;
+declare function _fmap<A, B, C>(f: (b: B) => C, mx: Either<A, B>): Either<A, C>;
+
+declare function _apply<A, B, C>(
+  f: Either<A, Fn.Function<B, C>>
+): (mx: Either<A, B>) => Either<A, C>;
+declare function _apply<A, B, C>(
+  f: Either<A, Fn.Function<B, C>>,
+  mx: Either<A, B>
+): Either<A, C>;
+
+declare function _apply_<A, B, C>(
+  f: Either<A, Fn.Function<B, C>>
+): (mx: Either<A, B>) => Either<A, C>;
+declare function _apply_<A, B, C>(
+  f: Either<A, Fn.Function<B, C>>,
+  mx: Either<A, B>
+): Either<A, C>;
+
+declare function _bind<A, B, C>(
+  mx: Either<A, B>
+): (f: (b: B) => Either<A, C>) => Either<A, C>;
+declare function _bind<A, B, C>(
+  mx: Either<A, B>,
+  f: (b: B) => Either<A, C>
+): Either<A, C>;
+
+export const fmap: typeof _fmap = Either.fmap;
+export const pure: (a: any) => Either<any, any> = Either.pure;
+export const apply: typeof _apply = Either.apply;
+export const apply_: typeof _apply_ = Fn.flip(apply);
+export const bind: typeof _bind = Either.bind;
 
 export const _do = makeDo<Either<any, any>>(pure, bind);

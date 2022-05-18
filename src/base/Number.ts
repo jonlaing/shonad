@@ -7,26 +7,25 @@ export const gt: typeof _gt = Fn.curry(
   (a: number, b: number): boolean => a > b
 );
 
-declare function _gte(a: number): (b: number) => boolean;
-declare function _gte(a: number, b: number): boolean;
+export const gt_: typeof _gt = Fn.flip(gt);
 
-export const gte: typeof _gte = Fn.curry(
+export const gte: typeof _gt = Fn.curry(
   (a: number, b: number): boolean => a >= b
 );
 
-declare function _lt(a: number): (b: number) => boolean;
-declare function _lt(a: number, b: number): boolean;
+export const gte_: typeof _gt = Fn.flip(gte);
 
-export const lt: typeof _lt = Fn.curry(
+export const lt: typeof _gt = Fn.curry(
   (a: number, b: number): boolean => a < b
 );
 
-declare function _lte(a: number): (b: number) => boolean;
-declare function _lte(a: number, b: number): boolean;
+export const lt_: typeof _gt = Fn.flip(lt);
 
-export const lte: typeof _lte = Fn.curry(
+export const lte: typeof _gt = Fn.curry(
   (a: number, b: number): boolean => a <= b
 );
+
+export const lte_: typeof _gt = Fn.flip(lte);
 
 declare function _add(a: number): (b: number) => number;
 declare function _add(a: number, b: number): number;
