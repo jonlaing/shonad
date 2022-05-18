@@ -54,7 +54,7 @@
 
 #### Defined in
 
-[src/data/Maybe.ts:143](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/data/Maybe.ts#L143)
+[src/data/Maybe.ts:143](https://github.com/jonlaing/shonad/blob/b266169/src/data/Maybe.ts#L143)
 
 ## Functions
 
@@ -74,7 +74,7 @@
 
 #### Defined in
 
-[src/data/Maybe.ts:181](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/data/Maybe.ts#L181)
+[src/data/Maybe.ts:181](https://github.com/jonlaing/shonad/blob/b266169/src/data/Maybe.ts#L181)
 
 ___
 
@@ -112,7 +112,7 @@ ___
 
 #### Defined in
 
-[src/data/Maybe.ts:30](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/data/Maybe.ts#L30)
+[src/data/Maybe.ts:30](https://github.com/jonlaing/shonad/blob/b266169/src/data/Maybe.ts#L30)
 
 ▸ **apply**<`F`\>(`f`, `x`): [`Maybe`](../classes/data.maybe.Maybe.md)<`Function.Return`<`F`\>\>
 
@@ -135,7 +135,7 @@ ___
 
 #### Defined in
 
-[src/data/Maybe.ts:30](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/data/Maybe.ts#L30)
+[src/data/Maybe.ts:30](https://github.com/jonlaing/shonad/blob/b266169/src/data/Maybe.ts#L30)
 
 ___
 
@@ -174,7 +174,7 @@ ___
 
 #### Defined in
 
-[src/data/Maybe.ts:40](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/data/Maybe.ts#L40)
+[src/data/Maybe.ts:40](https://github.com/jonlaing/shonad/blob/b266169/src/data/Maybe.ts#L40)
 
 ▸ **apply_**<`A`, `B`\>(`x`, `f`): [`Maybe`](../classes/data.maybe.Maybe.md)<`B`\>
 
@@ -198,7 +198,7 @@ ___
 
 #### Defined in
 
-[src/data/Maybe.ts:40](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/data/Maybe.ts#L40)
+[src/data/Maybe.ts:40](https://github.com/jonlaing/shonad/blob/b266169/src/data/Maybe.ts#L40)
 
 ___
 
@@ -237,7 +237,7 @@ ___
 
 #### Defined in
 
-[src/data/Maybe.ts:50](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/data/Maybe.ts#L50)
+[src/data/Maybe.ts:50](https://github.com/jonlaing/shonad/blob/b266169/src/data/Maybe.ts#L50)
 
 ▸ **bind**<`A`, `B`\>(`x`, `f`): [`Maybe`](../classes/data.maybe.Maybe.md)<`B`\>
 
@@ -261,7 +261,7 @@ ___
 
 #### Defined in
 
-[src/data/Maybe.ts:50](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/data/Maybe.ts#L50)
+[src/data/Maybe.ts:50](https://github.com/jonlaing/shonad/blob/b266169/src/data/Maybe.ts#L50)
 
 ___
 
@@ -287,7 +287,7 @@ ___
 
 #### Defined in
 
-[src/data/Maybe.ts:124](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/data/Maybe.ts#L124)
+[src/data/Maybe.ts:124](https://github.com/jonlaing/shonad/blob/b266169/src/data/Maybe.ts#L124)
 
 ___
 
@@ -315,7 +315,7 @@ ___
 
 #### Defined in
 
-[src/data/Maybe.ts:155](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/data/Maybe.ts#L155)
+[src/data/Maybe.ts:155](https://github.com/jonlaing/shonad/blob/b266169/src/data/Maybe.ts#L155)
 
 ___
 
@@ -353,7 +353,7 @@ ___
 
 #### Defined in
 
-[src/data/Maybe.ts:20](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/data/Maybe.ts#L20)
+[src/data/Maybe.ts:20](https://github.com/jonlaing/shonad/blob/b266169/src/data/Maybe.ts#L20)
 
 ▸ **fmap**<`F`\>(`f`, `x`): [`Maybe`](../classes/data.maybe.Maybe.md)<`Function.Return`<`F`\>\>
 
@@ -376,7 +376,7 @@ ___
 
 #### Defined in
 
-[src/data/Maybe.ts:20](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/data/Maybe.ts#L20)
+[src/data/Maybe.ts:20](https://github.com/jonlaing/shonad/blob/b266169/src/data/Maybe.ts#L20)
 
 ___
 
@@ -414,7 +414,7 @@ ___
 
 #### Defined in
 
-[src/data/Maybe.ts:111](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/data/Maybe.ts#L111)
+[src/data/Maybe.ts:111](https://github.com/jonlaing/shonad/blob/b266169/src/data/Maybe.ts#L111)
 
 ▸ **fromMaybe**<`A`\>(`fallback`, `x`): `A`
 
@@ -437,7 +437,7 @@ ___
 
 #### Defined in
 
-[src/data/Maybe.ts:111](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/data/Maybe.ts#L111)
+[src/data/Maybe.ts:111](https://github.com/jonlaing/shonad/blob/b266169/src/data/Maybe.ts#L111)
 
 ___
 
@@ -457,7 +457,7 @@ ___
 
 #### Defined in
 
-[src/data/Maybe.ts:87](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/data/Maybe.ts#L87)
+[src/data/Maybe.ts:87](https://github.com/jonlaing/shonad/blob/b266169/src/data/Maybe.ts#L87)
 
 ___
 
@@ -477,7 +477,7 @@ ___
 
 #### Defined in
 
-[src/data/Maybe.ts:88](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/data/Maybe.ts#L88)
+[src/data/Maybe.ts:88](https://github.com/jonlaing/shonad/blob/b266169/src/data/Maybe.ts#L88)
 
 ___
 
@@ -503,7 +503,7 @@ ___
 
 #### Defined in
 
-[src/data/Maybe.ts:84](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/data/Maybe.ts#L84)
+[src/data/Maybe.ts:84](https://github.com/jonlaing/shonad/blob/b266169/src/data/Maybe.ts#L84)
 
 ___
 
@@ -523,7 +523,7 @@ ___
 
 #### Defined in
 
-[src/data/Maybe.ts:118](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/data/Maybe.ts#L118)
+[src/data/Maybe.ts:118](https://github.com/jonlaing/shonad/blob/b266169/src/data/Maybe.ts#L118)
 
 ___
 
@@ -562,7 +562,7 @@ ___
 
 #### Defined in
 
-[src/data/Maybe.ts:135](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/data/Maybe.ts#L135)
+[src/data/Maybe.ts:135](https://github.com/jonlaing/shonad/blob/b266169/src/data/Maybe.ts#L135)
 
 ▸ **mapMaybe**<`A`, `B`\>(`f`, `as`): `B`[]
 
@@ -586,7 +586,7 @@ ___
 
 #### Defined in
 
-[src/data/Maybe.ts:135](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/data/Maybe.ts#L135)
+[src/data/Maybe.ts:135](https://github.com/jonlaing/shonad/blob/b266169/src/data/Maybe.ts#L135)
 
 ___
 
@@ -626,7 +626,7 @@ ___
 
 #### Defined in
 
-[src/data/Maybe.ts:103](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/data/Maybe.ts#L103)
+[src/data/Maybe.ts:103](https://github.com/jonlaing/shonad/blob/b266169/src/data/Maybe.ts#L103)
 
 ▸ **maybe**<`A`, `B`\>(`fallback`, `f`): (`x`: [`Maybe`](../classes/data.maybe.Maybe.md)<`A`\>) => `B`
 
@@ -662,7 +662,7 @@ ___
 
 #### Defined in
 
-[src/data/Maybe.ts:103](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/data/Maybe.ts#L103)
+[src/data/Maybe.ts:103](https://github.com/jonlaing/shonad/blob/b266169/src/data/Maybe.ts#L103)
 
 ▸ **maybe**<`A`, `B`\>(`fallback`, `f`, `x`): `B`
 
@@ -687,7 +687,7 @@ ___
 
 #### Defined in
 
-[src/data/Maybe.ts:103](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/data/Maybe.ts#L103)
+[src/data/Maybe.ts:103](https://github.com/jonlaing/shonad/blob/b266169/src/data/Maybe.ts#L103)
 
 ___
 
@@ -713,7 +713,7 @@ ___
 
 #### Defined in
 
-[src/data/Maybe.ts:115](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/data/Maybe.ts#L115)
+[src/data/Maybe.ts:115](https://github.com/jonlaing/shonad/blob/b266169/src/data/Maybe.ts#L115)
 
 ___
 
@@ -739,7 +739,7 @@ ___
 
 #### Defined in
 
-[src/data/Maybe.ts:147](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/data/Maybe.ts#L147)
+[src/data/Maybe.ts:147](https://github.com/jonlaing/shonad/blob/b266169/src/data/Maybe.ts#L147)
 
 ___
 
@@ -765,7 +765,7 @@ ___
 
 #### Defined in
 
-[src/data/Maybe.ts:121](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/data/Maybe.ts#L121)
+[src/data/Maybe.ts:121](https://github.com/jonlaing/shonad/blob/b266169/src/data/Maybe.ts#L121)
 
 ___
 
@@ -791,7 +791,7 @@ ___
 
 #### Defined in
 
-[src/data/Maybe.ts:85](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/data/Maybe.ts#L85)
+[src/data/Maybe.ts:85](https://github.com/jonlaing/shonad/blob/b266169/src/data/Maybe.ts#L85)
 
 ___
 
@@ -830,7 +830,7 @@ ___
 
 #### Defined in
 
-[src/data/Maybe.ts:168](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/data/Maybe.ts#L168)
+[src/data/Maybe.ts:168](https://github.com/jonlaing/shonad/blob/b266169/src/data/Maybe.ts#L168)
 
 ▸ **or**<`A`, `B`\>(`f1`, `f0`): [`Maybe`](../classes/data.maybe.Maybe.md)<`A`\> \| [`Maybe`](../classes/data.maybe.Maybe.md)<`B`\>
 
@@ -854,7 +854,7 @@ ___
 
 #### Defined in
 
-[src/data/Maybe.ts:168](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/data/Maybe.ts#L168)
+[src/data/Maybe.ts:168](https://github.com/jonlaing/shonad/blob/b266169/src/data/Maybe.ts#L168)
 
 ___
 
@@ -874,7 +874,7 @@ ___
 
 #### Defined in
 
-[src/data/Maybe.ts:51](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/data/Maybe.ts#L51)
+[src/data/Maybe.ts:51](https://github.com/jonlaing/shonad/blob/b266169/src/data/Maybe.ts#L51)
 
 ___
 
@@ -912,7 +912,7 @@ ___
 
 #### Defined in
 
-[src/data/Maybe.ts:177](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/data/Maybe.ts#L177)
+[src/data/Maybe.ts:177](https://github.com/jonlaing/shonad/blob/b266169/src/data/Maybe.ts#L177)
 
 ▸ **unwrap**<`A`\>(`fallback`, `c`): `A`
 
@@ -935,4 +935,4 @@ ___
 
 #### Defined in
 
-[src/data/Maybe.ts:177](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/data/Maybe.ts#L177)
+[src/data/Maybe.ts:177](https://github.com/jonlaing/shonad/blob/b266169/src/data/Maybe.ts#L177)

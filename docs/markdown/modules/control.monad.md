@@ -33,7 +33,7 @@
 
 #### Defined in
 
-[src/control/Monad.ts:64](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/control/Monad.ts#L64)
+[src/control/Monad.ts:64](https://github.com/jonlaing/shonad/blob/b266169/src/control/Monad.ts#L64)
 
 ## Functions
 
@@ -94,7 +94,7 @@ _do(function* (_) {
 
 #### Defined in
 
-[src/control/Monad.ts:91](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/control/Monad.ts#L91)
+[src/control/Monad.ts:91](https://github.com/jonlaing/shonad/blob/b266169/src/control/Monad.ts#L91)
 
 ___
 
@@ -131,4 +131,4 @@ Since all Monads are Functors and Applicatives, you should also use
 
 #### Defined in
 
-[src/control/Monad.ts:121](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/control/Monad.ts#L121)
+[src/control/Monad.ts:121](https://github.com/jonlaing/shonad/blob/b266169/src/control/Monad.ts#L121)

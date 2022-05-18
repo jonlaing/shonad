@@ -109,7 +109,7 @@ export class Nothing<A> extends Maybe<A> {
 
 #### Defined in
 
-[src/base/Typeclass.ts:4](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/base/Typeclass.ts#L4)
+[src/base/Typeclass.ts:4](https://github.com/jonlaing/shonad/blob/b266169/src/base/Typeclass.ts#L4)
 
 ## Properties
 
@@ -137,7 +137,7 @@ export class Nothing<A> extends Maybe<A> {
 
 #### Defined in
 
-[src/control/Applicative.ts:21](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/control/Applicative.ts#L21)
+[src/control/Applicative.ts:21](https://github.com/jonlaing/shonad/blob/b266169/src/control/Applicative.ts#L21)
 
 ___
 
@@ -161,7 +161,7 @@ ___
 
 #### Defined in
 
-[src/control/Monad.ts:59](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/control/Monad.ts#L59)
+[src/control/Monad.ts:59](https://github.com/jonlaing/shonad/blob/b266169/src/control/Monad.ts#L59)
 
 ___
 
@@ -189,7 +189,7 @@ ___
 
 #### Defined in
 
-[src/control/Functor.ts:7](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/control/Functor.ts#L7)
+[src/control/Functor.ts:7](https://github.com/jonlaing/shonad/blob/b266169/src/control/Functor.ts#L7)
 
 ___
 
@@ -217,7 +217,7 @@ ___
 
 #### Defined in
 
-[src/base/Typeclass.ts:8](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/base/Typeclass.ts#L8)
+[src/base/Typeclass.ts:8](https://github.com/jonlaing/shonad/blob/b266169/src/base/Typeclass.ts#L8)
 
 ___
 
@@ -231,7 +231,7 @@ ___
 
 #### Defined in
 
-[src/base/Typeclass.ts:2](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/base/Typeclass.ts#L2)
+[src/base/Typeclass.ts:2](https://github.com/jonlaing/shonad/blob/b266169/src/base/Typeclass.ts#L2)
 
 ___
 
@@ -245,7 +245,7 @@ ___
 
 #### Defined in
 
-[src/control/Monad.ts:57](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/control/Monad.ts#L57)
+[src/control/Monad.ts:57](https://github.com/jonlaing/shonad/blob/b266169/src/control/Monad.ts#L57)
 
 ___
 
@@ -255,7 +255,7 @@ ___
 
 #### Defined in
 
-[src/control/Monad.ts:54](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/control/Monad.ts#L54)
+[src/control/Monad.ts:54](https://github.com/jonlaing/shonad/blob/b266169/src/control/Monad.ts#L54)
 
 ___
 
@@ -269,4 +269,4 @@ ___
 
 #### Defined in
 
-[src/control/Functor.ts:5](https://github.com/jonlaing/shonad/blob/1bf7d4d/src/control/Functor.ts#L5)
+[src/control/Functor.ts:5](https://github.com/jonlaing/shonad/blob/b266169/src/control/Functor.ts#L5)

@@ -133,12 +133,42 @@ export const adjust: typeof _adjust = Fn.curry(
   }
 );
 
+declare function _adjustWhen<A>(
+  f: (a: A) => A
+): (pred: Fn.Predicate<A>, xs: A[]) => A[];
+declare function _adjustWhen<A>(
+  f: (a: A) => A,
+  pred: Fn.Predicate<A>
+): (xs: A[]) => A[];
+declare function _adjustWhen<A>(
+  f: (a: A) => A,
+  pred: Fn.Predicate<A>,
+  xs: A[]
+): A[];
+
+export const adjustWhen: typeof _adjustWhen = Fn.curry(
+  <A>(f: (a: A) => A, pred: Fn.Predicate<A>, xs: A[]): A[] => {
+    return findIndex(pred, xs)
+      .fmap((i) => adjust(f, i, xs))
+      .unwrap(xs);
+  }
+);
+
 declare function _update<A>(x: A): (i: number, xs?: A[]) => A[];
 declare function _update<A>(x: A, i: number): (xs: A[]) => A[];
 declare function _update<A>(x: A, i: number, xs: A[]): A[];
 
 export const update: typeof _update = Fn.curry(
   <A>(x: A, i: number, xs: A[]): A[] => adjust(Fn.always(x), i, xs)
+);
+
+declare function _updateWhen<A>(pred: Fn.Predicate<A>): (x: A, xs: A[]) => A[];
+declare function _updateWhen<A>(pred: Fn.Predicate<A>, x: A): (xs: A[]) => A[];
+declare function _updateWhen<A>(pred: Fn.Predicate<A>, x: A, xs: A[]): A[];
+
+export const updateWhen: typeof _updateWhen = Fn.curry(
+  <A>(pred: Fn.Predicate<A>, x: A, xs: A[]): A[] =>
+    adjustWhen(Fn.always(x), pred, xs)
 );
 
 declare function _append<A>(x: A): (xs: A[]) => A[];
