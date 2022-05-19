@@ -42,7 +42,7 @@
 
 #### Defined in
 
-[src/data/Const.ts:9](https://github.com/jonlaing/shonad/blob/c6c0ed4/src/data/Const.ts#L9)
+[src/data/Const.ts:9](https://github.com/jonlaing/shonad/blob/2ef830b/src/data/Const.ts#L9)
 
 ___
 
@@ -68,7 +68,7 @@ ___
 
 #### Defined in
 
-[src/data/Const.ts:17](https://github.com/jonlaing/shonad/blob/c6c0ed4/src/data/Const.ts#L17)
+[src/data/Const.ts:17](https://github.com/jonlaing/shonad/blob/2ef830b/src/data/Const.ts#L17)
 
 ___
 
@@ -106,7 +106,7 @@ ___
 
 #### Defined in
 
-[src/data/Const.ts:13](https://github.com/jonlaing/shonad/blob/c6c0ed4/src/data/Const.ts#L13)
+[src/data/Const.ts:13](https://github.com/jonlaing/shonad/blob/2ef830b/src/data/Const.ts#L13)
 
 ▸ **unwrap**<`A`\>(`fallback`, `c`): `A`
 
@@ -129,4 +129,4 @@ ___
 
 #### Defined in
 
-[src/data/Const.ts:13](https://github.com/jonlaing/shonad/blob/c6c0ed4/src/data/Const.ts#L13)
+[src/data/Const.ts:13](https://github.com/jonlaing/shonad/blob/2ef830b/src/data/Const.ts#L13)

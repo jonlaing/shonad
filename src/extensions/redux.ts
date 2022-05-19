@@ -134,32 +134,32 @@ export const over: typeof _over = Fn.curry(
 declare function _always<
   S extends State,
   V extends S[keyof S],
-  A extends PayloadAction<V> = PayloadAction<V>
+  A extends PayloadAction<any> = PayloadAction<any>
 >(lens: L.Lens<S, Maybe.Maybe<V>>): (val: V, state: S, action: A) => S;
 
 declare function _always<
   S extends State,
   V extends S[keyof S],
-  A extends PayloadAction<V> = PayloadAction<V>
+  A extends PayloadAction<any> = PayloadAction<any>
 >(lens: L.Lens<S, Maybe.Maybe<V>>, val: V): CaseReducer<S, A>;
 
 declare function _always<
   S extends State,
   V extends S[keyof S],
-  A extends PayloadAction<V> = PayloadAction<V>
+  A extends PayloadAction<any> = PayloadAction<any>
 >(lens: L.Lens<S, Maybe.Maybe<V>>, val: V, state: S): (action: A) => S;
 
 declare function _always<
   S extends State,
   V extends S[keyof S],
-  A extends PayloadAction<V> = PayloadAction<V>
+  A extends PayloadAction<any> = PayloadAction<any>
 >(lens: L.Lens<S, Maybe.Maybe<V>>, val: V, state: S, action: A): S;
 
 export const always: typeof _always = Fn.curry(
   <
     S extends State,
     V extends S[keyof S],
-    A extends PayloadAction<V> = PayloadAction<V>
+    A extends PayloadAction<any> = PayloadAction<any>
   >(
     lens: L.Lens<S, Maybe.Maybe<V>>,
     val: V,
