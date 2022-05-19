@@ -73,4 +73,18 @@ declare function _reduce<T, U = T[]>(f: (acc: U, v: T) => U, initial: U): (list:
 declare function _reduce<T, U = T[]>(f: (acc: U, v: T) => U, initial: U, list: T[]): U;
 export declare const reduce: typeof _reduce;
 export declare const uniq: <A>(as: A[]) => A[];
+declare function _insert<A>(idx: number): {
+    (item: A): (list: A[]) => A[];
+    (item: A, list: A[]): A[];
+};
+declare function _insert<A>(idx: number, item: A): (list: A[]) => A[];
+declare function _insert<A>(idx: number, item: A, list: A[]): A[];
+export declare const insert: typeof _insert;
+declare function _move<A>(from: number): {
+    (to: number): (list: A[]) => A[];
+    (to: number, list: A[]): A[];
+};
+declare function _move<A>(from: number, to: number): (list: A[]) => A[];
+declare function _move<A>(from: number, to: number, list: A[]): A[];
+export declare const move: typeof _move;
 export {};

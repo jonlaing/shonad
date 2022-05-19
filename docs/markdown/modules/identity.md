@@ -37,7 +37,7 @@
 
 #### Defined in
 
-[src/data/Identity.ts:14](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/Identity.ts#L14)
+[src/data/Identity.ts:14](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/Identity.ts#L14)
 
 ___
 
@@ -75,7 +75,7 @@ ___
 
 #### Defined in
 
-[src/data/Identity.ts:11](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/Identity.ts#L11)
+[src/data/Identity.ts:11](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/Identity.ts#L11)
 
 ▸ **unwrap**<`A`\>(`fallback`, `c`): `A`
 
@@ -98,4 +98,4 @@ ___
 
 #### Defined in
 
-[src/data/Identity.ts:11](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/Identity.ts#L11)
+[src/data/Identity.ts:11](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/Identity.ts#L11)

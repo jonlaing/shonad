@@ -2,7 +2,8 @@ import * as Fn from "../base/Function";
 import * as Maybe from "./Maybe";
 import * as Util from "../base/Util";
 import * as Lg from "../base/Logic";
-import { S, T } from "ts-toolbelt";
+import { A, S, T } from "ts-toolbelt";
+import { number } from "../base";
 
 declare function _head<A>(as: A[]): Maybe.Maybe<A>;
 export const head: typeof _head = Maybe.listToMaybe;
@@ -253,3 +254,30 @@ export const reduce: typeof _reduce = Fn.curry(
 
 export const uniq = <A>(as: A[]): A[] =>
   as.reduce((acc: A[], v: A) => (acc.includes(v) ? acc : [...acc, v]), []);
+
+declare function _insert<A>(idx: number): {
+  (item: A): (list: A[]) => A[];
+  (item: A, list: A[]): A[];
+};
+declare function _insert<A>(idx: number, item: A): (list: A[]) => A[];
+declare function _insert<A>(idx: number, item: A, list: A[]): A[];
+
+export const insert: typeof _insert = Fn.curry(
+  <A>(idx: number, item: A, list: A[]): A[] => {
+    const [hd, tl] = splitAt(idx, list);
+    return [...hd, item, ...tl];
+  }
+);
+
+declare function _move<A>(from: number): {
+  (to: number): (list: A[]) => A[];
+  (to: number, list: A[]): A[];
+};
+declare function _move<A>(from: number, to: number): (list: A[]) => A[];
+declare function _move<A>(from: number, to: number, list: A[]): A[];
+export const move: typeof _move = Fn.curry(
+  <A>(from: number, to: number, list: A[]): A[] => {
+    const [hd, [item, ...tl]] = splitAt(from, list);
+    return insert(to, item, [...hd, ...tl]);
+  }
+);

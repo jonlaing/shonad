@@ -18,9 +18,11 @@
 - [head](list.md#head)
 - [indexOf](list.md#indexof)
 - [init](list.md#init)
+- [insert](list.md#insert)
 - [isEmpty](list.md#isempty)
 - [last](list.md#last)
 - [lastIndexOf](list.md#lastindexof)
+- [move](list.md#move)
 - [nth](list.md#nth)
 - [prepend](list.md#prepend)
 - [reduce](list.md#reduce)
@@ -93,7 +95,7 @@
 
 #### Defined in
 
-[src/data/List.ts:127](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L127)
+[src/data/List.ts:128](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L128)
 
 ▸ **adjust**<`A`\>(`f`, `i`): (`xs`: `A`[]) => `A`[]
 
@@ -128,7 +130,7 @@
 
 #### Defined in
 
-[src/data/List.ts:127](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L127)
+[src/data/List.ts:128](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L128)
 
 ▸ **adjust**<`A`\>(`f`, `i`, `xs`): `A`[]
 
@@ -152,7 +154,7 @@
 
 #### Defined in
 
-[src/data/List.ts:127](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L127)
+[src/data/List.ts:128](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L128)
 
 ___
 
@@ -215,7 +217,7 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:155](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L155)
+[src/data/List.ts:156](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L156)
 
 ▸ **adjustWhen**<`A`\>(`pred`, `f`): (`xs`: `A`[]) => `A`[]
 
@@ -250,7 +252,7 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:155](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L155)
+[src/data/List.ts:156](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L156)
 
 ▸ **adjustWhen**<`A`\>(`pred`, `f`, `xs`): `A`[]
 
@@ -274,7 +276,7 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:155](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L155)
+[src/data/List.ts:156](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L156)
 
 ___
 
@@ -312,7 +314,7 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:189](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L189)
+[src/data/List.ts:190](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L190)
 
 ▸ **append**<`A`\>(`x`, `xs`): `A`[]
 
@@ -335,7 +337,7 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:189](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L189)
+[src/data/List.ts:190](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L190)
 
 ___
 
@@ -373,7 +375,7 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:214](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L214)
+[src/data/List.ts:215](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L215)
 
 ▸ **drop**<`A`\>(`n`, `xs`): `A`[]
 
@@ -396,7 +398,7 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:214](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L214)
+[src/data/List.ts:215](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L215)
 
 ___
 
@@ -434,7 +436,7 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:225](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L225)
+[src/data/List.ts:226](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L226)
 
 ▸ **filter**<`T`\>(`pred`, `list`): `T`[]
 
@@ -457,7 +459,7 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:225](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L225)
+[src/data/List.ts:226](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L226)
 
 ___
 
@@ -495,7 +497,7 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:42](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L42)
+[src/data/List.ts:43](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L43)
 
 ▸ **find**<`A`\>(`pred`, `xs`): [`Maybe`](../classes/maybe.Maybe.md)<`A`\>
 
@@ -518,7 +520,7 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:42](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L42)
+[src/data/List.ts:43](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L43)
 
 ___
 
@@ -556,7 +558,7 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:58](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L58)
+[src/data/List.ts:59](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L59)
 
 ▸ **findIndex**<`A`\>(`pred`, `xs`): [`Maybe`](../classes/maybe.Maybe.md)<`number`\>
 
@@ -579,7 +581,7 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:58](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L58)
+[src/data/List.ts:59](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L59)
 
 ___
 
@@ -617,7 +619,7 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:69](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L69)
+[src/data/List.ts:70](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L70)
 
 ▸ **findLast**<`A`\>(`pred`, `xs`): [`Maybe`](../classes/maybe.Maybe.md)<`A`\>
 
@@ -640,7 +642,7 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:69](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L69)
+[src/data/List.ts:70](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L70)
 
 ___
 
@@ -678,7 +680,7 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:74](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L74)
+[src/data/List.ts:75](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L75)
 
 ▸ **findLastIndex**<`A`\>(`pred`, `xs`): [`Maybe`](../classes/maybe.Maybe.md)<`number`\>
 
@@ -701,7 +703,7 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:74](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L74)
+[src/data/List.ts:75](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L75)
 
 ___
 
@@ -727,7 +729,7 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:8](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L8)
+[src/data/List.ts:9](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L9)
 
 ___
 
@@ -765,7 +767,7 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:202](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L202)
+[src/data/List.ts:203](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L203)
 
 ▸ **indexOf**<`A`\>(`a`, `xs`): [`Maybe`](../classes/maybe.Maybe.md)<`number`\>
 
@@ -788,7 +790,7 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:202](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L202)
+[src/data/List.ts:203](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L203)
 
 ___
 
@@ -814,7 +816,129 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:22](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L22)
+[src/data/List.ts:23](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L23)
+
+___
+
+### insert
+
+▸ **insert**<`A`\>(`idx`): (`item`: `A`) => (`list`: `A`[]) => `A`[](`item`: `A`, `list`: `A`[]) => `A`[]
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `A` |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `idx` | `number` |
+
+#### Returns
+
+`fn`
+
+▸ (`item`): (`list`: `A`[]) => `A`[]
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `item` | `A` |
+
+##### Returns
+
+`fn`
+
+▸ (`list`): `A`[]
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `list` | `A`[] |
+
+##### Returns
+
+`A`[]
+
+▸ (`item`, `list`): `A`[]
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `item` | `A` |
+| `list` | `A`[] |
+
+##### Returns
+
+`A`[]
+
+#### Defined in
+
+[src/data/List.ts:265](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L265)
+
+▸ **insert**<`A`\>(`idx`, `item`): (`list`: `A`[]) => `A`[]
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `A` |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `idx` | `number` |
+| `item` | `A` |
+
+#### Returns
+
+`fn`
+
+▸ (`list`): `A`[]
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `list` | `A`[] |
+
+##### Returns
+
+`A`[]
+
+#### Defined in
+
+[src/data/List.ts:265](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L265)
+
+▸ **insert**<`A`\>(`idx`, `item`, `list`): `A`[]
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `A` |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `idx` | `number` |
+| `item` | `A` |
+| `list` | `A`[] |
+
+#### Returns
+
+`A`[]
+
+#### Defined in
+
+[src/data/List.ts:265](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L265)
 
 ___
 
@@ -840,7 +964,7 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:25](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L25)
+[src/data/List.ts:26](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L26)
 
 ___
 
@@ -866,7 +990,7 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:17](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L17)
+[src/data/List.ts:18](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L18)
 
 ___
 
@@ -904,7 +1028,7 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:206](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L206)
+[src/data/List.ts:207](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L207)
 
 ▸ **lastIndexOf**<`A`\>(`a`, `xs`): [`Maybe`](../classes/maybe.Maybe.md)<`number`\>
 
@@ -927,7 +1051,129 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:206](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L206)
+[src/data/List.ts:207](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L207)
+
+___
+
+### move
+
+▸ **move**<`A`\>(`from`): (`to`: `number`) => (`list`: `A`[]) => `A`[](`to`: `number`, `list`: `A`[]) => `A`[]
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `A` |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `from` | `number` |
+
+#### Returns
+
+`fn`
+
+▸ (`to`): (`list`: `A`[]) => `A`[]
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `to` | `number` |
+
+##### Returns
+
+`fn`
+
+▸ (`list`): `A`[]
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `list` | `A`[] |
+
+##### Returns
+
+`A`[]
+
+▸ (`to`, `list`): `A`[]
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `to` | `number` |
+| `list` | `A`[] |
+
+##### Returns
+
+`A`[]
+
+#### Defined in
+
+[src/data/List.ts:278](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L278)
+
+▸ **move**<`A`\>(`from`, `to`): (`list`: `A`[]) => `A`[]
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `A` |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `from` | `number` |
+| `to` | `number` |
+
+#### Returns
+
+`fn`
+
+▸ (`list`): `A`[]
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `list` | `A`[] |
+
+##### Returns
+
+`A`[]
+
+#### Defined in
+
+[src/data/List.ts:278](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L278)
+
+▸ **move**<`A`\>(`from`, `to`, `list`): `A`[]
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `A` |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `from` | `number` |
+| `to` | `number` |
+| `list` | `A`[] |
+
+#### Returns
+
+`A`[]
+
+#### Defined in
+
+[src/data/List.ts:278](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L278)
 
 ___
 
@@ -965,7 +1211,7 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:82](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L82)
+[src/data/List.ts:83](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L83)
 
 ▸ **nth**<`A`\>(`i`, `xs`): [`Maybe`](../classes/maybe.Maybe.md)<`A`\>
 
@@ -988,7 +1234,7 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:82](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L82)
+[src/data/List.ts:83](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L83)
 
 ___
 
@@ -1026,7 +1272,7 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:194](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L194)
+[src/data/List.ts:195](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L195)
 
 ▸ **prepend**<`A`\>(`x`, `xs`): `A`[]
 
@@ -1049,7 +1295,7 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:194](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L194)
+[src/data/List.ts:195](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L195)
 
 ___
 
@@ -1113,7 +1359,7 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:249](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L249)
+[src/data/List.ts:250](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L250)
 
 ▸ **reduce**<`T`, `U`\>(`f`, `initial`): (`list`: `T`[]) => `U`
 
@@ -1149,7 +1395,7 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:249](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L249)
+[src/data/List.ts:250](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L250)
 
 ▸ **reduce**<`T`, `U`\>(`f`, `initial`, `list`): `U`
 
@@ -1174,7 +1420,7 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:249](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L249)
+[src/data/List.ts:250](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L250)
 
 ___
 
@@ -1212,7 +1458,7 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:229](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L229)
+[src/data/List.ts:230](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L230)
 
 ▸ **reject**<`T`\>(`pred`, `list`): `T`[]
 
@@ -1235,7 +1481,7 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:229](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L229)
+[src/data/List.ts:230](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L230)
 
 ___
 
@@ -1261,7 +1507,7 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:10](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L10)
+[src/data/List.ts:11](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L11)
 
 ___
 
@@ -1299,7 +1545,7 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:113](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L113)
+[src/data/List.ts:114](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L114)
 
 ▸ **splitAt**<`A`\>(`i`, `xs`): [`A`[], `A`[]]
 
@@ -1322,7 +1568,7 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:113](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L113)
+[src/data/List.ts:114](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L114)
 
 ___
 
@@ -1348,7 +1594,7 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:19](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L19)
+[src/data/List.ts:20](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L20)
 
 ___
 
@@ -1374,7 +1620,7 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:254](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L254)
+[src/data/List.ts:255](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L255)
 
 ___
 
@@ -1437,7 +1683,7 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:170](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L170)
+[src/data/List.ts:171](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L171)
 
 ▸ **update**<`A`\>(`x`, `i`): (`xs`: `A`[]) => `A`[]
 
@@ -1472,7 +1718,7 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:170](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L170)
+[src/data/List.ts:171](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L171)
 
 ▸ **update**<`A`\>(`x`, `i`, `xs`): `A`[]
 
@@ -1496,7 +1742,7 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:170](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L170)
+[src/data/List.ts:171](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L171)
 
 ___
 
@@ -1559,7 +1805,7 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:181](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L181)
+[src/data/List.ts:182](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L182)
 
 ▸ **updateWhen**<`A`\>(`pred`, `x`): (`xs`: `A`[]) => `A`[]
 
@@ -1594,7 +1840,7 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:181](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L181)
+[src/data/List.ts:182](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L182)
 
 ▸ **updateWhen**<`A`\>(`pred`, `x`, `xs`): `A`[]
 
@@ -1618,4 +1864,4 @@ ___
 
 #### Defined in
 
-[src/data/List.ts:181](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/List.ts#L181)
+[src/data/List.ts:182](https://github.com/jonlaing/shonad/blob/49f7c8a/src/data/List.ts#L182)
