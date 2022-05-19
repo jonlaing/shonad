@@ -57,7 +57,7 @@
 
 #### Defined in
 
-[src/base/Typeclass.ts:4](https://github.com/jonlaing/shonad/blob/2ef830b/src/base/Typeclass.ts#L4)
+[src/base/Typeclass.ts:4](https://github.com/jonlaing/shonad/blob/1b075e8/src/base/Typeclass.ts#L4)
 
 ## Properties
 
@@ -81,7 +81,7 @@
 
 #### Defined in
 
-[src/control/Applicative.ts:22](https://github.com/jonlaing/shonad/blob/2ef830b/src/control/Applicative.ts#L22)
+[src/control/Applicative.ts:22](https://github.com/jonlaing/shonad/blob/1b075e8/src/control/Applicative.ts#L22)
 
 ___
 
@@ -109,7 +109,7 @@ ___
 
 #### Defined in
 
-[src/control/Applicative.ts:21](https://github.com/jonlaing/shonad/blob/2ef830b/src/control/Applicative.ts#L21)
+[src/control/Applicative.ts:21](https://github.com/jonlaing/shonad/blob/1b075e8/src/control/Applicative.ts#L21)
 
 ___
 
@@ -137,7 +137,7 @@ ___
 
 #### Defined in
 
-[src/base/Typeclass.ts:8](https://github.com/jonlaing/shonad/blob/2ef830b/src/base/Typeclass.ts#L8)
+[src/base/Typeclass.ts:8](https://github.com/jonlaing/shonad/blob/1b075e8/src/base/Typeclass.ts#L8)
 
 ___
 
@@ -151,7 +151,7 @@ ___
 
 #### Defined in
 
-[src/base/Typeclass.ts:2](https://github.com/jonlaing/shonad/blob/2ef830b/src/base/Typeclass.ts#L2)
+[src/base/Typeclass.ts:2](https://github.com/jonlaing/shonad/blob/1b075e8/src/base/Typeclass.ts#L2)
 
 ___
 
@@ -161,7 +161,7 @@ ___
 
 #### Defined in
 
-[src/control/Applicative.ts:11](https://github.com/jonlaing/shonad/blob/2ef830b/src/control/Applicative.ts#L11)
+[src/control/Applicative.ts:11](https://github.com/jonlaing/shonad/blob/1b075e8/src/control/Applicative.ts#L11)
 
 ___
 
@@ -175,4 +175,4 @@ ___
 
 #### Defined in
 
-[src/control/Functor.ts:5](https://github.com/jonlaing/shonad/blob/2ef830b/src/control/Functor.ts#L5)
+[src/control/Functor.ts:5](https://github.com/jonlaing/shonad/blob/1b075e8/src/control/Functor.ts#L5)

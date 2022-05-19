@@ -4,5 +4,4 @@
 pnpm test
 pnpm build
 pnpm build:docs:md
-pnpm uglify
 git add .

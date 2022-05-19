@@ -1,2 +1,40 @@
-"use strict";var __createBinding=this&&this.__createBinding||(Object.create?function(o,m,k,k2){void 0===k2&&(k2=k);var desc=Object.getOwnPropertyDescriptor(m,k);desc&&("get"in desc?m.__esModule:!desc.writable&&!desc.configurable)||(desc={enumerable:!0,get:function(){return m[k]}}),Object.defineProperty(o,k2,desc)}:function(o,m,k,k2){o[k2=void 0===k2?k:k2]=m[k]}),__setModuleDefault=this&&this.__setModuleDefault||(Object.create?function(o,v){Object.defineProperty(o,"default",{enumerable:!0,value:v})}:function(o,v){o.default=v}),__importStar=this&&this.__importStar||function(mod){if(mod&&mod.__esModule)return mod;var result={};if(null!=mod)for(var k in mod)"default"!==k&&Object.prototype.hasOwnProperty.call(mod,k)&&__createBinding(result,mod,k);return __setModuleDefault(result,mod),result};Object.defineProperty(exports,"__esModule",{value:!0}),exports.makeId=exports.unwrap=exports.Identity=void 0;const Functor_1=require("../control/Functor"),Fn=__importStar(require("../base/Function"));class Identity extends Functor_1.Functor{constructor(){super(...arguments),this.fmap=f=>f(this.val),this.unwrap=fallback=>this.val}}exports.Identity=Identity,exports.unwrap=Fn.curry((fallback,i)=>i.unwrap(fallback));const makeId=a=>new Identity(a);exports.makeId=makeId;
+"use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.makeId = exports.unwrap = exports.Identity = void 0;
+const Functor_1 = require("../control/Functor");
+const Fn = __importStar(require("../base/Function"));
+class Identity extends Functor_1.Functor {
+    constructor() {
+        super(...arguments);
+        this.fmap = (f) => f(this.val);
+        this.unwrap = (fallback) => this.val;
+    }
+}
+exports.Identity = Identity;
+exports.unwrap = Fn.curry((fallback, i) => i.unwrap(fallback));
+const makeId = (a) => new Identity(a);
+exports.makeId = makeId;
 //# sourceMappingURL=Identity.js.map
