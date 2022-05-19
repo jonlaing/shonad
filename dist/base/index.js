@@ -23,8 +23,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.logic = exports.number = exports.util = exports.typeclass = exports.functions = void 0;
-exports.functions = __importStar(require("./Function"));
+exports.logic = exports.number = exports.util = exports.typeclass = exports.func = void 0;
+exports.func = __importStar(require("./Function"));
 exports.typeclass = __importStar(require("./Typeclass"));
 exports.util = __importStar(require("./Util"));
 exports.number = __importStar(require("./Number"));

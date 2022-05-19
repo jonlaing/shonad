@@ -4,32 +4,6 @@
   "description": "Functional helper library to make Javascript and Typescript programs more predictable",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": [
-    "/dist"
-  ],
-  "exports": {
-    ".": "./dist/index.js",
-    "./base": "./dist/base/index.js",
-    "./control": "./dist/control/index.js",
-    "./data": "./dist/data/index.js",
-    "./extensions": "./dist/data/index.js"
-  },
-  "typesVersions": {
-    "*": {
-      "base": [
-        "dist/base/index.d.ts"
-      ],
-      "control": [
-        "dist/control/index.d.ts"
-      ],
-      "data": [
-        "dist/data/index.d.ts"
-      ],
-      "extensions": [
-        "dist/extensions/index.d.ts"
-      ]
-    }
-  },
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.17.12",
