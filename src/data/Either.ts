@@ -8,6 +8,10 @@ export abstract class Either<A, B> extends Monad<A | B> {
   static pure(a: any) {
     return new Right(a);
   }
+
+  abstract fmap: <C>(f: (b: any) => C) => Either<A, C>;
+  abstract apply: (ma: Either<any, any>) => Either<any, any>;
+  abstract bind: (f: Fn.Function<any, Either<any, any>>) => Either<any, any>;
 }
 
 export class Left<A> extends Either<A, any> {
@@ -47,7 +51,10 @@ export const isRight = (x: Either<any, any>) => (x as Right<any>).isRight();
 
 declare function _either<A, B, C>(
   f0: (a: A) => C
-): (f1: (b: B) => C, x: Either<A, B>) => C;
+): {
+  (f1: (b: B) => C, x: Either<A, B>): C;
+  (f1: (b: B) => C): (x: Either<A, B>) => C;
+};
 declare function _either<A, B, C>(
   f0: (a: A) => C,
   f1: (b: B) => C
@@ -148,7 +155,7 @@ declare function _bind<A, B, C>(
 export const fmap: typeof _fmap = Either.fmap;
 export const pure: (a: any) => Either<any, any> = Either.pure;
 export const apply: typeof _apply = Either.apply;
-export const apply_: typeof _apply_ = Fn.flip(apply);
+export const apply_: typeof _apply_ = Fn.flip<typeof _apply>(apply);
 export const bind: typeof _bind = Either.bind;
 
 export const _do = makeDo<Either<any, any>>(pure, bind);

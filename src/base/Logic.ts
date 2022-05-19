@@ -14,10 +14,15 @@ export const allPass: typeof _allPass = Fn.curry(
     fs.reduce((acc: boolean, f) => (acc ? f(x) : acc), true)
 );
 
-export const and = Fn.curry((a: boolean, b: boolean): boolean => a && b);
+declare function _and(a: boolean): (b: boolean) => boolean;
+declare function _and(a: boolean, b: boolean): boolean;
+export const and: typeof _and = Fn.curry(
+  (a: boolean, b: boolean): boolean => a && b
+);
 
-export const anyPass = Fn.curry((fs: Function.Function[], x: any): boolean =>
-  fs.reduce((acc: boolean, f) => (acc ? acc : f(x)), false)
+export const anyPass: typeof _allPass = Fn.curry(
+  (fs: Function.Function[], x: any): boolean =>
+    fs.reduce((acc: boolean, f) => (acc ? acc : f(x)), false)
 );
 
 export const both = Fn.curry(
@@ -28,7 +33,10 @@ export const either = Fn.curry(
   (f: Function.Function, g: Function.Function, x: any): boolean => f(x) || g(x)
 );
 
-export const not = Fn.curry(
+declare function _not(f: Function.Function): (x: NonNullable<any>) => boolean;
+declare function _not(f: Function.Function, x: NonNullable<any>): boolean;
+
+export const not: typeof _not = Fn.curry(
   (f: Function.Function, x: NonNullable<any>): boolean => !f(x)
 );
 

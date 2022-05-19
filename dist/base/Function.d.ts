@@ -141,6 +141,12 @@ export declare const always: <A>(x: A) => (a?: any) => A;
 export declare const false_: (a?: any) => boolean;
 export declare const true_: (a?: any) => boolean;
 export declare const identity: <A>(x: A) => A;
+declare function _flip<F extends Function.Function, A extends Parameters<F>[0] = Parameters<F>[0], B extends Parameters<F>[1] = Parameters<F>[0]>(f: F): {
+    (b: B, a: A): Function.Return<F>;
+    (b: B): (a: A) => Function.Return<F>;
+};
+declare function _flip<F extends Function.Function, A extends Parameters<F>[0] = Parameters<F>[0], B extends Parameters<F>[1] = Parameters<F>[0]>(f: F, b: Parameters<F>[1]): (a: Parameters<F>[0]) => Function.Return<F>;
+declare function _flip<F extends Function.Function, A extends Parameters<F>[0] = Parameters<F>[0], B extends Parameters<F>[1] = Parameters<F>[0]>(f: F, b: B, a: A): Function.Return<F>;
 /**
  * Flips the first two paramters of a function.
  *
@@ -158,7 +164,7 @@ export declare const identity: <A>(x: A) => A;
  * @param [a] A
  * @returns f(a, b)
  */
-export declare const flip: Function.Curry<(<F extends Function.Function<any, any>>(f: F, b: Parameters<F>[1], a: Parameters<F>[0]) => any)>;
+export declare const flip: typeof _flip;
 declare function _fmap<A, B, C>(f: Function<B, C>): (x: Function<A, B>) => Function<A, C>;
 declare function _fmap<A, B, C>(f: Function<B, C>, x: Function<A, B>): Function<A, C>;
 /**

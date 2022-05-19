@@ -175,6 +175,7 @@ exports.identity = identity;
 exports.flip = (0, exports.curry)((f, b, a) => {
     return f(a, b);
 });
+(0, exports.flip)((a, b) => a + b);
 /**
  * Implementing {@link Functor} for Function Arrows. This is synonymous
  * with {@link compose}.

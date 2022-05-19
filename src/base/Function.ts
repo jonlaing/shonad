@@ -205,6 +205,27 @@ export const true_ = always(true);
 
 export const identity = <A>(x: A) => x;
 
+declare function _flip<
+  F extends Function.Function,
+  A extends Parameters<F>[0] = Parameters<F>[0],
+  B extends Parameters<F>[1] = Parameters<F>[0]
+>(
+  f: F
+): {
+  (b: B, a: A): Function.Return<F>;
+  (b: B): (a: A) => Function.Return<F>;
+};
+declare function _flip<
+  F extends Function.Function,
+  A extends Parameters<F>[0] = Parameters<F>[0],
+  B extends Parameters<F>[1] = Parameters<F>[0]
+>(f: F, b: Parameters<F>[1]): (a: Parameters<F>[0]) => Function.Return<F>;
+declare function _flip<
+  F extends Function.Function,
+  A extends Parameters<F>[0] = Parameters<F>[0],
+  B extends Parameters<F>[1] = Parameters<F>[0]
+>(f: F, b: B, a: A): Function.Return<F>;
+
 /**
  * Flips the first two paramters of a function.
  *
@@ -222,15 +243,20 @@ export const identity = <A>(x: A) => x;
  * @param [a] A
  * @returns f(a, b)
  */
-export const flip = curry(
-  <F extends Function.Function>(
+export const flip: typeof _flip = curry(
+  <
+    F extends Function.Function,
+    A extends Parameters<F>[0] = Parameters<F>[0],
+    B extends Parameters<F>[1] = Parameters<F>[0]
+  >(
     f: F,
-    b: Parameters<F>[1],
-    a: Parameters<F>[0]
+    b: B,
+    a: A
   ) => {
     return f(a, b);
   }
 );
+flip((a: number, b: number) => a + b);
 
 declare function _fmap<A, B, C>(
   f: Function<B, C>

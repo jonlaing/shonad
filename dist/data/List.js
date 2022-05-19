@@ -23,10 +23,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.drop = exports.lastIndexOf = exports.indexOf = exports.append = exports.updateWhen = exports.update = exports.adjustWhen = exports.adjust = exports.splitAt = exports.nth = exports.findLastIndex = exports.findLast = exports.findIndex = exports.find = exports.isEmpty = exports.init = exports.tail = exports.last = exports.reverse = exports.head = void 0;
+exports.uniq = exports.reduce = exports.reject = exports.filter = exports.drop = exports.lastIndexOf = exports.indexOf = exports.prepend = exports.append = exports.updateWhen = exports.update = exports.adjustWhen = exports.adjust = exports.splitAt = exports.nth = exports.findLastIndex = exports.findLast = exports.findIndex = exports.find = exports.isEmpty = exports.init = exports.tail = exports.last = exports.reverse = exports.head = void 0;
 const Fn = __importStar(require("../base/Function"));
 const Maybe = __importStar(require("./Maybe"));
 const Util = __importStar(require("../base/Util"));
+const Lg = __importStar(require("../base/Logic"));
 exports.head = Maybe.listToMaybe;
 const reverse = (a) => {
     let copy = a;
@@ -106,6 +107,10 @@ exports.append = Fn.curry((x, xs) => [
     ...xs,
     x,
 ]);
+exports.prepend = Fn.curry((x, xs) => [
+    x,
+    ...xs,
+]);
 exports.indexOf = Fn.curry((a, xs) => (0, exports.findIndex)(Util.eq(a), xs));
 exports.lastIndexOf = Fn.curry((a, xs) => Fn.compose((0, exports.indexOf)(a), exports.reverse)(xs));
 exports.drop = Fn.curry((n, xs) => {
@@ -116,4 +121,9 @@ exports.drop = Fn.curry((n, xs) => {
     const [_, ...tl] = xs;
     return (0, exports.drop)(n - 1, tl);
 });
+exports.filter = Fn.curry((pred, list) => list.filter(pred));
+exports.reject = Fn.curry((pred, list) => list.filter(Lg.not(pred)));
+exports.reduce = Fn.curry((f, initial, list) => list.reduce(f, initial));
+const uniq = (as) => as.reduce((acc, v) => (acc.includes(v) ? acc : [...acc, v]), []);
+exports.uniq = uniq;
 //# sourceMappingURL=List.js.map

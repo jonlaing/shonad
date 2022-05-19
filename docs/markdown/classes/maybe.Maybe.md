@@ -65,7 +65,7 @@
 
 #### Defined in
 
-[src/base/Typeclass.ts:4](https://github.com/jonlaing/shonad/blob/473b1a9/src/base/Typeclass.ts#L4)
+[src/base/Typeclass.ts:4](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Typeclass.ts#L4)
 
 ## Properties
 
@@ -93,7 +93,7 @@
 
 #### Defined in
 
-[src/data/Maybe.ts:13](https://github.com/jonlaing/shonad/blob/473b1a9/src/data/Maybe.ts#L13)
+[src/data/Maybe.ts:13](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/Maybe.ts#L13)
 
 ___
 
@@ -121,7 +121,7 @@ ___
 
 #### Defined in
 
-[src/data/Maybe.ts:14](https://github.com/jonlaing/shonad/blob/473b1a9/src/data/Maybe.ts#L14)
+[src/data/Maybe.ts:14](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/Maybe.ts#L14)
 
 ___
 
@@ -155,7 +155,7 @@ ___
 
 #### Defined in
 
-[src/data/Maybe.ts:12](https://github.com/jonlaing/shonad/blob/473b1a9/src/data/Maybe.ts#L12)
+[src/data/Maybe.ts:12](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/Maybe.ts#L12)
 
 ___
 
@@ -183,7 +183,7 @@ ___
 
 #### Defined in
 
-[src/base/Typeclass.ts:8](https://github.com/jonlaing/shonad/blob/473b1a9/src/base/Typeclass.ts#L8)
+[src/base/Typeclass.ts:8](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Typeclass.ts#L8)
 
 ___
 
@@ -197,7 +197,7 @@ ___
 
 #### Defined in
 
-[src/base/Typeclass.ts:2](https://github.com/jonlaing/shonad/blob/473b1a9/src/base/Typeclass.ts#L2)
+[src/base/Typeclass.ts:2](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Typeclass.ts#L2)
 
 ___
 
@@ -211,7 +211,7 @@ ___
 
 #### Defined in
 
-[src/control/Monad.ts:57](https://github.com/jonlaing/shonad/blob/473b1a9/src/control/Monad.ts#L57)
+[src/control/Monad.ts:57](https://github.com/jonlaing/shonad/blob/b68ed04/src/control/Monad.ts#L57)
 
 ___
 
@@ -225,7 +225,7 @@ ___
 
 #### Defined in
 
-[src/control/Monad.ts:54](https://github.com/jonlaing/shonad/blob/473b1a9/src/control/Monad.ts#L54)
+[src/control/Monad.ts:54](https://github.com/jonlaing/shonad/blob/b68ed04/src/control/Monad.ts#L54)
 
 ___
 
@@ -239,24 +239,30 @@ ___
 
 #### Defined in
 
-[src/control/Functor.ts:5](https://github.com/jonlaing/shonad/blob/473b1a9/src/control/Functor.ts#L5)
+[src/control/Functor.ts:5](https://github.com/jonlaing/shonad/blob/b68ed04/src/control/Functor.ts#L5)
 
 ## Methods
 
 ### pure
 
-▸ `Static` **pure**(`a`): [`Just`](maybe.Just.md)<`any`\>
+▸ `Static` **pure**<`T`\>(`a`): [`Maybe`](maybe.Maybe.md)<`T`\>
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `T` |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `a` | `any` |
+| `a` | `T` |
 
 #### Returns
 
-[`Just`](maybe.Just.md)<`any`\>
+[`Maybe`](maybe.Maybe.md)<`T`\>
 
 #### Defined in
 
-[src/data/Maybe.ts:8](https://github.com/jonlaing/shonad/blob/473b1a9/src/data/Maybe.ts#L8)
+[src/data/Maybe.ts:8](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/Maybe.ts#L8)

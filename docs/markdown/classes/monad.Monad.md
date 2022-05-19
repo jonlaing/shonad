@@ -68,6 +68,10 @@ export class Nothing<A> extends Maybe<A> {
 
   ↳↳ [`Maybe`](maybe.Maybe.md)
 
+## Implements
+
+- [`IMonad`](../interfaces/monad.IMonad.md)<`A`\>
+
 ## Table of contents
 
 ### Constructors
@@ -109,7 +113,7 @@ export class Nothing<A> extends Maybe<A> {
 
 #### Defined in
 
-[src/base/Typeclass.ts:4](https://github.com/jonlaing/shonad/blob/473b1a9/src/base/Typeclass.ts#L4)
+[src/base/Typeclass.ts:4](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Typeclass.ts#L4)
 
 ## Properties
 
@@ -131,13 +135,17 @@ export class Nothing<A> extends Maybe<A> {
 
 [`Monad`](monad.Monad.md)<`any`\>
 
+#### Implementation of
+
+[IMonad](../interfaces/monad.IMonad.md).[apply](../interfaces/monad.IMonad.md#apply)
+
 #### Overrides
 
 [Applicative](applicative.Applicative.md).[apply](applicative.Applicative.md#apply)
 
 #### Defined in
 
-[src/control/Monad.ts:60](https://github.com/jonlaing/shonad/blob/473b1a9/src/control/Monad.ts#L60)
+[src/control/Monad.ts:60](https://github.com/jonlaing/shonad/blob/b68ed04/src/control/Monad.ts#L60)
 
 ___
 
@@ -159,9 +167,13 @@ ___
 
 [`Monad`](monad.Monad.md)<`any`\>
 
+#### Implementation of
+
+[IMonad](../interfaces/monad.IMonad.md).[bind](../interfaces/monad.IMonad.md#bind)
+
 #### Defined in
 
-[src/control/Monad.ts:61](https://github.com/jonlaing/shonad/blob/473b1a9/src/control/Monad.ts#L61)
+[src/control/Monad.ts:61](https://github.com/jonlaing/shonad/blob/b68ed04/src/control/Monad.ts#L61)
 
 ___
 
@@ -183,13 +195,17 @@ ___
 
 [`Monad`](monad.Monad.md)<`any`\>
 
+#### Implementation of
+
+[IMonad](../interfaces/monad.IMonad.md).[fmap](../interfaces/monad.IMonad.md#fmap)
+
 #### Overrides
 
 [Applicative](applicative.Applicative.md).[fmap](applicative.Applicative.md#fmap)
 
 #### Defined in
 
-[src/control/Monad.ts:59](https://github.com/jonlaing/shonad/blob/473b1a9/src/control/Monad.ts#L59)
+[src/control/Monad.ts:59](https://github.com/jonlaing/shonad/blob/b68ed04/src/control/Monad.ts#L59)
 
 ___
 
@@ -211,13 +227,17 @@ ___
 
 `A`
 
+#### Implementation of
+
+[IMonad](../interfaces/monad.IMonad.md).[unwrap](../interfaces/monad.IMonad.md#unwrap)
+
 #### Inherited from
 
 [Applicative](applicative.Applicative.md).[unwrap](applicative.Applicative.md#unwrap)
 
 #### Defined in
 
-[src/base/Typeclass.ts:8](https://github.com/jonlaing/shonad/blob/473b1a9/src/base/Typeclass.ts#L8)
+[src/base/Typeclass.ts:8](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Typeclass.ts#L8)
 
 ___
 
@@ -225,13 +245,17 @@ ___
 
 • **val**: `A`
 
+#### Implementation of
+
+[IMonad](../interfaces/monad.IMonad.md).[val](../interfaces/monad.IMonad.md#val)
+
 #### Inherited from
 
 [Applicative](applicative.Applicative.md).[val](applicative.Applicative.md#val)
 
 #### Defined in
 
-[src/base/Typeclass.ts:2](https://github.com/jonlaing/shonad/blob/473b1a9/src/base/Typeclass.ts#L2)
+[src/base/Typeclass.ts:2](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Typeclass.ts#L2)
 
 ___
 
@@ -245,7 +269,7 @@ ___
 
 #### Defined in
 
-[src/control/Monad.ts:57](https://github.com/jonlaing/shonad/blob/473b1a9/src/control/Monad.ts#L57)
+[src/control/Monad.ts:57](https://github.com/jonlaing/shonad/blob/b68ed04/src/control/Monad.ts#L57)
 
 ___
 
@@ -255,7 +279,7 @@ ___
 
 #### Defined in
 
-[src/control/Monad.ts:54](https://github.com/jonlaing/shonad/blob/473b1a9/src/control/Monad.ts#L54)
+[src/control/Monad.ts:54](https://github.com/jonlaing/shonad/blob/b68ed04/src/control/Monad.ts#L54)
 
 ___
 
@@ -269,4 +293,4 @@ ___
 
 #### Defined in
 
-[src/control/Functor.ts:5](https://github.com/jonlaing/shonad/blob/473b1a9/src/control/Functor.ts#L5)
+[src/control/Functor.ts:5](https://github.com/jonlaing/shonad/blob/b68ed04/src/control/Functor.ts#L5)

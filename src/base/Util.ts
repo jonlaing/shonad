@@ -8,9 +8,10 @@ declare function _eq<A>(a: A, b: A): boolean;
 
 export const eq: typeof _eq = Fn.curry((a: any, b: any): boolean => a === b);
 
-declare function _eqBy<A>(
-  f: Function.Function<[A], any>
-): (a: A, b: A) => boolean;
+declare function _eqBy<A>(f: Function.Function<[A], any>): {
+  (a: A, b: A): boolean;
+  (a: A): (b: A) => boolean;
+};
 declare function _eqBy<A>(
   f: Function.Function<[A], any>,
   a: A

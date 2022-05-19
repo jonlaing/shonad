@@ -20,7 +20,10 @@ export const get: typeof _get = Fn.curry(
 
 declare function _set<A extends Dict<any>>(
   key: string
-): (val: any, dict?: A) => A;
+): {
+  (val: any, dict: A): A;
+  (val: any): (dict: A) => A;
+};
 declare function _set<A extends Dict<any>>(
   key: string,
   val: any
@@ -49,7 +52,10 @@ export const unset: typeof _unset = Fn.curry(
 
 declare function _eqProps<A extends Dict<any>>(
   k: string
-): (d0: A, d1: A) => boolean;
+): {
+  (d0: A, d1: A): boolean;
+  (d0: A): (d1: A) => boolean;
+};
 declare function _eqProps<A extends Dict<any>>(
   k: string,
   d0: A
@@ -128,7 +134,10 @@ export const isEmpty = <A extends Dict<any>>(a: A): boolean =>
 
 declare function _propEq<A extends Dict<any>>(
   k: string
-): (val: any, dict?: A) => boolean;
+): {
+  (val: any, dict: A): boolean;
+  (val: any): (dict: A) => boolean;
+};
 declare function _propEq<A extends Dict<any>>(
   k: string,
   val: any

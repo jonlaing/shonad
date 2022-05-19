@@ -1,6 +1,8 @@
 import * as Fn from "../base/Function";
 import * as Maybe from "./Maybe";
 import * as Util from "../base/Util";
+import * as Lg from "../base/Logic";
+import { S, T } from "ts-toolbelt";
 
 declare function _head<A>(as: A[]): Maybe.Maybe<A>;
 export const head: typeof _head = Maybe.listToMaybe;
@@ -115,7 +117,10 @@ export const splitAt: typeof _splitAt = Fn.curry(
   ]
 );
 
-declare function _adjust<A>(f: (a: A) => A): (i: number, xs: A[]) => A[];
+declare function _adjust<A>(f: (a: A) => A): {
+  (i: number, xs: A[]): A[];
+  (i: number): (xs: A[]) => A[];
+};
 declare function _adjust<A>(f: (a: A) => A, i: number): (xs: A[]) => A[];
 declare function _adjust<A>(f: (a: A) => A, i: number, xs: A[]): A[];
 
@@ -133,9 +138,10 @@ export const adjust: typeof _adjust = Fn.curry(
   }
 );
 
-declare function _adjustWhen<A>(
-  pred: Fn.Predicate<A>
-): (f: (a: A) => A, xs: A[]) => A[];
+declare function _adjustWhen<A>(pred: Fn.Predicate<A>): {
+  (f: (a: A) => A, xs: A[]): A[];
+  (f: (a: A) => A): (xs: A[]) => A[];
+};
 declare function _adjustWhen<A>(
   pred: Fn.Predicate<A>,
   f: (a: A) => A
@@ -154,7 +160,10 @@ export const adjustWhen: typeof _adjustWhen = Fn.curry(
   }
 );
 
-declare function _update<A>(x: A): (i: number, xs?: A[]) => A[];
+declare function _update<A>(x: A): {
+  (i: number, xs: A[]): A[];
+  (i: number): (xs: A[]) => A[];
+};
 declare function _update<A>(x: A, i: number): (xs: A[]) => A[];
 declare function _update<A>(x: A, i: number, xs: A[]): A[];
 
@@ -162,7 +171,10 @@ export const update: typeof _update = Fn.curry(
   <A>(x: A, i: number, xs: A[]): A[] => adjust(Fn.always(x), i, xs)
 );
 
-declare function _updateWhen<A>(pred: Fn.Predicate<A>): (x: A, xs?: A[]) => A[];
+declare function _updateWhen<A>(pred: Fn.Predicate<A>): {
+  (x: A, xs: A[]): A[];
+  (x: A): (xs: A[]) => A[];
+};
 declare function _updateWhen<A>(pred: Fn.Predicate<A>, x: A): (xs: A[]) => A[];
 declare function _updateWhen<A>(pred: Fn.Predicate<A>, x: A, xs: A[]): A[];
 
@@ -177,6 +189,11 @@ declare function _append<A>(x: A, xs: A[]): A[];
 export const append: typeof _append = Fn.curry(<A>(x: A, xs: A[]): A[] => [
   ...xs,
   x,
+]);
+
+export const prepend: typeof _append = Fn.curry(<A>(x: A, xs: A[]): A[] => [
+  x,
+  ...xs,
 ]);
 
 declare function _indexOf<A>(a: A): (xs: A[]) => Maybe.Maybe<number>;
@@ -201,3 +218,38 @@ export const drop: typeof _drop = Fn.curry(<A>(n: number, xs: A[]): A[] => {
   const [_, ...tl] = xs;
   return drop(n - 1, tl);
 });
+
+declare function _filter<T>(pred: Fn.Predicate<T>): (list: T[]) => T[];
+declare function _filter<T>(pred: Fn.Predicate<T>, list: T[]): T[];
+
+export const filter: typeof _filter = Fn.curry(
+  <T>(pred: Fn.Predicate<T>, list: T[]): T[] => list.filter(pred)
+);
+
+export const reject: typeof _filter = Fn.curry(
+  <T>(pred: Fn.Predicate<T>, list: T[]): T[] => list.filter(Lg.not(pred))
+);
+
+declare function _reduce<T, U = T[]>(
+  f: (acc: U, v: T) => U
+): {
+  (initial: U, list: T[]): U;
+  (initial: U): (list: T[]) => U;
+};
+declare function _reduce<T, U = T[]>(
+  f: (acc: U, v: T) => U,
+  initial: U
+): (list: T[]) => U;
+declare function _reduce<T, U = T[]>(
+  f: (acc: U, v: T) => U,
+  initial: U,
+  list: T[]
+): U;
+
+export const reduce: typeof _reduce = Fn.curry(
+  <T, U = T[]>(f: (acc: U, v: T) => U, initial: U, list: T[]): U =>
+    list.reduce(f, initial)
+);
+
+export const uniq = <A>(as: A[]): A[] =>
+  as.reduce((acc: A[], v: A) => (acc.includes(v) ? acc : [...acc, v]), []);

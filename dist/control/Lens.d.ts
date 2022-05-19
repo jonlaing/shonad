@@ -13,15 +13,24 @@ export declare const lens: <A, B>(getter: GetterFn<A, B>, setter: SetterFn<A, B>
 declare function _view<A, B>(lens: Lens<A, B>): (data: A) => B;
 declare function _view<A, B>(lens: Lens<A, B>, data: A): B;
 export declare const view: typeof _view;
-declare function _viewE<A, B>(lens: Lens<A, Maybe.Maybe<B>>): (error: string, data?: A) => Either.Either<string, B>;
+declare function _viewE<A, B>(lens: Lens<A, Maybe.Maybe<B>>): {
+    (error: string, data: A): Either.Either<string, B>;
+    (error: string): (data: A) => Either.Either<string, B>;
+};
 declare function _viewE<A, B>(lens: Lens<A, Maybe.Maybe<B>>, error: string): (data: A) => Either.Either<string, B>;
 declare function _viewE<A, B>(lens: Lens<A, Maybe.Maybe<B>>, error: string, data: A): Either.Either<string, B>;
 export declare const viewE: typeof _viewE;
-declare function _set<A, B>(lens: Lens<A, B>): (val: B, data: A) => A;
+declare function _set<A, B>(lens: Lens<A, B>): {
+    (val: B, data: A): A;
+    (val: B): (data: A) => A;
+};
 declare function _set<A, B>(lens: Lens<A, B>, val: B): (data: A) => A;
 declare function _set<A, B>(lens: Lens<A, B>, val: B, data: A): A;
 export declare const set: typeof _set;
-declare function _over<A, B>(lens: Lens<A, B>): (f: (b: B) => B, data: A) => A;
+declare function _over<A, B>(lens: Lens<A, B>): {
+    (f: (b: B) => B, data: A): A;
+    (f: (b: B) => B): (data: A) => A;
+};
 declare function _over<A, B>(lens: Lens<A, B>, f: (b: B) => B): (data: A) => A;
 declare function _over<A, B>(lens: Lens<A, B>, f: (b: B) => B, data: A): A;
 export declare const over: typeof _over;

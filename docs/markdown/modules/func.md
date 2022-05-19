@@ -56,7 +56,7 @@ a slog.
 
 #### Defined in
 
-[src/base/Function.ts:7](https://github.com/jonlaing/shonad/blob/473b1a9/src/base/Function.ts#L7)
+[src/base/Function.ts:7](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Function.ts#L7)
 
 ___
 
@@ -89,7 +89,7 @@ a slog
 
 #### Defined in
 
-[src/base/Function.ts:12](https://github.com/jonlaing/shonad/blob/473b1a9/src/base/Function.ts#L12)
+[src/base/Function.ts:12](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Function.ts#L12)
 
 ## Functions
 
@@ -138,7 +138,7 @@ const true_ = always(true)
 
 #### Defined in
 
-[src/base/Function.ts:197](https://github.com/jonlaing/shonad/blob/473b1a9/src/base/Function.ts#L197)
+[src/base/Function.ts:197](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Function.ts#L197)
 
 ___
 
@@ -177,7 +177,7 @@ A right-to-left composition of the supplied functions
 
 #### Defined in
 
-[src/base/Function.ts:86](https://github.com/jonlaing/shonad/blob/473b1a9/src/base/Function.ts#L86)
+[src/base/Function.ts:86](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Function.ts#L86)
 
 ___
 
@@ -223,7 +223,7 @@ right-to-left composition of supplied function
 
 #### Defined in
 
-[src/base/Function.ts:118](https://github.com/jonlaing/shonad/blob/473b1a9/src/base/Function.ts#L118)
+[src/base/Function.ts:118](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Function.ts#L118)
 
 ___
 
@@ -264,7 +264,7 @@ A curried function
 
 #### Defined in
 
-[src/base/Function.ts:66](https://github.com/jonlaing/shonad/blob/473b1a9/src/base/Function.ts#L66)
+[src/base/Function.ts:66](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Function.ts#L66)
 
 ___
 
@@ -307,7 +307,7 @@ A curried function
 
 #### Defined in
 
-[src/base/Function.ts:44](https://github.com/jonlaing/shonad/blob/473b1a9/src/base/Function.ts#L44)
+[src/base/Function.ts:44](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Function.ts#L44)
 
 ___
 
@@ -327,13 +327,13 @@ ___
 
 #### Defined in
 
-[src/base/Function.ts:202](https://github.com/jonlaing/shonad/blob/473b1a9/src/base/Function.ts#L202)
+[src/base/Function.ts:202](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Function.ts#L202)
 
 ___
 
 ### flip
 
-▸ **flip**<`P`, `G`, `R`\>(...`p`): `RequiredKeys`<`ObjectOf`<`G`\>\> extends `never` ? `R` : `Curry`<(...`p`: `G`) => `R`\>
+▸ **flip**<`F`, `A`, `B`\>(`f`): (`b`: `B`, `a`: `A`) => `Return`<`F`\>(`b`: `B`) => (`a`: `A`) => `Return`<`F`\>
 
 Flips the first two paramters of a function.
 
@@ -350,25 +350,151 @@ const greaterThan = flip(lessThan)
 
 | Name | Type |
 | :------ | :------ |
-| `P` | extends [f: Function<any, any\> \| x, b: any, a: any] |
-| `G` | extends readonly `any`[] = `GapsOf`<`P`, [f: Function<any, any\>, b: any, a: any]\> |
-| `R` | extends `unknown` = `any` |
+| `F` | extends `Function`<`any`, `any`\> |
+| `A` | extends `any` = `Parameters`<`F`\>[``0``] |
+| `B` | extends `any` = `Parameters`<`F`\>[``0``] |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `...p` | `P` \| [f: Function<any, any\> \| x, b: any, a: any] |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `f` | `F` | (a: A, b: B) => C |
 
 #### Returns
 
-`RequiredKeys`<`ObjectOf`<`G`\>\> extends `never` ? `R` : `Curry`<(...`p`: `G`) => `R`\>
+`fn`
+
+f(a, b)
+
+▸ (`b`, `a`): `Return`<`F`\>
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `b` | `B` |
+| `a` | `A` |
+
+##### Returns
+
+`Return`<`F`\>
+
+▸ (`b`): (`a`: `A`) => `Return`<`F`\>
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `b` | `B` |
+
+##### Returns
+
+`fn`
+
+▸ (`a`): `Return`<`F`\>
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `a` | `A` |
+
+##### Returns
+
+`Return`<`F`\>
+
+#### Defined in
+
+[src/base/Function.ts:246](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Function.ts#L246)
+
+▸ **flip**<`F`, `A`, `B`\>(`f`, `b`): (`a`: `Parameters`<`F`\>[``0``]) => `Function.Return`<`F`\>
+
+Flips the first two paramters of a function.
+
+**`remarks`** This is a curried function
+
+**`example`**
+
+```typescript
+const lessThan = (a: number, b: number) => a < b
+const greaterThan = flip(lessThan)
+```
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `F` | extends `Function`<`any`, `any`\> |
+| `A` | extends `any` = `Parameters`<`F`\>[``0``] |
+| `B` | extends `any` = `Parameters`<`F`\>[``0``] |
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `f` | `F` | (a: A, b: B) => C |
+| `b` | `Parameters`<`F`\>[``1``] | - |
+
+#### Returns
+
+`fn`
+
+f(a, b)
+
+▸ (`a`): `Function.Return`<`F`\>
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `a` | `Parameters`<`F`\>[``0``] |
+
+##### Returns
+
+`Function.Return`<`F`\>
+
+#### Defined in
+
+[src/base/Function.ts:246](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Function.ts#L246)
+
+▸ **flip**<`F`, `A`, `B`\>(`f`, `b`, `a`): `Function.Return`<`F`\>
+
+Flips the first two paramters of a function.
+
+**`remarks`** This is a curried function
+
+**`example`**
+
+```typescript
+const lessThan = (a: number, b: number) => a < b
+const greaterThan = flip(lessThan)
+```
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `F` | extends `Function`<`any`, `any`\> |
+| `A` | extends `any` = `Parameters`<`F`\>[``0``] |
+| `B` | extends `any` = `Parameters`<`F`\>[``0``] |
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `f` | `F` | (a: A, b: B) => C |
+| `b` | `B` | - |
+| `a` | `A` | - |
+
+#### Returns
+
+`Function.Return`<`F`\>
 
 f(a, b)
 
 #### Defined in
 
-[src/base/Function.ts:225](https://github.com/jonlaing/shonad/blob/473b1a9/src/base/Function.ts#L225)
+[src/base/Function.ts:246](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Function.ts#L246)
 
 ___
 
@@ -413,7 +539,7 @@ a => c
 
 #### Defined in
 
-[src/base/Function.ts:251](https://github.com/jonlaing/shonad/blob/473b1a9/src/base/Function.ts#L251)
+[src/base/Function.ts:277](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Function.ts#L277)
 
 ▸ **fmap**<`A`, `B`, `C`\>(`f`, `x`): [`Function`](func.md#function)<`A`, `C`\>
 
@@ -443,7 +569,7 @@ a => c
 
 #### Defined in
 
-[src/base/Function.ts:251](https://github.com/jonlaing/shonad/blob/473b1a9/src/base/Function.ts#L251)
+[src/base/Function.ts:277](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Function.ts#L277)
 
 ___
 
@@ -469,7 +595,7 @@ ___
 
 #### Defined in
 
-[src/base/Function.ts:206](https://github.com/jonlaing/shonad/blob/473b1a9/src/base/Function.ts#L206)
+[src/base/Function.ts:206](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Function.ts#L206)
 
 ___
 
@@ -508,7 +634,7 @@ A left-to-right composition of the supplied functions
 
 #### Defined in
 
-[src/base/Function.ts:180](https://github.com/jonlaing/shonad/blob/473b1a9/src/base/Function.ts#L180)
+[src/base/Function.ts:180](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Function.ts#L180)
 
 ___
 
@@ -554,7 +680,7 @@ left-to-right composition of supplied function
 
 #### Defined in
 
-[src/base/Function.ts:153](https://github.com/jonlaing/shonad/blob/473b1a9/src/base/Function.ts#L153)
+[src/base/Function.ts:153](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Function.ts#L153)
 
 ___
 
@@ -574,4 +700,4 @@ ___
 
 #### Defined in
 
-[src/base/Function.ts:204](https://github.com/jonlaing/shonad/blob/473b1a9/src/base/Function.ts#L204)
+[src/base/Function.ts:204](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Function.ts#L204)

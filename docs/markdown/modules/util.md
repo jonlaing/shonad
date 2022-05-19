@@ -46,7 +46,7 @@
 
 #### Defined in
 
-[src/base/Util.ts:9](https://github.com/jonlaing/shonad/blob/473b1a9/src/base/Util.ts#L9)
+[src/base/Util.ts:9](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Util.ts#L9)
 
 ▸ **eq**<`A`\>(`a`, `b`): `boolean`
 
@@ -69,13 +69,13 @@
 
 #### Defined in
 
-[src/base/Util.ts:9](https://github.com/jonlaing/shonad/blob/473b1a9/src/base/Util.ts#L9)
+[src/base/Util.ts:9](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Util.ts#L9)
 
 ___
 
 ### eqBy
 
-▸ **eqBy**<`A`\>(`f`): (`a`: `A`, `b`: `A`) => `boolean`
+▸ **eqBy**<`A`\>(`f`): (`a`: `A`, `b`: `A`) => `boolean`(`a`: `A`) => (`b`: `A`) => `boolean`
 
 #### Type parameters
 
@@ -106,9 +106,33 @@ ___
 
 `boolean`
 
+▸ (`a`): (`b`: `A`) => `boolean`
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `a` | `A` |
+
+##### Returns
+
+`fn`
+
+▸ (`b`): `boolean`
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `b` | `A` |
+
+##### Returns
+
+`boolean`
+
 #### Defined in
 
-[src/base/Util.ts:20](https://github.com/jonlaing/shonad/blob/473b1a9/src/base/Util.ts#L20)
+[src/base/Util.ts:21](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Util.ts#L21)
 
 ▸ **eqBy**<`A`\>(`f`, `a`): (`b`: `A`) => `boolean`
 
@@ -143,7 +167,7 @@ ___
 
 #### Defined in
 
-[src/base/Util.ts:20](https://github.com/jonlaing/shonad/blob/473b1a9/src/base/Util.ts#L20)
+[src/base/Util.ts:21](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Util.ts#L21)
 
 ▸ **eqBy**<`A`\>(`f`, `a`, `b`): `boolean`
 
@@ -167,7 +191,7 @@ ___
 
 #### Defined in
 
-[src/base/Util.ts:20](https://github.com/jonlaing/shonad/blob/473b1a9/src/base/Util.ts#L20)
+[src/base/Util.ts:21](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Util.ts#L21)
 
 ___
 
@@ -187,4 +211,4 @@ ___
 
 #### Defined in
 
-[src/base/Util.ts:4](https://github.com/jonlaing/shonad/blob/473b1a9/src/base/Util.ts#L4)
+[src/base/Util.ts:4](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Util.ts#L4)

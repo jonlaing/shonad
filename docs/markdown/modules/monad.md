@@ -8,6 +8,10 @@
 
 - [Monad](../classes/monad.Monad.md)
 
+### Interfaces
+
+- [IMonad](../interfaces/monad.IMonad.md)
+
 ### Type aliases
 
 - [DoFuncReturn](monad.md#dofuncreturn)
@@ -31,7 +35,7 @@
 
 #### Defined in
 
-[src/control/Monad.ts:66](https://github.com/jonlaing/shonad/blob/473b1a9/src/control/Monad.ts#L66)
+[src/control/Monad.ts:66](https://github.com/jonlaing/shonad/blob/b68ed04/src/control/Monad.ts#L66)
 
 ## Functions
 
@@ -92,7 +96,7 @@ _do(function* (_) {
 
 #### Defined in
 
-[src/control/Monad.ts:93](https://github.com/jonlaing/shonad/blob/473b1a9/src/control/Monad.ts#L93)
+[src/control/Monad.ts:99](https://github.com/jonlaing/shonad/blob/b68ed04/src/control/Monad.ts#L99)
 
 ___
 
@@ -129,4 +133,4 @@ Since all Monads are Functors and Applicatives, you should also use
 
 #### Defined in
 
-[src/control/Monad.ts:123](https://github.com/jonlaing/shonad/blob/473b1a9/src/control/Monad.ts#L123)
+[src/control/Monad.ts:129](https://github.com/jonlaing/shonad/blob/b68ed04/src/control/Monad.ts#L129)

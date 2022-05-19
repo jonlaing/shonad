@@ -50,7 +50,7 @@ import { bind } from "../data/Maybe";
  * @see Either
  *
  */
-export abstract class Monad<A> extends Applicative<A> {
+export abstract class Monad<A> extends Applicative<A> implements IMonad<A> {
   static bind = Fn.curry((x: Monad<any>, f: (a: any) => Monad<any>) =>
     x.bind(f)
   );
@@ -64,6 +64,12 @@ export abstract class Monad<A> extends Applicative<A> {
 const fixYield = <A>(val: any): A => val as unknown as A;
 
 export type DoFuncReturn<T> = Generator<T, any, T | undefined>;
+
+export interface IMonad<A> extends Applicative<A> {
+  fmap: (f: (a: A) => any) => IMonad<any>;
+  apply: (f: any) => IMonad<any>;
+  bind: (f: Fn.Function<any, IMonad<any>>) => IMonad<any>;
+}
 
 /**
  * Makes type spcefic `do` notation for a Monad.

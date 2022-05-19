@@ -4,14 +4,20 @@ export declare type Dict<A> = Record<string, A>;
 declare function _get<A extends Dict<any>>(key: string): (dict: A) => Maybe.Maybe<any>;
 declare function _get<A extends Dict<any>>(key: string, dict: A): Maybe.Maybe<any>;
 export declare const get: typeof _get;
-declare function _set<A extends Dict<any>>(key: string): (val: any, dict?: A) => A;
+declare function _set<A extends Dict<any>>(key: string): {
+    (val: any, dict: A): A;
+    (val: any): (dict: A) => A;
+};
 declare function _set<A extends Dict<any>>(key: string, val: any): (dict: A) => A;
 declare function _set<A extends Dict<any>>(key: string, val: any, dict: A): A;
 export declare const set: typeof _set;
 declare function _unset<A extends Dict<any>>(k: string): (dict: A) => Partial<A>;
 declare function _unset<A extends Dict<any>>(k: string, dict: A): Partial<A>;
 export declare const unset: typeof _unset;
-declare function _eqProps<A extends Dict<any>>(k: string): (d0: A, d1: A) => boolean;
+declare function _eqProps<A extends Dict<any>>(k: string): {
+    (d0: A, d1: A): boolean;
+    (d0: A): (d1: A) => boolean;
+};
 declare function _eqProps<A extends Dict<any>>(k: string, d0: A): (d1: A) => boolean;
 declare function _eqProps<A extends Dict<any>>(k: string, d0: A, d1: A): boolean;
 export declare const eqProps: typeof _eqProps;
@@ -28,7 +34,10 @@ declare function _has<A extends Dict<any>>(k: string): (d: A) => boolean;
 declare function _has<A extends Dict<any>>(k: string, d: A): boolean;
 export declare const has: typeof _has;
 export declare const isEmpty: <A extends Dict<any>>(a: A) => boolean;
-declare function _propEq<A extends Dict<any>>(k: string): (val: any, dict?: A) => boolean;
+declare function _propEq<A extends Dict<any>>(k: string): {
+    (val: any, dict: A): boolean;
+    (val: any): (dict: A) => boolean;
+};
 declare function _propEq<A extends Dict<any>>(k: string, val: any): (dict: A) => boolean;
 declare function _propEq<A extends Dict<any>>(k: string, val: any, dict: A): boolean;
 export declare const propEq: typeof _propEq;

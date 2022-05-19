@@ -29,7 +29,10 @@ export const view: typeof _view = Fn.curry(
 
 declare function _viewE<A, B>(
   lens: Lens<A, Maybe.Maybe<B>>
-): (error: string, data?: A) => Either.Either<string, B>;
+): {
+  (error: string, data: A): Either.Either<string, B>;
+  (error: string): (data: A) => Either.Either<string, B>;
+};
 declare function _viewE<A, B>(
   lens: Lens<A, Maybe.Maybe<B>>,
   error: string
@@ -48,7 +51,12 @@ export const viewE: typeof _viewE = Fn.curry(
   ): Either.Either<string, B> => Either.fromMaybe(error, view(lens, data))
 );
 
-declare function _set<A, B>(lens: Lens<A, B>): (val: B, data: A) => A;
+declare function _set<A, B>(
+  lens: Lens<A, B>
+): {
+  (val: B, data: A): A;
+  (val: B): (data: A) => A;
+};
 declare function _set<A, B>(lens: Lens<A, B>, val: B): (data: A) => A;
 declare function _set<A, B>(lens: Lens<A, B>, val: B, data: A): A;
 
@@ -56,7 +64,12 @@ export const set: typeof _set = Fn.curry(
   <A, B>(lens: Lens<A, B>, val: B, data: A): B => lens.set(val, data)
 );
 
-declare function _over<A, B>(lens: Lens<A, B>): (f: (b: B) => B, data: A) => A;
+declare function _over<A, B>(
+  lens: Lens<A, B>
+): {
+  (f: (b: B) => B, data: A): A;
+  (f: (b: B) => B): (data: A) => A;
+};
 declare function _over<A, B>(lens: Lens<A, B>, f: (b: B) => B): (data: A) => A;
 declare function _over<A, B>(lens: Lens<A, B>, f: (b: B) => B, data: A): A;
 

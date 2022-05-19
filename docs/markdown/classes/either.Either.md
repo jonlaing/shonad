@@ -67,91 +67,97 @@
 
 #### Defined in
 
-[src/base/Typeclass.ts:4](https://github.com/jonlaing/shonad/blob/473b1a9/src/base/Typeclass.ts#L4)
+[src/base/Typeclass.ts:4](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Typeclass.ts#L4)
 
 ## Properties
 
 ### apply
 
-• `Abstract` **apply**: (`f`: `any`) => [`Monad`](monad.Monad.md)<`any`\>
+• `Abstract` **apply**: (`ma`: [`Either`](either.Either.md)<`any`, `any`\>) => [`Either`](either.Either.md)<`any`, `any`\>
 
 #### Type declaration
 
-▸ (`f`): [`Monad`](monad.Monad.md)<`any`\>
+▸ (`ma`): [`Either`](either.Either.md)<`any`, `any`\>
 
 ##### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `f` | `any` |
+| `ma` | [`Either`](either.Either.md)<`any`, `any`\> |
 
 ##### Returns
 
-[`Monad`](monad.Monad.md)<`any`\>
+[`Either`](either.Either.md)<`any`, `any`\>
 
-#### Inherited from
+#### Overrides
 
 [Monad](monad.Monad.md).[apply](monad.Monad.md#apply)
 
 #### Defined in
 
-[src/control/Monad.ts:60](https://github.com/jonlaing/shonad/blob/473b1a9/src/control/Monad.ts#L60)
+[src/data/Either.ts:13](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/Either.ts#L13)
 
 ___
 
 ### bind
 
-• `Abstract` **bind**: (`f`: [`Function`](../modules/func.md#function)<`any`, [`Monad`](monad.Monad.md)<`any`\>\>) => [`Monad`](monad.Monad.md)<`any`\>
+• `Abstract` **bind**: (`f`: [`Function`](../modules/func.md#function)<`any`, [`Either`](either.Either.md)<`any`, `any`\>\>) => [`Either`](either.Either.md)<`any`, `any`\>
 
 #### Type declaration
 
-▸ (`f`): [`Monad`](monad.Monad.md)<`any`\>
+▸ (`f`): [`Either`](either.Either.md)<`any`, `any`\>
 
 ##### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `f` | [`Function`](../modules/func.md#function)<`any`, [`Monad`](monad.Monad.md)<`any`\>\> |
+| `f` | [`Function`](../modules/func.md#function)<`any`, [`Either`](either.Either.md)<`any`, `any`\>\> |
 
 ##### Returns
 
-[`Monad`](monad.Monad.md)<`any`\>
+[`Either`](either.Either.md)<`any`, `any`\>
 
-#### Inherited from
+#### Overrides
 
 [Monad](monad.Monad.md).[bind](monad.Monad.md#bind)
 
 #### Defined in
 
-[src/control/Monad.ts:61](https://github.com/jonlaing/shonad/blob/473b1a9/src/control/Monad.ts#L61)
+[src/data/Either.ts:14](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/Either.ts#L14)
 
 ___
 
 ### fmap
 
-• `Abstract` **fmap**: (`f`: (`a`: `A` \| `B`) => `any`) => [`Monad`](monad.Monad.md)<`any`\>
+• `Abstract` **fmap**: <C\>(`f`: (`b`: `any`) => `C`) => [`Either`](either.Either.md)<`A`, `C`\>
 
 #### Type declaration
 
-▸ (`f`): [`Monad`](monad.Monad.md)<`any`\>
+▸ <`C`\>(`f`): [`Either`](either.Either.md)<`A`, `C`\>
+
+##### Type parameters
+
+| Name |
+| :------ |
+| `C` |
 
 ##### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `f` | (`a`: `A` \| `B`) => `any` |
+| `f` | (`b`: `any`) => `C` |
 
 ##### Returns
 
-[`Monad`](monad.Monad.md)<`any`\>
+[`Either`](either.Either.md)<`A`, `C`\>
 
-#### Inherited from
+#### Overrides
 
 [Monad](monad.Monad.md).[fmap](monad.Monad.md#fmap)
 
 #### Defined in
 
-[src/control/Monad.ts:59](https://github.com/jonlaing/shonad/blob/473b1a9/src/control/Monad.ts#L59)
+[src/data/Either.ts:12](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/Either.ts#L12)
 
 ___
 
@@ -179,7 +185,7 @@ ___
 
 #### Defined in
 
-[src/base/Typeclass.ts:8](https://github.com/jonlaing/shonad/blob/473b1a9/src/base/Typeclass.ts#L8)
+[src/base/Typeclass.ts:8](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Typeclass.ts#L8)
 
 ___
 
@@ -193,7 +199,7 @@ ___
 
 #### Defined in
 
-[src/base/Typeclass.ts:2](https://github.com/jonlaing/shonad/blob/473b1a9/src/base/Typeclass.ts#L2)
+[src/base/Typeclass.ts:2](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Typeclass.ts#L2)
 
 ___
 
@@ -207,7 +213,7 @@ ___
 
 #### Defined in
 
-[src/control/Monad.ts:57](https://github.com/jonlaing/shonad/blob/473b1a9/src/control/Monad.ts#L57)
+[src/control/Monad.ts:57](https://github.com/jonlaing/shonad/blob/b68ed04/src/control/Monad.ts#L57)
 
 ___
 
@@ -221,7 +227,7 @@ ___
 
 #### Defined in
 
-[src/control/Monad.ts:54](https://github.com/jonlaing/shonad/blob/473b1a9/src/control/Monad.ts#L54)
+[src/control/Monad.ts:54](https://github.com/jonlaing/shonad/blob/b68ed04/src/control/Monad.ts#L54)
 
 ___
 
@@ -235,7 +241,7 @@ ___
 
 #### Defined in
 
-[src/control/Functor.ts:5](https://github.com/jonlaing/shonad/blob/473b1a9/src/control/Functor.ts#L5)
+[src/control/Functor.ts:5](https://github.com/jonlaing/shonad/blob/b68ed04/src/control/Functor.ts#L5)
 
 ## Methods
 
@@ -255,4 +261,4 @@ ___
 
 #### Defined in
 
-[src/data/Either.ts:8](https://github.com/jonlaing/shonad/blob/473b1a9/src/data/Either.ts#L8)
+[src/data/Either.ts:8](https://github.com/jonlaing/shonad/blob/b68ed04/src/data/Either.ts#L8)

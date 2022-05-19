@@ -48,7 +48,7 @@ import * as Fn from "../base/Function";
  * @see Either
  *
  */
-export declare abstract class Monad<A> extends Applicative<A> {
+export declare abstract class Monad<A> extends Applicative<A> implements IMonad<A> {
     static bind: Function.Curry<(x: Monad<any>, f: (a: any) => Monad<any>) => Monad<any>>;
     static apply: StaticApplyFn<Monad<Function.Function>, Monad<any>>;
     abstract fmap: (f: (a: A) => any) => Monad<any>;
@@ -57,6 +57,11 @@ export declare abstract class Monad<A> extends Applicative<A> {
 }
 declare const fixYield: <A>(val: any) => A;
 export declare type DoFuncReturn<T> = Generator<T, any, T | undefined>;
+export interface IMonad<A> extends Applicative<A> {
+    fmap: (f: (a: A) => any) => IMonad<any>;
+    apply: (f: any) => IMonad<any>;
+    bind: (f: Fn.Function<any, IMonad<any>>) => IMonad<any>;
+}
 /**
  * Makes type spcefic `do` notation for a Monad.
  *

@@ -4,6 +4,9 @@ import * as Fn from "../base/Function";
 import * as Maybe from "./Maybe";
 export declare abstract class Either<A, B> extends Monad<A | B> {
     static pure(a: any): Right<unknown>;
+    abstract fmap: <C>(f: (b: any) => C) => Either<A, C>;
+    abstract apply: (ma: Either<any, any>) => Either<any, any>;
+    abstract bind: (f: Fn.Function<any, Either<any, any>>) => Either<any, any>;
 }
 export declare class Left<A> extends Either<A, any> {
     isLeft: (a?: any) => boolean;
@@ -27,7 +30,10 @@ export declare const left: <A>(a: A) => Either<A, any>;
 export declare const right: <B>(b: B) => Either<any, B>;
 export declare const isLeft: (x: Either<any, any>) => boolean;
 export declare const isRight: (x: Either<any, any>) => boolean;
-declare function _either<A, B, C>(f0: (a: A) => C): (f1: (b: B) => C, x: Either<A, B>) => C;
+declare function _either<A, B, C>(f0: (a: A) => C): {
+    (f1: (b: B) => C, x: Either<A, B>): C;
+    (f1: (b: B) => C): (x: Either<A, B>) => C;
+};
 declare function _either<A, B, C>(f0: (a: A) => C, f1: (b: B) => C): (x: Either<A, B>) => C;
 declare function _either<A, B, C>(f0: (a: A) => C, f1: (b: B) => C, x: Either<A, B>): C;
 export declare const either: typeof _either;

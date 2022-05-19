@@ -5,8 +5,8 @@ import * as Util from "../base/Util";
 import { Dict } from "./Dict";
 
 export abstract class Maybe<A> extends Monad<A> {
-  static pure(a: any) {
-    return new Just(a);
+  static pure<T>(a: T) {
+    return new Just(a) as Maybe<T>;
   }
 
   abstract fmap: <B>(f: (a: A) => B) => Maybe<B>;
@@ -42,7 +42,7 @@ declare function _apply_<A, B>(
   f: Maybe<Function.Function<[A], B>>
 ): Maybe<B>;
 
-export const apply_: typeof _apply_ = Fn.flip(Maybe.apply);
+export const apply_: typeof _apply_ = Fn.flip<typeof _apply>(Maybe.apply);
 
 declare function _bind<A, B>(
   x: Maybe<A>
@@ -86,15 +86,18 @@ export class Nothing<A> extends Maybe<A> {
   equals = Fn.always(false);
 }
 
-export const just = <A>(x: A) => new Just<A>(x);
-export const nothing = <A>(x?: A) => new Nothing<A>(x as A);
+export const just = <A>(x: A) => new Just<A>(x) as Maybe<A>;
+export const nothing = <A>(x?: A) => new Nothing<A>(x as A) as Maybe<A>;
 
 export const isJust = (x: Maybe<any>) => (x as Just<any>).isJust();
 export const isNothing = (x: Maybe<any>) => (x as Nothing<any>).isNothing();
 
 declare function _maybe<A, B>(
   fallback: B
-): (f: Function.Function<[A], B>, x: Maybe<A>) => B;
+): {
+  (f: Function.Function<[A], B>, x: Maybe<A>): B;
+  (f: Function.Function<[A], B>): (x: Maybe<A>) => B;
+};
 declare function _maybe<A, B>(
   fallback: B,
   f: Function.Function<[A], B>

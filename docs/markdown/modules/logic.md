@@ -53,7 +53,7 @@
 
 #### Defined in
 
-[src/base/Logic.ts:12](https://github.com/jonlaing/shonad/blob/473b1a9/src/base/Logic.ts#L12)
+[src/base/Logic.ts:12](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Logic.ts#L12)
 
 ▸ **allPass**<`A`\>(`fs`, `x`): `boolean`
 
@@ -76,63 +76,117 @@
 
 #### Defined in
 
-[src/base/Logic.ts:12](https://github.com/jonlaing/shonad/blob/473b1a9/src/base/Logic.ts#L12)
+[src/base/Logic.ts:12](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Logic.ts#L12)
 
 ___
 
 ### and
 
-▸ **and**<`P`, `G`, `R`\>(...`p`): `RequiredKeys`<`ObjectOf`<`G`\>\> extends `never` ? `R` : `Curry`<(...`p`: `G`) => `R`\>
-
-#### Type parameters
-
-| Name | Type |
-| :------ | :------ |
-| `P` | extends [a: boolean \| x, b: boolean \| x] |
-| `G` | extends readonly `any`[] = `GapsOf`<`P`, [a: boolean, b: boolean]\> |
-| `R` | extends `unknown` = `boolean` |
+▸ **and**(`a`): (`b`: `boolean`) => `boolean`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `...p` | `P` \| [a: boolean \| x, b: boolean \| x] |
+| `a` | `boolean` |
 
 #### Returns
 
-`RequiredKeys`<`ObjectOf`<`G`\>\> extends `never` ? `R` : `Curry`<(...`p`: `G`) => `R`\>
+`fn`
+
+▸ (`b`): `boolean`
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `b` | `boolean` |
+
+##### Returns
+
+`boolean`
 
 #### Defined in
 
-[src/base/Logic.ts:17](https://github.com/jonlaing/shonad/blob/473b1a9/src/base/Logic.ts#L17)
+[src/base/Logic.ts:19](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Logic.ts#L19)
+
+▸ **and**(`a`, `b`): `boolean`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `a` | `boolean` |
+| `b` | `boolean` |
+
+#### Returns
+
+`boolean`
+
+#### Defined in
+
+[src/base/Logic.ts:19](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Logic.ts#L19)
 
 ___
 
 ### anyPass
 
-▸ **anyPass**<`P`, `G`, `R`\>(...`p`): `RequiredKeys`<`ObjectOf`<`G`\>\> extends `never` ? `R` : `Curry`<(...`p`: `G`) => `R`\>
+▸ **anyPass**<`A`\>(`fs`): (`x`: `A`) => `boolean`
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `P` | extends [fs: Function<any, any\>[] \| x, x: any] |
-| `G` | extends readonly `any`[] = `GapsOf`<`P`, [fs: Function<any, any\>[], x: any]\> |
-| `R` | extends `unknown` = `boolean` |
+| Name |
+| :------ |
+| `A` |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `...p` | `P` \| [fs: Function<any, any\>[] \| x, x: any] |
+| `fs` | `Function`<[`A`], `boolean`\>[] |
 
 #### Returns
 
-`RequiredKeys`<`ObjectOf`<`G`\>\> extends `never` ? `R` : `Curry`<(...`p`: `G`) => `R`\>
+`fn`
+
+▸ (`x`): `boolean`
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `x` | `A` |
+
+##### Returns
+
+`boolean`
 
 #### Defined in
 
-[src/base/Logic.ts:19](https://github.com/jonlaing/shonad/blob/473b1a9/src/base/Logic.ts#L19)
+[src/base/Logic.ts:23](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Logic.ts#L23)
+
+▸ **anyPass**<`A`\>(`fs`, `x`): `boolean`
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `A` |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `fs` | `Function`<[`A`], `boolean`\>[] |
+| `x` | `A` |
+
+#### Returns
+
+`boolean`
+
+#### Defined in
+
+[src/base/Logic.ts:23](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Logic.ts#L23)
 
 ___
 
@@ -160,7 +214,7 @@ ___
 
 #### Defined in
 
-[src/base/Logic.ts:23](https://github.com/jonlaing/shonad/blob/473b1a9/src/base/Logic.ts#L23)
+[src/base/Logic.ts:28](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Logic.ts#L28)
 
 ___
 
@@ -188,35 +242,56 @@ ___
 
 #### Defined in
 
-[src/base/Logic.ts:27](https://github.com/jonlaing/shonad/blob/473b1a9/src/base/Logic.ts#L27)
+[src/base/Logic.ts:32](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Logic.ts#L32)
 
 ___
 
 ### not
 
-▸ **not**<`P`, `G`, `R`\>(...`p`): `RequiredKeys`<`ObjectOf`<`G`\>\> extends `never` ? `R` : `Curry`<(...`p`: `G`) => `R`\>
-
-#### Type parameters
-
-| Name | Type |
-| :------ | :------ |
-| `P` | extends [f: Function<any, any\> \| x, x: any] |
-| `G` | extends readonly `any`[] = `GapsOf`<`P`, [f: Function<any, any\>, x: any]\> |
-| `R` | extends `unknown` = `boolean` |
+▸ **not**(`f`): (`x`: `NonNullable`<`any`\>) => `boolean`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `...p` | `P` \| [f: Function<any, any\> \| x, x: any] |
+| `f` | `Function`<`any`, `any`\> |
 
 #### Returns
 
-`RequiredKeys`<`ObjectOf`<`G`\>\> extends `never` ? `R` : `Curry`<(...`p`: `G`) => `R`\>
+`fn`
+
+▸ (`x`): `boolean`
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `x` | `NonNullable`<`any`\> |
+
+##### Returns
+
+`boolean`
 
 #### Defined in
 
-[src/base/Logic.ts:31](https://github.com/jonlaing/shonad/blob/473b1a9/src/base/Logic.ts#L31)
+[src/base/Logic.ts:39](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Logic.ts#L39)
+
+▸ **not**(`f`, `x`): `boolean`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `f` | `Function`<`any`, `any`\> |
+| `x` | `any` |
+
+#### Returns
+
+`boolean`
+
+#### Defined in
+
+[src/base/Logic.ts:39](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Logic.ts#L39)
 
 ___
 
@@ -244,7 +319,7 @@ ___
 
 #### Defined in
 
-[src/base/Logic.ts:35](https://github.com/jonlaing/shonad/blob/473b1a9/src/base/Logic.ts#L35)
+[src/base/Logic.ts:43](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Logic.ts#L43)
 
 ___
 
@@ -272,7 +347,7 @@ ___
 
 #### Defined in
 
-[src/base/Logic.ts:37](https://github.com/jonlaing/shonad/blob/473b1a9/src/base/Logic.ts#L37)
+[src/base/Logic.ts:45](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Logic.ts#L45)
 
 ___
 
@@ -300,7 +375,7 @@ ___
 
 #### Defined in
 
-[src/base/Logic.ts:47](https://github.com/jonlaing/shonad/blob/473b1a9/src/base/Logic.ts#L47)
+[src/base/Logic.ts:55](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Logic.ts#L55)
 
 ___
 
@@ -328,4 +403,4 @@ ___
 
 #### Defined in
 
-[src/base/Logic.ts:42](https://github.com/jonlaing/shonad/blob/473b1a9/src/base/Logic.ts#L42)
+[src/base/Logic.ts:50](https://github.com/jonlaing/shonad/blob/b68ed04/src/base/Logic.ts#L50)
