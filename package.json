@@ -16,9 +16,6 @@
   },
   "typesVersions": {
     "*": {
-      ".": [
-        "dist/index.d.ts"
-      ],
       "base": [
         "dist/base/index.d.ts"
       ],
