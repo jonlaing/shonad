@@ -41,10 +41,10 @@ type Draft<T> = T extends PrimitiveType
   ? WritableDraft<T>
   : T;
 
-export type CaseReducer<S = any, A extends PayloadAction = PayloadAction> = (
-  state: Draft<S>,
-  action: A
-) => S | void | Draft<S>;
+export type CaseReducer<
+  S = any,
+  A extends PayloadAction<any, any> = PayloadAction
+> = (state: Draft<S>, action: A) => S | void | Draft<S>;
 
 export const pipe =
   <S extends State, A extends PayloadAction<any>>(
