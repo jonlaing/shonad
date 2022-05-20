@@ -10,4 +10,5 @@ declare function _eqBy<A>(f: Function.Function<[A], any>): {
 declare function _eqBy<A>(f: Function.Function<[A], any>, a: A): (b: A) => boolean;
 declare function _eqBy<A>(f: Function.Function<[A], any>, a: A, b: A): boolean;
 export declare const eqBy: typeof _eqBy;
+export declare const isObject: (x: any) => boolean;
 export {};

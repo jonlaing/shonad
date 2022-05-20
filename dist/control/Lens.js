@@ -23,12 +23,13 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.nonEmptyDict = exports.nonEmptyList = exports.nonEmptyString = exports.when = exports.or = exports.prop = exports.index = exports.tail = exports.head = exports.optional = exports.compose = exports.pipe = exports.over = exports.set = exports.viewE = exports.view = exports.lens = void 0;
+exports.makeDictHelper = exports.nonEmptyDict = exports.nonEmptyList = exports.nonEmptyString = exports.when = exports.or = exports.prop = exports.index = exports.tail = exports.head = exports.optional = exports.compose = exports.pipe = exports.over = exports.set = exports.viewE = exports.view = exports.lens = void 0;
 const Fn = __importStar(require("../base/Function"));
 const Maybe = __importStar(require("../data/Maybe"));
 const List = __importStar(require("../data/List"));
 const Dict = __importStar(require("../data/Dict"));
 const Either = __importStar(require("../data/Either"));
+const Util = __importStar(require("../base/Util"));
 const lens = (getter, setter) => ({
     get: getter,
     set: setter,
@@ -105,4 +106,11 @@ exports.when = when;
 exports.nonEmptyString = (0, exports.lens)((a) => (a === "" ? Maybe.nothing() : Maybe.just(a)), (mv, a) => mv.unwrap(""));
 exports.nonEmptyList = (0, exports.lens)((a) => (List.isEmpty(a) ? Maybe.nothing() : Maybe.just(a)), (mv, a) => mv.unwrap([]));
 exports.nonEmptyDict = (0, exports.lens)((a) => (Dict.isEmpty(a) ? Maybe.nothing() : Maybe.just(a)), (mv, a) => mv.unwrap({}));
+const makeDictHelper = (map) => (obj) => Dict.mapi((v, k) => {
+    if (Util.isObject(v)) {
+        return () => (0, exports.makeDictHelper)(v)((0, exports.view)((0, exports.compose)((0, exports.optional)({}), (0, exports.prop)(k)), obj));
+    }
+    return () => (0, exports.view)((0, exports.compose)((0, exports.optional)({}), (0, exports.prop)(k), (0, exports.optional)(v)), obj);
+}, map);
+exports.makeDictHelper = makeDictHelper;
 //# sourceMappingURL=Lens.js.map

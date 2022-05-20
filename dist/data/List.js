@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.move = exports.insert = exports.uniq = exports.reduce = exports.reject = exports.filter = exports.drop = exports.lastIndexOf = exports.indexOf = exports.prepend = exports.append = exports.updateWhen = exports.update = exports.adjustWhen = exports.adjust = exports.splitAt = exports.nth = exports.findLastIndex = exports.findLast = exports.findIndex = exports.find = exports.isEmpty = exports.init = exports.tail = exports.last = exports.reverse = exports.head = void 0;
+exports.concat = exports.move = exports.insert = exports.uniq = exports.reduce = exports.reject = exports.filter = exports.drop = exports.lastIndexOf = exports.indexOf = exports.prepend = exports.append = exports.updateWhen = exports.update = exports.adjustWhen = exports.adjust = exports.splitAt = exports.nth = exports.findLastIndex = exports.findLast = exports.findIndex = exports.find = exports.isEmpty = exports.init = exports.tail = exports.last = exports.reverse = exports.head = void 0;
 const Fn = __importStar(require("../base/Function"));
 const Maybe = __importStar(require("./Maybe"));
 const Util = __importStar(require("../base/Util"));
@@ -134,4 +134,8 @@ exports.move = Fn.curry((from, to, list) => {
     const [hd, [item, ...tl]] = (0, exports.splitAt)(from, list);
     return (0, exports.insert)(to, item, [...hd, ...tl]);
 });
+exports.concat = Fn.curry((a, b) => [
+    ...a,
+    ...b,
+]);
 //# sourceMappingURL=List.js.map

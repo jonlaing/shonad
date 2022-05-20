@@ -21,3 +21,6 @@ declare function _eqBy<A>(f: Function.Function<[A], any>, a: A, b: A): boolean;
 export const eqBy: typeof _eqBy = Fn.curry(
   (f: (x: any) => any, a: any, b: any): any => eq(f(a), f(b))
 );
+
+export const isObject = (x: any) =>
+  Object.prototype.toString.call(x) === "[object Object]";

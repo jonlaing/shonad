@@ -87,4 +87,7 @@ declare function _move<A>(from: number): {
 declare function _move<A>(from: number, to: number): (list: A[]) => A[];
 declare function _move<A>(from: number, to: number, list: A[]): A[];
 export declare const move: typeof _move;
+declare function _concat<A>(a: A[]): (b: []) => A[];
+declare function _concat<A>(a: A[], b: []): A[];
+export declare const concat: typeof _concat;
 export {};

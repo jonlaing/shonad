@@ -281,3 +281,10 @@ export const move: typeof _move = Fn.curry(
     return insert(to, item, [...hd, ...tl]);
   }
 );
+
+declare function _concat<A>(a: A[]): (b: []) => A[];
+declare function _concat<A>(a: A[], b: []): A[];
+export const concat: typeof _concat = Fn.curry(<A>(a: A[], b: []): A[] => [
+  ...a,
+  ...b,
+]);

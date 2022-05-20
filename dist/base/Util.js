@@ -23,10 +23,12 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.eqBy = exports.eq = exports.isNil = void 0;
+exports.isObject = exports.eqBy = exports.eq = exports.isNil = void 0;
 const Fn = __importStar(require("./Function"));
 const isNil = (a) => a === undefined || a === null;
 exports.isNil = isNil;
 exports.eq = Fn.curry((a, b) => a === b);
 exports.eqBy = Fn.curry((f, a, b) => (0, exports.eq)(f(a), f(b)));
+const isObject = (x) => Object.prototype.toString.call(x) === "[object Object]";
+exports.isObject = isObject;
 //# sourceMappingURL=Util.js.map

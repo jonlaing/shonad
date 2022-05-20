@@ -59,4 +59,12 @@ export declare const when: <A>(pred: Fn.Predicate<A>) => Lens<A[], Maybe.Maybe<A
 export declare const nonEmptyString: Lens<string, Maybe.Maybe<string>>;
 export declare const nonEmptyList: Lens<any[], Maybe.Maybe<any[]>>;
 export declare const nonEmptyDict: Lens<Dict.Dict<any>, Maybe.Maybe<Dict.Dict<any>>>;
+declare type LeafsToFallback<T> = T extends string ? string : T extends boolean ? boolean : T extends number ? number : {
+    [P in keyof T]: T[P] extends (infer U)[] ? LeafsToFallback<U>[] : LeafsToFallback<T[P]>;
+};
+declare type LeafsToVals<T> = T extends string ? string : T extends boolean ? boolean : T extends number ? number : {
+    [P in keyof T]-?: T[P] extends (infer U)[] ? () => LeafsToVals<U>[] : () => LeafsToVals<Required<T[P]>>;
+};
+export declare type DictHelper<T> = LeafsToVals<Required<T>>;
+export declare const makeDictHelper: <T extends Dict.Dict<any>>(map: LeafsToFallback<T>) => (obj: Maybe.Maybe<T>) => LeafsToVals<Required<T>>;
 export {};

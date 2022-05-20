@@ -3,6 +3,7 @@ import * as Maybe from "../data/Maybe";
 import * as List from "../data/List";
 import * as Dict from "../data/Dict";
 import * as Either from "../data/Either";
+import * as Util from "../base/Util";
 import { Function } from "ts-toolbelt";
 
 export type GetterFn<A, B> = Function.Function<[A], B>;
@@ -179,3 +180,47 @@ export const nonEmptyDict = lens<Dict.Dict<any>, Maybe.Maybe<Dict.Dict<any>>>(
   (a) => (Dict.isEmpty(a) ? Maybe.nothing<Dict.Dict<any>>() : Maybe.just(a)),
   (mv: Maybe.Maybe<Dict.Dict<any>>, a) => mv.unwrap({})
 );
+
+type LeafsToFallback<T> = T extends string
+  ? string
+  : T extends boolean
+  ? boolean
+  : T extends number
+  ? number // If primitive transform to number
+  : {
+      [P in keyof T]: T[P] extends (infer U)[]
+        ? LeafsToFallback<U>[]
+        : LeafsToFallback<T[P]>;
+    }; // Otherwise recursively map, with a special case for arrays.
+
+type LeafsToVals<T> = T extends string
+  ? string
+  : T extends boolean
+  ? boolean
+  : T extends number
+  ? number // If primitive transform to number
+  : {
+      [P in keyof T]-?: T[P] extends (infer U)[]
+        ? () => LeafsToVals<U>[]
+        : () => LeafsToVals<Required<T[P]>>;
+    }; // Otherwise recursively map, with a special case for arrays.
+
+export type DictHelper<T> = LeafsToVals<Required<T>>;
+
+export const makeDictHelper =
+  <T extends Dict.Dict<any>>(map: LeafsToFallback<T>) =>
+  (obj: Maybe.Maybe<T>): DictHelper<T> =>
+    Dict.mapi((v, k) => {
+      if (Util.isObject(v)) {
+        return () =>
+          makeDictHelper(v)(
+            view<Maybe.Maybe<T>, any>(compose(optional({}), prop(k)), obj)
+          );
+      }
+
+      return () =>
+        view<Maybe.Maybe<T>, any>(
+          compose(optional({}), prop(k), optional(v)),
+          obj
+        );
+    }, map) as unknown as DictHelper<T>;
