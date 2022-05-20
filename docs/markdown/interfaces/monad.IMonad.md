@@ -59,7 +59,7 @@
 
 #### Defined in
 
-[src/base/Typeclass.ts:8](https://github.com/jonlaing/shonad/blob/5730a6e/src/base/Typeclass.ts#L8)
+[src/base/Typeclass.ts:8](https://github.com/jonlaing/shonad/blob/37e0549/src/base/Typeclass.ts#L8)
 
 ___
 
@@ -73,7 +73,7 @@ ___
 
 #### Defined in
 
-[src/base/Typeclass.ts:2](https://github.com/jonlaing/shonad/blob/5730a6e/src/base/Typeclass.ts#L2)
+[src/base/Typeclass.ts:2](https://github.com/jonlaing/shonad/blob/37e0549/src/base/Typeclass.ts#L2)
 
 ## Methods
 
@@ -97,7 +97,7 @@ Applicative.apply
 
 #### Defined in
 
-[src/control/Monad.ts:70](https://github.com/jonlaing/shonad/blob/5730a6e/src/control/Monad.ts#L70)
+[src/control/Monad.ts:70](https://github.com/jonlaing/shonad/blob/37e0549/src/control/Monad.ts#L70)
 
 ___
 
@@ -117,7 +117,7 @@ ___
 
 #### Defined in
 
-[src/control/Monad.ts:71](https://github.com/jonlaing/shonad/blob/5730a6e/src/control/Monad.ts#L71)
+[src/control/Monad.ts:71](https://github.com/jonlaing/shonad/blob/37e0549/src/control/Monad.ts#L71)
 
 ___
 
@@ -141,4 +141,4 @@ Applicative.fmap
 
 #### Defined in
 
-[src/control/Monad.ts:69](https://github.com/jonlaing/shonad/blob/5730a6e/src/control/Monad.ts#L69)
+[src/control/Monad.ts:69](https://github.com/jonlaing/shonad/blob/37e0549/src/control/Monad.ts#L69)

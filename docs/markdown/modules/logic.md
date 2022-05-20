@@ -53,7 +53,7 @@
 
 #### Defined in
 
-[src/base/Logic.ts:12](https://github.com/jonlaing/shonad/blob/5730a6e/src/base/Logic.ts#L12)
+[src/base/Logic.ts:12](https://github.com/jonlaing/shonad/blob/37e0549/src/base/Logic.ts#L12)
 
 ▸ **allPass**<`A`\>(`fs`, `x`): `boolean`
 
@@ -76,7 +76,7 @@
 
 #### Defined in
 
-[src/base/Logic.ts:12](https://github.com/jonlaing/shonad/blob/5730a6e/src/base/Logic.ts#L12)
+[src/base/Logic.ts:12](https://github.com/jonlaing/shonad/blob/37e0549/src/base/Logic.ts#L12)
 
 ___
 
@@ -108,7 +108,7 @@ ___
 
 #### Defined in
 
-[src/base/Logic.ts:19](https://github.com/jonlaing/shonad/blob/5730a6e/src/base/Logic.ts#L19)
+[src/base/Logic.ts:19](https://github.com/jonlaing/shonad/blob/37e0549/src/base/Logic.ts#L19)
 
 ▸ **and**(`a`, `b`): `boolean`
 
@@ -125,7 +125,7 @@ ___
 
 #### Defined in
 
-[src/base/Logic.ts:19](https://github.com/jonlaing/shonad/blob/5730a6e/src/base/Logic.ts#L19)
+[src/base/Logic.ts:19](https://github.com/jonlaing/shonad/blob/37e0549/src/base/Logic.ts#L19)
 
 ___
 
@@ -163,7 +163,7 @@ ___
 
 #### Defined in
 
-[src/base/Logic.ts:23](https://github.com/jonlaing/shonad/blob/5730a6e/src/base/Logic.ts#L23)
+[src/base/Logic.ts:23](https://github.com/jonlaing/shonad/blob/37e0549/src/base/Logic.ts#L23)
 
 ▸ **anyPass**<`A`\>(`fs`, `x`): `boolean`
 
@@ -186,7 +186,7 @@ ___
 
 #### Defined in
 
-[src/base/Logic.ts:23](https://github.com/jonlaing/shonad/blob/5730a6e/src/base/Logic.ts#L23)
+[src/base/Logic.ts:23](https://github.com/jonlaing/shonad/blob/37e0549/src/base/Logic.ts#L23)
 
 ___
 
@@ -214,7 +214,7 @@ ___
 
 #### Defined in
 
-[src/base/Logic.ts:28](https://github.com/jonlaing/shonad/blob/5730a6e/src/base/Logic.ts#L28)
+[src/base/Logic.ts:28](https://github.com/jonlaing/shonad/blob/37e0549/src/base/Logic.ts#L28)
 
 ___
 
@@ -242,7 +242,7 @@ ___
 
 #### Defined in
 
-[src/base/Logic.ts:32](https://github.com/jonlaing/shonad/blob/5730a6e/src/base/Logic.ts#L32)
+[src/base/Logic.ts:32](https://github.com/jonlaing/shonad/blob/37e0549/src/base/Logic.ts#L32)
 
 ___
 
@@ -274,7 +274,7 @@ ___
 
 #### Defined in
 
-[src/base/Logic.ts:39](https://github.com/jonlaing/shonad/blob/5730a6e/src/base/Logic.ts#L39)
+[src/base/Logic.ts:39](https://github.com/jonlaing/shonad/blob/37e0549/src/base/Logic.ts#L39)
 
 ▸ **not**(`f`, `x`): `boolean`
 
@@ -291,7 +291,7 @@ ___
 
 #### Defined in
 
-[src/base/Logic.ts:39](https://github.com/jonlaing/shonad/blob/5730a6e/src/base/Logic.ts#L39)
+[src/base/Logic.ts:39](https://github.com/jonlaing/shonad/blob/37e0549/src/base/Logic.ts#L39)
 
 ___
 
@@ -319,7 +319,7 @@ ___
 
 #### Defined in
 
-[src/base/Logic.ts:43](https://github.com/jonlaing/shonad/blob/5730a6e/src/base/Logic.ts#L43)
+[src/base/Logic.ts:43](https://github.com/jonlaing/shonad/blob/37e0549/src/base/Logic.ts#L43)
 
 ___
 
@@ -347,7 +347,7 @@ ___
 
 #### Defined in
 
-[src/base/Logic.ts:45](https://github.com/jonlaing/shonad/blob/5730a6e/src/base/Logic.ts#L45)
+[src/base/Logic.ts:45](https://github.com/jonlaing/shonad/blob/37e0549/src/base/Logic.ts#L45)
 
 ___
 
@@ -375,7 +375,7 @@ ___
 
 #### Defined in
 
-[src/base/Logic.ts:55](https://github.com/jonlaing/shonad/blob/5730a6e/src/base/Logic.ts#L55)
+[src/base/Logic.ts:55](https://github.com/jonlaing/shonad/blob/37e0549/src/base/Logic.ts#L55)
 
 ___
 
@@ -403,4 +403,4 @@ ___
 
 #### Defined in
 
-[src/base/Logic.ts:50](https://github.com/jonlaing/shonad/blob/5730a6e/src/base/Logic.ts#L50)
+[src/base/Logic.ts:50](https://github.com/jonlaing/shonad/blob/37e0549/src/base/Logic.ts#L50)

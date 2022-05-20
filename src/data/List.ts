@@ -220,6 +220,13 @@ export const drop: typeof _drop = Fn.curry(<A>(n: number, xs: A[]): A[] => {
   return drop(n - 1, tl);
 });
 
+declare function _map<T>(f: Fn.Function<T, T>): (list: T[]) => T[];
+declare function _map<T>(f: Fn.Function<T, T>, list: T[]): T[];
+
+export const map: typeof _map = Fn.curry(
+  <T>(f: Fn.Function<T, T>, list: T[]): T[] => list.map(f)
+);
+
 declare function _filter<T>(pred: Fn.Predicate<T>): (list: T[]) => T[];
 declare function _filter<T>(pred: Fn.Predicate<T>, list: T[]): T[];
 

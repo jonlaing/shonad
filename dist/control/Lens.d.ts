@@ -66,5 +66,43 @@ declare type LeafsToVals<T> = T extends string ? string : T extends boolean ? bo
     [P in keyof T]-?: T[P] extends (infer U)[] ? () => LeafsToVals<U>[] : () => LeafsToVals<Required<T[P]>>;
 };
 export declare type DictHelper<T> = LeafsToVals<Required<T>>;
+/**
+ * Transforms an arbitrary Dict into an object that will returns either
+ * the value in the Dict or the default value.
+ *
+ * @example
+ * ```typescript
+ * interface Thing {
+ *  a: number;
+ *  b?: number;
+ *  c?: {
+ *    d: number;
+ *    e?: number;
+ *  }
+ * }
+ *
+ * const map: Thing = {
+ *  a: 1,
+ *  b: 2,
+ *  c: {
+ *    d: 3,
+ *    e: 4,
+ *  }
+ * };
+ *
+ * const thing: Thing = {
+ *  a: 5,
+ * };
+ *
+ * const helper = makeDictHelper(map);
+ * const helped = helper(thing);
+ * helped.a()       // 5 <-- value in `thing`
+ * helped.b()       // 2 <-- value in `map`
+ * helped.c().d()   // 3
+ * helped.c().e()   // 4
+ * ```
+ * @param map A map of default values
+ * @returns A Dict Lens Helper
+ */
 export declare const makeDictHelper: <T extends Dict.Dict<any>>(map: LeafsToFallback<T>) => (obj: Maybe.Maybe<T>) => LeafsToVals<Required<T>>;
 export {};
