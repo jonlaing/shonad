@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.merge = exports.propEq = exports.isEmpty = exports.has = exports.evolve = exports.mapi = exports.map = exports.eqProps = exports.unset = exports.set = exports.getUnsafe = exports.get = void 0;
+exports.makeDictOptHelper = exports.makeDictHelper = exports.merge = exports.propEq = exports.isEmpty = exports.has = exports.evolve = exports.mapi = exports.map = exports.eqProps = exports.unset = exports.set = exports.getUnsafe = exports.get = void 0;
 const Maybe = __importStar(require("./Maybe"));
 const Fn = __importStar(require("../base/Function"));
 const Util = __importStar(require("../base/Util"));
@@ -40,4 +40,119 @@ const isEmpty = (a) => Object.keys(a).length === 0;
 exports.isEmpty = isEmpty;
 exports.propEq = Fn.curry((key, val, dict) => (0, exports.get)(key, dict).fmap(Util.eq(val)).unwrap(false));
 exports.merge = Fn.curry((a, dict) => (Object.assign(Object.assign({}, dict), a)));
+/**
+ * Transforms an arbitrary Dict into an object that will returns either
+ * the value in the Dict or the default value.
+ *
+ * @example
+ * ```typescript
+ * interface Thing {
+ *  a: number;
+ *  b?: number;
+ *  c?: {
+ *    d: number;
+ *    e?: number;
+ *  }
+ * }
+ *
+ * const map: Thing = {
+ *  a: 1,
+ *  b: 2,
+ *  c: {
+ *    d: 3,
+ *    e: 4,
+ *  }
+ * };
+ *
+ * const thing: Thing = {
+ *  a: 5,
+ * };
+ *
+ * const helper = makeDictHelper(map);
+ * const helped = helper(thing);
+ * helped.a()       // 5 <-- value in `thing`
+ * helped.b()       // 2 <-- value in `map`
+ * helped.c().d()   // 3
+ * helped.c().e()   // 4
+ *
+ * // careful, this doensn't work the way you might expect
+ * helped.c()       // { d: () => number, e: () => number }
+ * ```
+ *
+ * @see {@link makeDictOptHelper}
+ * @param map A map of default values
+ * @returns A Dict Helper
+ */
+const makeDictHelper = (map) => (obj) => (0, exports.mapi)((v, k) => {
+    if (Util.isObject(v)) {
+        return () => (0, exports.makeDictHelper)(v)((0, exports.get)(k, obj.unwrap({})));
+    }
+    return () => (0, exports.get)(k, obj.unwrap({})).unwrap(v);
+}, map);
+exports.makeDictHelper = makeDictHelper;
+const DictOptReservedWords = ["get", "opt"];
+/**
+ * Similar to {@link makeDictHelper}, except it allows you to access the Maybe
+ * type within. It also acts a little more predictably with nested
+ * objects than {@link makeDictHelper}.
+ *
+ * @remarks
+ * Since `get` and `opt` are part of the interface, you can't use either
+ * of those words as keys in your object. If you try it will throw an
+ * exception when making the helper.
+ *
+ * @example
+ * ```typescript
+ * interface Thing {
+ *  a: number;
+ *  b?: number;
+ *  c?: {
+ *    d: number;
+ *    e?: number;
+ *  }
+ * }
+ *
+ * const map: Thing = {
+ *  a: 1,
+ *  b: 2,
+ *  c: {
+ *    d: 3,
+ *    e: 4,
+ *  }
+ * };
+ *
+ * const thing: Thing = {
+ *  a: 5,
+ * };
+ *
+ * const helper = makeDictOptHelper(map);
+ * const helped = helper(thing);
+ * helped.a.get()       // 5 <-- value in `thing`
+ * helped.a.opt()       // Just(5)
+ * helped.b.get()       // 2 <-- value in `map`
+ * helped.b.opt()       // Nothing
+ * helped.c.get()       // { d: 3, e: 4 }
+ * helped.c.d.get()     // 3
+ * helped.c.e.get()     // 4
+ * ```
+ *
+ * @see {@link makeDictHelper}
+ * @param map A map of default values
+ * @returns A Dict Opt Helper
+ */
+const makeDictOptHelper = (map) => (obj) => (0, exports.mapi)((v, k) => {
+    if (DictOptReservedWords.includes(k)) {
+        throw `Key ${k} is reserved word for makeDictOptHelper. Consider using a different key name.`;
+    }
+    const val = (0, exports.get)(k, obj.unwrap({}));
+    if (Util.isObject(v)) {
+        const props = (0, exports.makeDictOptHelper)(v)(val);
+        return Object.assign(Object.assign({}, props), { get: () => val.unwrap(v), opt: () => val });
+    }
+    return {
+        get: () => val.unwrap(v),
+        opt: () => val,
+    };
+}, map);
+exports.makeDictOptHelper = makeDictOptHelper;
 //# sourceMappingURL=Dict.js.map

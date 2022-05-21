@@ -7,6 +7,8 @@
 ### Type aliases
 
 - [Dict](dict.md#dict)
+- [DictHelper](dict.md#dicthelper)
+- [DictOptHelper](dict.md#dictopthelper)
 
 ### Functions
 
@@ -16,6 +18,8 @@
 - [getUnsafe](dict.md#getunsafe)
 - [has](dict.md#has)
 - [isEmpty](dict.md#isempty)
+- [makeDictHelper](dict.md#makedicthelper)
+- [makeDictOptHelper](dict.md#makedictopthelper)
 - [map](dict.md#map)
 - [mapi](dict.md#mapi)
 - [merge](dict.md#merge)
@@ -37,7 +41,39 @@
 
 #### Defined in
 
-[src/data/Dict.ts:6](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L6)
+[src/data/Dict.ts:6](https://github.com/jonlaing/shonad/blob/d73c49f/src/data/Dict.ts#L6)
+
+___
+
+### DictHelper
+
+Ƭ **DictHelper**<`T`\>: `LeafsToVals`<`Required`<`T`\>\>
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `T` |
+
+#### Defined in
+
+[src/data/Dict.ts:200](https://github.com/jonlaing/shonad/blob/d73c49f/src/data/Dict.ts#L200)
+
+___
+
+### DictOptHelper
+
+Ƭ **DictOptHelper**<`T`\>: `LeafsToOptVals`<`Required`<`T`\>\>
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `T` |
+
+#### Defined in
+
+[src/data/Dict.ts:273](https://github.com/jonlaing/shonad/blob/d73c49f/src/data/Dict.ts#L273)
 
 ## Functions
 
@@ -100,7 +136,7 @@
 
 #### Defined in
 
-[src/data/Dict.ts:75](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L75)
+[src/data/Dict.ts:75](https://github.com/jonlaing/shonad/blob/d73c49f/src/data/Dict.ts#L75)
 
 ▸ **eqProps**<`A`\>(`k`, `d0`): (`d1`: `A`) => `boolean`
 
@@ -135,7 +171,7 @@
 
 #### Defined in
 
-[src/data/Dict.ts:75](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L75)
+[src/data/Dict.ts:75](https://github.com/jonlaing/shonad/blob/d73c49f/src/data/Dict.ts#L75)
 
 ▸ **eqProps**<`A`\>(`k`, `d0`, `d1`): `boolean`
 
@@ -159,7 +195,7 @@
 
 #### Defined in
 
-[src/data/Dict.ts:75](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L75)
+[src/data/Dict.ts:75](https://github.com/jonlaing/shonad/blob/d73c49f/src/data/Dict.ts#L75)
 
 ___
 
@@ -197,7 +233,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:121](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L121)
+[src/data/Dict.ts:121](https://github.com/jonlaing/shonad/blob/d73c49f/src/data/Dict.ts#L121)
 
 ▸ **evolve**<`A`\>(`e`, `d`): `A`
 
@@ -220,7 +256,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:121](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L121)
+[src/data/Dict.ts:121](https://github.com/jonlaing/shonad/blob/d73c49f/src/data/Dict.ts#L121)
 
 ___
 
@@ -258,7 +294,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:16](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L16)
+[src/data/Dict.ts:16](https://github.com/jonlaing/shonad/blob/d73c49f/src/data/Dict.ts#L16)
 
 ▸ **get**<`A`\>(`key`, `dict`): [`Maybe`](../classes/maybe.Maybe.md)<`any`\>
 
@@ -281,7 +317,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:16](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L16)
+[src/data/Dict.ts:16](https://github.com/jonlaing/shonad/blob/d73c49f/src/data/Dict.ts#L16)
 
 ___
 
@@ -319,7 +355,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:23](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L23)
+[src/data/Dict.ts:23](https://github.com/jonlaing/shonad/blob/d73c49f/src/data/Dict.ts#L23)
 
 ▸ **getUnsafe**<`A`\>(`key`, `dict`): `any`
 
@@ -342,7 +378,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:23](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L23)
+[src/data/Dict.ts:23](https://github.com/jonlaing/shonad/blob/d73c49f/src/data/Dict.ts#L23)
 
 ___
 
@@ -380,7 +416,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:133](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L133)
+[src/data/Dict.ts:133](https://github.com/jonlaing/shonad/blob/d73c49f/src/data/Dict.ts#L133)
 
 ▸ **has**<`A`\>(`k`, `d`): `boolean`
 
@@ -403,7 +439,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:133](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L133)
+[src/data/Dict.ts:133](https://github.com/jonlaing/shonad/blob/d73c49f/src/data/Dict.ts#L133)
 
 ___
 
@@ -429,7 +465,173 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:138](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L138)
+[src/data/Dict.ts:138](https://github.com/jonlaing/shonad/blob/d73c49f/src/data/Dict.ts#L138)
+
+___
+
+### makeDictHelper
+
+▸ **makeDictHelper**<`T`\>(`map`): (`obj`: [`Maybe`](../classes/maybe.Maybe.md)<`T`\>) => `LeafsToVals`<`Required`<`T`\>\>
+
+Transforms an arbitrary Dict into an object that will returns either
+the value in the Dict or the default value.
+
+**`example`**
+```typescript
+interface Thing {
+ a: number;
+ b?: number;
+ c?: {
+   d: number;
+   e?: number;
+ }
+}
+
+const map: Thing = {
+ a: 1,
+ b: 2,
+ c: {
+   d: 3,
+   e: 4,
+ }
+};
+
+const thing: Thing = {
+ a: 5,
+};
+
+const helper = makeDictHelper(map);
+const helped = helper(thing);
+helped.a()       // 5 <-- value in `thing`
+helped.b()       // 2 <-- value in `map`
+helped.c().d()   // 3
+helped.c().e()   // 4
+
+// careful, this doensn't work the way you might expect
+helped.c()       // { d: () => number, e: () => number }
+```
+
+**`see`** [makeDictOptHelper](dict.md#makedictopthelper)
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends [`Dict`](dict.md#dict)<`any`\> |
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `map` | `LeafsToFallback`<`T`\> | A map of default values |
+
+#### Returns
+
+`fn`
+
+A Dict Helper
+
+▸ (`obj`): `LeafsToVals`<`Required`<`T`\>\>
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `obj` | [`Maybe`](../classes/maybe.Maybe.md)<`T`\> |
+
+##### Returns
+
+`LeafsToVals`<`Required`<`T`\>\>
+
+#### Defined in
+
+[src/data/Dict.ts:245](https://github.com/jonlaing/shonad/blob/d73c49f/src/data/Dict.ts#L245)
+
+___
+
+### makeDictOptHelper
+
+▸ **makeDictOptHelper**<`T`\>(`map`): (`obj`: [`Maybe`](../classes/maybe.Maybe.md)<`T`\>) => `LeafsToOptVals`<`Required`<`T`\>\>
+
+Similar to [makeDictHelper](dict.md#makedicthelper), except it allows you to access the Maybe
+type within. It also acts a little more predictably with nested
+objects than [makeDictHelper](dict.md#makedicthelper).
+
+**`remarks`**
+Since `get` and `opt` are part of the interface, you can't use either
+of those words as keys in your object. If you try it will throw an
+exception when making the helper.
+
+**`example`**
+```typescript
+interface Thing {
+ a: number;
+ b?: number;
+ c?: {
+   d: number;
+   e?: number;
+ }
+}
+
+const map: Thing = {
+ a: 1,
+ b: 2,
+ c: {
+   d: 3,
+   e: 4,
+ }
+};
+
+const thing: Thing = {
+ a: 5,
+};
+
+const helper = makeDictOptHelper(map);
+const helped = helper(thing);
+helped.a.get()       // 5 <-- value in `thing`
+helped.a.opt()       // Just(5)
+helped.b.get()       // 2 <-- value in `map`
+helped.b.opt()       // Nothing
+helped.c.get()       // { d: 3, e: 4 }
+helped.c.d.get()     // 3
+helped.c.e.get()     // 4
+```
+
+**`see`** [makeDictHelper](dict.md#makedicthelper)
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends [`Dict`](dict.md#dict)<`any`\> |
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `map` | `LeafsToFallback`<`T`\> | A map of default values |
+
+#### Returns
+
+`fn`
+
+A Dict Opt Helper
+
+▸ (`obj`): `LeafsToOptVals`<`Required`<`T`\>\>
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `obj` | [`Maybe`](../classes/maybe.Maybe.md)<`T`\> |
+
+##### Returns
+
+`LeafsToOptVals`<`Required`<`T`\>\>
+
+#### Defined in
+
+[src/data/Dict.ts:326](https://github.com/jonlaing/shonad/blob/d73c49f/src/data/Dict.ts#L326)
 
 ___
 
@@ -467,7 +669,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:89](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L89)
+[src/data/Dict.ts:89](https://github.com/jonlaing/shonad/blob/d73c49f/src/data/Dict.ts#L89)
 
 ▸ **map**<`A`\>(`f`, `dict`): `A`
 
@@ -490,7 +692,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:89](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L89)
+[src/data/Dict.ts:89](https://github.com/jonlaing/shonad/blob/d73c49f/src/data/Dict.ts#L89)
 
 ___
 
@@ -528,7 +730,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:105](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L105)
+[src/data/Dict.ts:105](https://github.com/jonlaing/shonad/blob/d73c49f/src/data/Dict.ts#L105)
 
 ▸ **mapi**<`A`\>(`f`, `dict`): `A`
 
@@ -551,7 +753,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:105](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L105)
+[src/data/Dict.ts:105](https://github.com/jonlaing/shonad/blob/d73c49f/src/data/Dict.ts#L105)
 
 ___
 
@@ -590,7 +792,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:169](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L169)
+[src/data/Dict.ts:169](https://github.com/jonlaing/shonad/blob/d73c49f/src/data/Dict.ts#L169)
 
 ▸ **merge**<`T`, `A`\>(`a`, `dict`): `T`
 
@@ -614,7 +816,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:169](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L169)
+[src/data/Dict.ts:169](https://github.com/jonlaing/shonad/blob/d73c49f/src/data/Dict.ts#L169)
 
 ___
 
@@ -677,7 +879,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:156](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L156)
+[src/data/Dict.ts:156](https://github.com/jonlaing/shonad/blob/d73c49f/src/data/Dict.ts#L156)
 
 ▸ **propEq**<`A`\>(`k`, `val`): (`dict`: `A`) => `boolean`
 
@@ -712,7 +914,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:156](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L156)
+[src/data/Dict.ts:156](https://github.com/jonlaing/shonad/blob/d73c49f/src/data/Dict.ts#L156)
 
 ▸ **propEq**<`A`\>(`k`, `val`, `dict`): `boolean`
 
@@ -736,7 +938,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:156](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L156)
+[src/data/Dict.ts:156](https://github.com/jonlaing/shonad/blob/d73c49f/src/data/Dict.ts#L156)
 
 ___
 
@@ -799,7 +1001,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:39](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L39)
+[src/data/Dict.ts:39](https://github.com/jonlaing/shonad/blob/d73c49f/src/data/Dict.ts#L39)
 
 ▸ **set**<`A`\>(`key`, `val`): (`dict`: `A`) => `A`
 
@@ -834,7 +1036,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:39](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L39)
+[src/data/Dict.ts:39](https://github.com/jonlaing/shonad/blob/d73c49f/src/data/Dict.ts#L39)
 
 ▸ **set**<`A`\>(`key`, `val`, `dict`): `A`
 
@@ -858,7 +1060,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:39](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L39)
+[src/data/Dict.ts:39](https://github.com/jonlaing/shonad/blob/d73c49f/src/data/Dict.ts#L39)
 
 ___
 
@@ -896,7 +1098,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:51](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L51)
+[src/data/Dict.ts:51](https://github.com/jonlaing/shonad/blob/d73c49f/src/data/Dict.ts#L51)
 
 ▸ **unset**<`A`\>(`k`, `dict`): `Partial`<`A`\>
 
@@ -919,4 +1121,4 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:51](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L51)
+[src/data/Dict.ts:51](https://github.com/jonlaing/shonad/blob/d73c49f/src/data/Dict.ts#L51)

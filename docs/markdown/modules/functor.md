@@ -42,4 +42,4 @@ Utility function meant to be used in tests to ensure your Functor obeys the func
 
 #### Defined in
 
-[src/control/Functor.ts:18](https://github.com/jonlaing/shonad/blob/eb3a480/src/control/Functor.ts#L18)
+[src/control/Functor.ts:18](https://github.com/jonlaing/shonad/blob/d73c49f/src/control/Functor.ts#L18)

@@ -49,7 +49,7 @@ exported to assist with typing.
 
 #### Defined in
 
-[src/base/Function.ts:290](https://github.com/jonlaing/shonad/blob/eb3a480/src/base/Function.ts#L290)
+[src/base/Function.ts:290](https://github.com/jonlaing/shonad/blob/d73c49f/src/base/Function.ts#L290)
 
 ## Properties
 
@@ -67,7 +67,7 @@ exported to assist with typing.
 
 #### Defined in
 
-[src/base/Function.ts:289](https://github.com/jonlaing/shonad/blob/eb3a480/src/base/Function.ts#L289)
+[src/base/Function.ts:289](https://github.com/jonlaing/shonad/blob/d73c49f/src/base/Function.ts#L289)
 
 ## Methods
 
@@ -81,4 +81,4 @@ exported to assist with typing.
 
 #### Defined in
 
-[src/base/Function.ts:294](https://github.com/jonlaing/shonad/blob/eb3a480/src/base/Function.ts#L294)
+[src/base/Function.ts:294](https://github.com/jonlaing/shonad/blob/d73c49f/src/base/Function.ts#L294)

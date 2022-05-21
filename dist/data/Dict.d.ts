@@ -47,4 +47,113 @@ export declare const propEq: typeof _propEq;
 declare function _merge<T extends Dict<any>, A extends Dict<any> = any>(a: A): (dict: T) => T;
 declare function _merge<T extends Dict<any>, A extends Dict<any> = any>(a: A, dict: T): T;
 export declare const merge: typeof _merge;
+declare type LeafsToFallback<T> = T extends string ? string : T extends boolean ? boolean : T extends number ? number : {
+    [P in keyof T]: T[P] extends (infer U)[] ? LeafsToFallback<U>[] : LeafsToFallback<T[P]>;
+};
+declare type LeafsToVals<T> = T extends string ? string : T extends boolean ? boolean : T extends number ? number : {
+    [P in keyof T]-?: T[P] extends (infer U)[] ? () => LeafsToVals<U>[] : () => LeafsToVals<Required<T[P]>>;
+};
+export declare type DictHelper<T> = LeafsToVals<Required<T>>;
+/**
+ * Transforms an arbitrary Dict into an object that will returns either
+ * the value in the Dict or the default value.
+ *
+ * @example
+ * ```typescript
+ * interface Thing {
+ *  a: number;
+ *  b?: number;
+ *  c?: {
+ *    d: number;
+ *    e?: number;
+ *  }
+ * }
+ *
+ * const map: Thing = {
+ *  a: 1,
+ *  b: 2,
+ *  c: {
+ *    d: 3,
+ *    e: 4,
+ *  }
+ * };
+ *
+ * const thing: Thing = {
+ *  a: 5,
+ * };
+ *
+ * const helper = makeDictHelper(map);
+ * const helped = helper(thing);
+ * helped.a()       // 5 <-- value in `thing`
+ * helped.b()       // 2 <-- value in `map`
+ * helped.c().d()   // 3
+ * helped.c().e()   // 4
+ *
+ * // careful, this doensn't work the way you might expect
+ * helped.c()       // { d: () => number, e: () => number }
+ * ```
+ *
+ * @see {@link makeDictOptHelper}
+ * @param map A map of default values
+ * @returns A Dict Helper
+ */
+export declare const makeDictHelper: <T extends Dict<any>>(map: LeafsToFallback<T>) => (obj: Maybe.Maybe<T>) => LeafsToVals<Required<T>>;
+declare type OptVal<T> = {
+    get: () => T;
+    opt: () => Maybe.Maybe<T>;
+};
+declare type LeafsToOptVals<T> = T extends string ? OptVal<string> : T extends boolean ? OptVal<boolean> : T extends number ? OptVal<number> : {
+    [P in keyof T]-?: T[P] extends (infer U)[] ? OptVal<LeafsToVals<U>[]> : LeafsToOptVals<Required<T[P]>> & OptVal<T[P]>;
+};
+export declare type DictOptHelper<T> = LeafsToOptVals<Required<T>>;
+/**
+ * Similar to {@link makeDictHelper}, except it allows you to access the Maybe
+ * type within. It also acts a little more predictably with nested
+ * objects than {@link makeDictHelper}.
+ *
+ * @remarks
+ * Since `get` and `opt` are part of the interface, you can't use either
+ * of those words as keys in your object. If you try it will throw an
+ * exception when making the helper.
+ *
+ * @example
+ * ```typescript
+ * interface Thing {
+ *  a: number;
+ *  b?: number;
+ *  c?: {
+ *    d: number;
+ *    e?: number;
+ *  }
+ * }
+ *
+ * const map: Thing = {
+ *  a: 1,
+ *  b: 2,
+ *  c: {
+ *    d: 3,
+ *    e: 4,
+ *  }
+ * };
+ *
+ * const thing: Thing = {
+ *  a: 5,
+ * };
+ *
+ * const helper = makeDictOptHelper(map);
+ * const helped = helper(thing);
+ * helped.a.get()       // 5 <-- value in `thing`
+ * helped.a.opt()       // Just(5)
+ * helped.b.get()       // 2 <-- value in `map`
+ * helped.b.opt()       // Nothing
+ * helped.c.get()       // { d: 3, e: 4 }
+ * helped.c.d.get()     // 3
+ * helped.c.e.get()     // 4
+ * ```
+ *
+ * @see {@link makeDictHelper}
+ * @param map A map of default values
+ * @returns A Dict Opt Helper
+ */
+export declare const makeDictOptHelper: <T extends Dict<any>>(map: LeafsToFallback<T>) => (obj: Maybe.Maybe<T>) => LeafsToOptVals<Required<T>>;
 export {};

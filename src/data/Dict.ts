@@ -172,3 +172,178 @@ export const merge: typeof _merge = Fn.curry(
     ...a,
   })
 );
+
+type LeafsToFallback<T> = T extends string
+  ? string
+  : T extends boolean
+  ? boolean
+  : T extends number
+  ? number // If primitive transform to number
+  : {
+      [P in keyof T]: T[P] extends (infer U)[]
+        ? LeafsToFallback<U>[]
+        : LeafsToFallback<T[P]>;
+    }; // Otherwise recursively map, with a special case for arrays.
+
+type LeafsToVals<T> = T extends string
+  ? string
+  : T extends boolean
+  ? boolean
+  : T extends number
+  ? number // If primitive transform to number
+  : {
+      [P in keyof T]-?: T[P] extends (infer U)[]
+        ? () => LeafsToVals<U>[]
+        : () => LeafsToVals<Required<T[P]>>;
+    }; // Otherwise recursively map, with a special case for arrays.
+
+export type DictHelper<T> = LeafsToVals<Required<T>>;
+
+/**
+ * Transforms an arbitrary Dict into an object that will returns either
+ * the value in the Dict or the default value.
+ *
+ * @example
+ * ```typescript
+ * interface Thing {
+ *  a: number;
+ *  b?: number;
+ *  c?: {
+ *    d: number;
+ *    e?: number;
+ *  }
+ * }
+ *
+ * const map: Thing = {
+ *  a: 1,
+ *  b: 2,
+ *  c: {
+ *    d: 3,
+ *    e: 4,
+ *  }
+ * };
+ *
+ * const thing: Thing = {
+ *  a: 5,
+ * };
+ *
+ * const helper = makeDictHelper(map);
+ * const helped = helper(thing);
+ * helped.a()       // 5 <-- value in `thing`
+ * helped.b()       // 2 <-- value in `map`
+ * helped.c().d()   // 3
+ * helped.c().e()   // 4
+ *
+ * // careful, this doensn't work the way you might expect
+ * helped.c()       // { d: () => number, e: () => number }
+ * ```
+ *
+ * @see {@link makeDictOptHelper}
+ * @param map A map of default values
+ * @returns A Dict Helper
+ */
+export const makeDictHelper =
+  <T extends Dict<any>>(map: LeafsToFallback<T>) =>
+  (obj: Maybe.Maybe<T>): DictHelper<T> =>
+    mapi((v, k) => {
+      if (Util.isObject(v)) {
+        return () => makeDictHelper(v)(get(k, obj.unwrap({} as T)));
+      }
+
+      return () => get(k, obj.unwrap({} as T)).unwrap(v);
+    }, map) as unknown as DictHelper<T>;
+
+type OptVal<T> = {
+  get: () => T;
+  opt: () => Maybe.Maybe<T>;
+};
+
+type LeafsToOptVals<T> = T extends string
+  ? OptVal<string>
+  : T extends boolean
+  ? OptVal<boolean>
+  : T extends number
+  ? OptVal<number> // If primitive transform to number
+  : {
+      [P in keyof T]-?: T[P] extends (infer U)[]
+        ? OptVal<LeafsToVals<U>[]> // not screwing with optional arrays
+        : LeafsToOptVals<Required<T[P]>> & OptVal<T[P]>;
+    }; // Otherwise recursively map, with a special case for arrays.
+
+export type DictOptHelper<T> = LeafsToOptVals<Required<T>>;
+
+const DictOptReservedWords = ["get", "opt"];
+
+/**
+ * Similar to {@link makeDictHelper}, except it allows you to access the Maybe
+ * type within. It also acts a little more predictably with nested
+ * objects than {@link makeDictHelper}.
+ *
+ * @remarks
+ * Since `get` and `opt` are part of the interface, you can't use either
+ * of those words as keys in your object. If you try it will throw an
+ * exception when making the helper.
+ *
+ * @example
+ * ```typescript
+ * interface Thing {
+ *  a: number;
+ *  b?: number;
+ *  c?: {
+ *    d: number;
+ *    e?: number;
+ *  }
+ * }
+ *
+ * const map: Thing = {
+ *  a: 1,
+ *  b: 2,
+ *  c: {
+ *    d: 3,
+ *    e: 4,
+ *  }
+ * };
+ *
+ * const thing: Thing = {
+ *  a: 5,
+ * };
+ *
+ * const helper = makeDictOptHelper(map);
+ * const helped = helper(thing);
+ * helped.a.get()       // 5 <-- value in `thing`
+ * helped.a.opt()       // Just(5)
+ * helped.b.get()       // 2 <-- value in `map`
+ * helped.b.opt()       // Nothing
+ * helped.c.get()       // { d: 3, e: 4 }
+ * helped.c.d.get()     // 3
+ * helped.c.e.get()     // 4
+ * ```
+ *
+ * @see {@link makeDictHelper}
+ * @param map A map of default values
+ * @returns A Dict Opt Helper
+ */
+export const makeDictOptHelper =
+  <T extends Dict<any>>(map: LeafsToFallback<T>) =>
+  (obj: Maybe.Maybe<T>): DictOptHelper<T> =>
+    mapi((v, k) => {
+      if (DictOptReservedWords.includes(k)) {
+        throw `Key ${k} is reserved word for makeDictOptHelper. Consider using a different key name.`;
+      }
+
+      const val: Maybe.Maybe<any> = get(k, obj.unwrap({} as T));
+
+      if (Util.isObject(v)) {
+        const props = makeDictOptHelper(v)(val);
+        return {
+          ...props,
+          get: () => val.unwrap(v),
+          opt: () => val,
+        };
+      }
+
+      return {
+        get: () => val.unwrap(v),
+        opt: () => val,
+      };
+    }, map) as unknown as DictOptHelper<T>;
