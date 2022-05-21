@@ -288,19 +288,31 @@ export const includesWith: typeof _includesWith = Fn.curry(
     }).run()
 );
 
-export const includesBy = <A>(f: (a: A) => any, a: A, list: A[]): boolean =>
-  includesWith((a: A) => (b: A) => Util.eq(f(a), f(b)), a, list);
+declare function _includesBy<A>(f: (a: A) => any): {
+  (a: A): (list: A[]) => boolean;
+  (a: A, list: A[]): boolean;
+};
+declare function _includesBy<A>(f: (a: A) => any, a: A): (list: A[]) => boolean;
+declare function _includesBy<A>(f: (a: A) => any, a: A, list: A[]): boolean;
+export const includesBy: typeof _includesBy = Fn.curry(
+  <A>(f: (a: A) => any, a: A, list: A[]): boolean =>
+    includesWith((a: A) => (b: A) => Util.eq(f(a), f(b)), a, list)
+);
 
 export const includes = includesWith(Util.eq);
 
 export const uniq = <A>(as: A[]): A[] =>
   as.reduce((acc: A[], v: A) => (acc.includes(v) ? acc : [...acc, v]), []);
 
-export const uniqBy = <A>(f: (a: A) => any, as: A[]): A[] => {
-  return as.reduce((acc: A[], v: A) => {
-    return includesBy(f, v, acc) ? acc : [...acc, v];
-  }, []);
-};
+declare function _uniqBy<A>(f: (a: A) => any): (as: A[]) => A[];
+declare function _uniqBy<A>(f: (a: A) => any, as: A[]): A[];
+export const uniqBy: typeof _uniqBy = Fn.curry(
+  <A>(f: (a: A) => any, as: A[]): A[] => {
+    return as.reduce((acc: A[], v: A) => {
+      return includesBy(f, v, acc) ? acc : [...acc, v];
+    }, []);
+  }
+);
 
 declare function _insert<A>(idx: number): {
   (item: A): (list: A[]) => A[];

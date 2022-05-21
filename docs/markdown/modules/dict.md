@@ -37,7 +37,7 @@
 
 #### Defined in
 
-[src/data/Dict.ts:6](https://github.com/jonlaing/shonad/blob/001120c/src/data/Dict.ts#L6)
+[src/data/Dict.ts:6](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L6)
 
 ## Functions
 
@@ -100,7 +100,7 @@
 
 #### Defined in
 
-[src/data/Dict.ts:75](https://github.com/jonlaing/shonad/blob/001120c/src/data/Dict.ts#L75)
+[src/data/Dict.ts:75](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L75)
 
 ▸ **eqProps**<`A`\>(`k`, `d0`): (`d1`: `A`) => `boolean`
 
@@ -135,7 +135,7 @@
 
 #### Defined in
 
-[src/data/Dict.ts:75](https://github.com/jonlaing/shonad/blob/001120c/src/data/Dict.ts#L75)
+[src/data/Dict.ts:75](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L75)
 
 ▸ **eqProps**<`A`\>(`k`, `d0`, `d1`): `boolean`
 
@@ -159,7 +159,7 @@
 
 #### Defined in
 
-[src/data/Dict.ts:75](https://github.com/jonlaing/shonad/blob/001120c/src/data/Dict.ts#L75)
+[src/data/Dict.ts:75](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L75)
 
 ___
 
@@ -197,7 +197,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:121](https://github.com/jonlaing/shonad/blob/001120c/src/data/Dict.ts#L121)
+[src/data/Dict.ts:121](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L121)
 
 ▸ **evolve**<`A`\>(`e`, `d`): `A`
 
@@ -220,7 +220,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:121](https://github.com/jonlaing/shonad/blob/001120c/src/data/Dict.ts#L121)
+[src/data/Dict.ts:121](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L121)
 
 ___
 
@@ -258,7 +258,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:16](https://github.com/jonlaing/shonad/blob/001120c/src/data/Dict.ts#L16)
+[src/data/Dict.ts:16](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L16)
 
 ▸ **get**<`A`\>(`key`, `dict`): [`Maybe`](../classes/maybe.Maybe.md)<`any`\>
 
@@ -281,7 +281,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:16](https://github.com/jonlaing/shonad/blob/001120c/src/data/Dict.ts#L16)
+[src/data/Dict.ts:16](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L16)
 
 ___
 
@@ -319,7 +319,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:23](https://github.com/jonlaing/shonad/blob/001120c/src/data/Dict.ts#L23)
+[src/data/Dict.ts:23](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L23)
 
 ▸ **getUnsafe**<`A`\>(`key`, `dict`): `any`
 
@@ -342,7 +342,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:23](https://github.com/jonlaing/shonad/blob/001120c/src/data/Dict.ts#L23)
+[src/data/Dict.ts:23](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L23)
 
 ___
 
@@ -380,7 +380,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:133](https://github.com/jonlaing/shonad/blob/001120c/src/data/Dict.ts#L133)
+[src/data/Dict.ts:133](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L133)
 
 ▸ **has**<`A`\>(`k`, `d`): `boolean`
 
@@ -403,7 +403,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:133](https://github.com/jonlaing/shonad/blob/001120c/src/data/Dict.ts#L133)
+[src/data/Dict.ts:133](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L133)
 
 ___
 
@@ -429,7 +429,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:138](https://github.com/jonlaing/shonad/blob/001120c/src/data/Dict.ts#L138)
+[src/data/Dict.ts:138](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L138)
 
 ___
 
@@ -467,7 +467,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:89](https://github.com/jonlaing/shonad/blob/001120c/src/data/Dict.ts#L89)
+[src/data/Dict.ts:89](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L89)
 
 ▸ **map**<`A`\>(`f`, `dict`): `A`
 
@@ -490,7 +490,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:89](https://github.com/jonlaing/shonad/blob/001120c/src/data/Dict.ts#L89)
+[src/data/Dict.ts:89](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L89)
 
 ___
 
@@ -528,7 +528,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:105](https://github.com/jonlaing/shonad/blob/001120c/src/data/Dict.ts#L105)
+[src/data/Dict.ts:105](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L105)
 
 ▸ **mapi**<`A`\>(`f`, `dict`): `A`
 
@@ -551,7 +551,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:105](https://github.com/jonlaing/shonad/blob/001120c/src/data/Dict.ts#L105)
+[src/data/Dict.ts:105](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L105)
 
 ___
 
@@ -590,7 +590,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:169](https://github.com/jonlaing/shonad/blob/001120c/src/data/Dict.ts#L169)
+[src/data/Dict.ts:169](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L169)
 
 ▸ **merge**<`T`, `A`\>(`a`, `dict`): `T`
 
@@ -614,7 +614,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:169](https://github.com/jonlaing/shonad/blob/001120c/src/data/Dict.ts#L169)
+[src/data/Dict.ts:169](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L169)
 
 ___
 
@@ -677,7 +677,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:156](https://github.com/jonlaing/shonad/blob/001120c/src/data/Dict.ts#L156)
+[src/data/Dict.ts:156](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L156)
 
 ▸ **propEq**<`A`\>(`k`, `val`): (`dict`: `A`) => `boolean`
 
@@ -712,7 +712,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:156](https://github.com/jonlaing/shonad/blob/001120c/src/data/Dict.ts#L156)
+[src/data/Dict.ts:156](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L156)
 
 ▸ **propEq**<`A`\>(`k`, `val`, `dict`): `boolean`
 
@@ -736,7 +736,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:156](https://github.com/jonlaing/shonad/blob/001120c/src/data/Dict.ts#L156)
+[src/data/Dict.ts:156](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L156)
 
 ___
 
@@ -799,7 +799,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:39](https://github.com/jonlaing/shonad/blob/001120c/src/data/Dict.ts#L39)
+[src/data/Dict.ts:39](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L39)
 
 ▸ **set**<`A`\>(`key`, `val`): (`dict`: `A`) => `A`
 
@@ -834,7 +834,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:39](https://github.com/jonlaing/shonad/blob/001120c/src/data/Dict.ts#L39)
+[src/data/Dict.ts:39](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L39)
 
 ▸ **set**<`A`\>(`key`, `val`, `dict`): `A`
 
@@ -858,7 +858,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:39](https://github.com/jonlaing/shonad/blob/001120c/src/data/Dict.ts#L39)
+[src/data/Dict.ts:39](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L39)
 
 ___
 
@@ -896,7 +896,7 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:51](https://github.com/jonlaing/shonad/blob/001120c/src/data/Dict.ts#L51)
+[src/data/Dict.ts:51](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L51)
 
 ▸ **unset**<`A`\>(`k`, `dict`): `Partial`<`A`\>
 
@@ -919,4 +919,4 @@ ___
 
 #### Defined in
 
-[src/data/Dict.ts:51](https://github.com/jonlaing/shonad/blob/001120c/src/data/Dict.ts#L51)
+[src/data/Dict.ts:51](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Dict.ts#L51)

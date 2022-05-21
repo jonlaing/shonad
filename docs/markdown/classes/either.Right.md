@@ -64,7 +64,7 @@
 
 #### Defined in
 
-[src/base/Typeclass.ts:4](https://github.com/jonlaing/shonad/blob/001120c/src/base/Typeclass.ts#L4)
+[src/base/Typeclass.ts:4](https://github.com/jonlaing/shonad/blob/eb3a480/src/base/Typeclass.ts#L4)
 
 ## Properties
 
@@ -88,7 +88,7 @@
 
 #### Defined in
 
-[src/data/Either.ts:30](https://github.com/jonlaing/shonad/blob/001120c/src/data/Either.ts#L30)
+[src/data/Either.ts:30](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Either.ts#L30)
 
 ___
 
@@ -112,7 +112,7 @@ ___
 
 #### Defined in
 
-[src/data/Either.ts:31](https://github.com/jonlaing/shonad/blob/001120c/src/data/Either.ts#L31)
+[src/data/Either.ts:31](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Either.ts#L31)
 
 ___
 
@@ -126,7 +126,7 @@ ___
 
 #### Defined in
 
-[src/base/Typeclass.ts:2](https://github.com/jonlaing/shonad/blob/001120c/src/base/Typeclass.ts#L2)
+[src/base/Typeclass.ts:2](https://github.com/jonlaing/shonad/blob/eb3a480/src/base/Typeclass.ts#L2)
 
 ___
 
@@ -140,7 +140,7 @@ ___
 
 #### Defined in
 
-[src/control/Monad.ts:57](https://github.com/jonlaing/shonad/blob/001120c/src/control/Monad.ts#L57)
+[src/control/Monad.ts:57](https://github.com/jonlaing/shonad/blob/eb3a480/src/control/Monad.ts#L57)
 
 ___
 
@@ -154,7 +154,7 @@ ___
 
 #### Defined in
 
-[src/control/Monad.ts:54](https://github.com/jonlaing/shonad/blob/001120c/src/control/Monad.ts#L54)
+[src/control/Monad.ts:54](https://github.com/jonlaing/shonad/blob/eb3a480/src/control/Monad.ts#L54)
 
 ___
 
@@ -168,7 +168,7 @@ ___
 
 #### Defined in
 
-[src/control/Functor.ts:5](https://github.com/jonlaing/shonad/blob/001120c/src/control/Functor.ts#L5)
+[src/control/Functor.ts:5](https://github.com/jonlaing/shonad/blob/eb3a480/src/control/Functor.ts#L5)
 
 ## Methods
 
@@ -192,7 +192,7 @@ Either.apply
 
 #### Defined in
 
-[src/data/Either.ts:35](https://github.com/jonlaing/shonad/blob/001120c/src/data/Either.ts#L35)
+[src/data/Either.ts:35](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Either.ts#L35)
 
 ___
 
@@ -222,7 +222,7 @@ Either.bind
 
 #### Defined in
 
-[src/data/Either.ts:40](https://github.com/jonlaing/shonad/blob/001120c/src/data/Either.ts#L40)
+[src/data/Either.ts:40](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Either.ts#L40)
 
 ___
 
@@ -242,7 +242,7 @@ ___
 
 #### Defined in
 
-[src/data/Either.ts:43](https://github.com/jonlaing/shonad/blob/001120c/src/data/Either.ts#L43)
+[src/data/Either.ts:43](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Either.ts#L43)
 
 ___
 
@@ -272,7 +272,7 @@ Either.fmap
 
 #### Defined in
 
-[src/data/Either.ts:33](https://github.com/jonlaing/shonad/blob/001120c/src/data/Either.ts#L33)
+[src/data/Either.ts:33](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Either.ts#L33)
 
 ___
 
@@ -296,7 +296,7 @@ Either.unwrap
 
 #### Defined in
 
-[src/data/Either.ts:41](https://github.com/jonlaing/shonad/blob/001120c/src/data/Either.ts#L41)
+[src/data/Either.ts:41](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Either.ts#L41)
 
 ___
 
@@ -320,4 +320,4 @@ ___
 
 #### Defined in
 
-[src/data/Either.ts:8](https://github.com/jonlaing/shonad/blob/001120c/src/data/Either.ts#L8)
+[src/data/Either.ts:8](https://github.com/jonlaing/shonad/blob/eb3a480/src/data/Either.ts#L8)

@@ -134,17 +134,15 @@ exports.includesWith = Fn.curry((f, a, list) => Fn.rec(() => {
     }
     return (0, exports.includesWith)(f, a, tl);
 }).run());
-const includesBy = (f, a, list) => (0, exports.includesWith)((a) => (b) => Util.eq(f(a), f(b)), a, list);
-exports.includesBy = includesBy;
+exports.includesBy = Fn.curry((f, a, list) => (0, exports.includesWith)((a) => (b) => Util.eq(f(a), f(b)), a, list));
 exports.includes = (0, exports.includesWith)(Util.eq);
 const uniq = (as) => as.reduce((acc, v) => (acc.includes(v) ? acc : [...acc, v]), []);
 exports.uniq = uniq;
-const uniqBy = (f, as) => {
+exports.uniqBy = Fn.curry((f, as) => {
     return as.reduce((acc, v) => {
         return (0, exports.includesBy)(f, v, acc) ? acc : [...acc, v];
     }, []);
-};
-exports.uniqBy = uniqBy;
+});
 exports.insert = Fn.curry((idx, item, list) => {
     const [hd, tl] = (0, exports.splitAt)(idx, list);
     return [...hd, item, ...tl];
