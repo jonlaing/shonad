@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.concat = exports.move = exports.insert = exports.uniq = exports.reduce = exports.reject = exports.filter = exports.map = exports.drop = exports.lastIndexOf = exports.indexOf = exports.prepend = exports.append = exports.updateWhen = exports.update = exports.adjustWhen = exports.adjust = exports.splitAt = exports.nth = exports.findLastIndex = exports.findLast = exports.findIndex = exports.find = exports.isEmpty = exports.init = exports.tail = exports.last = exports.reverse = exports.head = void 0;
+exports.concat = exports.move = exports.insert = exports.uniqBy = exports.uniq = exports.includes = exports.includesBy = exports.includesWith = exports.reduce = exports.reject = exports.filter = exports.map = exports.drop = exports.lastIndexOf = exports.indexOf = exports.prepend = exports.append = exports.updateWhen = exports.update = exports.adjustWhen = exports.adjust = exports.splitAt = exports.nth = exports.findLastIndex = exports.findLast = exports.findIndex = exports.find = exports.isEmpty = exports.init = exports.tail = exports.last = exports.reverse = exports.head = void 0;
 const Fn = __importStar(require("../base/Function"));
 const Maybe = __importStar(require("./Maybe"));
 const Util = __importStar(require("../base/Util"));
@@ -125,8 +125,26 @@ exports.map = Fn.curry((f, list) => list.map(f));
 exports.filter = Fn.curry((pred, list) => list.filter(pred));
 exports.reject = Fn.curry((pred, list) => list.filter(Lg.not(pred)));
 exports.reduce = Fn.curry((f, initial, list) => list.reduce(f, initial));
+exports.includesWith = Fn.curry((f, a, list) => Fn.rec(() => {
+    if (list.length === 0)
+        return false;
+    const [hd, ...tl] = list;
+    if (f(a)(hd)) {
+        return true;
+    }
+    return (0, exports.includesWith)(f, a, tl);
+}).run());
+const includesBy = (f, a, list) => (0, exports.includesWith)((a) => (b) => Util.eq(f(a), f(b)), a, list);
+exports.includesBy = includesBy;
+exports.includes = (0, exports.includesWith)(Util.eq);
 const uniq = (as) => as.reduce((acc, v) => (acc.includes(v) ? acc : [...acc, v]), []);
 exports.uniq = uniq;
+const uniqBy = (f, as) => {
+    return as.reduce((acc, v) => {
+        return (0, exports.includesBy)(f, v, acc) ? acc : [...acc, v];
+    }, []);
+};
+exports.uniqBy = uniqBy;
 exports.insert = Fn.curry((idx, item, list) => {
     const [hd, tl] = (0, exports.splitAt)(idx, list);
     return [...hd, item, ...tl];

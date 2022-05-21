@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.fmap = exports.flip = exports.identity = exports.true_ = exports.false_ = exports.always = exports.pipe = exports.pipeK = exports.composeK = exports.compose = exports.curry = exports.curryN = void 0;
+exports.rec = exports.Rec = exports.fmap = exports.flip = exports.identity = exports.true_ = exports.false_ = exports.always = exports.pipe = exports.pipeK = exports.composeK = exports.compose = exports.curry = exports.curryN = void 0;
 const _curryN = (n, args, f) => {
     if (n <= 0)
         return f(...args);
@@ -185,4 +185,40 @@ exports.flip = (0, exports.curry)((f, b, a) => {
  * @returns a => c
  */
 exports.fmap = (0, exports.curry)((f, x) => (0, exports.compose)(f, x));
+/**
+ * Helper class to perform tail recursive calls. It's really only
+ * exported to assist with typing.
+ *
+ * @see {@link rec}
+ */
+class Rec {
+    constructor(f) {
+        this.f = f;
+    }
+    run() {
+        let value = this;
+        while (value instanceof Rec)
+            value = value.f();
+        return value;
+    }
+}
+exports.Rec = Rec;
+/**
+ * Tail call recursion helper
+ * @example
+ * ```typescript
+ * function factorial(n: number): number {
+ *   const fac = (n: number, acc: number): Rec<number> =>
+ *     rec<number>(() => (n < 2 ? acc : fac(n - 1, n * acc)));
+ *
+ *   return fac(n, 1).run();
+ * }
+ *
+ * factorial(6); // 720
+ * ```
+ * @param f function to perform tail calls
+ * @returns
+ */
+const rec = (f) => new Rec(f);
+exports.rec = rec;
 //# sourceMappingURL=Function.js.map

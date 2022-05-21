@@ -176,4 +176,32 @@ declare function _fmap<A, B, C>(f: Function<B, C>, x: Function<A, B>): Function<
  * @returns a => c
  */
 export declare const fmap: typeof _fmap;
+/**
+ * Helper class to perform tail recursive calls. It's really only
+ * exported to assist with typing.
+ *
+ * @see {@link rec}
+ */
+export declare class Rec<T> {
+    f: () => any;
+    constructor(f: () => T);
+    run(): T;
+}
+/**
+ * Tail call recursion helper
+ * @example
+ * ```typescript
+ * function factorial(n: number): number {
+ *   const fac = (n: number, acc: number): Rec<number> =>
+ *     rec<number>(() => (n < 2 ? acc : fac(n - 1, n * acc)));
+ *
+ *   return fac(n, 1).run();
+ * }
+ *
+ * factorial(6); // 720
+ * ```
+ * @param f function to perform tail calls
+ * @returns
+ */
+export declare const rec: <T>(f: () => any) => Rec<T>;
 export {};

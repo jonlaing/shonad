@@ -4,6 +4,9 @@ export declare type Dict<A> = Record<string, A>;
 declare function _get<A extends Dict<any>>(key: string): (dict: A) => Maybe.Maybe<any>;
 declare function _get<A extends Dict<any>>(key: string, dict: A): Maybe.Maybe<any>;
 export declare const get: typeof _get;
+declare function _getUnsafe<A extends Dict<any>>(key: string): (dict: A) => any;
+declare function _getUnsafe<A extends Dict<any>>(key: string, dict: A): any;
+export declare const getUnsafe: typeof _getUnsafe;
 declare function _set<A extends Dict<any>>(key: string): {
     (val: any, dict: A): A;
     (val: any): (dict: A) => A;

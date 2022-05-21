@@ -18,6 +18,12 @@ export const get: typeof _get = Fn.curry(
     Maybe.maybeNil(dict[key])
 );
 
+declare function _getUnsafe<A extends Dict<any>>(key: string): (dict: A) => any;
+declare function _getUnsafe<A extends Dict<any>>(key: string, dict: A): any;
+export const getUnsafe: typeof _getUnsafe = Fn.curry(
+  <A extends Dict<any>>(key: string, dict: A): any => dict[key]
+);
+
 declare function _set<A extends Dict<any>>(
   key: string
 ): {

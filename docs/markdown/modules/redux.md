@@ -51,7 +51,7 @@
 
 #### Defined in
 
-[src/extensions/redux.ts:44](https://github.com/jonlaing/shonad/blob/54cf147/src/extensions/redux.ts#L44)
+[src/extensions/redux.ts:44](https://github.com/jonlaing/shonad/blob/001120c/src/extensions/redux.ts#L44)
 
 ## Functions
 
@@ -93,7 +93,7 @@
 
 #### Defined in
 
-[src/extensions/redux.ts:158](https://github.com/jonlaing/shonad/blob/54cf147/src/extensions/redux.ts#L158)
+[src/extensions/redux.ts:158](https://github.com/jonlaing/shonad/blob/001120c/src/extensions/redux.ts#L158)
 
 ▸ **always**<`S`, `V`, `A`\>(`lens`, `val`): [`CaseReducer`](redux.md#casereducer)<`S`, `A`\>
 
@@ -118,7 +118,7 @@
 
 #### Defined in
 
-[src/extensions/redux.ts:158](https://github.com/jonlaing/shonad/blob/54cf147/src/extensions/redux.ts#L158)
+[src/extensions/redux.ts:158](https://github.com/jonlaing/shonad/blob/001120c/src/extensions/redux.ts#L158)
 
 ▸ **always**<`S`, `V`, `A`\>(`lens`, `val`, `state`): (`action`: `A`) => `S`
 
@@ -156,7 +156,7 @@
 
 #### Defined in
 
-[src/extensions/redux.ts:158](https://github.com/jonlaing/shonad/blob/54cf147/src/extensions/redux.ts#L158)
+[src/extensions/redux.ts:158](https://github.com/jonlaing/shonad/blob/001120c/src/extensions/redux.ts#L158)
 
 ▸ **always**<`S`, `V`, `A`\>(`lens`, `val`, `state`, `action`): `S`
 
@@ -183,7 +183,7 @@
 
 #### Defined in
 
-[src/extensions/redux.ts:158](https://github.com/jonlaing/shonad/blob/54cf147/src/extensions/redux.ts#L158)
+[src/extensions/redux.ts:158](https://github.com/jonlaing/shonad/blob/001120c/src/extensions/redux.ts#L158)
 
 ___
 
@@ -225,7 +225,7 @@ ___
 
 #### Defined in
 
-[src/extensions/redux.ts:121](https://github.com/jonlaing/shonad/blob/54cf147/src/extensions/redux.ts#L121)
+[src/extensions/redux.ts:121](https://github.com/jonlaing/shonad/blob/001120c/src/extensions/redux.ts#L121)
 
 ▸ **over**<`S`, `V`, `A`\>(`lens`, `fn`): [`CaseReducer`](redux.md#casereducer)<`S`, `A`\>
 
@@ -250,7 +250,7 @@ ___
 
 #### Defined in
 
-[src/extensions/redux.ts:121](https://github.com/jonlaing/shonad/blob/54cf147/src/extensions/redux.ts#L121)
+[src/extensions/redux.ts:121](https://github.com/jonlaing/shonad/blob/001120c/src/extensions/redux.ts#L121)
 
 ▸ **over**<`S`, `V`, `A`\>(`lens`, `fn`, `state`): (`action`: `A`) => `S`
 
@@ -288,7 +288,7 @@ ___
 
 #### Defined in
 
-[src/extensions/redux.ts:121](https://github.com/jonlaing/shonad/blob/54cf147/src/extensions/redux.ts#L121)
+[src/extensions/redux.ts:121](https://github.com/jonlaing/shonad/blob/001120c/src/extensions/redux.ts#L121)
 
 ▸ **over**<`S`, `V`, `A`\>(`lens`, `fn`, `state`, `action`): `S`
 
@@ -315,7 +315,7 @@ ___
 
 #### Defined in
 
-[src/extensions/redux.ts:121](https://github.com/jonlaing/shonad/blob/54cf147/src/extensions/redux.ts#L121)
+[src/extensions/redux.ts:121](https://github.com/jonlaing/shonad/blob/001120c/src/extensions/redux.ts#L121)
 
 ___
 
@@ -342,7 +342,7 @@ ___
 
 #### Defined in
 
-[src/extensions/redux.ts:49](https://github.com/jonlaing/shonad/blob/54cf147/src/extensions/redux.ts#L49)
+[src/extensions/redux.ts:49](https://github.com/jonlaing/shonad/blob/001120c/src/extensions/redux.ts#L49)
 
 ___
 
@@ -370,7 +370,7 @@ ___
 
 #### Defined in
 
-[src/extensions/redux.ts:74](https://github.com/jonlaing/shonad/blob/54cf147/src/extensions/redux.ts#L74)
+[src/extensions/redux.ts:74](https://github.com/jonlaing/shonad/blob/001120c/src/extensions/redux.ts#L74)
 
 ▸ **set**<`S`, `V`, `A`\>(`lens`, `state`): (`action`: `A`) => `S`
 
@@ -407,7 +407,7 @@ ___
 
 #### Defined in
 
-[src/extensions/redux.ts:74](https://github.com/jonlaing/shonad/blob/54cf147/src/extensions/redux.ts#L74)
+[src/extensions/redux.ts:74](https://github.com/jonlaing/shonad/blob/001120c/src/extensions/redux.ts#L74)
 
 ▸ **set**<`S`, `V`, `A`\>(`lens`, `state`, `action`): `S`
 
@@ -433,4 +433,4 @@ ___
 
 #### Defined in
 
-[src/extensions/redux.ts:74](https://github.com/jonlaing/shonad/blob/54cf147/src/extensions/redux.ts#L74)
+[src/extensions/redux.ts:74](https://github.com/jonlaing/shonad/blob/001120c/src/extensions/redux.ts#L74)

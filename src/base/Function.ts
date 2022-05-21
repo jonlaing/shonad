@@ -278,3 +278,40 @@ export const fmap: typeof _fmap = curry(
   <A, B, C>(f: Function<B, C>, x: Function<A, B>): Function<A, C> =>
     compose(f, x)
 );
+
+/**
+ * Helper class to perform tail recursive calls. It's really only
+ * exported to assist with typing.
+ *
+ * @see {@link rec}
+ */
+export class Rec<T> {
+  f: () => any;
+  constructor(f: () => T) {
+    this.f = f;
+  }
+
+  run(): T {
+    let value = this;
+    while (value instanceof Rec) value = value.f();
+    return value;
+  }
+}
+
+/**
+ * Tail call recursion helper
+ * @example
+ * ```typescript
+ * function factorial(n: number): number {
+ *   const fac = (n: number, acc: number): Rec<number> =>
+ *     rec<number>(() => (n < 2 ? acc : fac(n - 1, n * acc)));
+ *
+ *   return fac(n, 1).run();
+ * }
+ *
+ * factorial(6); // 720
+ * ```
+ * @param f function to perform tail calls
+ * @returns
+ */
+export const rec = <T>(f: () => any): Rec<T> => new Rec<T>(f);

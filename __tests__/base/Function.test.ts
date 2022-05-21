@@ -114,4 +114,15 @@ describe("Function", () => {
       );
     });
   });
+
+  describe("rec", () => {
+    const factorial = (n: number) => {
+      const fac = (n: number, acc: number): Fn.Rec<number> =>
+        Fn.rec(() => (n < 2 ? acc : fac(n - 1, n * acc)));
+
+      return fac(n, 1).run();
+    };
+
+    expect(factorial(6)).toBe(720);
+  });
 });

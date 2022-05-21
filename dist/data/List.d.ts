@@ -75,7 +75,20 @@ declare function _reduce<T, U = T[]>(f: (acc: U, v: T) => U): {
 declare function _reduce<T, U = T[]>(f: (acc: U, v: T) => U, initial: U): (list: T[]) => U;
 declare function _reduce<T, U = T[]>(f: (acc: U, v: T) => U, initial: U, list: T[]): U;
 export declare const reduce: typeof _reduce;
+declare function _includesWith<A>(f: (a: A) => (b: A) => boolean): {
+    (a: A, list: A[]): boolean;
+    (a: A): (list: A[]) => boolean;
+};
+declare function _includesWith<A>(f: (a: A) => (b: A) => boolean, a: A): (list: A[]) => boolean;
+declare function _includesWith<A>(f: (a: A) => (b: A) => boolean, a: A, list: A[]): boolean;
+export declare const includesWith: typeof _includesWith;
+export declare const includesBy: <A>(f: (a: A) => any, a: A, list: A[]) => boolean;
+export declare const includes: {
+    (a: unknown, list: unknown[]): boolean;
+    (a: unknown): (list: unknown[]) => boolean;
+};
 export declare const uniq: <A>(as: A[]) => A[];
+export declare const uniqBy: <A>(f: (a: A) => any, as: A[]) => A[];
 declare function _insert<A>(idx: number): {
     (item: A): (list: A[]) => A[];
     (item: A, list: A[]): A[];

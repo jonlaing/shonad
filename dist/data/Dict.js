@@ -23,11 +23,12 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.merge = exports.propEq = exports.isEmpty = exports.has = exports.evolve = exports.mapi = exports.map = exports.eqProps = exports.unset = exports.set = exports.get = void 0;
+exports.merge = exports.propEq = exports.isEmpty = exports.has = exports.evolve = exports.mapi = exports.map = exports.eqProps = exports.unset = exports.set = exports.getUnsafe = exports.get = void 0;
 const Maybe = __importStar(require("./Maybe"));
 const Fn = __importStar(require("../base/Function"));
 const Util = __importStar(require("../base/Util"));
 exports.get = Fn.curry((key, dict) => Maybe.maybeNil(dict[key]));
+exports.getUnsafe = Fn.curry((key, dict) => dict[key]);
 exports.set = Fn.curry((key, val, dict) => (Object.assign(Object.assign({}, dict), { [key]: val })));
 exports.unset = Fn.curry((k, dict) => Object.keys(dict).reduce((acc, _k) => (k === _k ? acc : { [_k]: dict[_k] }), {}));
 exports.eqProps = Fn.curry((k, d0, d1) => Fn.pipe(Maybe.apply_((0, exports.get)(k, d0)), Maybe.apply_((0, exports.get)(k, d1)), Maybe.fromMaybe(false))(Maybe.just(Util.eq)));
