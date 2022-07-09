@@ -171,6 +171,7 @@ declare function _or<A, B>(
   f1: () => Maybe<B>,
   f0: () => Maybe<A>
 ): Maybe<A> | Maybe<B>;
+
 export const or: typeof _or = Fn.curry(
   <A, B>(f1: () => Maybe<B>, f0: () => Maybe<A>): Maybe<A> | Maybe<B> => {
     const ma = f0();

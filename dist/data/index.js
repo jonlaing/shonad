@@ -23,11 +23,12 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.identity = exports.constFunctor = exports.maybe = exports.list = exports.either = exports.dict = void 0;
+exports.strings = exports.identity = exports.constFunctor = exports.maybe = exports.list = exports.either = exports.dict = void 0;
 exports.dict = __importStar(require("./Dict"));
 exports.either = __importStar(require("./Either"));
 exports.list = __importStar(require("./List"));
 exports.maybe = __importStar(require("./Maybe"));
 exports.constFunctor = __importStar(require("./Const"));
 exports.identity = __importStar(require("./Identity"));
+exports.strings = __importStar(require("./String"));
 //# sourceMappingURL=index.js.map

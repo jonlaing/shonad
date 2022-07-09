@@ -20,5 +20,6 @@
 - [monad](modules/monad.md)
 - [number](modules/number.md)
 - [redux](modules/redux.md)
+- [strings](modules/strings.md)
 - [typeclass](modules/typeclass.md)
 - [util](modules/util.md)
